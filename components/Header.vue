@@ -1,18 +1,23 @@
 <template>
-  <div class='navbar'>
-    <nav>
-      <ul>
-      <li><nuxt-link class='navbar-link' to='#'>Developpement Web</nuxt-link> </li>
-      <li><nuxt-link class='navbar-link' to='#'>Galerie Photo</nuxt-link></li>
-      <li><nuxt-link class='navbar-link' to='#'>A propos de moi</nuxt-link></li>
-      </ul>
-    </nav>
-  </div>
+  <header>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+    <div class='navbar'>
+      <nav>
+        <ul>
+          <li><nuxt-link class='navbar-link' to="/">Acceuil</nuxt-link> </li>
+          <li><nuxt-link class='navbar-link' to="/projet">Projets Web</nuxt-link></li>
+          <li><nuxt-link class='navbar-link' to="/photo">Galerie photo</nuxt-link></li>
+          <li><nuxt-link class='navbar-link' to="/about">A propos de moi</nuxt-link></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
-  name: 'NavBar'
+  Name: 'Header'
 }
 </script>
 

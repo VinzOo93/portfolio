@@ -1,12 +1,10 @@
 <template>
-
-  <div>Vincent</div>
+  <div>
+    <h1>welcome</h1>
+  </div>
 </template>
-
 <script>
-export default {
-  name: 'Index',
-}
+
 </script>
 
 <style scoped>
