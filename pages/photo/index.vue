@@ -1,33 +1,56 @@
 <template>
-
-  <div class='galery'>
-    <div class='album-header-sticky'>
-      <div class='container'>
-        <div class='content'>
-          <img class='cover2 js-img' alt='second-image' src='~/assets/images/5.JPG'>
-          <img class='cover2 js-img' alt='second-image' src='~/assets/images/17.JPG'>
-          <img class='cover2 js-img' alt='second-image' src='~/assets/images/1.JPG'>
+  <transition>
+    <div class='galery'>
+      <div class='album-header-sticky'>
+        <div class='container'>
+          <div class='content'>
+            <img class='cover2 js-img2' alt='image-aurora-cover-2' src='~/assets/images/aurora1.JPG'>
+            <img class='cover2 js-img2' alt='image-aurora-cover-2' src='~/assets/images/aurora2.JPG'>
+            <img class='cover2 js-img2' alt='image-aurora-cover-2' src='~/assets/images/aurora3.JPG'>
+          </div>
         </div>
-      </div>
-      <div class='container'>
-        <div class='cover text-content'>
-          <p class='description'> Ces images ont été capturées vers la fin de mon aventure en Tasmanie. Cette île au sud de l'Australie
-            est l'un des endroits où le ciel est l'un des plus clair au monde.<br><br> Grâce à sa position géographique
-            particulière, nous pouvons y admirer occasionellement la lueur orangée  provenant d'aurores australes.</p>
+        <div class='container'>
+          <div class='cover text-content'>
+            <p class='description'> Ces images ont été capturées vers la fin de mon aventure en Tasmanie. Cette île au
+              sud de l'Australie
+              est l'un des endroits où le ciel est l'un des plus clair au monde.<br><br> Grâce à sa position
+              géographique
+              particulière, nous pouvons y admirer occasionellement la lueur orangée provenant d'aurores australes.</p>
+          </div>
+          <img class='cover js-img' alt='first-image' src='~/assets/images/aurora.jpg'>
         </div>
-        <img class='cover js-img' alt='first-image' src='~/assets/images/aurora.jpg'>
-
       </div>
     </div>
-  </div>
+  </transition>
 
 
 </template>
 
 <script>
+
+import { gsap, Power2 } from 'gsap'
+
+
 export default {
-  name: 'Index'
+  mounted: function() {
+    this.startAnimation()
+  },
+  methods: {
+    startAnimation: function() {
+      const landscape = document.querySelectorAll('.js-img2')
+      const portrait = document.querySelector('.js-img')
+      const description = document.querySelector('.text-content')
+
+      gsap.timeline()
+        .fromTo(description,{ y: '-200%' }, { y: '0%', ease: Power2.easeInOut })
+        .fromTo(portrait,{ x: '-200%' }, { x: '0%', ease: Power2.easeInOut })
+        .fromTo(landscape, { width: '0%' }, { width: '100%', ease: Power2.easeInOut })
+
+    }
+  }
 }
+
+
 </script>
 
 <style scoped>
@@ -76,36 +99,36 @@ img {
   }
 }
 
-  @media only screen and  (min-width: 768px) {
+@media only screen and  (min-width: 768px) {
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-gap: 0;
-      align-items: start;
-      grid-column: 6/8;
-      position: absolute;
-      width: 100%;
-    }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0;
+    align-items: start;
+    grid-column: 6/8;
+    position: absolute;
+    width: 100%;
+  }
 
-    .cover {
-      grid-column: 2/7;
-      z-index: 1;
-      max-width: 95%;
-    }
+  .cover {
+    grid-column: 2/7;
+    z-index: 1;
+    max-width: 95%;
+  }
 
-    .cover2 {
-      margin: 40px 10px 10px 20px;
-      grid-column: 2/8;
-      z-index: 1;
-      max-width: 100%;
-    }
+  .cover2 {
+    margin: 40px 10px 10px 20px;
+    grid-column: 2/8;
+    z-index: 1;
+    max-width: 100%;
+  }
 
-    .content {
-      grid-column: 7/12;
-      position: absolute;
-      width: 100%;
-    }
+  .content {
+    grid-column: 7/12;
+    position: absolute;
+    width: 100%;
+  }
 
 }
 
@@ -113,6 +136,7 @@ img {
   display: flex;
   max-width: 100%;
 }
+
 .description {
   font-size: 27px;
 }
