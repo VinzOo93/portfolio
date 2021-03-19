@@ -1,5 +1,4 @@
 <template>
-  <transition>
     <div class='galery'>
       <div class='transition'></div>
       <div class='album-header-sticky'>
@@ -24,7 +23,6 @@
       </div>
       <div></div>
     </div>
-  </transition>
 
 
 </template>
@@ -75,6 +73,7 @@ img {
   display: block;
   max-width: 100%;
   max-height: 100%;
+   z-index:-2;
 }
 
 
@@ -87,6 +86,9 @@ img {
   width: 100%;
 
 }
+.cover2 {
+  position: relative;
+}
 
 @media only screen and  (max-width: 768px) {
 
@@ -98,13 +100,13 @@ img {
 
   .cover {
     margin: 15px 15px 15px 15px;
-    z-index: 1;
+    z-index:-2;
     max-width: 90%;
   }
 
   .cover2 {
     margin: 20px 20px 20px 20px;
-    z-index: 1;
+    z-index:-2;
     max-width: 90%;
   }
 
@@ -128,14 +130,14 @@ img {
 
   .cover {
     grid-column: 2/7;
-    z-index: 1;
+    z-index:-2;
     max-width: 95%;
   }
 
   .cover2 {
     margin: 40px 10px 10px 20px;
+    z-index:-2;
     grid-column: 2/8;
-    z-index: 1;
     max-width: 100%;
   }
 

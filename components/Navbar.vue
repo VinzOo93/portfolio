@@ -1,7 +1,5 @@
 <template>
-  <header>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <div>
     <div class='navbar'>
       <nav>
         <ul>
@@ -12,12 +10,12 @@
         </ul>
       </nav>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
 export default {
-  Name: 'Header'
+  Name: 'Navbar'
 }
 </script>
 
