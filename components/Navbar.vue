@@ -27,6 +27,7 @@ export default {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
+  z-index: 2;
 }
 
 ul {

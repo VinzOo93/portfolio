@@ -1,9 +1,8 @@
-
 <template>
   <div>
     <div class='cursor'></div>
-    <Navbar/>
-    <nuxt/>
+    <Navbar />
+    <nuxt />
   </div>
 </template>
 <style>
@@ -12,6 +11,7 @@
   font-family: 'Cormorant Garamond', serif;
   text-decoration: none;
   color: #504e4c;
+  box-sizing: border-box;
 }
 
 body {
@@ -36,7 +36,7 @@ body {
   pointer-events: none;
   transition: all 0.1s ease;
   transform-origin: 100% 100%;
-  z-index: 0;
+  z-index: 2;
   backdrop-filter: brightness(85%);
 
 }
@@ -56,28 +56,26 @@ export default {
   },
 
   methods: {
-  beforeMount() {
-  window.addEventListener('mousemove', cursor);
-    let mouseCursor = document.querySelector('.cursor')
-    let navBar = document.querySelectorAll('.navbar li')
+    beforeMount() {
+      window.addEventListener('mousemove', cursor)
+      let mouseCursor = document.querySelector('.cursor')
+      let navBar = document.querySelectorAll('.navbar li')
 
-    function cursor (e) {
+      function cursor(e) {
 
-      mouseCursor.style.top = e.pageY + 'px';
-      mouseCursor.style.left = e.pageX + 'px';
+        mouseCursor.style.top = e.pageY + 'px'
+        mouseCursor.style.left = e.pageX + 'px'
+      }
+
+      navBar.forEach(link => {
+        link.addEventListener('mouseleave', () => {
+          mouseCursor.classList.remove('link-grow')
+        })
+        link.addEventListener('mouseover', () => {
+          mouseCursor.classList.add('link-grow')
+        })
+      })
     }
-    navBar.forEach(link => {
-      link.addEventListener('mouseleave', () => {
-      mouseCursor.classList.remove('link-grow')
-      });
-      link.addEventListener('mouseover', () => {
-        mouseCursor.classList.add('link-grow')
-      });
-    });
-},
-
-
   }
-
 }
 </script>
