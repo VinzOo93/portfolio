@@ -22,6 +22,7 @@ export default {
 <style scoped>
 
 .navbar {
+  position: relative;
   padding: 2rem 3rem;
   margin-bottom: 3rem;
   text-align: center;

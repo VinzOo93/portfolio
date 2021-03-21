@@ -8,6 +8,12 @@
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora1.JPG'>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora2.JPG'>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora3.JPG'>
+            <div class='cover2 text-content js-transition'>
+              <p class='description'>
+                Australie, Noosa Heads <br>
+                Petite rencontre improbable lors d'une nuit de passage =p
+              </p>
+            </div>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/noosa-2.JPG'>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah1.JPG'>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah3.JPG'>
@@ -16,25 +22,18 @@
           </div>
         </div>
         <div class='container'>
-          <div class='cover text-content js-transition'>
-            <p class='description'> Ces premières images ont été capturées vers la fin de mon aventure en Tasmanie. Cette île au
-              sud de l'Australie
-              est l'un des endroits où le ciel est l'un des plus clair au monde. <br>Grâce à sa position
-              géographique
-              particulière, nous pouvons y admirer occasionellement la lueur orangée provenant d'aurores australes.</p>
+          <div class='cover text-content js-transition' style='z-index: 3'>
+            <p class='description' >
+              Tasmania, Four Mile Creek <br>
+              Comme vous pouvez le constater, j'ai la tête dans les étoiles !! ***  </p>
           </div>
           <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/aurora.jpg'>
-          <div class='cover text-content js-transition'>
-            <p class='description'>
-              Rencontre avec un invité improbable <br> Le temps d'une nuit à Noosa dans le Queensland !
-            </p>
-          </div>
           <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/noosa-1.jpg'>
           <div class='cover text-content js-transition'>
             <p class='description'>
               Glasshouse Mountains, <br>
               Un endroit spécial de par ses montagnes
-              <br>  Oui je vis aussi le jour ! :)
+              <br>  Oui je vis aussi le jour ! ;=)
             </p>
           </div>
           <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah4.JPG'>
@@ -43,14 +42,14 @@
           <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/sardegna-2.jpg'>
           <div class='cover text-content js-transition'>
             <p class='description'>
-              Un petit couché de soleil à la plage pour la fin, ça fait toujours plaisir !!
+              Sardaigne, Is Arustas <br>
+              Un petit couché de soleil à la plage pour la fin, ça fait du bien pour les pupilles !! =)
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -166,7 +165,7 @@ img {
 
   .cover2 {
     margin: 10px;
-    z-index: 1;
+    z-index: 2;
     grid-column: 2/8;
     max-width: 90%;
   }
@@ -180,6 +179,7 @@ img {
 }
 
 .text-content {
+  position: relative;
   display: flex;
   max-width: 80%;
   z-index: 2;
@@ -188,6 +188,7 @@ img {
 
 .description {
   font-size: 32px;
+
 }
 
 
