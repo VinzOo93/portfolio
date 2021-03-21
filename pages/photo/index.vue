@@ -165,7 +165,7 @@ img {
 
   .cover2 {
     margin: 10px;
-    z-index: 2;
+    z-index: 1;
     grid-column: 2/8;
     max-width: 90%;
   }
