@@ -43,7 +43,7 @@
           <div class='cover text-content js-transition'>
             <p class='description'>
               Sardaigne, Is Arustas <br>
-              Un petit couché de soleil à la plage pour la fin, ça fait du bien pour les pupilles !! =)
+              Un petit couché de soleil à la plage pour la fin !! =)
             </p>
           </div>
         </div>
