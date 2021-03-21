@@ -8,18 +8,44 @@
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora1.JPG'>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora2.JPG'>
             <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora3.JPG'>
+            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/noosa-2.JPG'>
+            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah1.JPG'>
+            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah3.JPG'>
+            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah5.JPG'>
+            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/sardegna-1.JPG'>
           </div>
-
         </div>
         <div class='container'>
           <div class='cover text-content js-transition'>
-            <p class='description'> Ces images ont été capturées vers la fin de mon aventure en Tasmanie. Cette île au
+            <p class='description'> Ces premières images ont été capturées vers la fin de mon aventure en Tasmanie. Cette île au
               sud de l'Australie
-              est l'un des endroits où le ciel est l'un des plus clair au monde.<br><br> Grâce à sa position
+              est l'un des endroits où le ciel est l'un des plus clair au monde. <br>Grâce à sa position
               géographique
               particulière, nous pouvons y admirer occasionellement la lueur orangée provenant d'aurores australes.</p>
           </div>
           <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/aurora.jpg'>
+          <div class='cover text-content js-transition'>
+            <p class='description'>
+              Rencontre avec un invité improbable <br> Le temps d'une nuit à Noosa dans le Queensland !
+            </p>
+          </div>
+          <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/noosa-1.jpg'>
+          <div class='cover text-content js-transition'>
+            <p class='description'>
+              Glasshouse Mountains, <br>
+              Un endroit spécial de par ses montagnes
+              <br>  Oui je vis aussi le jour ! :)
+            </p>
+          </div>
+          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah4.JPG'>
+          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/rainforest.JPG'>
+          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/endTasmania.jpg'>
+          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/sardegna-2.jpg'>
+          <div class='cover text-content js-transition'>
+            <p class='description'>
+              Un petit couché de soleil à la plage pour la fin, ça fait toujours plaisir !!
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -44,14 +70,14 @@ export default {
       const gallery = document.querySelectorAll('.js-transition')
 
       gsap.timeline(100)
-        .fromTo(transition, { opacity: 1, y: '100%', duration: 2.5 }, { y: '-100%', duration: 2.5 });
+        .fromTo(transition, { opacity: 1, y: '100%', duration: 2.5 }, { y: '-100%', duration: 2.5 })
       gsap.timeline(100)
-        .fromTo(gallery, { opacity: 0, y: '300%', duration: 2.6 }, {
+        .fromTo(gallery, { opacity: 0, y: '2000%', duration: 4 }, {
           opacity: 1,
           y: '0%',
           ease: Power1.easeInOut,
           duration: 2.6
-        });
+        })
     }
   }
 }
@@ -102,13 +128,13 @@ img {
   }
 
   .cover {
-    margin: 10px 10px 10px 20px;
+    margin: 10px;
     z-index: 1;
     max-width: 90%;
   }
 
   .cover2 {
-    margin: 10px 10px 10px 20px;
+    margin: 10px;
     z-index: 1;
     max-width: 90%;
   }
@@ -132,16 +158,17 @@ img {
   }
 
   .cover {
-    grid-column: 2/7;
+    margin: 10px;
+    grid-column: 2/8;
     z-index: 1;
     max-width: 80%;
   }
 
   .cover2 {
-    margin: 10px 10px 10px 20px;
+    margin: 10px;
     z-index: 1;
     grid-column: 2/8;
-    max-width: 100%;
+    max-width: 90%;
   }
 
   .content {
@@ -154,16 +181,14 @@ img {
 
 .text-content {
   display: flex;
-  max-width: 100%;
+  max-width: 80%;
   z-index: 2;
 
 }
 
 .description {
-  font-size: 27px;
+  font-size: 32px;
 }
-
-
 
 
 </style>
