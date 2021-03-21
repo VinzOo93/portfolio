@@ -33,6 +33,7 @@ import { gsap, Power1 } from 'gsap'
 
 
 export default {
+
   mounted: function() {
     this.startAnimation()
   },
@@ -40,24 +41,21 @@ export default {
   methods: {
     startAnimation: function() {
       const transition = document.querySelector('.transition')
-      const galery = document.querySelectorAll('.js-transition')
+      const gallery = document.querySelectorAll('.js-transition')
 
       gsap.timeline(100)
-        .fromTo(transition, { opacity: 1, y: '100%', duration: 2.5 }, { y: '-100%', duration: 2.5 })
+        .fromTo(transition, { opacity: 1, y: '100%', duration: 2.5 }, { y: '-100%', duration: 2.5 });
       gsap.timeline(100)
-        .fromTo(galery, { opacity: 0, y: '300%', duration: 2.6 }, {
+        .fromTo(gallery, { opacity: 0, y: '300%', duration: 2.6 }, {
           opacity: 1,
           y: '0%',
           ease: Power1.easeInOut,
           duration: 2.6
-        })
-
-
-
-
+        });
     }
   }
 }
+
 
 </script>
 
@@ -164,6 +162,8 @@ img {
 .description {
   font-size: 27px;
 }
+
+
 
 
 </style>

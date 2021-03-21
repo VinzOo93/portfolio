@@ -34,7 +34,11 @@
   transition: transform 1s ease;
 }
 
-
+.overImage {
+  backdrop-filter: brightness(45%);
+  transform: translate(100%, 100%) scale(4);
+  transition: transform 1s ease;
+}
 </style>
 <script>
 import mediumZoom from 'medium-zoom'
@@ -50,7 +54,7 @@ export default {
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor')
       let navBar = document.querySelectorAll('.navbar li')
-
+      let gallery = document.querySelectorAll('.gallery img')
       function cursor(e) {
 
         mouseCursor.style.top = e.pageY + 'px'
@@ -60,16 +64,25 @@ export default {
       navBar.forEach(link => {
         link.addEventListener('mouseleave', () => {
           mouseCursor.classList.remove('link-grow')
-        })
+        });
         link.addEventListener('mouseover', () => {
           mouseCursor.classList.add('link-grow')
+        });
+      });
+      gallery.forEach(img => {
+        img.addEventListener('mouseleave', () => {
+          mouseCursor.classList.remove('overImage')
+        });
+        img.addEventListener('mouseover', () => {
+          mouseCursor.classList.add('overImage')
         })
-      })
+      });
+
       mediumZoom('.zoom', {
         background: '#202020',
         margin: 10,
         scrollOffset: 150
-      })
+      });
     }
   }
 }
