@@ -14,18 +14,6 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  width: 100vw;
-  line-height: 1.5;
-  text-rendering: optimizeSpeed;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-  overscroll-behavior-y: none;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
 
 .cursor {
   width: 3rem;
@@ -36,7 +24,7 @@ body {
   pointer-events: none;
   transition: all 0.1s ease;
   transform-origin: 100% 100%;
-  z-index: 2;
+  z-index: 4;
   backdrop-filter: brightness(85%);
 
 }
@@ -46,8 +34,10 @@ body {
   transition: transform 1s ease;
 }
 
+
 </style>
 <script>
+import mediumZoom from 'medium-zoom'
 
 export default {
 
@@ -74,6 +64,11 @@ export default {
         link.addEventListener('mouseover', () => {
           mouseCursor.classList.add('link-grow')
         })
+      })
+      mediumZoom('.zoom', {
+        background: '#202020',
+        margin: 10,
+        scrollOffset: 150
       })
     }
   }
