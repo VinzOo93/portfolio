@@ -3,10 +3,18 @@
     <div class='navbar'>
       <nav>
         <ul>
-          <li><nuxt-link class='navbar-link' to="/">Acceuil</nuxt-link> </li>
-          <li><nuxt-link class='navbar-link' to="/projet">Projets Web</nuxt-link></li>
-          <li><nuxt-link class='navbar-link' to="/photo">Galerie photo</nuxt-link></li>
-          <li><nuxt-link class='navbar-link' to="/about">A propos de moi</nuxt-link></li>
+          <li>
+            <nuxt-link class='navbar-link' to='/'>Acceuil</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link class='navbar-link' to='/projet'>Projets Web</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link class='navbar-link' to='/photo'>Galerie photo</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link class='navbar-link' to='/about'>A propos de moi</nuxt-link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -15,8 +23,11 @@
 
 <script>
 export default {
-  Name: 'Navbar'
+  Name: 'Navbar',
 }
+
+
+
 </script>
 
 <style scoped>
@@ -27,7 +38,7 @@ export default {
   margin-bottom: 3rem;
   text-align: center;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 15px;
   z-index: 2;
 }
 
@@ -36,11 +47,12 @@ ul {
   justify-content: flex-end;
 }
 
-li{
+li {
   position: relative;
   list-style: none;
   margin-right: 25px;
 }
+
 a.navbar-link {
   position: relative;
 }
@@ -62,7 +74,6 @@ a.navbar-link:before {
 a.navbar-link:hover:before {
   visibility: visible;
   transform: scaleX(1);
-
   color: black;
 }
 

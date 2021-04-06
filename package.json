@@ -6,25 +6,17 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
-    "lint": "npm run lint:js && npm run lint:style"
-  },
-  "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "core-js": "^3.8.3",
     "gsap": "^3.6.0",
     "medium-zoom": "^1.0.6",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "save": "^2.4.0",
+    "scrollmagic": "^2.0.8",
+    "vue": "^2.6.12",
+    "vue-scrollmagic": "^1.2.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^5.0.0",

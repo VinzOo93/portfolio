@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class='cursor'></div>
-    <Navbar />
+    <div class='header'>
+      <div class='navbar-container'>
+        <Navbar />
+      </div>
+    </div>
     <nuxt />
   </div>
 </template>
@@ -39,9 +43,27 @@
   transform: translate(100%, 100%) scale(4);
   transition: transform 1s ease;
 }
+
+.navbar-container {
+  z-index: 2;
+  margin-left: 47%;
+  position: fixed;
+  white-space: nowrap
+}
+
+.header {
+  padding: 2%;
+}
+
+
+.medium-zoom-overlay {
+  background-color:#202020 !important;
+  z-index: 1;
+}
+
+
 </style>
 <script>
-import mediumZoom from 'medium-zoom'
 
 export default {
 
@@ -76,12 +98,6 @@ export default {
         img.addEventListener('mouseover', () => {
           mouseCursor.classList.add('overImage')
         })
-      });
-
-      mediumZoom('.zoom', {
-        background: '#202020',
-        margin: 10,
-        scrollOffset: 150
       });
     }
   }

@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class='container'>
-          <div class='cover text-content js-transition' style='z-index: 3'>
+          <div class='cover text-content js-transition' style='z-index: 0.5'>
             <p class='description' >
               Tasmania, Four Mile Creek <br>
               Comme vous pouvez le constater, j'ai la tête dans les étoiles !! ***  </p>
@@ -55,6 +55,7 @@
 <script>
 
 import { gsap, Power1 } from 'gsap'
+import mediumZoom from 'medium-zoom'
 
 
 export default {
@@ -67,6 +68,8 @@ export default {
     startAnimation: function() {
       const transition = document.querySelector('.transition')
       const gallery = document.querySelectorAll('.js-transition')
+      let mouseCursor = document.querySelector('.cursor')
+      let galleryimg = document.querySelectorAll('.gallery img')
 
       gsap.timeline(100)
         .fromTo(transition, { opacity: 1, y: '100%', duration: 2.5 }, { y: '-100%', duration: 2.5 })
@@ -77,6 +80,19 @@ export default {
           ease: Power1.easeInOut,
           duration: 2.6
         })
+      galleryimg.forEach(img => {
+        img.addEventListener('mouseleave', () => {
+          mouseCursor.classList.remove('overImage')
+        });
+        img.addEventListener('mouseover', () => {
+          mouseCursor.classList.add('overImage')
+        })
+      });
+      mediumZoom('.zoom', {
+        background:"auto",
+        margin: 10,
+        scrollOffset: 150
+      });
     }
   }
 }
@@ -85,6 +101,10 @@ export default {
 </script>
 
 <style scoped>
+
+.gallery {
+  z-index: 0;
+}
 
 .transition {
   position: fixed;
@@ -96,7 +116,7 @@ export default {
   opacity: 0;
   pointer-events: none;
   background-color: #eee;
-  z-index: 0;
+  z-index: 2;
 }
 
 img {
@@ -121,6 +141,7 @@ img {
 @media only screen and  (max-width: 768px) {
 
   .container {
+    margin-top: 5%;
     display: block;
     align-items: center;
     position: relative;
@@ -146,7 +167,10 @@ img {
 
 @media only screen and  (min-width: 768px) {
 
+  body {
+  }
   .container {
+    margin-top: 5%;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0;
@@ -182,13 +206,18 @@ img {
   position: relative;
   display: flex;
   max-width: 80%;
-  z-index: 2;
+  z-index: 1;
 
 }
+
 
 .description {
   font-size: 32px;
 
+}
+
+.medium-zoom-image--opened {
+  z-index: 2 !important;
 }
 
 
