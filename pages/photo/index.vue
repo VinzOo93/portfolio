@@ -2,52 +2,81 @@
   <div>
     <div class='gallery'>
       <div class='transition'></div>
-      <div class='album-header-sticky'>
-        <div class='container'>
-          <div class='content'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora1.JPG'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora2.JPG'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora3.JPG'>
-            <div class='cover2 text-content js-transition'>
-              <p class='description'>
+      <div class='container'>
+        <div class='content'>
+          <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora1.JPG'>
+          <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora2.JPG'>
+          <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora3.JPG'>
+          <div class='cover2 text-content js-transition'>
+            <div class='trigger'>
+            <p class='description scroll'>
                 Australie, Noosa Heads <br>
                 Petite rencontre improbable lors d'une nuit de passage =p
               </p>
             </div>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/noosa-2.JPG'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah1.JPG'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah3.JPG'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah5.JPG'>
-            <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/sardegna-1.JPG'>
           </div>
-        </div>
-        <div class='container'>
-          <div class='cover text-content js-transition' style='z-index: 0.5'>
-            <p class='description' >
-              Tasmania, Four Mile Creek <br>
-              Comme vous pouvez le constater, j'ai la tête dans les étoiles !! ***  </p>
+          <div id='trigger1' class='trigger'>
+            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/noosa-2.JPG'>
           </div>
-          <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/aurora.jpg'>
-          <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/noosa-1.jpg'>
-          <div class='cover text-content js-transition'>
-            <p class='description'>
-              Glasshouse Mountains, <br>
-              Un endroit spécial de par ses montagnes
-              <br>  Oui je vis aussi le jour ! ;=)
-            </p>
+          <div class='trigger'>
+            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah1.JPG'>
           </div>
-          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/beerwah4.JPG'>
-          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/rainforest.JPG'>
-          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/endTasmania.jpg'>
-          <img class='cover js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/sardegna-2.jpg'>
-          <div class='cover text-content js-transition'>
-            <p class='description'>
-              Sardaigne, Is Arustas <br>
-              Un petit couché de soleil à la plage pour la fin !! =)
-            </p>
+          <div id='trigger2' class='trigger2'>
+            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah3.JPG'>
+          </div>
+          <div id='trigger3' class='trigger3'>
+            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah5.JPG'>
+          </div>
+          <div id='trigger4' class='trigger4'>
+            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2'
+                 src='~/assets/images/sardegna-1.JPG'>
           </div>
         </div>
       </div>
+      <div class='container'>
+        <div class='cover text-content js-transition' style='z-index: 0.5'>
+          <p class='description'>
+            Tasmania, Four Mile Creek <br>
+            Comme vous pouvez le constater,<br> j'ai la tête dans les étoiles !! *** </p>
+        </div>
+        <div class='cover'>
+          <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/aurora.jpg'>
+          <div class='trigger'>
+            <img class='cover js-transition zoom scroll' alt='first-image' src='~/assets/images/noosa-1.jpg'>
+          </div>
+        </div>
+        <div class='cover text-content js-transition'>
+          <div class='trigger'>
+            <p class='description scroll'>
+              Glasshouse Mountains, <br>
+              Un endroit spécial de par ses montagnes
+              <br> Oui je vis aussi le jour ! ;=)
+            </p>
+          </div>
+        </div>
+        <div class='cover'>
+          <div  class='trigger2'>
+            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah4.JPG'>
+          </div>
+          <div  class='trigger2'>
+            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/rainforest.JPG'>
+          </div>
+          <div  class='trigger3'>
+            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/endTasmania.jpg'>
+          </div>
+          <div  class='trigger4'>
+            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/sardegna-2.jpg'>
+          </div>
+          <div class='cover text-content js-transition'>
+            <div  class='trigger'>
+              <p class='description scroll'>
+                Sardaigne, Is Arustas <br>
+                Un petit couché de soleil à la plage pour la fin !! =)
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
     </div>
   </div>
 </template>
@@ -72,27 +101,57 @@ export default {
       let galleryimg = document.querySelectorAll('.gallery img')
 
       gsap.timeline(100)
-        .fromTo(transition, { opacity: 1, y: '100%', duration: 2.5 }, { y: '-100%', duration: 2.5 })
+        .fromTo(transition, { opacity: 1, y: '100%', duration: 3 }, { y: '-100%', duration: 2.5 })
       gsap.timeline(100)
-        .fromTo(gallery, { opacity: 0, y: '2000%', duration: 4 }, {
+        .fromTo(gallery, { opacity: 0, y: '250%', duration: 4 }, {
           opacity: 1,
           y: '0%',
           ease: Power1.easeInOut,
-          duration: 2.6
+          duration: 4
         })
+      const scene = this.$scrollmagic.scene({
+        triggerElement: '#trigger1',
+        triggerHook: 0.8,
+      })
+        .setClassToggle('.trigger', 'visible')
+      this.$scrollmagic.addScene(scene)
+
+      const scene2 = this.$scrollmagic.scene({
+        triggerElement: '#trigger2',
+        triggerHook: 0.9,
+      })
+        .setClassToggle('.trigger2', 'visible')
+      this.$scrollmagic.addScene(scene2)
+
+      const scene3 = this.$scrollmagic.scene({
+        triggerElement: '#trigger3',
+        triggerHook: 0.9,
+      })
+        .setClassToggle('.trigger3', 'visible')
+      this.$scrollmagic.addScene(scene3)
+      const scene4 = this.$scrollmagic.scene({
+        triggerElement: '#trigger4',
+        triggerHook: 0.6,
+      })
+        .setClassToggle('.trigger4', 'visible')
+      this.$scrollmagic.addScene(scene4)
+
+
+
+
       galleryimg.forEach(img => {
         img.addEventListener('mouseleave', () => {
           mouseCursor.classList.remove('overImage')
-        });
+        })
         img.addEventListener('mouseover', () => {
           mouseCursor.classList.add('overImage')
         })
-      });
+      })
       mediumZoom('.zoom', {
-        background:"auto",
+        background: 'auto',
         margin: 10,
         scrollOffset: 150
-      });
+      })
     }
   }
 }
@@ -101,6 +160,54 @@ export default {
 </script>
 
 <style scoped>
+
+.trigger {
+  opacity: 0;
+  visibility: hidden;
+
+}
+
+.trigger.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease;
+
+}
+.trigger2 {
+  opacity: 0;
+  visibility: hidden;
+
+}
+
+.trigger2.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease;
+}
+
+.trigger3 {
+  opacity: 0;
+  visibility: hidden;
+
+}
+
+.trigger3.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease;
+}
+
+.trigger4 {
+  opacity: 0;
+  visibility: hidden;
+
+}
+
+.trigger4.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease;
+}
 
 .gallery {
   z-index: 0;
@@ -167,8 +274,7 @@ img {
 
 @media only screen and  (min-width: 768px) {
 
-  body {
-  }
+
   .container {
     margin-top: 5%;
     display: grid;
@@ -182,7 +288,7 @@ img {
 
   .cover {
     margin: 10px;
-    grid-column: 2/8;
+    grid-column: 2/9;
     z-index: 1;
     max-width: 80%;
   }
@@ -190,7 +296,7 @@ img {
   .cover2 {
     margin: 10px;
     z-index: 1;
-    grid-column: 2/8;
+    grid-column: 1/9;
     max-width: 90%;
   }
 
@@ -199,6 +305,7 @@ img {
     position: absolute;
     width: 100%;
   }
+
 
 }
 
