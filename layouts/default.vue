@@ -55,7 +55,6 @@
   padding: 2%;
 }
 
-
 .medium-zoom-overlay {
   background-color:#202020 !important;
   z-index: 1;

@@ -137,16 +137,14 @@ export default {
       this.$scrollmagic.addScene(scene4)
 
 
-
-
       galleryimg.forEach(img => {
         img.addEventListener('mouseleave', () => {
           mouseCursor.classList.remove('overImage')
-        })
+        });
         img.addEventListener('mouseover', () => {
           mouseCursor.classList.add('overImage')
-        })
-      })
+        });
+      });
       mediumZoom('.zoom', {
         background: 'auto',
         margin: 10,
@@ -170,7 +168,7 @@ export default {
 .trigger.visible {
   opacity: 1;
   visibility: visible;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease-in-out;
 
 }
 .trigger2 {
