@@ -10,6 +10,29 @@
   </div>
 </template>
 <style>
+@media only screen and  (max-width: 768px) {
+  .navbar-container {
+
+  }
+
+  .header {
+  }
+
+}
+
+@media only screen and  (min-width: 768px) {
+  .navbar-container {
+    width: 100%;
+    margin:  0 35% ;
+    z-index: 2;
+    position: fixed;
+    white-space: nowrap
+  }
+
+  .header {
+    padding: 4%;
+  }
+}
 
 * {
   font-family: 'Cormorant Garamond', serif;
@@ -44,30 +67,9 @@
   transition: transform 1s ease;
 }
 
-.navbar-container {
-  z-index: 2;
-  margin-left: 40%;
-  position: fixed;
-  white-space: nowrap
-}
-
-.header {
-  padding: 2%;
-}
-
 .medium-zoom-overlay {
   background-color:#202020 !important;
   z-index: 1;
-}
-.navbar li.show {
-  opacity: 1 !important;
-  transition: transform 0.5s ease;
-}
-
-.navbar li.hide {
-  opacity: 0 ;
-  transition: transform 0.5s ease;
-
 }
 </style>
 <script>
@@ -92,7 +94,8 @@ export default {
       }
       navBar.forEach(link => {
         link.addEventListener('mouseleave', () => {
-          if (scene != null) {
+          let windowSize = window.innerWidth;
+          if (scene != null && windowSize >= 768) {
             gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: 'none'} )
           }
           mouseCursor.classList.remove('link-grow')
@@ -111,7 +114,7 @@ export default {
         })
       });
       const scene = this.$scrollmagic.scene({
-        offset: 10
+        offset: 30
       })
       .setTween(navBarli, 0.2 ,{opacity: 0, pointerEvents: "none"})
       this.$scrollmagic.addScene(scene)

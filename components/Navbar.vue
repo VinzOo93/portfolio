@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='navbar'>
+    <div class='navbar navigation'>
       <nav>
         <ul>
           <li>
@@ -15,12 +15,10 @@
           <li>
             <nuxt-link class='navbar-link' to='/about'>A propos de moi</nuxt-link>
           </li>
-          <li>
-            <button type='button' aria-label='Switch appearance'
-                    class='navigation-button js-navigation-button'></button>
-          </li>
         </ul>
       </nav>
+        <button type='button' aria-label='Switch appearance'
+                class='navigation-button js-navigation-button'></button>
     </div>
   </div>
 </template>
@@ -59,7 +57,9 @@ export default {
 
 </script>
 <style>
-
+.navigation {
+  display: flex;
+}
 
 body.isDark {
   background-color: #151414;
@@ -69,7 +69,36 @@ body.isDark {
 
 </style>
 <style scoped>
+@media only screen and  (max-width: 768px) {
+  .navbar {
+    display: table-row;
+    text-align: justify !important;
+  }
 
+  .navbar ul {
+  display: flow-root;
+  }
+
+}
+
+@media only screen and  (min-width: 768px) {
+  .navbar {
+    position: relative;
+    width: 100%;
+    padding: 2rem 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 2;
+    grid-column: 6/10;
+  }
+
+ .navbar ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
 
 .navigation-button.isDark2 {
   background-color: white;
@@ -84,45 +113,28 @@ button {
   vertical-align: baseline;
   border: 0;
 }
-
+button {
+  padding: 0;
+  cursor: pointer;
+  vertical-align: baseline;
+  border: 0;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+}
 .navigation-button {
   position: unset;
-  width: .633vw;
-  height: .833vw;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #202020;
   border: 0 transparent;
-}
-
-.navigation-button {
-  position: unset;
-  width: .833vw;
-  height: .833vw;
-  border-radius: 50%;
-  background-color: #202020;
-  border: 0 transparent;
-}
-
-
-.navbar {
-  position: relative;
-  padding: 2rem 3rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-  z-index: 2;
-}
-
-ul {
-  display: flex;
-  justify-content: flex-end;
+  margin: 20px 1px 20px 5px;
 }
 
 .navbar li {
   position: relative;
   list-style: none;
-  margin-right: 25px;
+  margin-right: 10px;
 }
 
 a.navbar-link {
@@ -133,8 +145,8 @@ a.navbar-link:before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 3px;
-  bottom: 0;
+  height: 2px;
+  bottom: -1px;
   left: 0;
   background-color: black;
   transform: scaleX(0);
