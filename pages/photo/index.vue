@@ -113,27 +113,27 @@ export default {
         triggerElement: '#trigger1',
         triggerHook: 0.8,
       })
-        .setClassToggle('.trigger', 'visible')
+      .setTween('.trigger', {visibility: 'visible' ,opacity: 1, duration: 0.25})
       this.$scrollmagic.addScene(scene)
 
       const scene2 = this.$scrollmagic.scene({
         triggerElement: '#trigger2',
         triggerHook: 0.9,
       })
-        .setClassToggle('.trigger2', 'visible')
+        .setTween('.trigger2', {visibility: 'visible' ,opacity: 1, duration: 0.25})
       this.$scrollmagic.addScene(scene2)
 
       const scene3 = this.$scrollmagic.scene({
         triggerElement: '#trigger3',
         triggerHook: 0.9,
       })
-        .setClassToggle('.trigger3', 'visible')
+        .setTween('.trigger3', {visibility: 'visible' ,opacity: 1, duration: 0.25})
       this.$scrollmagic.addScene(scene3)
       const scene4 = this.$scrollmagic.scene({
         triggerElement: '#trigger4',
         triggerHook: 0.6,
       })
-        .setClassToggle('.trigger4', 'visible')
+        .setTween('.trigger4', {visibility: 'visible' ,opacity: 1, duration: 0.25})
       this.$scrollmagic.addScene(scene4)
 
 
@@ -164,24 +164,13 @@ export default {
   visibility: hidden;
 
 }
-
-.trigger.visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s ease-in-out;
-
-}
 .trigger2 {
   opacity: 0;
   visibility: hidden;
 
 }
 
-.trigger2.visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s ease;
-}
+
 
 .trigger3 {
   opacity: 0;
@@ -189,11 +178,6 @@ export default {
 
 }
 
-.trigger3.visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s ease;
-}
 
 .trigger4 {
   opacity: 0;
@@ -201,11 +185,6 @@ export default {
 
 }
 
-.trigger4.visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s ease;
-}
 
 .gallery {
   z-index: 0;
@@ -310,14 +289,14 @@ img {
 .text-content {
   position: relative;
   display: flex;
-  max-width: 80%;
+  max-width: 70%;
   z-index: 1;
 
 }
 
 
 .description {
-  font-size: 32px;
+  font-size: 30px;
 
 }
 

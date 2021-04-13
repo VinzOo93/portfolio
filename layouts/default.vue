@@ -46,7 +46,7 @@
 
 .navbar-container {
   z-index: 2;
-  margin-left: 47%;
+  margin-left: 40%;
   position: fixed;
   white-space: nowrap
 }
@@ -59,8 +59,16 @@
   background-color:#202020 !important;
   z-index: 1;
 }
+.navbar li.show {
+  opacity: 1 !important;
+  transition: transform 0.5s ease;
+}
 
+.navbar li.hide {
+  opacity: 0 ;
+  transition: transform 0.5s ease;
 
+}
 </style>
 <script>
 
@@ -73,14 +81,14 @@ export default {
     beforeMount() {
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor')
-      let navBar = document.querySelectorAll('.navbar li')
+      let navBar = document.querySelectorAll('.navbar')
+      let navBarli = document.querySelectorAll('.navbar li')
       let gallery = document.querySelectorAll('.gallery img')
       function cursor(e) {
 
         mouseCursor.style.top = e.pageY + 'px'
         mouseCursor.style.left = e.pageX + 'px'
       }
-
       navBar.forEach(link => {
         link.addEventListener('mouseleave', () => {
           mouseCursor.classList.remove('link-grow')
@@ -97,6 +105,11 @@ export default {
           mouseCursor.classList.add('overImage')
         })
       });
+      const scene = this.$scrollmagic.scene({
+        offset: 10
+      })
+      .setTween(navBarli, 0.2 ,{opacity: 0, pointerEvents: "none"})
+      this.$scrollmagic.addScene(scene)
     }
   }
 }

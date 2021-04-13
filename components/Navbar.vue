@@ -16,7 +16,8 @@
             <nuxt-link class='navbar-link' to='/about'>A propos de moi</nuxt-link>
           </li>
           <li>
-            <button type='button' aria-label='Switch appearance' class='navigation-button js-navigation-button'></button>
+            <button type='button' aria-label='Switch appearance'
+                    class='navigation-button js-navigation-button'></button>
           </li>
         </ul>
       </nav>
@@ -48,13 +49,12 @@ export default {
             body.classList.remove('isDark')
             button.classList.remove('isDark2')
             backgroundDark()
-          });
-        });
+          })
+        })
       }
     }
-  },
+  }
 }
-
 
 
 </script>
@@ -69,10 +69,13 @@ body.isDark {
 
 </style>
 <style scoped>
+
+
 .navigation-button.isDark2 {
   background-color: white;
   transition: background-color 0.5s ease-in-out;
 }
+
 button {
   font: inherit;
   border-radius: 0;
@@ -101,8 +104,6 @@ button {
 }
 
 
-
-
 .navbar {
   position: relative;
   padding: 2rem 3rem;
@@ -118,7 +119,7 @@ ul {
   justify-content: flex-end;
 }
 
-li {
+.navbar li {
   position: relative;
   list-style: none;
   margin-right: 25px;
