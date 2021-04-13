@@ -71,6 +71,7 @@
 }
 </style>
 <script>
+import { gsap, Power1 } from 'gsap'
 
 export default {
   beforeMount: function() {
@@ -82,7 +83,7 @@ export default {
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor')
       let navBar = document.querySelectorAll('.navbar')
-      let navBarli = document.querySelectorAll('.navbar li')
+      let navBarli = document.querySelectorAll('.navbar a')
       let gallery = document.querySelectorAll('.gallery img')
       function cursor(e) {
 
@@ -91,9 +92,13 @@ export default {
       }
       navBar.forEach(link => {
         link.addEventListener('mouseleave', () => {
+          if (scene != null) {
+            gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: 'none'} )
+          }
           mouseCursor.classList.remove('link-grow')
         });
         link.addEventListener('mouseover', () => {
+          gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: 'auto'} )
           mouseCursor.classList.add('link-grow')
         });
       });
