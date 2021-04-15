@@ -10,17 +10,7 @@
   </div>
 </template>
 <style>
-@media only screen and  (max-width: 768px) {
-  .navbar-container {
 
-  }
-
-  .header {
-  }
-
-}
-
-@media only screen and  (min-width: 768px) {
   .navbar-container {
     width: 100%;
     margin:  0 35% ;
@@ -32,7 +22,7 @@
   .header {
     padding: 4%;
   }
-}
+
 
 * {
   font-family: 'Cormorant Garamond', serif;

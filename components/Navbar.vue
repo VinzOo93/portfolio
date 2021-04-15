@@ -18,7 +18,7 @@
         </ul>
       </nav>
         <button type='button' aria-label='Switch appearance'
-                class='navigation-button js-navigation-button'></button>
+                class='navigation-button  js-navigation-button'></button>
     </div>
   </div>
 </template>
@@ -74,14 +74,33 @@ body.isDark {
     display: table-row;
     text-align: justify !important;
   }
-
   .navbar ul {
   display: flow-root;
   }
-
+  .navigation-button {
+    position: fixed;
+    margin-left: 65%;
+    margin-right: 35%;
+    top: 30px;
+    z-index: 3;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #202020;
+    border: 0 transparent;
+  }
 }
 
 @media only screen and  (min-width: 768px) {
+  .navigation-button {
+    position: unset;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #202020;
+    border: 0 transparent;
+    margin: 20px 1px 20px 5px;
+  }
   .navbar {
     position: relative;
     width: 100%;
@@ -98,13 +117,19 @@ body.isDark {
     display: flex;
     justify-content: flex-end;
   }
+
+
 }
 
 .navigation-button.isDark2 {
   background-color: white;
   transition: background-color 0.5s ease-in-out;
 }
-
+.navbar li {
+  position: relative;
+  list-style: none;
+  margin-right: 10px;
+}
 button {
   font: inherit;
   border-radius: 0;
@@ -121,21 +146,9 @@ button {
   -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
 }
-.navigation-button {
-  position: unset;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #202020;
-  border: 0 transparent;
-  margin: 20px 1px 20px 5px;
-}
 
-.navbar li {
-  position: relative;
-  list-style: none;
-  margin-right: 10px;
-}
+
+
 
 a.navbar-link {
   position: relative;

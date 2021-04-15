@@ -4,77 +4,81 @@
       <div class='transition'></div>
       <div class='container'>
         <div class='content'>
-          <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora1.JPG'>
-          <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora2.JPG'>
-          <img class='cover2 js-transition zoom' alt='image-aurora-cover-2' src='~/assets/images/aurora3.JPG'>
+          <img class='cover2 js-transition zoom' alt='image-aurora1' src='~/assets/images/aurora1.JPG'>
+          <img class='cover2 js-transition zoom' alt='image-aurora2' src='~/assets/images/aurora2.JPG'>
+          <img class='cover2 js-transition zoom' alt='image-aurora3' src='~/assets/images/aurora3.JPG'>
+
           <div class='cover2 text-content js-transition'>
             <div class='trigger'>
-            <p class='description scroll'>
+              <p class='description scroll'>
                 Australie, Noosa Heads <br>
-                Petite rencontre improbable lors d'une nuit de passage =p
+                Petite rencontre improbable.
               </p>
+              <img src='https://media.giphy.com/media/wH8aFVGkdmOjxBxR3I/giphy.gif' width='74px' height='64px' alt='gif-owl'>
             </div>
           </div>
           <div id='trigger1' class='trigger'>
-            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/noosa-2.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-noosa-2' src='~/assets/images/noosa-2.JPG'>
           </div>
           <div class='trigger'>
-            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah1.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-beerwah1' src='~/assets/images/beerwah1.JPG'>
           </div>
           <div id='trigger2' class='trigger2'>
-            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah3.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-beerwah3' src='~/assets/images/beerwah3.JPG'>
           </div>
           <div id='trigger3' class='trigger3'>
-            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah5.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-beerwah5' src='~/assets/images/beerwah5.JPG'>
           </div>
           <div id='trigger4' class='trigger4'>
-            <img class='cover2 js-transition zoom scroll' alt='image-aurora-cover-2'
+            <img class='cover2 js-transition zoom scroll' alt='image-sardegna-1'
                  src='~/assets/images/sardegna-1.JPG'>
           </div>
         </div>
       </div>
       <div class='container'>
+        <img src='https://media.giphy.com/media/lbHljU6UhczE6dSeXI/giphy.gif' width='74px' height='64px' alt='gif-star'>
         <div class='cover text-content js-transition' style='z-index: 0.5'>
           <p class='description'>
             Tasmania, Four Mile Creek <br>
-            Comme vous pouvez le constater,<br> j'ai la tête dans les étoiles !! *** </p>
+            Comme vous pouvez le constater, j'ai la tête dans les étoiles !! </p>
         </div>
         <div class='cover'>
-          <img class='cover js-transition zoom' alt='first-image' src='~/assets/images/aurora.jpg'>
+          <img class='cover js-transition zoom' alt='image-aurora' src='~/assets/images/aurora.jpg'>
           <div class='trigger'>
-            <img class='cover js-transition zoom scroll' alt='first-image' src='~/assets/images/noosa-1.jpg'>
+            <img class='cover js-transition zoom scroll' alt='image-noosa-1' src='~/assets/images/noosa-1.jpg'>
           </div>
         </div>
         <div class='cover text-content js-transition'>
           <div class='trigger'>
             <p class='description scroll'>
-              Glasshouse Mountains, <br>
-              Un endroit spécial de par ses montagnes
-              <br> Oui je vis aussi le jour ! ;=)
+              Glasshouse Mountains,
+              Un endroit spécial de par ses montagnes.
             </p>
           </div>
         </div>
         <div class='cover'>
           <div  class='trigger2'>
-            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/beerwah4.JPG'>
+            <img class='cover js-transition zoom scroll' alt='image-beerwah4' src='~/assets/images/beerwah4.JPG'>
           </div>
           <div  class='trigger2'>
-            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/rainforest.JPG'>
+            <img class='cover js-transition zoom scroll' alt='image-rainforest' src='~/assets/images/rainforest.JPG'>
           </div>
           <div  class='trigger3'>
-            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/endTasmania.jpg'>
+            <img class='cover js-transition zoom scroll' alt='image-endTasmania' src='~/assets/images/endTasmania.jpg'>
           </div>
-          <div  class='trigger4'>
-            <img class='cover js-transition zoom scroll' alt='image-aurora-cover-2' src='~/assets/images/sardegna-2.jpg'>
+           <div  class='trigger4'>
+            <img class='cover js-transition zoom scroll' alt='image-sardegna-2' src='~/assets/images/sardegna-2.jpg'>
           </div>
           <div class='cover text-content js-transition'>
             <div  class='trigger'>
               <p class='description scroll'>
                 Sardaigne, Is Arustas <br>
-                Un petit couché de soleil à la plage pour la fin !! =)
+                Un petit couché de soleil à la plage pour la fin !!
               </p>
             </div>
+            <img src='https://media.giphy.com/media/W56sszrpPbhOy3kkf0/giphy-downsized.gif' width='74px' height='64px' alt='gif-sausage'>
           </div>
+
         </div>
         </div>
     </div>
@@ -200,7 +204,7 @@ export default {
   opacity: 0;
   pointer-events: none;
   background-color: #eee;
-  z-index: 2;
+  z-index: 3;
 }
 
 img {
