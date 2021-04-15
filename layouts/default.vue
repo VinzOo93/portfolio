@@ -95,8 +95,12 @@ export default {
       navBar.forEach(link => {
         link.addEventListener('mouseleave', () => {
           let windowSize = window.innerWidth;
+          let scroll = window.scrollY
           if (scene != null && windowSize >= 768) {
             gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: 'none'} )
+          }
+          if (scroll === 0){
+            gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: 'auto'})
           }
           mouseCursor.classList.remove('link-grow')
         });
