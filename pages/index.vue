@@ -2,8 +2,11 @@
 
   <div>
     <div class='transition'></div>
-
-    <h1>welcome</h1>
+    <p class='welcome line-1'>Hola! || JEUNE VISITEUR</p>
+    <p class='welcome line-2'> ICI // 100% NEW WORLD</p>
+    <p class='welcome line-3'> 20-100 FROM 2021 </p>
+    <p class='welcome line-4'>DON'T FORGET TO SCROLL</p>
+    <p class='welcome line-5'>()=> ENJOY <=()</p>
   </div>
 </template>
 <script>
@@ -24,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+.welcome {
+  font-size: 9.027777778vw;
+}
 </style>
