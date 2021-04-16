@@ -40,7 +40,7 @@
         <div class='cover text-content js-transition' style='z-index: 0.5'>
           <p class='description'>
             Tasmania, Four Mile Creek <br>
-            Comme vous pouvez le constater, j'ai la tête dans les étoiles !! </p>
+            La tête dans les étoiles ! </p>
         </div>
         <div class='cover'>
           <img class='cover js-transition zoom' alt='image-aurora' src='~/assets/images/aurora.jpg'>

@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import { gsap, Power1 } from 'gsap'
+
+
 export default {
   Name: 'Navbar',
 
@@ -41,11 +44,11 @@ export default {
 
       function backgroundDark() {
         button.addEventListener('click', () => {
-          body.classList.add('isDark')
-          button.classList.add('isDark2')
+          gsap.to(body, {backgroundColor: '#151414', duration: 0.5})
+          gsap.to(button, {backgroundColor: 'white', duration: 0.2})
           button.addEventListener('click', () => {
-            body.classList.remove('isDark')
-            button.classList.remove('isDark2')
+            gsap.to(body, {backgroundColor: 'white', duration: 0.5})
+            gsap.to(button, {backgroundColor: '#151414', duration: 0.2})
             backgroundDark()
           })
         })
