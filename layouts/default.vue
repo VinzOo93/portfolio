@@ -10,7 +10,7 @@
   </div>
 </template>
 <style>
-
+@media only screen and  (min-width: 768px) {
   .navbar-container {
     width: 100%;
     margin:  0 35% ;
@@ -18,6 +18,8 @@
     position: fixed;
     white-space: nowrap
   }
+}
+
 
   .header {
     padding: 4%;

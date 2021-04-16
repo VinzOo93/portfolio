@@ -14,7 +14,7 @@
                 Australie, Noosa Heads <br>
                 Petite rencontre improbable.
               </p>
-              <img src='https://media.giphy.com/media/wH8aFVGkdmOjxBxR3I/giphy.gif' width='74px' height='64px' alt='gif-owl'>
+              <img src='https://media.giphy.com/media/wH8aFVGkdmOjxBxR3I/giphy.gif' width='74px' class='birdy' height='64px' alt='gif-owl'>
             </div>
           </div>
           <div id='trigger1' class='trigger'>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class='container'>
-        <img src='https://media.giphy.com/media/lbHljU6UhczE6dSeXI/giphy.gif' width='74px' height='64px' alt='gif-star'>
+        <img src='https://media.giphy.com/media/lbHljU6UhczE6dSeXI/giphy.gif' width='74px' class='star' height='64px' alt='gif-star'>
         <div class='cover text-content js-transition' style='z-index: 0.5'>
           <p class='description'>
             Tasmania, Four Mile Creek <br>
@@ -76,11 +76,10 @@
                 Un petit couché de soleil à la plage pour la fin !!
               </p>
             </div>
-            <img src='https://media.giphy.com/media/W56sszrpPbhOy3kkf0/giphy-downsized.gif' width='74px' height='64px' alt='gif-sausage'>
+            <img src='https://media.giphy.com/media/W56sszrpPbhOy3kkf0/giphy-downsized.gif' class='sausage' width='74px' height='64px' alt='gif-sausage'>
           </div>
-
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -255,6 +254,10 @@ img {
 
 @media only screen and  (min-width: 768px) {
 
+  .sausage {
+    position: relative;
+    left: 25%;
+  }
 
   .container {
     margin-top: 5%;
