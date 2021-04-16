@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class='gallery'>
-      <div class='transition'></div>
+        <div class='transition'></div>
       <div class='container'>
         <div class='content'>
           <img class='cover2 js-transition zoom' alt='image-aurora1' src='~/assets/images/aurora1.JPG'>
@@ -193,18 +193,6 @@ export default {
   z-index: 0;
 }
 
-.transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  visibility: visible;
-  opacity: 0;
-  pointer-events: none;
-  background-color: #eee;
-  z-index: 3;
-}
 
 img {
   position: relative;

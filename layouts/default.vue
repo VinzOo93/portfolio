@@ -56,12 +56,25 @@
 .overImage {
   backdrop-filter: brightness(45%);
   transform: translate(100%, 100%) scale(4);
-  transition: transform 1s ease;
+  transition: transform 1.5s ease;
 }
 
 .medium-zoom-overlay {
   background-color:#202020 !important;
   z-index: 1;
+}
+
+.transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  visibility: visible;
+  opacity: 0;
+  pointer-events: none;
+  background-color: #eee;
+  z-index: 3;
 }
 </style>
 <script>
