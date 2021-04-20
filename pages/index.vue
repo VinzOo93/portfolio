@@ -29,6 +29,16 @@
         </div>
       </div>
     </section>
+    <section>
+    <div>
+      <p>Maintenant que vais-préparer en cette glorieuse année ?</p>
+    </div>
+      <div>
+        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
+        La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
+        </p>
+      </div>
+    </section>
   </div>
 </template>
 <script>
