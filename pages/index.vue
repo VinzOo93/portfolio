@@ -134,6 +134,7 @@ section {
   position: relative;
   bottom: 80px;
   padding-left: 5%;
+  margin-top: 5%;
 
 }
 
