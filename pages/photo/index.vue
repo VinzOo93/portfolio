@@ -104,7 +104,12 @@ export default {
       let galleryimg = document.querySelectorAll('.gallery img')
 
       gsap.timeline(100)
-        .fromTo(transition, { opacity: 1, y: '100%', duration: 3 }, { y: '-100%', duration: 2.5 })
+        .fromTo(transition,
+          { opacity: 1,
+          y: '100%',
+          duration: 3 },
+          { y: '-100%',
+          duration: 2.5 })
       gsap.timeline(100)
         .fromTo(gallery, { opacity: 0, y: '250%', duration: 4 }, {
           opacity: 1,
