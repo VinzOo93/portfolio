@@ -51,7 +51,7 @@
       </div>
 
       <div class='recipe d-flex justify-content-center'>
-        <p class='text-recipe p-0 m-0'>Tout d'abord, il te faut de le farine, de l'eau, un peu de sel, de la levure, de
+        <p class='text-recipe p-0 m-0'>Tout d'abord, il nous faut de le farine, de l'eau, un peu de sel, de la levure, de
           l'huile d'olive, de la volonté et de la perceverance ! Une fois le tout mélangé par ordre de priorité, en voici le résultat !
         </p>
       </div>
@@ -60,7 +60,7 @@
       </div>
     </section>
     <div class='question'>
-      <p class='text-question p-0 m-0'>Et quelle est la relation ?</p>
+      <p class='text-question p-0 m-0'>Mais que fait-on ?</p>
       <div class='drawing-elem drawing-bracket-1'><img src='https://media.giphy.com/media/pVILpzbBE3NEaQwc1d/giphy.gif'
                                                        class='img-fluid bracket-1' alt='bracket'>
       </div>
@@ -70,15 +70,15 @@
     </div>
     <div class='recipe d-flex justify-content-center'>
       <p class='text-recipe p-0 m-0'>
-        La passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité. Elle
+        De la passion, mon enfant ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité. Elle
         nous permet de partager, de transmettre. Mais surtout d'innover dans le but créer quelque chose d'unique qui nous donne une véritable identité. Selon moi, la passion donne du sens elle est universelle,
         sans la passion la satisfaction s'estompe.
       </p>
     </div>
     <div class='recipe d-flex justify-content-center'>
       <p class='text-recipe p-0 m-0'>
-      C'est à elle à qui je dédie les premières lignes de ma page d'acceuil. Bien sur, je ne fais pas que dell'a Pizza 🇮🇹.
-        Vous pouvez découvrir ici l'évolution de mes travaux. Je vous souhaite une bonne visite et un bon apétit.👨🏻‍🍳
+      C'est à elle à qui je dédie les premières lignes de ma page d'acceuil. Bien sur, je ne fais pas que "dell'a Pizza 🇮🇹".
+        Vous pouvez découvrir ici l'évolution de mes travaux. Je vous souhaite une bonne visite et un "bon apétit👨🏻‍🍳".
       </p>
     </div>
   </div>
