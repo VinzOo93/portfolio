@@ -47,20 +47,40 @@
     </section>
     <section>
       <div class='congrat d-flex justify-content-center '>
-        <p class='text-congrat p-0 m-0'>Maintenant que vais-je préparer en cette glorieuse année ?</p>
+        <p class='text-congrat p-0 m-0'>Que vais-je préparer en cette glorieuse année ?</p>
       </div>
 
       <div class='recipe d-flex justify-content-center'>
-        <p class='text-recipe p-0 m-0'>Tout d'abord, il te faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la volonté et de la perceverance ! C'est
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué ! maintenant, notre pâte est levée.
+        <p class='text-recipe p-0 m-0'>Tout d'abord, il te faut de le farine, de l'eau, un peu de sel, de la levure, de
+          l'huile d'olive, de la volonté et de la perceverance ! Une fois le tout mélangé par ordre de priorité, en voici le résultat !
         </p>
       </div>
       <div class='pizza d-flex justify-content-center '>
         <img class='pizza-img h-100 w-100' src='~/assets/home/pizza.jpg' alt='pizza'>
       </div>
     </section>
+    <div class='question'>
+      <p class='text-question p-0 m-0'>Et quelle est la relation ?</p>
+      <div class='drawing-elem drawing-bracket-1'><img src='https://media.giphy.com/media/pVILpzbBE3NEaQwc1d/giphy.gif'
+                                                       class='img-fluid bracket-1' alt='bracket'>
+      </div>
+      <div class='drawing-elem drawing-bracket-2'><img src='https://media.giphy.com/media/pVILpzbBE3NEaQwc1d/giphy.gif'
+                                                       class='img-fluid bracket-2' alt='bracket'>
+      </div>
+    </div>
+    <div class='recipe d-flex justify-content-center'>
+      <p class='text-recipe p-0 m-0'>
+        La passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité. Elle
+        nous permet de partager, de transmettre. Mais surtout d'innover dans le but créer quelque chose d'unique qui nous donne une véritable identité. Selon moi, la passion donne du sens elle est universelle,
+        sans la passion la satisfaction s'estompe.
+      </p>
+    </div>
+    <div class='recipe d-flex justify-content-center'>
+      <p class='text-recipe p-0 m-0'>
+      C'est à elle à qui je dédie les premières lignes de ma page d'acceuil. Bien sur, je ne fais pas que dell'a Pizza 🇮🇹.
+        Vous pouvez découvrir ici l'évolution de mes travaux. Je vous souhaite une bonne visite et un bon apétit.👨🏻‍🍳
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -187,7 +207,7 @@ export default {
       })
         .setTween('.drawing-crow', {
           y: -50,
-          x: 300,
+          x: 300
         })
       this.$scrollmagic.addScene(scene8)
 
@@ -198,7 +218,7 @@ export default {
 
       })
         .setTween('.drawing-plane', {
-         y: 150
+          y: 150
         })
       this.$scrollmagic.addScene(scene9)
     }
@@ -215,27 +235,41 @@ export default {
 }
 
 .w-100 {
-width: 100%;
+  width: 100%;
 }
+
 
 .pizza-img {
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 150, 50, 0, 1);
   pointer-events: all;
   width: 1108px;
-  height:  610px;
+  height: 610px;
+}
 
-}
 .pizza {
-  position: absolute;
+  margin-top: 5%;
 }
+
 
 .recipe {
+  margin-top: 5%;
   line-height: 1.230769231;
   font-size: 4.038647343vw;
 }
+
 .text-recipe {
   text-align: center;
   width: 92.028985507vw;
+}
+
+.text-question {
+  text-align: center;
+  width: 92.028985507vw;
+}
+
+.question {
+  font-size: 4.7971014493vw;
+  position: relative;
+  bottom: 150px;
 }
 
 .congrat {
@@ -245,7 +279,7 @@ width: 100%;
 }
 
 .text-congrat {
-text-align: center;
+  text-align: center;
   width: 92.028985507vw;
 }
 
@@ -253,6 +287,30 @@ text-align: center;
   transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
     11.4377deg
   );
+}
+
+.bracket-1 {
+  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
+    7.4377deg);
+}
+
+.bracket-2 {
+  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
+    175.4377deg);
+}
+
+.drawing-bracket-1 {
+  width: 4.222222222vw;
+  bottom: auto;
+  left: 85%;
+  z-index: 2;
+}
+
+.drawing-bracket-2 {
+  width: 4.222222222vw;
+  bottom: auto;
+  left: 91%;
+  z-index: 2;
 }
 
 .drawing-monkey {
@@ -288,10 +346,9 @@ text-align: center;
 }
 
 
-
 .plant {
   transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
-    -11.38783deg
+    11.38783deg
   );
 }
 
