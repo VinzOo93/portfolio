@@ -46,115 +46,19 @@
       </div>
     </section>
     <section>
-      <div>
-        <p>Maintenant que vais-préparer en cette glorieuse année ?</p>
+      <div class='congrat d-flex justify-content-center '>
+        <p class='text-congrat p-0 m-0'>Maintenant que vais-je préparer en cette glorieuse année ?</p>
       </div>
-      <div>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
+
+      <div class='recipe d-flex justify-content-center'>
+        <p class='text-recipe p-0 m-0'>Tout d'abord, il te faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la volonté et de la perceverance ! C'est
           parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
           La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
+          homogène. Laissez reposer ! Bien joué ! maintenant, notre pâte est levée.
         </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
-        <p>Tout d'abord, il faut de le farine, de l'eau, de la levure, de l'huile d'olive, de la bonne volonté ! Et cest
-          parti ! Grâce à ces 5 ingrédients fondamentaux vous pouvez déjà réaliser pas mal de choses.
-          La farine est la matière, au mélange de la levure et de l'eau, une alchimie se forme pour donner une texture
-          homogène. Laissez reposer ! Bien joué !! maintenant, notre pâte est levée.
-        </p>
+      </div>
+      <div class='pizza d-flex justify-content-center '>
+        <img class='pizza-img h-100 w-100' src='~/assets/home/pizza.jpg' alt='pizza'>
       </div>
     </section>
   </div>
@@ -305,6 +209,45 @@ export default {
 </script>
 
 <style scoped>
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+width: 100%;
+}
+
+.pizza-img {
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 150, 50, 0, 1);
+  pointer-events: all;
+  width: 1108px;
+  height:  610px;
+
+}
+.pizza {
+  position: absolute;
+}
+
+.recipe {
+  line-height: 1.230769231;
+  font-size: 4.038647343vw;
+}
+.text-recipe {
+  text-align: center;
+  width: 92.028985507vw;
+}
+
+.congrat {
+  font-size: 5.7971014493vw;
+  position: relative;
+  bottom: 150px;
+}
+
+.text-congrat {
+text-align: center;
+  width: 92.028985507vw;
+}
 
 .monkey {
   transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
