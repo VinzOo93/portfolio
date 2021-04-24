@@ -20,6 +20,9 @@
   }
 }
 
+body {
+  background-color: white;
+}
 
   .header {
     padding: 4%;
@@ -51,6 +54,7 @@
 .link-grow {
   transform: scale(2);
   transition: transform 1s ease;
+
 }
 
 .overImage {
@@ -78,7 +82,7 @@
 }
 </style>
 <script>
-import { gsap, Power1 } from 'gsap'
+import { gsap } from 'gsap'
 
 export default {
   beforeMount: function() {

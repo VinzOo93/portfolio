@@ -17,14 +17,14 @@
           </li>
         </ul>
       </nav>
-        <button type='button' aria-label='Switch appearance'
-                class='navigation-button  js-navigation-button'></button>
+      <button type='button' aria-label='Switch appearance'
+              class='navigation-button  js-navigation-button' v-on:click='setBackground'></button>
     </div>
   </div>
 </template>
 
 <script>
-import { gsap, Power1 } from 'gsap'
+import { gsap } from 'gsap'
 
 
 export default {
@@ -40,19 +40,16 @@ export default {
       const button = document.querySelector('.navigation-button')
       const body = document.querySelector('body')
 
-      backgroundDark()
-
-      function backgroundDark() {
-        button.addEventListener('click', () => {
-          gsap.to(body, {backgroundColor: '#151414', duration: 0.5})
-          gsap.to(button, {backgroundColor: 'white', duration: 0.2})
-          button.addEventListener('click', () => {
-            gsap.to(body, {backgroundColor: 'white', duration: 0.5})
-            gsap.to(button, {backgroundColor: '#151414', duration: 0.2})
-            backgroundDark()
-          })
-        })
+      if (document.body.style.backgroundColor === 'white') {
+        gsap.to(body, { backgroundColor: '#151414', duration: 0.5 })
+        gsap.to(button, { backgroundColor: 'white', duration: 0.2 })
       }
+    else {
+        gsap.to(body, { backgroundColor: 'white', duration: 0.5 })
+        gsap.to(button, { backgroundColor: '#151414', duration: 0.2 })
+      }
+
+
     }
   }
 }
@@ -77,9 +74,11 @@ body.isDark {
     display: table-row;
     text-align: justify !important;
   }
+
   .navbar ul {
-  display: flow-root;
+    display: flow-root;
   }
+
   .navigation-button {
     position: fixed;
     margin-left: 65%;
@@ -104,6 +103,7 @@ body.isDark {
     border: 0 transparent;
     margin: 20px 1px 20px 5px;
   }
+
   .navbar {
     position: relative;
     width: 100%;
@@ -116,7 +116,7 @@ body.isDark {
     grid-column: 6/10;
   }
 
- .navbar ul {
+  .navbar ul {
     display: flex;
     justify-content: flex-end;
   }
@@ -128,11 +128,13 @@ body.isDark {
   background-color: white;
   transition: background-color 0.5s ease-in-out;
 }
+
 .navbar li {
   position: relative;
   list-style: none;
   margin-right: 10px;
 }
+
 button {
   font: inherit;
   border-radius: 0;
@@ -141,6 +143,7 @@ button {
   vertical-align: baseline;
   border: 0;
 }
+
 button {
   padding: 0;
   cursor: pointer;
@@ -149,8 +152,6 @@ button {
   -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
 }
-
-
 
 
 a.navbar-link {

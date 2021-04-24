@@ -109,13 +109,13 @@ export default {
           y: '100%',
           duration: 3 },
           { y: '-100%',
-          duration: 2.5 })
+          duration: 3 })
       gsap.timeline(100)
-        .fromTo(gallery, { opacity: 0, y: '250%', duration: 4 }, {
+        .fromTo(gallery, { opacity: 0, y: '600%' }, {
           opacity: 1,
           y: '0%',
-          ease: Power1.easeInOut,
-          duration: 4
+          ease: 'power1',
+          duration: 5
         })
       const scene = this.$scrollmagic.scene({
         triggerElement: '#trigger1',
@@ -166,6 +166,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 .trigger {
   opacity: 0;
