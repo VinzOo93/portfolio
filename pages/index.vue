@@ -5,32 +5,32 @@
     <section>
       <div class='d-flex flex-column  justify-content-center min-vh-100 '>
         <div class='container'>
-          <div class='overflow-hidden line-animate line-scroll-1'>
+          <div class='overflow-hidden line-container line-scroll-1'>
             <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
-              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes' alt='eyes'> WELCOME</p>
+              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line' alt='eyes'> WELCOME</p>
           </div>
-          <div class='overflow-hidden   line-scroll-2'>
+          <div class='overflow-hidden  line-container line-scroll-2'>
             <p class='welcome line fz-3xl p-0 m-0'><img src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
                                                  class='covid' alt='covid'> IN MY <span
               class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
-                                                  class='world' width='70px' alt='world'></p>
+                                                  class='world' alt='world'></p>
           </div>
-          <div class='overflow-hidden  line-scroll-3'>
-            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock' alt='rock'><span
+          <div class='overflow-hidden line-container line-scroll-3'>
+            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line' alt='rock'><span
               class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
                                                  class='gin' alt='gin'>2021 </p>
           </div>
-          <div class='overflow-hidden  line-scroll-4'>
+          <div class='overflow-hidden line-container line-scroll-4'>
             <p class='welcome line fz-3xl p-0 m-0'>(<img src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-                                                  class='lemon' alt='lemon'>)=><span
+                                                  class='lemon img-line' alt='lemon'>)=><span
               class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
-                                                           class='strawberry' alt='strawberry'>)</p>
+                                                           class='strawberry img-line' alt='strawberry'>)</p>
           </div>
         </div>
       </div>
     </section>
     <section class='drawing'>
-      <div class='container2'>
+      <div class='container2 d-flex justify-content-center'>
         <div class='drawing-elem drawing-monkey '><img src='https://media.giphy.com/media/J2TpMp7nR3I6cSyRhy/giphy.gif'
                                                        class='img-fluid monkey' alt='monkey'>
         </div>
@@ -52,10 +52,9 @@
     </section>
     <section id='home-scroll-1'>
       <div class='recipe d-flex justify-content-center scroll-text-1'>
-        <p class='text-recipe p-0 m-0'>Tout d'abord, il nous faut de le farine, de l'eau, un peu de sel, de la levure,
+        <p class='text-recipe p-0 m-0'>Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la levure,
           de
-          l'huile d'olive, de la volonté et de la pérséverance ! Une fois le tout mélangé par ordre de priorité, en
-          voici le résultat !
+          l'huile d'olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités, nous pouvons nous lancer !
         </p>
       </div>
       <div id='pizza1' class='pizza d-flex justify-content-center '>
@@ -89,12 +88,12 @@
     </div>
     <section id='home-scroll-3'>
       <div class='recipe d-flex justify-content-center scroll-text-3'>
-        <p class='text-recipe p-0 m-0'>
-          De la même façon que je travaille la pâte et que je compose mes Pizzas. J'imagine, je modélise, je recherche
-          puis conçoie et développe pour vous un site internet qui fait la différence !
+        <p class='text-recipe p-0 m-0 end'>
+         Cela va sans doute vous faire rire, mais de la même passion que je travaille la pâte et que je compose mes Pizzas 🍕. Je suis à votre écoute, pour interpréter puis modéliser, je recherche
+          puis conçoie et développe pour vous un site internet "bien enfourné 🔥" qui "fait la différence 🌟" !
           Vous trouverez ici uniquement des travaux dont certains sont inspirés de références réadaptées à ma vision.
-          <br> Je vous souhaite une bonne visite
-          <br>et "buon appetito 👨🏻‍🍳🇮🇹".
+          <br> Dès lors, je vous souhaite une bonne visite
+          <br>et "un buon appetito 👨🏻‍🍳🇮🇹".
         </p>
       </div>
     </section>
@@ -245,15 +244,15 @@ export default {
       this.$scrollmagic.addScene(scene10)
 
       const scene11 = this.$scrollmagic.scene({
-        triggerHook: 0.4,
+        triggerHook: 0.7,
         triggerElement: '#home-scroll-2'
       })
         .setTween('.scroll-text-2', { opacity: 1, duration: 0.5 })
       this.$scrollmagic.addScene(scene11)
 
       const scene12 = this.$scrollmagic.scene({
-        triggerHook: 0.8,
-        triggerElement: '#home-scroll-3'
+        triggerHook: 0.9,
+        triggerElement: '#home-scroll-2'
       })
         .setTween('.scroll-text-3', { opacity: 1, duration: 0.5 })
       this.$scrollmagic.addScene(scene12)
@@ -299,14 +298,179 @@ export default {
 
 <style scoped>
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 769px) {
+
+
+.fz-3xl {
+  font-size: 28.985507246vw !important;
+}
+
+  .line {
+    height: 27.570048309vw;
+  }
+
+  .rock {
+    width: 269px !important;
+  }
+  .eyes{
+    width: 175px;
+  }
+  .covid {
+    width: 175px;
+  }
+  .world {
+    width: 175px;
+  }
+
+  .gin {
+    width: 150px;
+  }
+
+  .lemon {
+    width: 110px;
+    height: 115px !important;
+  }
+  .strawberry {
+    width: 110px;
+    height: 115px !important;
+  }
+
+
+
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
 
   .fz-3xl {
-    font-size: 28.985507246vw !important;
+    font-size: 15.625vw;
+  }
+
+  .container {
+    padding-left: 1%;
+    margin-top: 1%;
+  }
+
+  .rock {
+    width: 172px !important;
+  }
+
+  .eyes{
+    width: 100px;
+  }
+  .covid {
+    width: 125px;
+  }
+  .world {
+    width: 125px;
+  }
+  .gin {
+    width: 110px;
+  }
+  .lemon {
+    width: 90px;
+    height: 125px;
+
+  }
+  .strawberry {
+    width: 90px;
+    height: 125px;
   }
 
 
 }
+@media only screen and (min-width: 992px) {
+body * {
+  box-sizing: border-box;
+}
+
+
+  .container {
+    position: relative;
+  }
+
+
+  .fz-3xl {
+    font-size: 10.027777778vw;
+  }
+
+  .drawing-monkey {
+    width: 7.222222222vw;
+    bottom: auto;
+
+  }
+
+
+  .drawing-monkey {
+    width: 7.222222222vw;
+    bottom: auto;
+
+  }
+
+  .drawing-plant {
+    width: 7.222222222vw;
+    bottom: auto;
+  }
+
+  .drawing-moon {
+    width: 11.222222222vw;
+    bottom: auto;
+
+  }
+
+  .drawing-crow {
+    width: 17.222222222vw;
+    bottom: auto;
+  }
+}
+
+img.img-fluid {
+  display: block;
+  height: auto;
+  width: 80%;
+
+}
+
+
+.drawing-elem {
+  position: absolute;
+}
+
+.drawing {
+  height: 30.444444444vw;
+  padding: 0;
+
+}
+
+.crow {
+  transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
+    35.38783deg
+  );
+}
+
+
+.plant {
+  transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
+    11.38783deg
+  );
+}
+
+.monkey {
+  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
+    11.4377deg
+  );
+}
+
+.bracket-1 {
+  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
+    7.4377deg);
+}
+
+.bracket-2 {
+  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
+    175.4377deg);
+}
+
 
 .scroll-text-2 {
   transform: translateZ(0);
@@ -338,10 +502,12 @@ export default {
 }
 
 
+.justify-content-center {
+  justify-content: center;
+}
+
 .pizza-img {
   pointer-events: all;
-  width: 800px;
-  height: auto;
 }
 
 .pizza {
@@ -382,21 +548,7 @@ export default {
   width: 92.028985507vw;
 }
 
-.monkey {
-  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
-    11.4377deg
-  );
-}
 
-.bracket-1 {
-  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
-    7.4377deg);
-}
-
-.bracket-2 {
-  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
-    175.4377deg);
-}
 
 .drawing-bracket-1 {
   width: 4.222222222vw;
@@ -412,62 +564,13 @@ export default {
   z-index: 2;
 }
 
-.drawing-monkey {
-  width: 7.222222222vw;
-  bottom: auto;
-  left: 34%;
 
-}
-
-.drawing-plant {
-  width: 7.222222222vw;
-  bottom: auto;
-  left: 34%;
-}
-
-.drawing-moon {
-  width: 11.222222222vw;
-  bottom: auto;
-  left: 34%;
-
-}
-
-.drawing-crow {
-  width: 17.222222222vw;
-  bottom: auto;
-  left: 34%;
-}
-
-.crow {
-  transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
-    35.38783deg
-  );
-}
-
-
-.plant {
-  transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
-    11.38783deg
-  );
-}
-
-
-.drawing-elem {
-  position: absolute;
-}
-
-.drawing {
-  height: 19.444444444vw;
-  padding: 0;
-}
 
 .overflow-hidden {
   overflow: hidden
 }
 
 .container2 {
-  display: block;
-  width: 140%;
   position: relative;
 }
 
@@ -477,11 +580,7 @@ img {
   image-rendering: auto;
 }
 
-img.img-fluid {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+
 
 .rock {
   width: 12.416666667vw;
@@ -505,7 +604,6 @@ img.img-fluid {
 
 body * {
   letter-spacing: .05em;
-  box-sizing: border-box;
 }
 
 p {
@@ -514,6 +612,7 @@ p {
   margin-block-end: 2em;
   margin-inline-start: 0;
   margin-inline-end: 0;
+  min-height: 150px;
 }
 
 .p-0 {
@@ -527,6 +626,7 @@ p {
 .line {
   white-space: nowrap;
   font-family: "Helvetica", sans-serif;
+  padding: 0 5.20833vw;
 
 }
 
@@ -534,18 +634,7 @@ section {
   display: block;
 }
 
-.welcome {
-  font-size: 10.027777778vw;
-  line-height: .886722663;
-}
 
-.container {
-  position: relative;
-  bottom: 80px;
-  padding-left: 5%;
-  margin-top: 5%;
-
-}
 
 .min-vh-100 {
   min-height: 100vh;
@@ -555,17 +644,26 @@ section {
   display: flex;
 }
 
-.justify-content-center {
-  justify-content: center;
-}
+
 
 .flex-column {
   flex-direction: column;
 }
 
-.customFont {
+p .customFont {
   font-family: "Shree Devanagari 714", sans-serif;
   font-weight: lighter;
+  line-height: 1;
+
 }
+.line-container {
+  line-height: .886722663;
+}
+ .end {
+   position: relative;
+   top: 50px;
+ }
+
+
 
 </style>
