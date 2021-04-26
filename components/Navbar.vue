@@ -69,7 +69,7 @@ body.isDark {
 
 </style>
 <style scoped>
-@media only screen and  (max-width: 769px) {
+@media only screen and  (max-width: 768px) {
   .navbar {
     display: table-row;
     text-align: justify !important;
@@ -92,7 +92,7 @@ body.isDark {
   }
 }
 
-@media only screen and  (min-width: 769px) {
+@media only screen and  (min-width: 768px) {
   .navigation-button {
     position: unset;
     width: 10px;
@@ -111,7 +111,7 @@ body.isDark {
     text-align: center;
     font-weight: bold;
     font-size: 14px;
-    z-index: 2;
+    z-index: 4;
     grid-column: 6/10;
   }
 

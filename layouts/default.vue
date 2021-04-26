@@ -10,7 +10,7 @@
   </div>
 </template>
 <style>
-@media only screen and  (min-width: 769px) {
+@media only screen and  (min-width: 768px) {
   .navbar-container {
     width: 100%;
     z-index: 2;
@@ -22,6 +22,7 @@
 
 body {
   background-color: white;
+  height: 100%;
 }
 
   .header {
@@ -105,7 +106,7 @@ export default {
         link.addEventListener('mouseleave', () => {
           let windowSize = window.innerWidth;
           let scroll = window.scrollY
-          if (scene != null && windowSize >= 768) {
+          if (scene != null && windowSize > 768) {
             gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: 'none'} )
           }
           if (scroll === 0){

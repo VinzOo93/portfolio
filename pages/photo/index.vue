@@ -103,6 +103,7 @@ export default {
       let mouseCursor = document.querySelector('.cursor')
       let galleryimg = document.querySelectorAll('.gallery img')
 
+
       gsap.timeline(100)
         .fromTo(transition,
           { opacity: 1,

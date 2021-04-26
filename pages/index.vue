@@ -2,31 +2,43 @@
 
   <div>
     <div class='transition'></div>
-    <section>
-      <div class='d-flex flex-column  justify-content-center min-vh-100 '>
-        <div class='container'>
-          <div class='overflow-hidden line-container line-scroll-1'>
-            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
-              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line' alt='eyes'> WELCOME</p>
+    <section class='overflow-hidden' >
+      <div class='d-flex flex-column xs justify-content-center min-vh-100  container'>
+          <div class=' overflow-hidden  line-scroll-1'>
+            <div class='line-container'>
+              <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
+                src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line' alt='eyes'>
+                WELCOME
+              </p>
+            </div>
           </div>
-          <div class='overflow-hidden  line-container line-scroll-2'>
-            <p class='welcome line fz-3xl p-0 m-0'><img src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
-                                                 class='covid' alt='covid'> IN MY <span
-              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
-                                                  class='world' alt='world'></p>
+          <div class='overflow-hidden   line-scroll-2'>
+            <div class='line-container'>
+              <p class='welcome line fz-3xl p-0 m-0'><img
+                src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
+                class='covid' alt='covid'> IN MY <span
+                class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
+                                                    class='world' alt='world'></p>
+            </div>
           </div>
-          <div class='overflow-hidden line-container line-scroll-3'>
-            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line' alt='rock'><span
-              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin' alt='gin'>2021 </p>
+          <div class='overflow-hidden  line-scroll-3'>
+            <div class='line-container'>
+
+              <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
+                                                             alt='rock'><span
+                class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
+                                                   class='gin' alt='gin'>2021 </p>
+            </div>
           </div>
           <div class='overflow-hidden line-container line-scroll-4'>
-            <p class='welcome line fz-3xl p-0 m-0'>(<img src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-                                                  class='lemon img-line' alt='lemon'>)=><span
-              class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
-                                                           class='strawberry img-line' alt='strawberry'>)</p>
+            <div class='line-container'>
+              <p class='welcome line fz-3xl p-0 m-0'>(<img
+                src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
+                class='lemon img-line' alt='lemon'>)=><span
+                class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
+                                                             class='strawberry img-line' alt='strawberry'>)</p>
+            </div>
           </div>
-        </div>
       </div>
     </section>
     <section class='drawing'>
@@ -51,10 +63,12 @@
       </div>
     </section>
     <section id='home-scroll-1'>
-      <div class='recipe d-flex justify-content-center scroll-text-1'>
-        <p class='text-recipe p-0 m-0'>Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la levure,
+      <div class='recipe d-flex justify-content-center scroll-text-1 xs-reveal'>
+        <p class='text-recipe p-0 m-0'>Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la
+          levure,
           de
-          l'huile d'olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités, nous pouvons nous lancer !
+          l'huile d'olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
+          nous pouvons nous lancer !
         </p>
       </div>
       <div id='pizza1' class='pizza d-flex justify-content-center '>
@@ -73,7 +87,7 @@
       </div>
     </section>
     <section id='home-scroll-2'>
-      <div class='recipe d-flex justify-content-center scroll-text-2'>
+      <div class='recipe d-flex justify-content-center scroll-text-2 xs-reveal'>
         <p class='text-recipe p-0 m-0'>
           De la passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité.
           Elle nous pousse,
@@ -87,13 +101,22 @@
       <img class='pizza-img h-100 w-100 img-scroll-2' src='~/assets/home/pizza2.jpg' alt='pizza2'>
     </div>
     <section id='home-scroll-3'>
-      <div class='recipe d-flex justify-content-center scroll-text-3'>
+      <div class='recipe d-flex justify-content-center scroll-text-3 xs-reveal'>
         <p class='text-recipe p-0 m-0 end'>
-         Cela va sans doute vous faire rire, mais de la même passion que je travaille la pâte et que je compose mes Pizzas 🍕. Je suis à votre écoute, pour interpréter puis modéliser, je recherche
+          Cela va sans doute vous faire rire, mais de la même passion que je travaille la pâte et que je compose mes
+          Pizzas 🍕. Je suis à votre écoute, pour interpréter puis modéliser, je recherche
           puis conçoie et développe pour vous un site internet "bien enfourné 🔥" qui "fait la différence 🌟" !
+        </p>
+      </div>
+    </section>
+    <section>
+      <div id='pizza3' class='pizza d-flex justify-content-center '>
+        <img class='pizza-img h-100 w-100 img-scroll-3' src='~/assets/home/pizza3.jpg' alt='pizza3'>
+      </div>
+      <div id='home-scroll-4' class='recipe d-flex justify-content-center scroll-text-4 xs-reveal'>
+        <p class='text-recipe p-0 m-0 end '>
           Vous trouverez ici uniquement des travaux dont certains sont inspirés de références réadaptées à ma vision.
-          <br> Dès lors, je vous souhaite une bonne visite
-          <br>et "un buon appetito 👨🏻‍🍳🇮🇹".
+          Dès lors, je vous souhaite une bonne visite et "un buon appetito 👨🏻‍🍳🇮🇹".
         </p>
       </div>
     </section>
@@ -112,6 +135,8 @@ export default {
       const rock = document.querySelector('.rock')
       let enjoy = document.querySelector('.enjoy')
       let mouseCursor = document.querySelector('.cursor')
+      let windowSize = window.innerWidth
+      const revealXs = document.querySelectorAll('.xs-reveal')
 
 
       gsap.timeline(100)
@@ -225,61 +250,74 @@ export default {
         })
       this.$scrollmagic.addScene(scene8)
 
-      const scene9 = this.$scrollmagic.scene({
-        triggerHook: 0.6,
-        triggerElement: '.container2',
-        duration: '100%'
+      if (windowSize > 768) {
 
-      })
-        .setTween('.drawing-plane', {
-          y: 150
+        const scene10 = this.$scrollmagic.scene({
+          triggerHook: 0.8,
+          triggerElement: '#home-scroll-1'
         })
-      this.$scrollmagic.addScene(scene9)
+          .setTween('.scroll-text-1', { opacity: 1, duration: 0.5 })
+        this.$scrollmagic.addScene(scene10)
 
-      const scene10 = this.$scrollmagic.scene({
-        triggerHook: 0.4,
-        triggerElement: '#home-scroll-1'
-      })
-        .setTween('.scroll-text-1', { opacity: 1, duration: 0.5 })
-      this.$scrollmagic.addScene(scene10)
-
-      const scene11 = this.$scrollmagic.scene({
-        triggerHook: 0.7,
-        triggerElement: '#home-scroll-2'
-      })
-        .setTween('.scroll-text-2', { opacity: 1, duration: 0.5 })
-      this.$scrollmagic.addScene(scene11)
-
-      const scene12 = this.$scrollmagic.scene({
-        triggerHook: 0.9,
-        triggerElement: '#home-scroll-2'
-      })
-        .setTween('.scroll-text-3', { opacity: 1, duration: 0.5 })
-      this.$scrollmagic.addScene(scene12)
-
-      const scene13 = this.$scrollmagic.scene({
-        triggerHook: 0.5,
-        triggerElement: '#pizza1',
-        duration: '70%'
-
-      })
-        .setTween('.img-scroll-1', {
-          scaleX: 1.4,
-          scaleY: 1.4,
-          duration: 5
+        const scene11 = this.$scrollmagic.scene({
+          triggerHook: 0.8,
+          triggerElement: '#home-scroll-2'
         })
-      this.$scrollmagic.addScene(scene13)
-      const scene14 = this.$scrollmagic.scene({
-        triggerHook: 0.5,
-        triggerElement: '#pizza2',
-        duration: '70%'
-      })
-        .setTween('.img-scroll-2', {
-          scaleX: 1.3,
-          scaleY: 1.3,
-          duration: 5
+          .setTween('.scroll-text-2', { opacity: 1, duration: 0.5 })
+        this.$scrollmagic.addScene(scene11)
+
+        const scene12 = this.$scrollmagic.scene({
+          triggerHook: 0.8,
+          triggerElement: '#home-scroll-3'
         })
-      this.$scrollmagic.addScene(scene14)
+          .setTween('.scroll-text-3', { opacity: 1, duration: 0.5 })
+        this.$scrollmagic.addScene(scene12)
+
+        const scene16 = this.$scrollmagic.scene({
+          triggerHook: 0.8,
+          triggerElement: '#home-scroll-3'
+        })
+          .setTween('.scroll-text-4', { opacity: 1, duration: 0.5 })
+        this.$scrollmagic.addScene(scene16)
+
+        const scene13 = this.$scrollmagic.scene({
+          triggerHook: 1,
+          triggerElement: '#pizza1',
+          duration: '90%'
+
+        })
+          .setTween('.img-scroll-1', {
+            scaleX: 1.4,
+            scaleY: 1.4,
+            duration: 5
+          })
+        this.$scrollmagic.addScene(scene13)
+        const scene14 = this.$scrollmagic.scene({
+          triggerHook: 0.7,
+          triggerElement: '#pizza2',
+          duration: '90%'
+        })
+          .setTween('.img-scroll-2', {
+            scaleX: 1.3,
+            scaleY: 1.3,
+            duration: 5
+          })
+        this.$scrollmagic.addScene(scene14)
+        const scene15 = this.$scrollmagic.scene({
+          triggerHook: 0.3,
+          triggerElement: '#pizza3',
+          duration: '90%'
+        })
+          .setTween('.img-scroll-3', {
+            scaleX: 1.3,
+            scaleY: 1.3,
+            duration: 5
+          })
+        this.$scrollmagic.addScene(scene15)
+      } else {
+        revealXs.forEach(text => text.style.opacity = '1')
+
+      }
       enjoy.addEventListener('mouseover', () => {
         mouseCursor.classList.add('link-grow')
       })
@@ -298,53 +336,66 @@ export default {
 
 <style scoped>
 
-@media only screen and (max-width: 769px) {
+/*@media only screen and (max-width: 768px) {
+  .fz-3xl {
+    font-size: 28.985507246vw;
+  }
 
-
-.fz-3xl {
-  font-size: 28.985507246vw !important;
-}
-
-  .line {
-    height: 27.570048309vw;
+  .xs {
+    position: relative;
+    bottom: 100px;
   }
 
   .rock {
-    width: 269px !important;
+    width: 130px !important;
   }
-  .eyes{
-    width: 175px;
+
+  .eyes {
+    width: 100px;
   }
+
   .covid {
-    width: 175px;
+    width: 100px;
   }
+
   .world {
-    width: 175px;
+    width: 100px;
   }
 
   .gin {
-    width: 150px;
+    width: 80px;
   }
 
   .lemon {
-    width: 110px;
-    height: 115px !important;
+    width: 80px;
+    height: 75px !important;
   }
+
   .strawberry {
-    width: 110px;
-    height: 115px !important;
+    width: 80px;
+    height: 75px !important;
   }
 
 
+  .img-fluid {
+    width: 40% !important;
+  }
 
+  .drawing-elem {
+    margin-left: 33%;
+  }
+
+  .line-container {
+    height: 26.570048309vw
+  }
+  .container {
+    padding: 19.323671498vw 0 0;
+  }
 }
 
 
-@media only screen and (min-width: 769px) and (max-width: 992px) {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
 
-  .fz-3xl {
-    font-size: 15.625vw;
-  }
 
   .container {
     padding-left: 1%;
@@ -355,44 +406,63 @@ export default {
     width: 172px !important;
   }
 
-  .eyes{
+  .eyes {
     width: 100px;
   }
+
   .covid {
-    width: 125px;
+    width: 100px;
   }
+
   .world {
-    width: 125px;
+    width: 100px;
   }
+
   .gin {
-    width: 110px;
+    width: 100px;
   }
+
   .lemon {
-    width: 90px;
+    width: 80px;
     height: 125px;
 
   }
+
   .strawberry {
-    width: 90px;
+    width: 80px;
     height: 125px;
   }
 
 
-}
-@media only screen and (min-width: 992px) {
-body * {
-  box-sizing: border-box;
+  .fz-3xl {
+    font-size: 15.625vw;
+  }
+
+.line-container {
+  height: 150px !important;
 }
 
+
+}*/
+
+/*@media only screen and (min-width: 992px) {*/
+
+.line-container {
+  height: 9.611111111vw !important;
+}
+
+  body * {
+    box-sizing: border-box;
+  }
+
+  .fz-3xl {
+    font-size: 10.027777778vw;
+  }
 
   .container {
     position: relative;
   }
 
-
-  .fz-3xl {
-    font-size: 10.027777778vw;
-  }
 
   .drawing-monkey {
     width: 7.222222222vw;
@@ -422,12 +492,12 @@ body * {
     width: 17.222222222vw;
     bottom: auto;
   }
-}
+
 
 img.img-fluid {
   display: block;
   height: auto;
-  width: 80%;
+  width: 70%;
 
 }
 
@@ -493,6 +563,10 @@ img.img-fluid {
   opacity: 0;
 }
 
+.scroll-text-4 {
+  opacity: 0;
+}
+
 .h-100 {
   height: 100%;
 }
@@ -516,7 +590,7 @@ img.img-fluid {
 
 
 .recipe {
-  margin-top: 5%;
+  margin-top: 7%;
   line-height: 1.230769231;
   font-size: 4.038647343vw;
 }
@@ -549,7 +623,6 @@ img.img-fluid {
 }
 
 
-
 .drawing-bracket-1 {
   width: 4.222222222vw;
   bottom: auto;
@@ -565,7 +638,6 @@ img.img-fluid {
 }
 
 
-
 .overflow-hidden {
   overflow: hidden
 }
@@ -579,7 +651,6 @@ img {
   width: 6.416666667vw;
   image-rendering: auto;
 }
-
 
 
 .rock {
@@ -608,32 +679,42 @@ body * {
 
 p {
   display: block;
-  margin-block-start: 2em;
-  margin-block-end: 2em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
   margin-inline-start: 0;
   margin-inline-end: 0;
-  min-height: 150px;
+}
+
+
+p .customFont {
+  line-height: 1.5;
 }
 
 .p-0 {
-  padding: 0;
+  padding: 0 0 0 0;
 }
 
 .m-0 {
-  margin: 0;
+  margin: 0 0 0 0;
 }
 
 .line {
   white-space: nowrap;
   font-family: "Helvetica", sans-serif;
   padding: 0 5.20833vw;
+}
+
+.container {
+  padding-bottom: 10%;
+  line-height: 1;
 
 }
+
+
 
 section {
   display: block;
 }
-
 
 
 .min-vh-100 {
@@ -643,7 +724,6 @@ section {
 .d-flex {
   display: flex;
 }
-
 
 
 .flex-column {
@@ -657,13 +737,14 @@ p .customFont {
 
 }
 .line-container {
-  line-height: .886722663;
+  height: 26.570048309vw;
 }
- .end {
-   position: relative;
-   top: 50px;
- }
-
-
+.end {
+  position: relative;
+  margin-top: 8%;
+}
+section {
+  display: block;
+}
 
 </style>
