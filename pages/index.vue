@@ -2,17 +2,21 @@
 
   <div>
     <div class='transition'></div>
-    <section class='overflow-hidden'>
+    <section class='welcome-home overflow-hidden'>
       <div class='d-flex flex-column xs justify-content-center min-vh-100  container'>
-        <div class=' overflow-hidden  line-scroll-1'>
+        <div class='line__wrap overflow-hidden  line-scroll-1'>
           <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
+              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
+              WELCOME
+            </p>
             <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
               src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
               WELCOME
             </p>
           </div>
         </div>
-        <div class='overflow-hidden   line-scroll-2'>
+        <div class='line__wrap overflow-hidden   line-scroll-2'>
           <div class='line-container d-flex'>
             <p class='welcome line fz-3xl p-0 m-0'><img
               src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
@@ -21,9 +25,12 @@
                                                   class='world img-sm' alt='world'></p>
           </div>
         </div>
-        <div class='overflow-hidden  line-scroll-3'>
+        <div class='line__wrap overflow-hidden  line-scroll-3'>
           <div class='line-container d-flex'>
-
+            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
+                                                           alt='rock img-sm'><span
+              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
+                                                 class='gin img-sm' alt='gin'>2021 </p>
             <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
                                                            alt='rock img-sm'><span
               class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
@@ -402,13 +409,11 @@ export default {
 
 
   .plant {
-    transform: translateX(-9.19392vw)
-    translateY(15.19392vw) !important;
+    transform: translateX(-9.19392vw) translateY(15.19392vw) !important;
   }
 
   .monkey {
-    transform: translateX(-12.19392vw)
-    translateY(-0.19392vw) rotate(
+    transform: translateX(-12.19392vw) translateY(-0.19392vw) rotate(
       11.4377deg
     ) !important;
   }
@@ -416,14 +421,39 @@ export default {
   .moon {
     position: absolute;
     left: 50%;
-    transform: translateX(0vw)
-    translateY(0vw) rotate(
+    transform: translateX(0vw) translateY(0vw) rotate(
       35.38783deg
     ) !important;
   }
+
+
+  .welcome-home .line__wrap:nth-child(odd) .welcome {
+    animation-play-state: running;
+    animation-name: ticker;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+
+
+  }
+  @keyframes ticker {
+    100% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+
+  }
 }
-
-
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
 
@@ -776,5 +806,6 @@ p .customFont {
 section {
   display: block;
 }
+
 
 </style>
