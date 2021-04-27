@@ -2,43 +2,43 @@
 
   <div>
     <div class='transition'></div>
-    <section class='overflow-hidden' >
+    <section class='overflow-hidden'>
       <div class='d-flex flex-column xs justify-content-center min-vh-100  container'>
-          <div class=' overflow-hidden  line-scroll-1'>
-            <div class='line-container'>
-              <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
-                src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line' alt='eyes'>
-                WELCOME
-              </p>
-            </div>
+        <div class=' overflow-hidden  line-scroll-1'>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
+              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
+              WELCOME
+            </p>
           </div>
-          <div class='overflow-hidden   line-scroll-2'>
-            <div class='line-container'>
-              <p class='welcome line fz-3xl p-0 m-0'><img
-                src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
-                class='covid' alt='covid'> IN MY <span
-                class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
-                                                    class='world' alt='world'></p>
-            </div>
+        </div>
+        <div class='overflow-hidden   line-scroll-2'>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'><img
+              src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
+              class='covid img-sm' alt='covid'> IN MY <span
+              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
+                                                  class='world img-sm' alt='world'></p>
           </div>
-          <div class='overflow-hidden  line-scroll-3'>
-            <div class='line-container'>
+        </div>
+        <div class='overflow-hidden  line-scroll-3'>
+          <div class='line-container d-flex'>
 
-              <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
-                                                             alt='rock'><span
-                class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                   class='gin' alt='gin'>2021 </p>
-            </div>
+            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
+                                                           alt='rock img-sm'><span
+              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
+                                                 class='gin img-sm' alt='gin'>2021 </p>
           </div>
-          <div class='overflow-hidden line-container line-scroll-4'>
-            <div class='line-container'>
-              <p class='welcome line fz-3xl p-0 m-0'>(<img
-                src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-                class='lemon img-line' alt='lemon'>)=><span
-                class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
-                                                             class='strawberry img-line' alt='strawberry'>)</p>
-            </div>
+        </div>
+        <div class='overflow-hidden line-container line-scroll-4'>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'>(<img
+              src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
+              class='lemon img-line img-sm' alt='lemon'>)=><span
+              class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
+                                                           class='strawberry img-sm' alt='strawberry'>)</p>
           </div>
+        </div>
       </div>
     </section>
     <section class='drawing'>
@@ -76,14 +76,6 @@
       </div>
       <div class='question'>
         <p class='text-question p-0 m-0 sroll-text-1'>Mais que faisons-nous ?</p>
-        <div class='drawing-elem drawing-bracket-1'><img
-          src='https://media.giphy.com/media/pVILpzbBE3NEaQwc1d/giphy.gif'
-          class='img-fluid bracket-1' alt='bracket'>
-        </div>
-        <div class='drawing-elem drawing-bracket-2'><img
-          src='https://media.giphy.com/media/pVILpzbBE3NEaQwc1d/giphy.gif'
-          class='img-fluid bracket-2' alt='bracket'>
-        </div>
       </div>
     </section>
     <section id='home-scroll-2'>
@@ -203,6 +195,7 @@ export default {
         })
       this.$scrollmagic.addScene(scene4)
 
+
       const scene5 = this.$scrollmagic.scene({
         triggerHook: 0.9,
         triggerElement: '.container2',
@@ -210,8 +203,8 @@ export default {
 
       })
         .setTween('.drawing-monkey', {
-          x: -100,
-          y: -50
+          x: -60,
+          y: -30
         })
       this.$scrollmagic.addScene(scene5)
 
@@ -222,7 +215,7 @@ export default {
 
       })
         .setTween('.drawing-moon', {
-          x: 200,
+          x: 80,
           rotation: -10
         })
       this.$scrollmagic.addScene(scene6)
@@ -234,7 +227,7 @@ export default {
 
       })
         .setTween('.drawing-plant', {
-          x: -150,
+          x: -50,
           rotation: 40
         })
       this.$scrollmagic.addScene(scene7)
@@ -245,15 +238,15 @@ export default {
 
       })
         .setTween('.drawing-crow', {
-          y: -50,
-          x: 300
+          y: -30,
+          x: 60
         })
       this.$scrollmagic.addScene(scene8)
 
       if (windowSize > 768) {
 
         const scene10 = this.$scrollmagic.scene({
-          triggerHook: 0.8,
+          triggerHook: 0.5,
           triggerElement: '#home-scroll-1'
         })
           .setTween('.scroll-text-1', { opacity: 1, duration: 0.5 })
@@ -267,17 +260,17 @@ export default {
         this.$scrollmagic.addScene(scene11)
 
         const scene12 = this.$scrollmagic.scene({
-          triggerHook: 0.8,
+          triggerHook: 0.9,
           triggerElement: '#home-scroll-3'
         })
-          .setTween('.scroll-text-3', { opacity: 1, duration: 0.5 })
+          .setTween('.scroll-text-3', { opacity: 1, duration: 0.9 })
         this.$scrollmagic.addScene(scene12)
 
         const scene16 = this.$scrollmagic.scene({
-          triggerHook: 0.8,
-          triggerElement: '#home-scroll-3'
+          triggerHook: 0.9,
+          triggerElement: '#home-scroll-4'
         })
-          .setTween('.scroll-text-4', { opacity: 1, duration: 0.5 })
+          .setTween('.scroll-text-4', { opacity: 1, duration: 0.9 })
         this.$scrollmagic.addScene(scene16)
 
         const scene13 = this.$scrollmagic.scene({
@@ -336,7 +329,7 @@ export default {
 
 <style scoped>
 
-/*@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767.98px) {
   .fz-3xl {
     font-size: 28.985507246vw;
   }
@@ -347,49 +340,86 @@ export default {
   }
 
   .rock {
-    width: 130px !important;
+    top: .483091787vw;
+    width: 31.400966184vw;
   }
 
   .eyes {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 25.115942029vw;
   }
 
   .covid {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 25.115942029vw;
   }
 
   .world {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 25.115942029vw;
   }
 
   .gin {
-    width: 80px;
+    top: -.9661835749vw;
+    width: 15.115942029vw;
   }
 
+
   .lemon {
-    width: 80px;
-    height: 75px !important;
+    width: 13.115942029vw;
   }
 
   .strawberry {
-    width: 80px;
-    height: 75px !important;
+    width: 13.115942029vw;
   }
 
-
-  .img-fluid {
-    width: 40% !important;
-  }
 
   .drawing-elem {
-    margin-left: 33%;
+
   }
 
   .line-container {
     height: 26.570048309vw
   }
+
   .container {
-    padding: 19.323671498vw 0 0;
+    padding: 15.323671498vw 0 0;
+  }
+
+  img.img-fluid {
+    width: 20.416667vw !important;
+    position: absolute;
+    bottom: -4.583333vw;
+    right: -13.583333vw;
+
+  }
+
+  .crow {
+    transform: translateX(20.19392vw) translateY(0vw) rotate(
+      35.38783deg
+    ) !important;
+  }
+
+
+  .plant {
+    transform: translateX(-9.19392vw)
+    translateY(15.19392vw) !important;
+  }
+
+  .monkey {
+    transform: translateX(-12.19392vw)
+    translateY(-0.19392vw) rotate(
+      11.4377deg
+    ) !important;
+  }
+
+  .moon {
+    position: absolute;
+    left: 50%;
+    transform: translateX(0vw)
+    translateY(0vw) rotate(
+      35.38783deg
+    ) !important;
   }
 }
 
@@ -397,59 +427,82 @@ export default {
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
 
+  .drawing-monkey {
+    left: 34%;
+  }
+
   .container {
     padding-left: 1%;
     margin-top: 1%;
   }
 
   .rock {
-    width: 172px !important;
+    top: .78125vw;
+    width: 18.4375vw
   }
 
   .eyes {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 12.115942029vw;
   }
 
   .covid {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 12.115942029vw;
   }
 
   .world {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 12.115942029vw;
   }
 
   .gin {
-    width: 100px;
+    top: -.9661835749vw;
+    width: 9.115942029vw;
   }
 
-  .lemon {
-    width: 80px;
-    height: 125px;
 
+  .lemon {
+    width: 8.115942029vw;
   }
 
   .strawberry {
-    width: 80px;
-    height: 125px;
+    width: 8.115942029vw;
   }
-
 
   .fz-3xl {
-    font-size: 15.625vw;
+    font-size: 14.625vw;
   }
 
-.line-container {
-  height: 150px !important;
+  .line-container {
+    height: 150px !important;
+  }
+
+  img.img-fluid {
+    width: 15.416667vw !important;
+    padding-right: 75px;
+  }
+
 }
 
+@media only screen and (min-width: 992px) {
 
-}*/
+  .lemon {
+    height: 6.416666667vw;
+  }
 
-/*@media only screen and (min-width: 992px) {*/
+  .strawberry {
+    height: 6.416666667vw;
+  }
 
-.line-container {
-  height: 9.611111111vw !important;
-}
+  .rock {
+    width: 12.416666667vw;
+
+  }
+
+  .line-container {
+    height: 9.611111111vw !important;
+  }
 
   body * {
     box-sizing: border-box;
@@ -458,6 +511,7 @@ export default {
   .fz-3xl {
     font-size: 10.027777778vw;
   }
+
 
   .container {
     position: relative;
@@ -494,53 +548,50 @@ export default {
   }
 
 
-img.img-fluid {
-  display: block;
-  height: auto;
-  width: 70%;
+  img.img-fluid {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
 
-}
 
+  .drawing-elem {
+    position: absolute;
+    justify-content: center;
+  }
 
-.drawing-elem {
-  position: absolute;
-}
+  .drawing {
+    height: 30.444444444vw;
+    padding: 0;
 
-.drawing {
-  height: 30.444444444vw;
-  padding: 0;
-
+  }
 }
 
 .crow {
-  transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
+  transform: translateX(2.19392vw) translateY(-1.90628vw) rotate(
     35.38783deg
   );
 }
 
 
 .plant {
-  transform: translateX(-3.19392vw) translateY(3.19392vw) rotate(
+  transform: translateX(0vw) translateY(3.19392vw) rotate(
     11.38783deg
   );
 }
 
 .monkey {
-  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
+  z-index: 4;
+  transform: translateX(-3.19392vw) translateY(-1.90628vw) rotate(
     11.4377deg
   );
 }
 
-.bracket-1 {
-  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
-    7.4377deg);
+.moon {
+  transform: translateX(0vw) translateY(3.19392vw) rotate(
+    35.38783deg
+  );
 }
-
-.bracket-2 {
-  transform: translateX(-7.62513vw) translateY(-1.90628vw) rotate(
-    175.4377deg);
-}
-
 
 .scroll-text-2 {
   transform: translateZ(0);
@@ -614,27 +665,12 @@ img.img-fluid {
 .congrat {
   font-size: 5.7971014493vw;
   position: relative;
-  bottom: 150px;
+  bottom: 90px;
 }
 
 .text-congrat {
   text-align: center;
   width: 92.028985507vw;
-}
-
-
-.drawing-bracket-1 {
-  width: 4.222222222vw;
-  bottom: auto;
-  left: 85%;
-  z-index: 2;
-}
-
-.drawing-bracket-2 {
-  width: 4.222222222vw;
-  bottom: auto;
-  left: 91%;
-  z-index: 2;
 }
 
 
@@ -654,19 +690,11 @@ img {
 
 
 .rock {
-  width: 12.416666667vw;
   margin-left: 20px;
   margin-right: 20px;
 
 }
 
-.lemon {
-  height: 6.416666667vw;
-}
-
-.strawberry {
-  height: 6.416666667vw;
-}
 
 .world {
   margin-left: 20px;
@@ -705,11 +733,10 @@ p .customFont {
 }
 
 .container {
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   line-height: 1;
 
 }
-
 
 
 section {
@@ -736,13 +763,16 @@ p .customFont {
   line-height: 1;
 
 }
+
 .line-container {
   height: 26.570048309vw;
 }
+
 .end {
   position: relative;
   margin-top: 8%;
 }
+
 section {
   display: block;
 }
