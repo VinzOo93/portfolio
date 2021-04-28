@@ -4,7 +4,7 @@
     <div class='transition'></div>
     <section class='welcome-home overflow-hidden'>
       <div class='d-flex flex-column xs justify-content-center min-vh-100  container'>
-        <div class='line__wrap overflow-hidden  line-scroll-1'>
+        <div class='line__wrap overflow-hidden  line-scroll-1  '>
           <div class='line-container d-flex'>
             <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
               src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
@@ -18,6 +18,11 @@
         </div>
         <div class='line__wrap overflow-hidden   line-scroll-2'>
           <div class='line-container d-flex'>
+            <p  class='welcome line fz-3xl p-0 m-0'><img
+              src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
+              class='covid img-sm' alt='covid'> IN MY <span
+              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
+                                                  class='world img-sm' alt='world'></p>
             <p class='welcome line fz-3xl p-0 m-0'><img
               src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
               class='covid img-sm' alt='covid'> IN MY <span
@@ -37,8 +42,13 @@
                                                  class='gin img-sm' alt='gin'>2021 </p>
           </div>
         </div>
-        <div class='overflow-hidden line-container line-scroll-4'>
+        <div class='line__wrap overflow-hidden line-scroll-4'>
           <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'>(<img
+              src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
+              class='lemon img-line img-sm' alt='lemon'>)=><span
+              class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
+                                                           class='strawberry img-sm' alt='strawberry'>)</p>
             <p class='welcome line fz-3xl p-0 m-0'>(<img
               src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
               class='lemon img-line img-sm' alt='lemon'>)=><span
@@ -134,18 +144,39 @@ export default {
       const rock = document.querySelector('.rock')
       let enjoy = document.querySelector('.enjoy')
       let mouseCursor = document.querySelector('.cursor')
-      let windowSize = window.innerWidth
+      let windowSize = screen.width
       const revealXs = document.querySelectorAll('.xs-reveal')
+      const transition = document.querySelector('.transition')
+      const  welcome = document.querySelector('.welcome-home')
 
+      console.log(windowSize)
 
-      gsap.timeline(100)
-        .from(line, {
-          duration: 2,
+      if (windowSize <= 768) {
+
+        gsap.timeline(100)
+          .fromTo(transition,
+            {
+              opacity: 1,
+              y: '100%',
+              duration: 3
+            },
+            {
+              y: '-100%',
+              duration: 3
+            })
+          .fromTo(welcome, { opacity: 0, y: '100%' }, {
+            opacity: 1,
+            y: '0%',
+            ease: 'power1',
+            duration: 3
+          })
+/*        .from(line, {
           yPercent: 200,
+          duration:2,
           ease: 'power4',
           stagger: 0.2
-        })
-
+        })*/
+      }
       gsap.timeline(100)
         .fromTo(rock, {
             scaleX: 0,
@@ -158,51 +189,59 @@ export default {
             ease: 'power5'
           })
 
+      if (windowSize > 768) {
 
-      const scene = this.$scrollmagic.scene({
-        triggerHook: 0,
-        offset: 1,
-        duration: '100%'
-      })
-        .setTween('.line-scroll-1', {
-          x: -350
+        gsap.timeline(100)
+          .from(line, {
+            duration: 2,
+            yPercent: 200,
+            ease: 'power4',
+          })
+
+        const scene = this.$scrollmagic.scene({
+          triggerHook: 0,
+          offset: 1,
+          duration: '100%'
         })
-      this.$scrollmagic.addScene(scene)
+          .setTween('.line-scroll-1', {
+            x: -350
+          })
+        this.$scrollmagic.addScene(scene)
 
-      const scene2 = this.$scrollmagic.scene({
-        triggerHook: 0,
-        offset: 1,
-        duration: '100%'
+        const scene2 = this.$scrollmagic.scene({
+          triggerHook: 0,
+          offset: 1,
+          duration: '100%'
 
-      })
-        .setTween('.line-scroll-2', {
-          x: 350
         })
-      this.$scrollmagic.addScene(scene2)
+          .setTween('.line-scroll-2', {
+            x: 350
+          })
+        this.$scrollmagic.addScene(scene2)
 
-      const scene3 = this.$scrollmagic.scene({
-        triggerHook: 0,
-        offset: 1,
-        duration: '100%'
+        const scene3 = this.$scrollmagic.scene({
+          triggerHook: 0,
+          offset: 1,
+          duration: '100%'
 
-      })
-        .setTween('.line-scroll-3', {
-          x: -100
         })
-      this.$scrollmagic.addScene(scene3)
+          .setTween('.line-scroll-3', {
+            x: -100
+          })
+        this.$scrollmagic.addScene(scene3)
 
-      const scene4 = this.$scrollmagic.scene({
-        triggerHook: 0,
-        offset: 1,
-        duration: '100%'
+        const scene4 = this.$scrollmagic.scene({
+          triggerHook: 0,
+          offset: 1,
+          duration: '100%'
 
-      })
-        .setTween('.line-scroll-4', {
-          x: 100
         })
-      this.$scrollmagic.addScene(scene4)
+          .setTween('.line-scroll-4', {
+            x: 100
+          })
+        this.$scrollmagic.addScene(scene4)
 
-
+      }
       const scene5 = this.$scrollmagic.scene({
         triggerHook: 0.9,
         triggerElement: '.container2',
@@ -316,7 +355,6 @@ export default {
         this.$scrollmagic.addScene(scene15)
       } else {
         revealXs.forEach(text => text.style.opacity = '1')
-
       }
       enjoy.addEventListener('mouseover', () => {
         mouseCursor.classList.add('link-grow')
@@ -324,6 +362,7 @@ export default {
       enjoy.addEventListener('mouseleave', () => {
         mouseCursor.classList.remove('link-grow')
       })
+
 
 
     }
@@ -336,7 +375,8 @@ export default {
 
 <style scoped>
 
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 768px) {
+
   .fz-3xl {
     font-size: 28.985507246vw;
   }
@@ -435,9 +475,19 @@ export default {
     animation-fill-mode: both;
     animation-direction: normal;
     animation-iteration-count: infinite;
-
-
   }
+
+  .welcome-home .line__wrap:nth-child(even) .welcome {
+    animation-play-state: running;
+    animation-name: ticker2;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+  }
+
+
   @keyframes ticker {
     100% {
       transform: translateX(100%);
@@ -453,7 +503,23 @@ export default {
     }
 
   }
+  @keyframes ticker2 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+
+  }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
 

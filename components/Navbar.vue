@@ -92,7 +92,7 @@ body.isDark {
   }
 }
 
-@media only screen and  (min-width: 768px) {
+@media only screen and  (min-width: 768.5px) {
   .navigation-button {
     position: unset;
     width: 10px;
@@ -106,7 +106,7 @@ body.isDark {
   .navbar {
     position: relative;
     width: 100%;
-    padding: 2rem 3rem 2rem;
+    padding: 1rem 1rem 1rem;
     margin-bottom: 5rem;
     text-align: center;
     font-weight: bold;

@@ -10,7 +10,7 @@
   </div>
 </template>
 <style>
-@media only screen and  (min-width: 768px) {
+@media only screen and  (min-width: 768.5px) {
   .navbar-container {
     width: 100%;
     z-index: 2;
