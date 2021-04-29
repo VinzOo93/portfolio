@@ -4,7 +4,7 @@
       <nav>
         <ul>
           <li>
-            <nuxt-link class="navbar-link" to="/">Acceuil</nuxt-link>
+            <nuxt-link class="navbar-link" to="/">Accueil</nuxt-link>
           </li>
           <li>
             <nuxt-link class="navbar-link" to="/projet">Projets Web</nuxt-link>

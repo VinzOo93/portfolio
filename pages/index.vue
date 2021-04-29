@@ -84,7 +84,7 @@
         <p class="text-recipe p-0 m-0">Tout d"abord, il nous faut de le farine, de l"eau 💧, un peu de sel, de la
           levure,
           de
-          l"huile d"olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
+          l'huile d"olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
           nous pouvons nous lancer !
         </p>
       </div>
@@ -98,7 +98,7 @@
     <section id="home-scroll-2">
       <div class="recipe d-flex justify-content-center scroll-text-2 xs-reveal">
         <p class="text-recipe p-0 m-0">
-          De la passion ! C"est grâce à elle que l"on surpasse ses limites dans toute l"étendue de notre créativité.
+          De la passion ! C'est grâce à elle que l"on surpasse ses limites dans toute l'étendue de notre créativité.
           Elle nous pousse,
           elle nous permet de partager et de transmettre. Mais surtout d"innover dans le but de créer quelque chose
           d"unique qui nous donne une véritable identité. Selon moi, la passion donne du sens, elle est universelle,
