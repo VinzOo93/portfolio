@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class='cursor'></div>
-    <div class='header'>
-      <div class='navbar-container'>
+    <div class="cursor"></div>
+    <div class="header">
+      <div class="navbar-container">
         <Navbar />
       </div>
     </div>
@@ -31,7 +31,7 @@ body {
 
 
 * {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   text-decoration: none;
   color: #504e4c;
   box-sizing: border-box;
@@ -83,7 +83,7 @@ body {
 }
 </style>
 <script>
-import { gsap } from 'gsap'
+import { gsap } from "gsap"
 
 export default {
   beforeMount: function() {
@@ -92,39 +92,39 @@ export default {
 
   methods: {
     beforeMount() {
-      window.addEventListener('mousemove', cursor)
-      let mouseCursor = document.querySelector('.cursor')
-      let navBar = document.querySelectorAll('.navbar')
-      let navBarli = document.querySelectorAll('.navbar a')
-      let gallery = document.querySelectorAll('.gallery img')
+      window.addEventListener("mousemove", cursor)
+      let mouseCursor = document.querySelector(".cursor")
+      let navBar = document.querySelectorAll(".navbar")
+      let navBarli = document.querySelectorAll(".navbar a")
+      let gallery = document.querySelectorAll(".gallery img")
       function cursor(e) {
 
-        mouseCursor.style.top = e.pageY + 'px'
-        mouseCursor.style.left = e.pageX + 'px'
+        mouseCursor.style.top = e.pageY + "px"
+        mouseCursor.style.left = e.pageX + "px"
       }
       navBar.forEach(link => {
-        link.addEventListener('mouseleave', () => {
+        link.addEventListener("mouseleave", () => {
           let windowSize = window.innerWidth;
           let scroll = window.scrollY
           if (scene != null && windowSize > 768) {
-            gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: 'none'} )
+            gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: "none"} )
           }
           if (scroll === 0){
-            gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: 'auto'})
+            gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: "auto"})
           }
-          mouseCursor.classList.remove('link-grow')
+          mouseCursor.classList.remove("link-grow")
         });
-        link.addEventListener('mouseover', () => {
-          gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: 'auto'} )
-          mouseCursor.classList.add('link-grow')
+        link.addEventListener("mouseover", () => {
+          gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: "auto"} )
+          mouseCursor.classList.add("link-grow")
         });
       });
       gallery.forEach(img => {
-        img.addEventListener('mouseleave', () => {
-          mouseCursor.classList.remove('overImage')
+        img.addEventListener("mouseleave", () => {
+          mouseCursor.classList.remove("overImage")
         });
-        img.addEventListener('mouseover', () => {
-          mouseCursor.classList.add('overImage')
+        img.addEventListener("mouseover", () => {
+          mouseCursor.classList.add("overImage")
         })
       });
       const scene = this.$scrollmagic.scene({

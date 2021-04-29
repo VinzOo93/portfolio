@@ -1,117 +1,117 @@
 <template>
 
   <div>
-    <div class='transition'></div>
-    <section class='welcome-home overflow-hidden'>
-      <div class='d-flex flex-column xs justify-content-center min-vh-100  container'>
-        <div class='line__wrap overflow-hidden  line-scroll-1  '>
-          <div class='line-container d-flex'>
-            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
-              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
+    <div class="transition"></div>
+    <section class="welcome-home overflow-hidden">
+      <div class="d-flex flex-column xs justify-content-center min-vh-100  container">
+        <div class="line__wrap overflow-hidden  line-scroll-1  ">
+          <div class="line-container d-flex">
+            <p class="welcome line fz-3xl p-0 m-0"><span class="customFont">HEY</span> <img
+              src="https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif" class="eyes img-line img-sm" alt="eyes">
               WELCOME
             </p>
-            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
-              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
+            <p class="welcome line fz-3xl p-0 m-0"><span class="customFont">HEY</span> <img
+              src="https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif" class="eyes img-line img-sm" alt="eyes">
               WELCOME
             </p>
           </div>
         </div>
-        <div class='line__wrap overflow-hidden   line-scroll-2'>
-          <div class='line-container d-flex'>
-            <p  class='welcome line fz-3xl p-0 m-0'><img
-              src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
-              class='covid img-sm' alt='covid'> IN MY <span
-              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
-                                                  class='world img-sm' alt='world'></p>
-            <p class='welcome line fz-3xl p-0 m-0'><img
-              src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
-              class='covid img-sm' alt='covid'> IN MY <span
-              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
-                                                  class='world img-sm' alt='world'></p>
+        <div class="line__wrap overflow-hidden   line-scroll-2">
+          <div class="line-container d-flex">
+            <p  class="welcome line fz-3xl p-0 m-0"><img
+              src="https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif"
+              class="covid img-sm" alt="covid"> IN MY <span
+              class="customFont">WORLD</span><img src="https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif"
+                                                  class="world img-sm" alt="world"></p>
+            <p class="welcome line fz-3xl p-0 m-0"><img
+              src="https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif"
+              class="covid img-sm" alt="covid"> IN MY <span
+              class="customFont">WORLD</span><img src="https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif"
+                                                  class="world img-sm" alt="world"></p>
           </div>
         </div>
-        <div class='line__wrap overflow-hidden  line-scroll-3'>
-          <div class='line-container d-flex'>
-            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
-                                                           alt='rock img-sm'><span
-              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin img-sm' alt='gin'>2021 </p>
-            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
-                                                           alt='rock img-sm'><span
-              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin img-sm' alt='gin'>2021 </p>
+        <div class="line__wrap overflow-hidden  line-scroll-3">
+          <div class="line-container d-flex">
+            <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
+                                                           alt="rock img-sm"><span
+              class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
+                                                 class="gin img-sm" alt="gin">2021 </p>
+            <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
+                                                           alt="rock img-sm"><span
+              class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
+                                                 class="gin img-sm" alt="gin">2021 </p>
           </div>
         </div>
-        <div class='line__wrap overflow-hidden line-scroll-4'>
-          <div class='line-container d-flex'>
-            <p class='welcome line fz-3xl p-0 m-0'>(<img
-              src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-              class='lemon img-line img-sm' alt='lemon'>)=><span
-              class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
-                                                           class='strawberry img-sm' alt='strawberry'>)</p>
-            <p class='welcome line fz-3xl p-0 m-0'>(<img
-              src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-              class='lemon img-line img-sm' alt='lemon'>)=><span
-              class='customFont enjoy'>ENJOY</span><=(<img src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
-                                                           class='strawberry img-sm' alt='strawberry'>)</p>
+        <div class="line__wrap overflow-hidden line-scroll-4">
+          <div class="line-container d-flex">
+            <p class="welcome line fz-3xl p-0 m-0">(<img
+              src="https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif"
+              class="lemon img-line img-sm" alt="lemon">)=><span
+              class="customFont enjoy">ENJOY</span><=(<img src="https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif"
+                                                           class="strawberry img-sm" alt="strawberry">)</p>
+            <p class="welcome line fz-3xl p-0 m-0">(<img
+              src="https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif"
+              class="lemon img-line img-sm" alt="lemon">)=><span
+              class="customFont enjoy">ENJOY</span><=(<img src="https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif"
+                                                           class="strawberry img-sm" alt="strawberry">)</p>
           </div>
         </div>
       </div>
     </section>
-    <section class='drawing'>
-      <div class='container2 d-flex justify-content-center'>
-        <div class='drawing-elem drawing-monkey '><img src='https://media.giphy.com/media/J2TpMp7nR3I6cSyRhy/giphy.gif'
-                                                       class='img-fluid monkey' alt='monkey'>
+    <section class="drawing">
+      <div class="container2 d-flex justify-content-center">
+        <div class="drawing-elem drawing-monkey "><img src="https://media.giphy.com/media/J2TpMp7nR3I6cSyRhy/giphy.gif"
+                                                       class="img-fluid monkey" alt="monkey">
         </div>
-        <div class='drawing-elem drawing-plant'><img src='https://media.giphy.com/media/TiraF3ku29LfOARfdO/giphy.gif'
-                                                     class='img-fluid plant' alt='plant'>
+        <div class="drawing-elem drawing-plant"><img src="https://media.giphy.com/media/TiraF3ku29LfOARfdO/giphy.gif"
+                                                     class="img-fluid plant" alt="plant">
         </div>
-        <div class='drawing-elem drawing-moon'><img src='https://media.giphy.com/media/h8xE5ALopE7a9nGVIu/giphy.gif'
-                                                    class='img-fluid moon' alt='moon'>
+        <div class="drawing-elem drawing-moon"><img src="https://media.giphy.com/media/h8xE5ALopE7a9nGVIu/giphy.gif"
+                                                    class="img-fluid moon" alt="moon">
         </div>
-        <div class='drawing-elem drawing-crow'><img src='https://media.giphy.com/media/eh6xpYS0f1iWyH5P3V/giphy.gif'
-                                                    class='img-fluid crow' alt='crow'>
+        <div class="drawing-elem drawing-crow"><img src="https://media.giphy.com/media/eh6xpYS0f1iWyH5P3V/giphy.gif"
+                                                    class="img-fluid crow" alt="crow">
         </div>
       </div>
     </section>
     <section>
-      <div class='congrat d-flex justify-content-center '>
-        <p class='text-congrat p-0 m-0'>Que vais-je préparer en cette glorieuse année ?</p>
+      <div class="congrat d-flex justify-content-center ">
+        <p class="text-congrat p-0 m-0">Que vais-je préparer en cette glorieuse année ?</p>
       </div>
     </section>
-    <section id='home-scroll-1'>
-      <div class='recipe d-flex justify-content-center scroll-text-1 xs-reveal'>
-        <p class='text-recipe p-0 m-0'>Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la
+    <section id="home-scroll-1">
+      <div class="recipe d-flex justify-content-center scroll-text-1 xs-reveal">
+        <p class="text-recipe p-0 m-0">Tout d"abord, il nous faut de le farine, de l"eau 💧, un peu de sel, de la
           levure,
           de
-          l'huile d'olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
+          l"huile d"olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
           nous pouvons nous lancer !
         </p>
       </div>
-      <div id='pizza1' class='pizza d-flex justify-content-center '>
-        <img class='pizza-img h-100 w-100 img-scroll-1' src='~/assets/home/pizza.jpg' alt='pizza'>
+      <div id="pizza1" class="pizza d-flex justify-content-center ">
+        <img class="pizza-img h-100 w-100 img-scroll-1" src="~/assets/home/pizza.jpg" alt="pizza">
       </div>
-      <div class='question'>
-        <p class='text-question p-0 m-0 sroll-text-1'>Mais que faisons-nous ?</p>
+      <div class="question">
+        <p class="text-question p-0 m-0 sroll-text-1">Mais que faisons-nous ?</p>
       </div>
     </section>
-    <section id='home-scroll-2'>
-      <div class='recipe d-flex justify-content-center scroll-text-2 xs-reveal'>
-        <p class='text-recipe p-0 m-0'>
-          De la passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité.
+    <section id="home-scroll-2">
+      <div class="recipe d-flex justify-content-center scroll-text-2 xs-reveal">
+        <p class="text-recipe p-0 m-0">
+          De la passion ! C"est grâce à elle que l"on surpasse ses limites dans toute l"étendue de notre créativité.
           Elle nous pousse,
-          elle nous permet de partager et de transmettre. Mais surtout d'innover dans le but de créer quelque chose
-          d'unique qui nous donne une véritable identité. Selon moi, la passion donne du sens, elle est universelle,
-          sans la passion la satisfaction s'estompe.
+          elle nous permet de partager et de transmettre. Mais surtout d"innover dans le but de créer quelque chose
+          d"unique qui nous donne une véritable identité. Selon moi, la passion donne du sens, elle est universelle,
+          sans la passion la satisfaction s"estompe.
         </p>
       </div>
     </section>
-    <div id='pizza2' class='pizza d-flex justify-content-center '>
-      <img class='pizza-img h-100 w-100 img-scroll-2' src='~/assets/home/pizza2.jpg' alt='pizza2'>
+    <div id="pizza2" class="pizza d-flex justify-content-center ">
+      <img class="pizza-img h-100 w-100 img-scroll-2" src="~/assets/home/pizza2.jpg" alt="pizza2">
     </div>
-    <section id='home-scroll-3'>
-      <div class='recipe d-flex justify-content-center scroll-text-3 xs-reveal'>
-        <p class='text-recipe p-0 m-0 end'>
+    <section id="home-scroll-3">
+      <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
+        <p class="text-recipe p-0 m-0 end">
           Cela va sans doute vous faire rire, mais de la même passion que je travaille la pâte et que je compose mes
           Pizzas 🍕. Je suis à votre écoute, pour interpréter puis modéliser, je recherche
           puis conçoie et développe pour vous un site internet "bien enfourné 🔥" qui "fait la différence 🌟" !
@@ -119,11 +119,11 @@
       </div>
     </section>
     <section>
-      <div id='pizza3' class='pizza d-flex justify-content-center '>
-        <img class='pizza-img h-100 w-100 img-scroll-3' src='~/assets/home/pizza3.jpg' alt='pizza3'>
+      <div id="pizza3" class="pizza d-flex justify-content-center ">
+        <img class="pizza-img h-100 w-100 img-scroll-3" src="~/assets/home/pizza3.jpg" alt="pizza3">
       </div>
-      <div id='home-scroll-4' class='recipe d-flex justify-content-center scroll-text-4 xs-reveal'>
-        <p class='text-recipe p-0 m-0 end '>
+      <div id="home-scroll-4" class="recipe d-flex justify-content-center scroll-text-4 xs-reveal">
+        <p class="text-recipe p-0 m-0 end ">
           Vous trouverez ici uniquement des travaux dont certains sont inspirés de références réadaptées à ma vision.
           Dès lors, je vous souhaite une bonne visite et "un buon appetito 👨🏻‍🍳🇮🇹".
         </p>
@@ -132,7 +132,7 @@
   </div>
 </template>
 <script>
-import { gsap } from 'gsap'
+import { gsap } from "gsap"
 
 export default {
   mounted: function() {
@@ -140,14 +140,14 @@ export default {
   },
   methods: {
     startAnimation: function() {
-      const line = document.querySelectorAll('.line')
-      const rock = document.querySelector('.rock')
-      let enjoy = document.querySelector('.enjoy')
-      let mouseCursor = document.querySelector('.cursor')
+      const line = document.querySelectorAll(".line")
+      const rock = document.querySelector(".rock")
+      let enjoy = document.querySelector(".enjoy")
+      let mouseCursor = document.querySelector(".cursor")
       let windowSize = screen.width
-      const revealXs = document.querySelectorAll('.xs-reveal')
-      const transition = document.querySelector('.transition')
-      const  welcome = document.querySelector('.welcome-home')
+      const revealXs = document.querySelectorAll(".xs-reveal")
+      const transition = document.querySelector(".transition")
+      const  welcome = document.querySelector(".welcome-home")
 
       console.log(windowSize)
 
@@ -157,23 +157,23 @@ export default {
           .fromTo(transition,
             {
               opacity: 1,
-              y: '100%',
+              y: "100%",
               duration: 3
             },
             {
-              y: '-100%',
+              y: "-100%",
               duration: 3
             })
-          .fromTo(welcome, { opacity: 0, y: '100%' }, {
+          .fromTo(welcome, { opacity: 0, y: "100%" }, {
             opacity: 1,
-            y: '0%',
-            ease: 'power1',
+            y: "0%",
+            ease: "power1",
             duration: 3
           })
 /*        .from(line, {
           yPercent: 200,
           duration:2,
-          ease: 'power4',
+          ease: "power4",
           stagger: 0.2
         })*/
       }
@@ -186,7 +186,7 @@ export default {
             duration: 2.5,
             scaleX: 1,
             scaleY: 1,
-            ease: 'power5'
+            ease: "power5"
           })
 
       if (windowSize > 768) {
@@ -195,15 +195,15 @@ export default {
           .from(line, {
             duration: 2,
             yPercent: 200,
-            ease: 'power4',
+            ease: "power4",
           })
 
         const scene = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: '100%'
+          duration: "100%"
         })
-          .setTween('.line-scroll-1', {
+          .setTween(".line-scroll-1", {
             x: -350
           })
         this.$scrollmagic.addScene(scene)
@@ -211,10 +211,10 @@ export default {
         const scene2 = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: '100%'
+          duration: "100%"
 
         })
-          .setTween('.line-scroll-2', {
+          .setTween(".line-scroll-2", {
             x: 350
           })
         this.$scrollmagic.addScene(scene2)
@@ -222,10 +222,10 @@ export default {
         const scene3 = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: '100%'
+          duration: "100%"
 
         })
-          .setTween('.line-scroll-3', {
+          .setTween(".line-scroll-3", {
             x: -100
           })
         this.$scrollmagic.addScene(scene3)
@@ -233,10 +233,10 @@ export default {
         const scene4 = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: '100%'
+          duration: "100%"
 
         })
-          .setTween('.line-scroll-4', {
+          .setTween(".line-scroll-4", {
             x: 100
           })
         this.$scrollmagic.addScene(scene4)
@@ -244,11 +244,11 @@ export default {
       }
       const scene5 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
+        triggerElement: ".container2",
+        duration: "120%"
 
       })
-        .setTween('.drawing-monkey', {
+        .setTween(".drawing-monkey", {
           x: -60,
           y: -30
         })
@@ -256,11 +256,11 @@ export default {
 
       const scene6 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
+        triggerElement: ".container2",
+        duration: "120%"
 
       })
-        .setTween('.drawing-moon', {
+        .setTween(".drawing-moon", {
           x: 80,
           rotation: -10
         })
@@ -268,22 +268,22 @@ export default {
 
       const scene7 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
+        triggerElement: ".container2",
+        duration: "120%"
 
       })
-        .setTween('.drawing-plant', {
+        .setTween(".drawing-plant", {
           x: -50,
           rotation: 40
         })
       this.$scrollmagic.addScene(scene7)
       const scene8 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
+        triggerElement: ".container2",
+        duration: "120%"
 
       })
-        .setTween('.drawing-crow', {
+        .setTween(".drawing-crow", {
           y: -30,
           x: 60
         })
@@ -293,39 +293,39 @@ export default {
 
         const scene10 = this.$scrollmagic.scene({
           triggerHook: 0.5,
-          triggerElement: '#home-scroll-1'
+          triggerElement: "#home-scroll-1"
         })
-          .setTween('.scroll-text-1', { opacity: 1, duration: 0.5 })
+          .setTween(".scroll-text-1", { opacity: 1, duration: 0.5 })
         this.$scrollmagic.addScene(scene10)
 
         const scene11 = this.$scrollmagic.scene({
           triggerHook: 0.8,
-          triggerElement: '#home-scroll-2'
+          triggerElement: "#home-scroll-2"
         })
-          .setTween('.scroll-text-2', { opacity: 1, duration: 0.5 })
+          .setTween(".scroll-text-2", { opacity: 1, duration: 0.5 })
         this.$scrollmagic.addScene(scene11)
 
         const scene12 = this.$scrollmagic.scene({
           triggerHook: 0.9,
-          triggerElement: '#home-scroll-3'
+          triggerElement: "#home-scroll-3"
         })
-          .setTween('.scroll-text-3', { opacity: 1, duration: 0.9 })
+          .setTween(".scroll-text-3", { opacity: 1, duration: 0.9 })
         this.$scrollmagic.addScene(scene12)
 
         const scene16 = this.$scrollmagic.scene({
           triggerHook: 0.9,
-          triggerElement: '#home-scroll-4'
+          triggerElement: "#home-scroll-4"
         })
-          .setTween('.scroll-text-4', { opacity: 1, duration: 0.9 })
+          .setTween(".scroll-text-4", { opacity: 1, duration: 0.9 })
         this.$scrollmagic.addScene(scene16)
 
         const scene13 = this.$scrollmagic.scene({
           triggerHook: 1,
-          triggerElement: '#pizza1',
-          duration: '90%'
+          triggerElement: "#pizza1",
+          duration: "90%"
 
         })
-          .setTween('.img-scroll-1', {
+          .setTween(".img-scroll-1", {
             scaleX: 1.4,
             scaleY: 1.4,
             duration: 5
@@ -333,10 +333,10 @@ export default {
         this.$scrollmagic.addScene(scene13)
         const scene14 = this.$scrollmagic.scene({
           triggerHook: 0.7,
-          triggerElement: '#pizza2',
-          duration: '90%'
+          triggerElement: "#pizza2",
+          duration: "90%"
         })
-          .setTween('.img-scroll-2', {
+          .setTween(".img-scroll-2", {
             scaleX: 1.3,
             scaleY: 1.3,
             duration: 5
@@ -344,23 +344,23 @@ export default {
         this.$scrollmagic.addScene(scene14)
         const scene15 = this.$scrollmagic.scene({
           triggerHook: 0.3,
-          triggerElement: '#pizza3',
-          duration: '90%'
+          triggerElement: "#pizza3",
+          duration: "90%"
         })
-          .setTween('.img-scroll-3', {
+          .setTween(".img-scroll-3", {
             scaleX: 1.3,
             scaleY: 1.3,
             duration: 5
           })
         this.$scrollmagic.addScene(scene15)
       } else {
-        revealXs.forEach(text => text.style.opacity = '1')
+        revealXs.forEach(text => text.style.opacity = "1")
       }
-      enjoy.addEventListener('mouseover', () => {
-        mouseCursor.classList.add('link-grow')
+      enjoy.addEventListener("mouseover", () => {
+        mouseCursor.classList.add("link-grow")
       })
-      enjoy.addEventListener('mouseleave', () => {
-        mouseCursor.classList.remove('link-grow')
+      enjoy.addEventListener("mouseleave", () => {
+        mouseCursor.classList.remove("link-grow")
       })
 
 
@@ -375,7 +375,7 @@ export default {
 
 <style scoped>
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768.5px) {
 
   .fz-3xl {
     font-size: 28.985507246vw;
@@ -520,7 +520,7 @@ export default {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
+@media only screen and (min-width: 768.5px) and (max-width: 992px) {
 
 
   .drawing-monkey {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='transition'></div>
+    <div class="transition"></div>
 
     <h1>about</h1>
 
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
+import { gsap } from "gsap"
 
 export default {
   mounted: function() {
@@ -16,9 +16,9 @@ export default {
   },
   methods: {
     startAnimation: function() {
-      const transition = document.querySelector('.transition')
+      const transition = document.querySelector(".transition")
       gsap.timeline(100)
-        .fromTo(transition, { opacity: 1, y: '100%', duration: 3 }, { y: '-100%', duration: 2.5 })
+        .fromTo(transition, { opacity: 1, y: "100%", duration: 3 }, { y: "-100%", duration: 2.5 })
     }
   }
 }

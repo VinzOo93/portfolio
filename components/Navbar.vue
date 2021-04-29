@@ -1,34 +1,34 @@
 <template>
   <div>
-    <div class='navbar navigation'>
+    <div class="navbar navigation">
       <nav>
         <ul>
           <li>
-            <nuxt-link class='navbar-link' to='/'>Acceuil</nuxt-link>
+            <nuxt-link class="navbar-link" to="/">Acceuil</nuxt-link>
           </li>
           <li>
-            <nuxt-link class='navbar-link' to='/projet'>Projets Web</nuxt-link>
+            <nuxt-link class="navbar-link" to="/projet">Projets Web</nuxt-link>
           </li>
           <li>
-            <nuxt-link class='navbar-link' to='/photo'>Galerie photo</nuxt-link>
+            <nuxt-link class="navbar-link" to="/photo">Galerie photo</nuxt-link>
           </li>
           <li>
-            <nuxt-link class='navbar-link' to='/about'>A propos de moi</nuxt-link>
+            <nuxt-link class="navbar-link" to="/about">A propos de moi</nuxt-link>
           </li>
         </ul>
       </nav>
-      <button type='button' aria-label='Switch appearance'
-              class='navigation-button  js-navigation-button' v-on:click='setBackground'></button>
+      <button type="button" aria-label="Switch appearance"
+              class="navigation-button  js-navigation-button" v-on:click="setBackground"></button>
     </div>
   </div>
 </template>
 
 <script>
-import { gsap } from 'gsap'
+import { gsap } from "gsap"
 
 
 export default {
-  Name: 'Navbar',
+  Name: "Navbar",
 
   mounted: function() {
     this.setBackground()
@@ -37,16 +37,16 @@ export default {
   methods: {
     setBackground: function() {
 
-      const button = document.querySelector('.navigation-button')
-      const body = document.querySelector('body')
+      const button = document.querySelector(".navigation-button")
+      const body = document.querySelector("body")
 
-      if (document.body.style.backgroundColor === 'white') {
-        gsap.to(body, { backgroundColor: '#151414', duration: 0.5 })
-        gsap.to(button, { backgroundColor: 'white', duration: 0.2 })
+      if (document.body.style.backgroundColor === "white") {
+        gsap.to(body, { backgroundColor: "#151414", duration: 0.5 })
+        gsap.to(button, { backgroundColor: "white", duration: 0.2 })
       }
     else {
-        gsap.to(body, { backgroundColor: 'white', duration: 0.5 })
-        gsap.to(button, { backgroundColor: '#151414', duration: 0.2 })
+        gsap.to(body, { backgroundColor: "white", duration: 0.5 })
+        gsap.to(button, { backgroundColor: "#151414", duration: 0.2 })
       }
 
 

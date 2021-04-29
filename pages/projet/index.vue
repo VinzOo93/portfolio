@@ -1,10 +1,15 @@
 <template>
   <div>
-    <div>
-      <div class='transition'></div>
-
-    </div>
-    <h1>projet</h1>
+      <div class="transition"></div>
+    <article>
+      <div class="separator">
+        <span class="separator__year">2020</span>
+        <span class="separator__line"></span>
+      </div>
+      <div class="card">
+        <h2 class="name"></h2>
+      </div>
+    </article>
   </div>
 
 </template>
