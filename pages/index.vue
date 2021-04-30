@@ -98,11 +98,11 @@
     <section id="home-scroll-2">
       <div class="recipe d-flex justify-content-center scroll-text-2 xs-reveal">
         <p class="text-recipe p-0 m-0">
-          De la passion ! C'est grâce à elle que l"on surpasse ses limites dans toute l'étendue de notre créativité.
+          De la passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité.
           Elle nous pousse,
-          elle nous permet de partager et de transmettre. Mais surtout d"innover dans le but de créer quelque chose
-          d"unique qui nous donne une véritable identité. Selon moi, la passion donne du sens, elle est universelle,
-          sans la passion la satisfaction s"estompe.
+          elle nous permet de partager et de transmettre. Mais surtout d'innover dans le but de créer quelque chose
+          d'authentique. Selon moi, la passion donne du sens, elle est universelle,
+          sans la passion la satisfaction n'éxiste.
         </p>
       </div>
     </section>
@@ -112,9 +112,8 @@
     <section id="home-scroll-3">
       <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
         <p class="text-recipe p-0 m-0 end">
-          Cela va sans doute vous faire rire, mais de la même passion que je travaille la pâte et que je compose mes
-          Pizzas 🍕. Je suis à votre écoute, pour interpréter puis modéliser, je recherche
-          puis conçoie et développe pour vous un site internet "bien enfourné 🔥" qui "fait la différence 🌟" !
+          De la même passion que dans ma cuisine, je suis à votre écoute, pour prendre connaissance de votre besoin. Je recherche
+          et développe pour vous un site internet "bien enfourné 🔥🍕" qui "fait la différence" !
         </p>
       </div>
     </section>

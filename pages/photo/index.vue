@@ -86,7 +86,7 @@
 
 <script>
 
-import { gsap, Power1 } from "gsap"
+import { gsap } from "gsap"
 import mediumZoom from "medium-zoom"
 
 

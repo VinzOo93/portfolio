@@ -1,22 +1,22 @@
 <template>
   <div>
-    <div class='transition'></div>
-    <div class='projets'>
+    <div class='transition '></div>
+    <div class='projets smooth-scroll-wrapper '>
       <article class='case p-0 m-0 f-100 b-0'>
         <div class='separator p-0 m-0 f-100 b-0'>
           <span class='separator__year'>2020</span>
           <span class='separator__line line-1'></span>
         </div>
         <div class='card container p-0 m-0 f-100 b-0'>
-          <div class='scroll'>
-          <h2 class='name'>Comparateur</h2>
-          <h3 class='text'>Création, intégration et déploiement d’un comparateur de produits responsive en AJAX sous
-            PHP Symfony.
-          </h3>
+          <div class='scroll-card'>
+            <h2 class='name'>Comparateur</h2>
+            <h3 class='text'>Création, intégration et déploiement d’un comparateur de produits responsive en AJAX sous
+              PHP Symfony.
+            </h3>
 
-          <p class='text'>Technologies utilisées : PHP Symfony, Javascript, Bootstrap, Twig, MySQL, Doctrine,
-            Apache. </p>
-          <a class='button-to-website' href='https://www.economiser-mon-argent.com/' target='_blank'>Voir le site</a>
+            <p class='text'>Technologies utilisées : PHP Symfony, Javascript, Bootstrap, Twig, MySQL, Doctrine,
+              Apache. </p>
+            <a class='button-to-website' href='https://www.economiser-mon-argent.com/' target='_blank'>Voir le site</a>
           </div>
           <div class='img-project '>
             <img src='~/assets/projects/comparateur-1.png' class='img-projets comparateur-1 size-1' alt='comparateur-1'>
@@ -24,22 +24,23 @@
           </div>
         </div>
       </article>
-      <article class='case p-0 m-0 f-100 b-0'>
+      <article class='case  p-0 m-0 f-100 b-0'>
         <div class='separator p-0 m-0 f-100 b-0'>
           <span class='separator__year'>2020</span>
           <span class='separator__line line-1'></span>
         </div>
         <div class='card container p-0 m-0 f-100 b-0'>
-          <div class='scroll'>
-          <h2 class='name'>Portfolio V1</h2>
-          <h3 class='text'>
-          </h3>
-          <h3 class='text'> Premier portfolio présantant mon CV pour m'éxercer aux fondamentaux du HTML/CSS et Javascript (ceci n'est pas mon CV à jour).
-          </h3>
+          <div class='scroll-card'>
+            <h2 class='name'>Portfolio V1</h2>
+            <h3 class='text'>
+            </h3>
+            <h3 class='text'> Premier portfolio présantant mon CV pour m'éxercer aux fondamentaux du HTML/CSS et
+              Javascript (ceci n'est pas mon CV à jour).
+            </h3>
 
-          <p class='text'>Technologies utilisées : HTML/CSS, Javascript, bootstrap, déploiement sous fileZila
-            Apache. </p>
-          <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
+            <p class='text'>Technologies utilisées : HTML/CSS, Javascript, bootstrap, déploiement sous fileZila
+              Apache. </p>
+            <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
           </div>
           <div class='img-project '>
             <img src='~/assets/projects/resume-1.png' class='img-projets comparateur-1 size-1' alt='comparateur-1'>
@@ -53,18 +54,19 @@
           <span class='separator__line line-1'></span>
         </div>
         <div class='card container p-0 m-0 f-100 b-0'>
-          <div class='scroll'>
-          <h2 class='name'>Portfolio V1</h2>
-          <h3 class='text'>
-          </h3>
-          <h3 class='text'> Premier portfolio présantant mon CV pour m'éxercer aux fondamentaux du HTML/CSS et Javascript (ceci n'est pas mon CV à jour).
-          </h3>
+          <div class='scroll-card'>
+            <h2 class='name'>Portfolio V1</h2>
+            <h3 class='text'>
+            </h3>
+            <h3 class='text'> Premier portfolio présantant mon CV pour m'éxercer aux fondamentaux du HTML/CSS et
+              Javascript (ceci n'est pas mon CV à jour).
+            </h3>
 
-          <p class='text'>Technologies utilisées : HTML/CSS, Javascript, bootstrap, déploiement sous fileZila
-            Apache. </p>
-          <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
+            <p class='text'>Technologies utilisées : HTML/CSS, Javascript, bootstrap, déploiement sous fileZila
+              Apache. </p>
+            <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
           </div>
-            <div class='img-project '>
+          <div class='img-project '>
             <img src='~/assets/projects/resume-1.png' class='img-projets comparateur-1 size-1' alt='comparateur-1'>
             <img src='~/assets/projects/resume-2.png' class='img-projets comparateur-2 size-2' alt='comparateur-2'>
           </div>
@@ -88,35 +90,50 @@ export default {
       const transition = document.querySelector('.transition')
       const projets = document.querySelector('.projets')
       const line = document.querySelectorAll('.line-1')
-      const card = document.querySelectorAll('.scroll')
 
       gsap.timeline(100)
         .fromTo(transition, {
           opacity: 1,
-          y: '100%',
+          yPercent: 100,
           duration: 3
         }, {
-          y: '-100%',
+          yPercent: -100,
           duration: 2.5
         })
         .fromTo(projets, { opacity: 0, y: '100%' }, {
           opacity: 1,
-          y: "0%",
+          y: '0%',
           ease: 'power1',
           duration: 3
         })
-      .from(line, {
-        scaleX: 0,
-        transformOrigin: "left"
-      });
-  /*    const scene = this.$scrollmagic.scene({
-        triggerHook: "onEnter",
-        triggerElement: this,
-        reverse: true
-      })
-      .setTween(card, {yPercent: -10, rotation: 0.01})
-      this.$scrollmagic.addScene(scene)
-    */
+        .from(line, {
+          scaleX: 0,
+          transformOrigin: 'left'
+        })
+      const body = document.body
+      const scrollWrap = document.getElementsByClassName('smooth-scroll-wrapper')[0]
+      const height = scrollWrap.getBoundingClientRect().height - 1
+      const cards = document.querySelectorAll('.scroll-card')
+
+      const speed = 0.10
+
+      var offset = 0
+
+      body.style.height = Math.floor(height) + 'px'
+
+      function smoothScroll() {
+        offset += (window.pageYOffset - offset) * speed
+
+        scrollWrap.style.transform = 'translateY(-' + offset + 'px) translate(0)'
+
+        cards.forEach( card => {
+        card.style.transform = 'translateY(-' + offset/10 + 'px) translate(0)'
+          })
+
+        requestAnimationFrame(smoothScroll)
+      }
+
+      smoothScroll()
     }
 
 
