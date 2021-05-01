@@ -1,7 +1,52 @@
 <template>
   <div>
     <div class='transition '></div>
-    <div class='projets smooth-scroll-wrapper '>
+    <div class=' smooth-scroll-wrapper '>
+      <div CLASS='projets'>
+      <article class='case p-0 m-0 f-100 b-0'>
+        <div class='separator p-0 m-0 f-100 b-0'>
+          <span class='separator__year'>2021</span>
+          <span class='separator__line line-1'></span>
+        </div>
+        <div class='card container p-0 m-0 f-100 b-0'>
+          <div class='scroll-card'>
+            <h2 class='name'>Portfolio V2</h2>
+            <h3 class='text'>
+            </h3>
+            <h3 class='text'> Deuxième version de mon portfolio comprenant un nouveau design, une galerie photo, la gestion de la couleur du thème, plusieurs animations originales.
+            </h3>
+
+            <p class='text'>Technologies utilisées : HTML/SCSS, Javascript, GSAP, ScrollMagic, MediumZoom</p>
+            <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
+          </div>
+          <div class='img-project '>
+            <img src='~/assets/projects/portfolioV2-1.png' class='img-projets portfolioV2-2 size-1' alt='portfolioV2-1'>
+            <img src='~/assets/projects/portfolioV2-2.png' class='img-projets portfolioV2-2 size-2' alt='portfolioV2-2'>
+          </div>
+        </div>
+      </article>
+      <article class='case  p-0 m-0 f-100 b-0'>
+        <div class='separator p-0 m-0 f-100 b-0'>
+          <span class='separator__year'>2021</span>
+          <span class='separator__line line-1'></span>
+        </div>
+        <div class='card container p-0 m-0 f-100 b-0'>
+          <div class='scroll-card'>
+            <h2 class='name'>API TMDB</h2>
+            <h3 class='text'>
+            </h3>
+            <h3 class='text'>Création de l'interface graphique, intégration d'une base de données provenant de l'Api The Movie Database, Gestion des CRUD, upload image, possibilité de filtrer les données avec critères de recherches.
+            </h3>
+
+            <p class='text'>Technologies utilisées : PHP Symfony, HTML/CSS, Twig ,MySQL, Doctrine, Bootstrap, Apache. </p>
+            <a class='button-to-website' href='https://github.com/VinzOo93/gestionDVD' target='_blank'>Git clone</a>
+          </div>
+          <div class='img-project '>
+            <img src='~/assets/projects/dvd-1.png' class='img-projets dvd-1 size-1' alt='dvd-1'>
+            <img src='~/assets/projects/dvd-2.png' class='img-projets dvd-2 size-1' alt='dvd-2'>
+          </div>
+        </div>
+      </article>
       <article class='case p-0 m-0 f-100 b-0'>
         <div class='separator p-0 m-0 f-100 b-0'>
           <span class='separator__year'>2020</span>
@@ -10,8 +55,8 @@
         <div class='card container p-0 m-0 f-100 b-0'>
           <div class='scroll-card'>
             <h2 class='name'>Comparateur</h2>
-            <h3 class='text'>Création, intégration et déploiement d’un comparateur de produits responsive en AJAX sous
-              PHP Symfony.
+            <h3 class='text'>Intégration et déploiement d’un comparateur de produits responsive en AJAX sous
+              PHP Symfony avec accès admin pour gestion des CRUD.
             </h3>
 
             <p class='text'>Technologies utilisées : PHP Symfony, Javascript, Bootstrap, Twig, MySQL, Doctrine,
@@ -24,30 +69,6 @@
           </div>
         </div>
       </article>
-      <article class='case  p-0 m-0 f-100 b-0'>
-        <div class='separator p-0 m-0 f-100 b-0'>
-          <span class='separator__year'>2020</span>
-          <span class='separator__line line-1'></span>
-        </div>
-        <div class='card container p-0 m-0 f-100 b-0'>
-          <div class='scroll-card'>
-            <h2 class='name'>Portfolio V1</h2>
-            <h3 class='text'>
-            </h3>
-            <h3 class='text'> Premier portfolio présantant mon CV pour m'éxercer aux fondamentaux du HTML/CSS et
-              Javascript (ceci n'est pas mon CV à jour).
-            </h3>
-
-            <p class='text'>Technologies utilisées : HTML/CSS, Javascript, bootstrap, déploiement sous fileZila
-              Apache. </p>
-            <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
-          </div>
-          <div class='img-project '>
-            <img src='~/assets/projects/resume-1.png' class='img-projets comparateur-1 size-1' alt='comparateur-1'>
-            <img src='~/assets/projects/resume-2.png' class='img-projets comparateur-2 size-2' alt='comparateur-2'>
-          </div>
-        </div>
-      </article>
       <article class='case p-0 m-0 f-100 b-0'>
         <div class='separator p-0 m-0 f-100 b-0'>
           <span class='separator__year'>2020</span>
@@ -62,16 +83,16 @@
               Javascript (ceci n'est pas mon CV à jour).
             </h3>
 
-            <p class='text'>Technologies utilisées : HTML/CSS, Javascript, bootstrap, déploiement sous fileZila
-              Apache. </p>
+            <p class='text'>Technologies utilisées : HTML/CSS, Javascript, Bootstrap, déploiement avec fileZila</p>
             <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
           </div>
           <div class='img-project '>
-            <img src='~/assets/projects/resume-1.png' class='img-projets comparateur-1 size-1' alt='comparateur-1'>
-            <img src='~/assets/projects/resume-2.png' class='img-projets comparateur-2 size-2' alt='comparateur-2'>
+            <img src='~/assets/projects/resume-1.png' class='img-projets comparateur-1 size-1' alt='resume-1'>
+            <img src='~/assets/projects/resume-2.png' class='img-projets comparateur-2 size-2' alt='resume-2'>
           </div>
         </div>
       </article>
+      </div>
     </div>
 
   </div>
