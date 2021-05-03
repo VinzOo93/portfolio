@@ -111,8 +111,8 @@
     <section id="home-scroll-3">
       <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
         <p class="text-recipe p-0 m-0 end">
-          De la même passion que dans ma cuisine, je suis à votre écoute, pour prendre connaissance de votre besoin. Je recherche
-          et développe pour vous un site internet "bien enfourné 🔥🍕" qui "fait la différence" !
+          De la même passion que dans ma cuisine pour le développement de pizza, je suis à votre écoute, pour prendre connaissance de votre besoin. Je recherche
+          et développe pour vous votre site internet "bien enfourné 🔥🍕" qui "fait la différence" !
         </p>
       </div>
     </section>

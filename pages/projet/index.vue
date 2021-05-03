@@ -17,7 +17,8 @@
                 <h3 class='text'> Deuxième version de mon portfolio comprenant un nouveau design, une galerie photo, la
                   gestion de la couleur du thème, plusieurs animations originales.
                 </h3>
-                <p class='text'>Technologies utilisées : HTML/SCSS, Javascript, GSAP, ScrollMagic, MediumZoom, Déploiement sous Eroku</p>
+                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, GSAP, ScrollMagic, MediumZoom,
+                  Déploiement sous Eroku</p>
                 <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
               </div>
             </div>
@@ -127,8 +128,7 @@ export default {
       const projets = document.querySelector('.projets')
       const line = document.querySelectorAll('.line-1')
       const button = document.querySelectorAll('.button-to-website')
-      const mouseCursor = document.querySelector(".cursor")
-
+      const mouseCursor = document.querySelector('.cursor')
 
 
       gsap.timeline(100)
@@ -172,25 +172,24 @@ export default {
 
         requestAnimationFrame(smoothScroll)
       }
+
       smoothScroll()
-  const  scene = this.$scrollmagic.scene({
-        triggerElement: "#article-2",
-        triggerHook: 0.3,
-   })
-      .setTween(".case", {opacity: 1, duration: 0.25})
+      const scene = this.$scrollmagic.scene({
+        triggerElement: '#article-2',
+        triggerHook: 0.3
+      })
+        .setTween('.case', { opacity: 1, duration: 0.25 })
       this.$scrollmagic.addScene(scene)
 
-      button.forEach( b => {
-        b.addEventListener("mouseover", () => {
-          mouseCursor.classList.add("link-grow")
+      button.forEach(b => {
+        b.addEventListener('mouseover', () => {
+          mouseCursor.classList.add('link-grow')
 
-          b.addEventListener("mouseleave", () => {
-            mouseCursor.classList.remove("link-grow")
+          b.addEventListener('mouseleave', () => {
+            mouseCursor.classList.remove('link-grow')
           })
         })
       })
-
-
 
 
     }
@@ -205,7 +204,6 @@ export default {
 @media only screen and  (max-width: 768px) {
 
 
-
   .case {
     margin-top: 30% !important;
     flex-direction: column-reverse;
@@ -214,7 +212,7 @@ export default {
   }
 
   .text-content-xs {
-    padding-top: 125%!important;
+    padding-top: 125% !important;
   }
 
   .name {
@@ -224,7 +222,7 @@ export default {
 
   .img-project {
     width: 60% !important;
-    top : 20% !important;
+    top: 20% !important;
     left: 10% !important;
   }
 
@@ -243,7 +241,6 @@ export default {
 article {
   vertical-align: baseline;
 }
-
 
 
 .case {

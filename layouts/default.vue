@@ -85,7 +85,10 @@ body {
 <script>
 import { gsap } from "gsap"
 
+
+
 export default {
+
   beforeMount: function() {
     this.beforeMount()
   },

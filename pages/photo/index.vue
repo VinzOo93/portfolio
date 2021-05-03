@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="gallery">
         <div class="transition"></div>
-      <div class="container">
+    <div class="gallery">
+    <div class="container">
         <div class="content">
           <img class="cover2 js-transition zoom" alt="image-aurora1" src="~/assets/images/aurora1.JPG">
           <img class="cover2 js-transition zoom" alt="image-aurora2" src="~/assets/images/aurora2.JPG">
@@ -95,6 +95,7 @@ export default {
   mounted: function() {
     this.startAnimation()
   },
+
 
   methods: {
     startAnimation: function() {
