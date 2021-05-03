@@ -81,7 +81,7 @@
     </section>
     <section id="home-scroll-1">
       <div class="recipe d-flex justify-content-center scroll-text-1 xs-reveal">
-        <p class="text-recipe p-0 m-0">Tout d"abord, il nous faut de le farine, de l"eau 💧, un peu de sel, de la
+        <p class="text-recipe p-0 m-0">Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la
           levure,
           de
           l'huile d"olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
@@ -101,8 +101,7 @@
           De la passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité.
           Elle nous pousse,
           elle nous permet de partager et de transmettre. Mais surtout d'innover dans le but de créer quelque chose
-          d'authentique. Selon moi, la passion donne du sens, elle est universelle,
-          sans la passion la satisfaction n'éxiste.
+          d'authentique. Selon moi, la passion donne du sens, elle est universelle.
         </p>
       </div>
     </section>
@@ -342,7 +341,7 @@ export default {
           })
         this.$scrollmagic.addScene(scene14)
         const scene15 = this.$scrollmagic.scene({
-          triggerHook: 0.3,
+          triggerHook: 0.4,
           triggerElement: "#pizza3",
           duration: "90%"
         })
@@ -611,15 +610,11 @@ export default {
   .container {
     position: relative;
   }
-
-
   .drawing-monkey {
     width: 7.222222222vw;
     bottom: auto;
 
   }
-
-
   .drawing-monkey {
     width: 7.222222222vw;
     bottom: auto;
@@ -783,7 +778,6 @@ img {
   image-rendering: auto;
 }
 
-
 .rock {
   margin-left: 20px;
   margin-right: 20px;
@@ -832,8 +826,6 @@ p .customFont {
   line-height: 1;
 
 }
-
-
 section {
   display: block;
 }

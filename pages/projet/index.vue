@@ -2,32 +2,34 @@
   <div>
     <div class='transition '></div>
     <div class=' smooth-scroll-wrapper '>
-      <div CLASS='projets'>
-        <article class='case p-0 m-0 f-100 b-0'>
+      <div class='projets'>
+        <article class='case  p-0 m-0 f-100 b-0'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
           </div>
           <div class='card container p-0 m-0 f-100 b-0'>
             <div class='scroll-card'>
-              <h2 class='name'>Portfolio V2</h2>
-              <h3 class='text'>
-              </h3>
-              <h3 class='text'> Deuxième version de mon portfolio comprenant un nouveau design, une galerie photo, la
-                gestion de la couleur du thème, plusieurs animations originales.
-              </h3>
-              <p class='text'>Technologies utilisées : HTML/SCSS, Javascript, GSAP, ScrollMagic, MediumZoom</p>
-              <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
+              <div class='text-content-xs'>
+                <h2 class='name'>Portfolio V2</h2>
+                <h3 class='text'>
+                </h3>
+                <h3 class='text'> Deuxième version de mon portfolio comprenant un nouveau design, une galerie photo, la
+                  gestion de la couleur du thème, plusieurs animations originales.
+                </h3>
+                <p class='text'>Technologies utilisées : HTML/SCSS, Javascript, GSAP, ScrollMagic, MediumZoom, Déploiement sous Eroku</p>
+                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
+              </div>
             </div>
             <div class='img-project '>
-              <img src='~/assets/projects/portfolioV2-1.png' class='img-projets portfolioV2-2 size-1'
+              <img src='~/assets/projects/portfolioV2-1.png' class='img-projets portfolioV2-1 size-1'
                    alt='portfolioV2-1'>
               <img src='~/assets/projects/portfolioV2-2.png' class='img-projets portfolioV2-2 size-2'
                    alt='portfolioV2-2'>
             </div>
           </div>
         </article>
-        <article class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-4' class='case  p-0 m-0 f-100 b-0'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -42,7 +44,6 @@
                   The Movie Database, Gestion des CRUD, upload image, possibilité de filtrer les données avec critères
                   de recherches.
                 </h3>
-
                 <p class='text'>Technologies utilisées : PHP Symfony, HTML/CSS, Twig ,MySQL, Doctrine, Bootstrap,
                   Apache. </p>
                 <a class='button-to-website' href='https://github.com/VinzOo93/gestionDVD' target='_blank'>Git clone</a>
@@ -54,7 +55,7 @@
             </div>
           </div>
         </article>
-        <article class='case p-0 m-0 f-100 b-0'>
+        <article id='article-3' class='case p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2020</span>
             <span class='separator__line line-1'></span>
@@ -64,7 +65,7 @@
               <div class='text-content-xs'>
                 <h2 class='name'>Comparateur</h2>
                 <h3 class='text'>Intégration et déploiement d’un comparateur de produits responsive en AJAX sous
-                  PHP Symfony avec accès admin pour gestion des CRUD.
+                  PHP Symfony avec accès admin pour la gestion des CRUD.
                 </h3>
 
                 <p class='text'>Technologies utilisées : PHP Symfony, Javascript, Bootstrap, Twig, MySQL, Doctrine,
@@ -73,7 +74,7 @@
                   site</a>
               </div>
             </div>
-            <div class='img-project '>
+            <div id='article-2' class='img-project'>
               <img src='~/assets/projects/comparateur-1.png' class='img-projets comparateur-1 size-1'
                    alt='comparateur-1'>
               <img src='~/assets/projects/comparateur-2.png' class='img-projets comparateur-2 size-2'
@@ -81,7 +82,7 @@
             </div>
           </div>
         </article>
-        <article class='case p-0 m-0 f-100 b-0'>
+        <article id='article-1' class='case p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2020</span>
             <span class='separator__line line-1'></span>
@@ -92,7 +93,7 @@
                 <h2 class='name'>Portfolio V1</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Premier portfolio présantant mon CV pour m'éxercer aux fondamentaux du HTML/CSS et
+                <h3 class='text'> Premier portfolio présentant mon CV afin de m'éxercer aux fondamentaux du HTML/CSS et
                   Javascript (ceci n'est pas mon CV à jour).
                 </h3>
 
@@ -125,6 +126,10 @@ export default {
       const transition = document.querySelector('.transition')
       const projets = document.querySelector('.projets')
       const line = document.querySelectorAll('.line-1')
+      const button = document.querySelectorAll('.button-to-website')
+      const mouseCursor = document.querySelector(".cursor")
+
+
 
       gsap.timeline(100)
         .fromTo(transition, {
@@ -152,7 +157,7 @@ export default {
 
       const speed = 0.10
 
-      var offset = 0
+      let offset = 0
 
       body.style.height = Math.floor(height) + 'px'
 
@@ -162,13 +167,32 @@ export default {
         scrollWrap.style.transform = 'translateY(-' + offset + 'px) translate(0)'
 
         cards.forEach(card => {
-          card.style.transform = 'translateY(-' + offset / 10 + 'px) translate(0)'
+          card.style.transform = 'translateY(-' + offset / 15 + 'px) translate(0)'
         })
 
         requestAnimationFrame(smoothScroll)
       }
-
       smoothScroll()
+  const  scene = this.$scrollmagic.scene({
+        triggerElement: "#article-2",
+        triggerHook: 0.3,
+   })
+      .setTween(".case", {opacity: 1, duration: 0.25})
+      this.$scrollmagic.addScene(scene)
+
+      button.forEach( b => {
+        b.addEventListener("mouseover", () => {
+          mouseCursor.classList.add("link-grow")
+
+          b.addEventListener("mouseleave", () => {
+            mouseCursor.classList.remove("link-grow")
+          })
+        })
+      })
+
+
+
+
     }
 
 
@@ -180,14 +204,17 @@ export default {
 
 @media only screen and  (max-width: 768px) {
 
+
+
   .case {
-    margin-top: 20% !important;
+    margin-top: 30% !important;
     flex-direction: column-reverse;
     align-items: flex-start;
     justify-content: center;
   }
+
   .text-content-xs {
-    margin-top: 20% !important;
+    padding-top: 125%!important;
   }
 
   .name {
@@ -196,8 +223,13 @@ export default {
   }
 
   .img-project {
-    width: 70% !important;
-    left: 20% !important;
+    width: 60% !important;
+    top : 20% !important;
+    left: 10% !important;
+  }
+
+  .text {
+    width: 100% !important;
   }
 
 }
@@ -212,6 +244,8 @@ article {
   vertical-align: baseline;
 }
 
+
+
 .case {
   position: relative;
   display: flex;
@@ -220,6 +254,10 @@ article {
   align-items: center;
   justify-content: space-between;
   padding: 12.5rem 0;
+}
+
+.case.hidden {
+  opacity: 0;
 }
 
 .separator {

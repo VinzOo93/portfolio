@@ -31,7 +31,6 @@ body {
 
 
 * {
-  scroll-behavior: smooth;
   font-family: "Cormorant Garamond", serif;
   text-decoration: none;
   color: #504e4c;
