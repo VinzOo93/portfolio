@@ -84,7 +84,7 @@
         <p class="text-recipe p-0 m-0">Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la
           levure,
           de
-          l'huile d"olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
+          l'huile d'olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
           nous pouvons nous lancer !
         </p>
       </div>

@@ -13,41 +13,53 @@
               src='~/assets/about/linked.png' width='12.5' height='12.5' alt='linkedin'> Linkedin</a>
             <a class='btn button-to-website' href='mailto:v.orru@live.fr'>📤 Email</a>
           </div>
+          <div class='technos'>
+            <img class='html' height='50px' src='~/assets/about/html.png' alt='html'>
+            <img class='css' height='50px' src='~/assets/about/css.png' alt='css'>
+            <img class='javascript' height='50px' src='~/assets/about/javascript.png' alt='javacript'>
+            <img class='nuxtJs' height='50px' src='~/assets/about/NuxtJS.png' alt='nuxtJs'>
+            <img class='symfony' height='50px' src='~/assets/about/symfony.png' alt='symfony'>
+
+          </div>
         </div>
       </div>
       <div class='container'>
-        <p class='description scroll cover'>
-          Auparavant, j'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
-          sein d'acteurs majeurs dans le secteur de la banque, du recrutement et du multimédia.
+          <p class='description scroll cover'>
+            J'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
+            sein d'acteurs majeurs dans le secteur de la banque, du recrutement et du multimédia.
 
-          <br><br> De plus, ayant l'esprit voyageur et ouvert. J'ai pris plusieurs fois l'initiative de sortir de ma
-          zone
-          de confort. Dans le but de découvrir de nouvelles cultures et personnalités, comme lors de mon année de WHV en
-          Australie et lors de mon expérience dans l'aviation commerciale.
+            <br><br> De plus, ayant l'esprit voyageur et ouvert. J'ai pris plusieurs fois l'initiative de sortir de ma
+            zone
+            de confort. Dans le but de découvrir de nouvelles cultures et personnalités, comme lors de mon année de WHV
+            en
+            Australie et lors de mon expérience dans l'aviation commerciale.
 
-          Je suis aussi passionné de photographie de cuisine et de nouvelles technologies, j'ai toujours aimé apprendre
-          par moi-même, ainsi que m'adapter pour étendre ma créativité et relever des défis.
+            Je suis aussi passionné de photographie de cuisine et de nouvelles technologies, j'ai toujours aimé
+            apprendre
+            par moi-même, ainsi que m'adapter pour étendre ma créativité et relever des défis.
 
-          C'est pour cela que j'ai décidé d'entreprendre une formation à l'Eni pour m'orienter vers le métier de
-          développeur Web & Web mobile. En effet, selon moi, c'est un métier rigoureux où il faut constamment s'informer
-          et se remettre en question pour évoluer et cela est tout à fait ce que je recherche.
+            C'est pour cela que j'ai décidé d'entreprendre une formation à l'Eni pour m'orienter vers le métier de
+            développeur Web & Web mobile. En effet, selon moi, c'est un métier rigoureux où il faut constamment
+            s'informer
+            et se remettre en question pour évoluer et cela est tout à fait ce que je recherche.
 
-          <br><br> Durant mon stage, j'ai aussi réalisé qu'avoir des compétences relationnelles et commerciales sont
-          vraiment des atouts non négligeables pour échanger en équipe et mener à bien le projet.
+            <br><br> Durant mon stage, j'ai aussi réalisé qu'avoir des compétences relationnelles et commerciales sont
+            vraiment des atouts non négligeables pour échanger en équipe et mener à bien le projet.
 
-          <br><br> D'autre part, je peux intervenir autant dans des projets fronts ou backs, mes langages de
-          prédilections sont le PHP et le Javascript.
+            <br><br> D'autre part, je peux intervenir autant dans des projets fronts ou backs, mes langages de
+            prédilections sont le PHP et le Javascript.
 
-          <br><br> J'affectionne tout particulièrement l'intégration de contenu HTML/CSS Sass.
+            <br><br> J'affectionne tout particulièrement l'intégration de contenu HTML/CSS Sass.
 
-          <br><br> Cela fait que j'aime par-dessus tout, m'inforner sur les tendances pour rendre mes projets
-          différents.
-          Je mets en valeur l'expérience client qui est pour moi l'un des fondements pour se démarquer.
+            <br><br> De ce fait que j'aime par-dessus tout, m'inforner sur les tendances pour rendre mes projets
+            différents.
+            Je mets en valeur l'expérience client qui est pour moi l'un des fondements pour se démarquer.
 
-          <br><br> Maintenant, mon objectif principal est de continuer mon évolution dans le métier en intégrant une
-          équipe ouverte et dynamique afin de réaliser des projets de plus grande envergure.
-        </p>
-      </div>
+            <br><br> Maintenant, mon objectif principal est de continuer mon évolution dans le métier en intégrant une
+            équipe ouverte et dynamique afin de réaliser des projets de plus grande envergure en alternance avec
+            OpenClassrooms.
+          </p>
+        </div>
     </div>
   </div>
 </template>
@@ -99,15 +111,15 @@ export default {
 </script>
 
 
-
 <style scoped>
-@media only screen and  (max-width: 768px) {
+@media only screen and  (max-width: 992px) {
   .container {
     margin-top: 5%;
     display: block;
     align-items: center;
     position: relative;
   }
+
   .cover {
     margin: 10px;
     z-index: 1;
@@ -126,7 +138,7 @@ export default {
   }
 }
 
-@media only screen and  (min-width: 768px) {
+@media only screen and  (min-width: 992.5px) {
 
 
   .container {
@@ -188,8 +200,16 @@ a.button-to-website {
   color: white;
 }
 
-  .contact {
-    display: flex;
-    justify-content: space-evenly;
-  }
+.technos {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
 </style>

@@ -328,7 +328,7 @@ a.button-to-website {
   left: 55%;
   right: 0;
   height: auto;
-  width: 25%;
+  width: 18%;
   z-index: -1;
 }
 
