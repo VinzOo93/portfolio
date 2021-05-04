@@ -32,7 +32,7 @@
           </div>
           <div id='trigger4' class='trigger4'>
             <img class='cover2 js-transition zoom scroll' alt='image-sardegna-1'
-                 src='~/assets/images/sardegna-1.JPG'>
+                 src='~/assets/images/sardegna-1.jpg'>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
             <img class='cover js-transition zoom scroll' alt='image-beerwah4' src='~/assets/images/beerwah4.jpg'>
           </div>
           <div class='trigger2'>
-            <img class='cover js-transition zoom scroll' alt='image-rainforest' src='~/assets/images/rainforest.JPG'>
+            <img class='cover js-transition zoom scroll' alt='image-rainforest' src='~/assets/images/rainforest.jpg'>
           </div>
           <div class='trigger3'>
             <img class='cover js-transition zoom scroll' alt='image-endTasmania' src='~/assets/images/endTasmania.jpg'>
