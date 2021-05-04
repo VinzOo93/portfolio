@@ -4,9 +4,9 @@
       <div class='transition'></div>
       <div class='container'>
         <div class='content'>
-          <img class='cover2 js-transition zoom' alt='image-aurora1' src='~/assets/images/aurora1.JPG'>
-          <img class='cover2 js-transition zoom' alt='image-aurora2' src='~/assets/images/aurora2.JPG'>
-          <img class='cover2 js-transition zoom' alt='image-aurora3' src='~/assets/images/aurora3.JPG'>
+          <img class='cover2 js-transition zoom' alt='image-aurora1' src='~/assets/images/aurora1.jpg'>
+          <img class='cover2 js-transition zoom' alt='image-aurora2' src='~/assets/images/aurora2.jpg'>
+          <img class='cover2 js-transition zoom' alt='image-aurora3' src='~/assets/images/aurora3.jpg'>
 
           <div class='cover2 text-content js-transition'>
             <div class='trigger'>
@@ -19,16 +19,16 @@
             </div>
           </div>
           <div id='trigger1' class='trigger'>
-            <img class='cover2 js-transition zoom scroll' alt='image-noosa-2' src='~/assets/images/noosa-2.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-noosa-2' src='~/assets/images/noosa-2.jpg'>
           </div>
           <div class='trigger'>
-            <img class='cover2 js-transition zoom scroll' alt='image-beerwah1' src='~/assets/images/beerwah1.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-beerwah1' src='~/assets/images/beerwah1.jpg'>
           </div>
           <div id='trigger2' class='trigger2'>
-            <img class='cover2 js-transition zoom scroll' alt='image-beerwah3' src='~/assets/images/beerwah3.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-beerwah3' src='~/assets/images/beerwah3.jpg'>
           </div>
           <div id='trigger3' class='trigger3'>
-            <img class='cover2 js-transition zoom scroll' alt='image-beerwah5' src='~/assets/images/beerwah5.JPG'>
+            <img class='cover2 js-transition zoom scroll' alt='image-beerwah5' src='~/assets/images/beerwah5.jpg'>
           </div>
           <div id='trigger4' class='trigger4'>
             <img class='cover2 js-transition zoom scroll' alt='image-sardegna-1'
@@ -60,7 +60,7 @@
         </div>
         <div class='cover'>
           <div class='trigger2'>
-            <img class='cover js-transition zoom scroll' alt='image-beerwah4' src='~/assets/images/beerwah4.JPG'>
+            <img class='cover js-transition zoom scroll' alt='image-beerwah4' src='~/assets/images/beerwah4.jpg'>
           </div>
           <div class='trigger2'>
             <img class='cover js-transition zoom scroll' alt='image-rainforest' src='~/assets/images/rainforest.JPG'>

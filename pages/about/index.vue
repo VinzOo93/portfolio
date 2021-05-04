@@ -17,7 +17,7 @@
             <img class='html' height='50px' src='~/assets/about/html.png' alt='html'>
             <img class='css' height='50px' src='~/assets/about/css.png' alt='css'>
             <img class='javascript' height='50px' src='~/assets/about/javascript.png' alt='javacript'>
-            <img class='nuxtJs' height='50px' src='~/assets/about/NuxtJS.png' alt='nuxtJs'>
+            <img class='nuxtJs' height='50px' src='~/assets/about/nuxtJS.png' alt='nuxtJs'>
             <img class='symfony' height='50px' src='~/assets/about/symfony.png' alt='symfony'>
 
           </div>
