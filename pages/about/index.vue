@@ -4,7 +4,7 @@
     <div class='about'>
       <div class='container'>
         <div class='content'>
-          <img class='cover2 js-transition vincent' alt='vincent' src='~/assets/about/vincent.JPG'>
+          <img class='cover2 js-transition vincent' alt='vincent' src='@/assets/about/vincent.JPG'>
           <h1 class='title'> Vincent ORRU - Développeur Web</h1>
           <div class='contact'>
             <a class='btn button-to-website' href='https://github.com/VinzOo93' target='_blank'>🐙 Github</a>
