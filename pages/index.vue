@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <div class="transition"></div>
     <section class="welcome-home overflow-hidden">
@@ -147,24 +146,22 @@ export default {
       const transition = document.querySelector(".transition")
       const  welcome = document.querySelector(".welcome-home")
 
-      console.log(windowSize)
 
       if (windowSize <= 768) {
-
         gsap.timeline(100)
           .fromTo(transition,
             {
               opacity: 1,
-              y: "100%",
+              yPercent: 100,
               duration: 3
             },
             {
-              y: "-100%",
+              yPercent: -100,
               duration: 3
             })
-          .fromTo(welcome, { opacity: 0, y: "100%" }, {
+          .from(welcome, {opacity: 0, yPercent: 100, duration:3 }, {
             opacity: 1,
-            y: "0%",
+            y: 0,
             ease: "power1",
             duration: 3
           })
@@ -432,7 +429,6 @@ export default {
   }
 
   img.img-fluid {
-    width: 20.416667vw !important;
     position: absolute;
     bottom: -4.583333vw;
     right: -13.583333vw;
@@ -440,28 +436,32 @@ export default {
   }
 
   .crow {
-    transform: translateX(20.19392vw) translateY(0vw) rotate(
+    transform: translateX(12.19392vw) translateY(13.19392vw) rotate(
       35.38783deg
     ) !important;
+    width: 30.416667vw !important;
   }
 
 
   .plant {
-    transform: translateX(-9.19392vw) translateY(15.19392vw) !important;
+    transform: translateX(-5.19392vw) translateY(15.19392vw) rotate(0deg) !important;
+    width: 20.416667vw !important;
   }
 
   .monkey {
-    transform: translateX(-12.19392vw) translateY(-0.19392vw) rotate(
+    transform: translateX(-22.19392vw) translateY(10.19392vw) rotate(
       11.4377deg
     ) !important;
+    width: 20.416667vw !important;
   }
 
   .moon {
     position: absolute;
     left: 50%;
-    transform: translateX(0vw) translateY(0vw) rotate(
+    transform: translateX(-2.19392vw) translateY(18.19392vw) rotate(
       35.38783deg
     ) !important;
+    width: 30.416667vw !important;
   }
 
 

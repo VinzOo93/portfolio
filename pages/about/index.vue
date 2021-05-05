@@ -113,6 +113,10 @@ export default {
 
 <style scoped>
 @media only screen and  (max-width: 992px) {
+  body {
+    height: 1000px;
+  }
+
   .container {
     margin-top: 5%;
     display: block;

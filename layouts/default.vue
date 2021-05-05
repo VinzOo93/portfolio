@@ -10,6 +10,9 @@
   </div>
 </template>
 <style>
+
+
+
 @media only screen and  (min-width: 768.5px) {
   .navbar-container {
     width: 100%;
@@ -22,7 +25,7 @@
 
 body {
   background-color: white;
-  height: 100%;
+  height: auto;
 }
 
   .header {
@@ -95,6 +98,8 @@ export default {
 
   methods: {
     beforeMount() {
+
+
       window.addEventListener("mousemove", cursor)
       let mouseCursor = document.querySelector(".cursor")
       let navBar = document.querySelectorAll(".navbar")

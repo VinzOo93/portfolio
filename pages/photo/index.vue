@@ -106,6 +106,8 @@ export default {
       const gallery = document.querySelectorAll('.js-transition')
       let mouseCursor = document.querySelector('.cursor')
       let galleryimg = document.querySelectorAll('.gallery img')
+      let windowSize = screen.width
+
 
 
       gsap.timeline(100)
@@ -154,14 +156,17 @@ export default {
       this.$scrollmagic.addScene(scene4)
 
 
-      galleryimg.forEach(img => {
-        img.addEventListener('mouseleave', () => {
-          mouseCursor.classList.remove('overImage')
-        })
-        img.addEventListener('mouseover', () => {
-          mouseCursor.classList.add('overImage')
-        })
+  if (windowSize >= 769)
+  {
+    galleryimg.forEach(img => {
+      img.addEventListener('mouseleave', () => {
+        mouseCursor.classList.remove('overImage')
       })
+      img.addEventListener('mouseover', () => {
+        mouseCursor.classList.add('overImage')
+      })
+    })
+  }
       mediumZoom('.zoom', {
         background: 'auto',
         margin: 10,

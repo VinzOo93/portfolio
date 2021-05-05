@@ -3,7 +3,7 @@
     <div class='transition '></div>
     <div class=' smooth-scroll-wrapper '>
       <div class='projets'>
-        <article class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-4'  class='case  p-0 m-0 f-100 b-0'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -19,7 +19,7 @@
                 </h3>
                 <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, GSAP, ScrollMagic, MediumZoom,
                   Déploiement sous Eroku</p>
-                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a>
+<!--                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a> -->
               </div>
             </div>
             <div class='img-project '>
@@ -30,7 +30,7 @@
             </div>
           </div>
         </article>
-        <article id='article-4' class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-3' class='case  p-0 m-0 f-100 b-0'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -56,7 +56,7 @@
             </div>
           </div>
         </article>
-        <article id='article-3' class='case p-0 m-0 f-100 b-0 hidden'>
+        <article id='article-2' class='case p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2020</span>
             <span class='separator__line line-1'></span>
@@ -75,7 +75,7 @@
                   site</a>
               </div>
             </div>
-            <div id='article-2' class='img-project'>
+            <div  class='img-project'>
               <img src='~/assets/projects/comparateur-1.png' class='img-projets comparateur-1 size-1'
                    alt='comparateur-1'>
               <img src='~/assets/projects/comparateur-2.png' class='img-projets comparateur-2 size-2'
@@ -135,16 +135,16 @@ export default {
         .fromTo(transition, {
           opacity: 1,
           yPercent: 100,
-          duration: 3
+          duration: 2.5
         }, {
           yPercent: -100,
           duration: 2.5
         })
-        .fromTo(projets, { opacity: 0, y: '100%' }, {
+        .fromTo(projets, { opacity: 0, yPercent: 100 }, {
           opacity: 1,
-          y: '0%',
+          yPercent: 0,
           ease: 'power1',
-          duration: 3
+          duration: 2
         })
         .from(line, {
           scaleX: 0,
@@ -164,21 +164,24 @@ export default {
       function smoothScroll() {
         offset += (window.pageYOffset - offset) * speed
 
-        scrollWrap.style.transform = 'translateY(-' + offset + 'px) translate(0)'
+        scrollWrap.style.transform = 'translateY(-' + offset -1000 + 'px) translate(0)'
 
         cards.forEach(card => {
-          card.style.transform = 'translateY(-' + offset / 15 + 'px) translate(0)'
+          card.style.transform = 'translateY(-' + offset/20 + 'px) translate(0)'
         })
 
         requestAnimationFrame(smoothScroll)
       }
 
       smoothScroll()
+
+
+
       const scene = this.$scrollmagic.scene({
-        triggerElement: '#article-2',
-        triggerHook: 0.3
+        triggerElement: '#article-3',
+        triggerHook: 0,
       })
-        .setTween('.case', { opacity: 1, duration: 0.25 })
+        .setTween('.case', { opacity: 1, duration: 0.10 })
       this.$scrollmagic.addScene(scene)
 
       button.forEach(b => {
@@ -203,7 +206,6 @@ export default {
 
 @media only screen and  (max-width: 768px) {
 
-
   .case {
     margin-top: 30% !important;
     flex-direction: column-reverse;
@@ -221,9 +223,9 @@ export default {
   }
 
   .img-project {
-    width: 60% !important;
-    top: 20% !important;
-    left: 10% !important;
+    width: 55vw !important;
+    top: 15% !important;
+    left: 7% !important;
   }
 
   .text {
@@ -231,6 +233,7 @@ export default {
   }
 
 }
+
 
 
 * {
@@ -281,10 +284,6 @@ article {
   background: #504e4c;
 }
 
-
-.column {
-  width: 100%;
-}
 
 .name {
   font-family: "Helvetica", serif;
