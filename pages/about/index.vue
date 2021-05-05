@@ -51,7 +51,7 @@
 
             <br><br> J'affectionne tout particulièrement l'intégration de contenu HTML/CSS Sass.
 
-            <br><br> De ce fait que j'aime par-dessus tout, m'inforner sur les tendances pour rendre mes projets
+            <br><br> Mais encore, j'aime par-dessus tout, m'inforner sur les tendances pour rendre mes projets
             différents.
             Je mets en valeur l'expérience client qui est pour moi l'un des fondements pour se démarquer.
 

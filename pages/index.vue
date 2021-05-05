@@ -147,9 +147,6 @@ export default {
       const  welcome = document.querySelector(".welcome-home")
       const body = document.body
 
-
-
-
       if (windowSize <= 768) {
         body.style.height = 1000 + 'px'
         gsap.timeline(100)
@@ -163,12 +160,12 @@ export default {
               yPercent: -100,
               duration: 3
             })
-          .from(welcome, {opacity: 0, yPercent: 100, duration:3 }, {
+          .fromTo(welcome, {opacity: 0, yPercent: 100, duration:3 }, {
             opacity: 1,
-            y: 0,
+            yPercent: 0,
             ease: "power1",
             duration: 3
-          })
+          });
 /*        .from(line, {
           yPercent: 200,
           duration:2,
@@ -365,12 +362,7 @@ export default {
       enjoy.addEventListener("mouseleave", () => {
         mouseCursor.classList.remove("link-grow")
       })
-
-
-
     }
-
-
   }
 
 }
@@ -378,10 +370,8 @@ export default {
 
 <style scoped>
 
+
 @media only screen and (max-width: 768.5px) {
-
-
-
 
   .fz-3xl {
     font-size: 28.985507246vw;
