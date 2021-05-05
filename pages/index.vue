@@ -145,9 +145,13 @@ export default {
       const revealXs = document.querySelectorAll(".xs-reveal")
       const transition = document.querySelector(".transition")
       const  welcome = document.querySelector(".welcome-home")
+      const body = document.body
+
+
 
 
       if (windowSize <= 768) {
+        body.style.height = 1000 + 'px'
         gsap.timeline(100)
           .fromTo(transition,
             {
@@ -237,12 +241,15 @@ export default {
         this.$scrollmagic.addScene(scene4)
 
       }
+
+
       const scene5 = this.$scrollmagic.scene({
         triggerHook: 0.9,
         triggerElement: ".container2",
         duration: "120%"
 
       })
+
         .setTween(".drawing-monkey", {
           x: -60,
           y: -30
@@ -285,6 +292,7 @@ export default {
       this.$scrollmagic.addScene(scene8)
 
       if (windowSize > 768) {
+
 
         const scene10 = this.$scrollmagic.scene({
           triggerHook: 0.5,
@@ -372,6 +380,9 @@ export default {
 
 @media only screen and (max-width: 768.5px) {
 
+
+
+
   .fz-3xl {
     font-size: 28.985507246vw;
   }
@@ -415,11 +426,6 @@ export default {
     width: 13.115942029vw;
   }
 
-
-  .drawing-elem {
-
-  }
-
   .line-container {
     height: 26.570048309vw
   }
@@ -431,8 +437,6 @@ export default {
   img.img-fluid {
     position: absolute;
     bottom: -4.583333vw;
-    right: -13.583333vw;
-
   }
 
   .crow {

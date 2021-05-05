@@ -78,8 +78,12 @@ export default {
       const about = document.querySelector('.description')
       const button = document.querySelectorAll('.btn')
       const mouseCursor = document.querySelector('.cursor')
+      let windowSize = screen.width
+      const body = document.body
 
-
+      if (windowSize <= 768) {
+        body.style.height = 1000 + 'px'
+      }
       gsap.timeline(100)
         .fromTo(transition, { opacity: 1, y: '100%', duration: 3 }, { y: '-100%', duration: 2.5 })
       gsap.timeline(100)
@@ -113,6 +117,7 @@ export default {
 
 <style scoped>
 @media only screen and  (max-width: 992px) {
+
   body {
     height: 1000px;
   }

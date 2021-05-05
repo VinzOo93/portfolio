@@ -25,7 +25,6 @@
 
 body {
   background-color: white;
-  height: auto;
 }
 
   .header {

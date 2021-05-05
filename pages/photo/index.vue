@@ -235,6 +235,7 @@ img {
 
 @media only screen and  (max-width: 768px) {
 
+
   .container {
     margin-top: 5%;
     display: block;
