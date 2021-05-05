@@ -49,9 +49,7 @@
             <br><br> D'autre part, je peux intervenir autant dans des projets fronts ou backs, mes langages de
             prédilections sont le PHP et le Javascript.
 
-            <br><br> J'affectionne tout particulièrement l'intégration de contenu HTML/CSS Sass.
-
-            <br><br> Mais encore, j'aime par-dessus tout, m'inforner sur les tendances pour rendre mes projets
+            <br><br> J'apprécie m'inforner sur les tendances pour rendre mes projets
             différents.
             Je mets en valeur l'expérience client qui est pour moi l'un des fondements pour se démarquer.
 
