@@ -377,6 +377,16 @@ export default {
     font-size: 28.985507246vw;
   }
 
+.text-recipe {
+    width: 92.028985507vw !important;
+;
+}
+
+  .pizza-img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
   .xs {
     position: relative;
     bottom: 100px;
@@ -438,12 +448,12 @@ export default {
 
 
   .plant {
-    transform: translateX(-5.19392vw) translateY(15.19392vw) rotate(0deg) !important;
-    width: 20.416667vw !important;
+    transform: translateX(-9.19392vw) translateY(12.19392vw) rotate(0deg) !important;
+    width: 18.416667vw !important;
   }
 
   .monkey {
-    transform: translateX(-22.19392vw) translateY(10.19392vw) rotate(
+    transform: translateX(-26.19392vw) translateY(10.19392vw) rotate(
       11.4377deg
     ) !important;
     width: 20.416667vw !important;
@@ -710,8 +720,8 @@ export default {
 
 .pizza-img {
   pointer-events: all;
-  width: 70%;
-  height: auto;
+  width: 75%;
+  height: 75%;
 }
 
 .pizza {
@@ -727,7 +737,7 @@ export default {
 
 .text-recipe {
   text-align: center;
-  width: 70.028985507vw;
+  width: 80.028985507vw;
 }
 
 .text-question {
