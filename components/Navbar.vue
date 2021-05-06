@@ -41,11 +41,11 @@ export default {
       const body = document.querySelector("body")
 
       if (document.body.style.backgroundColor === "white") {
-        gsap.to(body, { backgroundColor: "#151414", duration: 0.5 })
-        gsap.to(button, { backgroundColor: "white", duration: 0.2 })
+        gsap.to(body, { backgroundColor: "#151414", duration: 0.5,   })
+        gsap.to(button, { backgroundColor: "white", duration: 0.2,  })
       }
     else {
-        gsap.to(body, { backgroundColor: "white", duration: 0.5 })
+        gsap.to(body, { backgroundColor: "white", duration: 0.5, color : "" })
         gsap.to(button, { backgroundColor: "#151414", duration: 0.2 })
       }
 

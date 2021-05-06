@@ -35,7 +35,7 @@ body {
 * {
   font-family: "Cormorant Garamond", serif;
   text-decoration: none;
-  color: #504e4c;
+  color: #74746e;
   box-sizing: border-box;
 }
 
