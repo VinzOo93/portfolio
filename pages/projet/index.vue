@@ -179,7 +179,7 @@ export default {
 
       const scene = this.$scrollmagic.scene({
         triggerElement: '#article-3',
-        triggerHook: 0,
+        triggerHook: 0.5,
       })
         .setTween('.case', { opacity: 1, duration: 0.10 })
       this.$scrollmagic.addScene(scene)
@@ -226,7 +226,7 @@ export default {
     width: 55vw ;
     top: 15% ;
     left: 7% ;
-    height: 55vw !important;
+    height: 40vw;
   }
 
   .text {
