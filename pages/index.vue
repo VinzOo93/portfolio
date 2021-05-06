@@ -88,7 +88,7 @@
         </p>
       </div>
       <div id="pizza1" class="pizza d-flex justify-content-center ">
-        <img class="pizza-img h-100 w-100 img-scroll-1" src="~/assets/home/pizza.jpg" alt="pizza">
+        <img class="pizza-img  img-scroll-1" src="~/assets/home/pizza.jpg" alt="pizza">
       </div>
       <div class="question">
         <p class="text-question p-0 m-0 sroll-text-1">Mais que faisons-nous ?</p>
@@ -105,7 +105,7 @@
       </div>
     </section>
     <div id="pizza2" class="pizza d-flex justify-content-center ">
-      <img class="pizza-img h-100 w-100 img-scroll-2" src="~/assets/home/pizza2.jpg" alt="pizza2">
+      <img class="pizza-img  img-scroll-2" src="~/assets/home/pizza2.jpg" alt="pizza2">
     </div>
     <section id="home-scroll-3">
       <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
@@ -117,7 +117,7 @@
     </section>
     <section>
       <div id="pizza3" class="pizza d-flex justify-content-center ">
-        <img class="pizza-img h-100 w-100 img-scroll-3" src="~/assets/home/pizza3.jpg" alt="pizza3">
+        <img class="pizza-img img-scroll-3" src="~/assets/home/pizza3.jpg" alt="pizza3">
       </div>
       <div id="home-scroll-4" class="recipe d-flex justify-content-center scroll-text-4 xs-reveal">
         <p class="text-recipe p-0 m-0 end ">
@@ -702,13 +702,6 @@ export default {
   opacity: 0;
 }
 
-.h-100 {
-  height: 100%;
-}
-
-.w-100 {
-  width: 100%;
-}
 
 
 .justify-content-center {
@@ -717,6 +710,8 @@ export default {
 
 .pizza-img {
   pointer-events: all;
+  width: 70%;
+  height: auto;
 }
 
 .pizza {
@@ -725,14 +720,14 @@ export default {
 
 
 .recipe {
-  margin-top: 7%;
+  margin-top: 5%;
   line-height: 1.230769231;
-  font-size: 4.038647343vw;
+  font-size: 3.038647343vw;
 }
 
 .text-recipe {
   text-align: center;
-  width: 92.028985507vw;
+  width: 70.028985507vw;
 }
 
 .text-question {
@@ -741,15 +736,16 @@ export default {
 }
 
 .question {
-  font-size: 4.7971014493vw;
+  font-size: 5.7971014493vw;
   position: relative;
-  bottom: 150px;
-}
+  bottom: 90px;
+  margin-left: 5%;
+  margin-right: 5%;}
 
 .congrat {
   font-size: 5.7971014493vw;
   position: relative;
-  bottom: 90px;
+  bottom: 120px;
 }
 
 .text-congrat {
@@ -785,8 +781,7 @@ img {
 
 
 body * {
-  letter-spacing: .05em;
-}
+  letter-spacing: 0.07em;}
 
 p {
   display: block;
@@ -851,7 +846,7 @@ p .customFont {
 
 .end {
   position: relative;
-  margin-top: 8%;
+  margin-top: 2%;
 }
 
 section {

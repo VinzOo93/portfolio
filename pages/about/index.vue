@@ -49,9 +49,9 @@
             <br><br> D'autre part, je peux intervenir autant dans des projets fronts ou backs, mes langages de
             prédilections sont le PHP et le Javascript.
 
-            <br><br> J'apprécie m'inforner sur les tendances pour rendre mes projets
+            <br><br> J'apprécie tout particulirement m'inforner sur les nouvelles tendances pour rendre mes projets
             différents.
-            Je mets en valeur l'expérience client qui est pour moi l'un des fondements pour se démarquer.
+            Mais aussi, je mets en valeur l'expérience client qui est pour moi l'un des fondements pour se démarquer.
 
             <br><br> Maintenant, mon objectif principal est de continuer mon évolution dans le métier en intégrant une
             équipe ouverte et dynamique afin de réaliser des projets de plus grande envergure en alternance avec
