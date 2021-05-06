@@ -226,6 +226,7 @@ export default {
     width: 55vw ;
     top: 15% ;
     left: 7% ;
+    height: 55vw !important;
   }
 
   .text {
