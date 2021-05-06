@@ -223,9 +223,9 @@ export default {
   }
 
   .img-project {
-    width: 55vw !important;
-    top: 15% !important;
-    left: 7% !important;
+    width: 55vw ;
+    top: 15% ;
+    left: 7% ;
   }
 
   .text {
@@ -234,6 +234,24 @@ export default {
 
 }
 
+@media only screen and  (min-width: 768.5px) {
+
+  .img-project {
+    top: 25%;
+    left: 55%;
+    width: 18%;
+  }
+
+}
+
+.img-project {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  right: 0;
+  height: auto;
+  z-index: -1;
+}
 
 
 * {
@@ -319,17 +337,7 @@ a.button-to-website {
   color: white;
 }
 
-.img-project {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 25%;
-  left: 55%;
-  right: 0;
-  height: auto;
-  width: 18%;
-  z-index: -1;
-}
+
 
 .card.container {
   padding-right: 50px;
