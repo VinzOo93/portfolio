@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="transition"></div>
+    <modale-game v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></modale-game>
     <section class="welcome-home overflow-hidden">
       <div class="d-flex flex-column xs justify-content-center min-vh-100  container">
         <div class="line__wrap overflow-hidden  line-scroll-1  ">
@@ -45,12 +46,12 @@
           <div class="line-container d-flex">
             <p class="welcome line fz-3xl p-0 m-0">(<img
               src="https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif"
-              class="lemon img-line img-sm" alt="lemon">)=><span
+              class="lemon img-line img-sm" alt="lemon">)=><span v-on:click='toggleModale'
               class="customFont enjoy">ENJOY</span><=(<img src="https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif"
                                                            class="strawberry img-sm" alt="strawberry">)</p>
             <p class="welcome line fz-3xl p-0 m-0">(<img
               src="https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif"
-              class="lemon img-line img-sm" alt="lemon">)=><span
+              class="lemon img-line img-sm" alt="lemon">)=><span v-on:click='toggleModale'
               class="customFont enjoy">ENJOY</span><=(<img src="https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif"
                                                            class="strawberry img-sm" alt="strawberry">)</p>
           </div>
@@ -130,8 +131,19 @@
 </template>
 <script>
 import { gsap } from "gsap"
+import ModalGame from "@/components/ModaleGame"
 
 export default {
+  name: 'index',
+  data(){
+    return {
+      revele: false
+    }
+  },
+  components: {
+    'modal-game': ModalGame,
+  }
+  ,
   mounted: function() {
     this.startAnimation()
   },
@@ -362,6 +374,9 @@ export default {
       enjoy.addEventListener("mouseleave", () => {
         mouseCursor.classList.remove("link-grow")
       })
+    }
+    , toggleModale : function(){
+      this.revele = !this.revele
     }
   }
 
