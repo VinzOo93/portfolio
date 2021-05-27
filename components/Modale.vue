@@ -3,7 +3,7 @@
    <div class='overlay-game' v-on:click='toggleModale'></div>
    <div class='modale card'>
      <div class='btn-modale' v-on:click='toggleModale'></div>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequatur ea enim eveniet id impedit inventore molestias quis quos voluptas. Ducimus facilis ipsam iste minus quam quo saepe tempore veritatis? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias architecto, asperiores dolorem, doloribus excepturi fugiat in laudantium minima nesciunt nulla odio omnis quidem quod repellendus repudiandae suscipit. Dolores, tempora?</p>
+     <game></game>
      <div>
      </div>
 
@@ -11,8 +11,10 @@
  </div>
 </template>
 <script>
+
+
 export default {
-  name: 'ModalGame',
+  name: 'Modale',
   props: ['revele','toggleModale']
 }
 </script>

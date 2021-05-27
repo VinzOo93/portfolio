@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="transition"></div>
-    <modale-game v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></modale-game>
+    <modale v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></modale>
     <section class="welcome-home overflow-hidden">
       <div class="d-flex flex-column xs justify-content-center min-vh-100  container">
         <div class="line__wrap overflow-hidden  line-scroll-1  ">
@@ -131,7 +131,7 @@
 </template>
 <script>
 import { gsap } from "gsap"
-import ModalGame from "@/components/ModaleGame"
+import Modale from "@/components/Modale"
 
 export default {
   name: 'index',
@@ -141,7 +141,7 @@ export default {
     }
   },
   components: {
-    'modal-game': ModalGame,
+    'modale': Modale,
   }
   ,
   mounted: function() {
@@ -158,6 +158,7 @@ export default {
       const transition = document.querySelector(".transition")
       const  welcome = document.querySelector(".welcome-home")
       const body = document.body
+
 
       if (windowSize <= 768) {
         body.style.height = 1000 + 'px'
