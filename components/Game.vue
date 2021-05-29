@@ -2,7 +2,8 @@
   <div>
 
     <div>
-      <h2>Are you looking for fruits ? 🍑😎</h2>
+      <h2>Are you looking for some fruits ? 🍑😎</h2>
+      <p id='timer'>00:00</p>
       <div class='board'>
         <table>
           <tr id='gameline' class='gameline'>
@@ -24,14 +25,14 @@ export default {
   },
   methods: {
     startGame: function() {
-      var score = 0
-      var caseNumber = 0
+      let score = 0
+      let caseNumber = 0
 
 
       let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
       let double = 0
-      let selection = 0;
-      let tentative = 0;
+      let selection = 0
+      let tentative = 0
 
 
       const line = document.querySelector('.gameline')
@@ -75,17 +76,19 @@ export default {
       function clickAndCheck(Event) {
 
 
-        let clicked = Event.currentTarget.firstChild;
-        let choice1;
-        let choice2;
+        let clicked = Event.currentTarget.firstChild
+        let choice1
+        let choice2
 
         switch (true) {
-          case (selection === 0 ) : {
+          case (selection === 0) : {
             if (tentative !== 0) {
               choice1 = document.querySelector('.choice1')
               choice2 = document.querySelector('.choice2')
-              choice1.classList.remove('choice1');
-              choice2.classList.remove('choice2');
+              choice1.classList.remove('choice1')
+              choice2.classList.remove('choice2')
+            } else {
+              initTimer()
             }
 
             clicked.classList.add('choice1')
@@ -94,31 +97,62 @@ export default {
           }
           case (selection === 1) : {
             clicked.classList.add('choice2')
-            tentative ++;
-            selection ++;
-            console.log( 'tentative' + tentative)
+            tentative++
+            selection++
+            console.log('tentative' + tentative)
             break
           }
-        }console.log(selection)
+        }
+        console.log(selection)
 
-          if (selection === 2) {
-             choice1 = document.querySelector('.choice1')
-             choice2 = document.querySelector('.choice2')
+        if (selection === 2) {
+          choice1 = document.querySelector('.choice1')
+          choice2 = document.querySelector('.choice2')
 
-            console.log(choice2.src)
+          console.log(choice2.src)
 
-            if (choice1.src === choice2.src && choice1.classList !== choice2.classList){
-              score ++
-            console.log('identical' +  score);
-              choice1.style.visibility = 'visible'
-              choice2.style.visibility = 'visible'
-              selection = 0 ;
-            } else {
-              console.log('false')
-              selection = 0 ;
+          if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
+            score++
+            console.log('identical' + score)
+            choice1.style.visibility = 'visible'
+            choice2.style.visibility = 'visible'
+            selection = 0
+
+            if (score === 18) {
+              alert('You are the winner' + score)
             }
+          } else {
+            console.log('false')
+            selection = 0
           }
         }
+
+        function initTimer() {
+          const timer = document.querySelector('#timer')
+          let time = 0;
+          let timeLeft = 0;
+
+          function timeIt() {
+            time ++;
+            timer.textContent = convertSeconds(time - timeLeft);
+            toString(timer);
+          }
+
+          setInterval(timeIt, 1000)
+
+
+          function convertSeconds(s) {
+            const min = Math.floor(s / 60)
+            const sec = s % 60
+            return makeMeTwoDigits(min)  + ':' + makeMeTwoDigits(sec);
+          }
+
+          function makeMeTwoDigits(n){
+            return (n < 10 ? "0" : "") + n;
+          }
+
+        }
+      }
     }
   }
 
@@ -167,6 +201,15 @@ table {
 
 .gameline {
   max-width: 360px;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Helvetica,serif;
+  background-color: aliceblue;
+  border-radius: 30px;
 }
 
 
