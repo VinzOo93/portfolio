@@ -3,6 +3,8 @@
 
     <div>
       <h2>Are you looking for some fruits ? 🍑😎</h2>
+      <h3>Cliquez sur une case pour lancer le game !! 🚀</h3>
+
       <p id='timer'>00:00</p>
       <div class='board'>
         <table>
@@ -130,11 +132,10 @@ export default {
         function initTimer() {
           const timer = document.querySelector('#timer')
           let time = 0;
-          let timeLeft = 0;
 
           function timeIt() {
             time ++;
-            timer.textContent = convertSeconds(time - timeLeft);
+            timer.textContent = convertSeconds(time);
             toString(timer);
           }
 
@@ -178,6 +179,11 @@ export default {
 }
 
 h2 {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
   display: flex;
   justify-content: center;
 }
