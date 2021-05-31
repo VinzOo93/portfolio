@@ -1,10 +1,14 @@
 <template>
   <div>
 
-    <div>
-      <h2>Are you looking for some fruits ? 🍑😎</h2>
-      <h3>Cliquez sur une case pour lancer le game !! 🚀</h3>
-
+    <div class='game'>
+      <div class='modale-win' v-if='win'>
+        <img src='http://gph.is/2pcZgLL' alt='winner-img'>
+        <p> Bravo !! Découvrez, maintenant si vous êtes le meilleur</p>
+        <p>Temps :</p>
+        <p>Nombre de tentatives :</p>
+      </div>
+      <h1 class='title'>Trouvez les bons fruits !! 🍑😎</h1>
       <p id='timer'>00:00</p>
       <div class='board'>
         <table>
@@ -19,9 +23,9 @@
 
 <script>
 
+
 export default {
   name: 'Game',
-
   mounted: function() {
     this.startGame()
   },
@@ -35,9 +39,11 @@ export default {
       let double = 0
       let selection = 0
       let tentative = 0
-
+      let gameTime = 0
 
       const line = document.querySelector('.gameline')
+      const timer = document.querySelector('#timer')
+
 
       while (double < 2) {
         for (let i = 0; i < card.length; i++) {
@@ -48,6 +54,7 @@ export default {
           td.lastElementChild.src = 'game/' + (card[i]) + '.png'
           td.lastElementChild.id = card[i].toString()
           td.lastElementChild.className = 1 + caseNumber.toString()
+          td.lastElementChild.classList.add('fruit')
 
           td.addEventListener('click', Event => {
             clickAndCheck(Event)
@@ -60,7 +67,7 @@ export default {
       }
       let fruitCase = line.children
       let fruitCaseArr = Array.prototype.slice.call(fruitCase)
-      const fruits = document.querySelectorAll('img')
+      const fruits = document.querySelectorAll('.fruit')
 
       while (fruitCaseArr.length) {
         line.append(fruitCaseArr.splice(Math.floor(Math.random() * fruitCaseArr.length), 1)[0])
@@ -74,6 +81,7 @@ export default {
           fruit.style.visibility = 'hidden'
         })
       }
+
 
       function clickAndCheck(Event) {
 
@@ -90,7 +98,7 @@ export default {
               choice1.classList.remove('choice1')
               choice2.classList.remove('choice2')
             } else {
-              initTimer()
+                initTimer()
             }
 
             clicked.classList.add('choice1')
@@ -120,9 +128,11 @@ export default {
             choice2.style.visibility = 'visible'
             selection = 0
 
-            if (score === 18) {
-              alert('You are the winner' + score)
+            if (score > 18){
+              stopTimer();
+              let win = true;
             }
+
           } else {
             console.log('false')
             selection = 0
@@ -130,34 +140,35 @@ export default {
         }
 
         function initTimer() {
-          const timer = document.querySelector('#timer')
-          let time = 0;
+          let time = 0
 
           function timeIt() {
-            time ++;
-            timer.textContent = convertSeconds(time);
-            toString(timer);
+            time++
+            timer.textContent = convertSeconds(time)
+            toString(timer)
           }
 
-          setInterval(timeIt, 1000)
-
+            gameTime = setInterval(timeIt, 1000)
 
           function convertSeconds(s) {
             const min = Math.floor(s / 60)
             const sec = s % 60
-            return makeMeTwoDigits(min)  + ':' + makeMeTwoDigits(sec);
+            return makeMeTwoDigits(min) + ':' + makeMeTwoDigits(sec)
           }
 
-          function makeMeTwoDigits(n){
-            return (n < 10 ? "0" : "") + n;
-          }
 
+
+          function makeMeTwoDigits(n) {
+            return (n < 10 ? '0' : '') + n
+          }
+        }
+
+        function stopTimer(){
+        clearInterval(gameTime)
         }
       }
     }
   }
-
-
 }
 
 
@@ -165,6 +176,53 @@ export default {
 
 
 <style>
+
+@media only screen and (max-width: 768.5px) {
+  img {
+    height: 15.115942029vw;
+    width: 15.115942029vw;
+  }
+
+  .gameline > td {
+    height: 15.115942029vw;
+    width: 15.115942029vw;
+  }
+
+  table {
+    column-count: 4;
+  }
+
+  .title {
+    margin-top: 5%;
+    font-size: 18px;
+  }
+
+  #timer {
+    font-size: 15px;
+  }
+
+
+}
+
+@media only screen and (min-width: 768.5px) {
+  img {
+    height: 6.115942029vw;
+    width: 6.115942029vw;
+  }
+
+  .gameline > td {
+    height: 6.115942029vw;
+    width: 6.115942029vw;
+  }
+
+  table {
+    column-count: 6;
+  }
+
+  #timer {
+    font-size: 30px;
+  }
+}
 
 .choice1 {
   visibility: visible !important;
@@ -178,19 +236,13 @@ export default {
 
 }
 
-h2 {
-  display: flex;
-  justify-content: center;
-}
-
-h3 {
+h1 {
   display: flex;
   justify-content: center;
 }
 
 table {
   display: table-caption;
-  column-count: 6;
 }
 
 .gameline > td {
@@ -200,10 +252,9 @@ table {
   color: #fff;
   border-radius: 4px;
   margin: 3px;
-  height: 100px;
-  width: 100px;
   cursor: pointer;
 }
+
 
 .gameline {
   max-width: 360px;
@@ -212,10 +263,13 @@ table {
 #timer {
   display: flex;
   justify-content: center;
-  font-size: 30px;
-  font-family: Helvetica,serif;
+  font-family: Helvetica, serif;
   background-color: aliceblue;
   border-radius: 30px;
+}
+
+.fruit {
+  border-radius: 25px;
 }
 
 

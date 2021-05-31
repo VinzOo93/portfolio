@@ -1,24 +1,51 @@
 <template>
- <div class='bloc-modale' v-if='revele'>
-   <div class='overlay-game' v-on:click='toggleModale'></div>
-   <div class='modale card'>
-     <div class='btn-modale' v-on:click='toggleModale'></div>
-     <game></game>
-     <div>
-     </div>
+  <div class='bloc-modale' v-if='revele'>
+    <div class='overlay-game' v-on:click='toggleModale'></div>
+    <div class='modale card'>
+      <div class='btn-modale' v-on:click='toggleModale'></div>
+      <game></game>
+      <div>
+      </div>
 
-   </div>
- </div>
+    </div>
+  </div>
 </template>
 <script>
 
 
 export default {
-  name: 'Modale',
-  props: ['revele','toggleModale']
+  name: 'ModaleGame',
+  props: ['revele', 'toggleModale']
 }
 </script>
 <style>
+
+@media only screen and (max-width: 768.5px) {
+  .btn-modale::before,
+  .btn-modale::after {
+    height: 26px;
+    left: 2%;
+  }
+
+  .btn-modale {
+    top: 9%;
+  }
+
+}
+
+@media only screen and (min-width: 768.5px) {
+  .btn-modale::before,
+  .btn-modale:after {
+    top: 40%;
+    height: 33px;
+    left: 15px;
+  }
+
+  .btn-modale {
+    top: 5%;
+  }
+}
+
 
 .bloc-modale {
   position: fixed;
@@ -37,7 +64,6 @@ export default {
 .btn-modale {
   position: absolute;
   right: 25px;
-  top: 25px;
   width: 25px;
   height: 25px;
   opacity: 0.3;
@@ -47,24 +73,25 @@ export default {
 .btn-modale:hover {
   opacity: 1;
 }
+
 .btn-modale:before,
 .btn-modale:after {
   position: absolute;
-  left: 15px;
   content: ' ';
-  height: 33px;
   width: 2px;
   background-color: #333;
 }
+
 .btn-modale:before {
   transform: rotate(45deg);
 }
+
 .btn-modale:after {
   transform: rotate(-45deg);
 }
 
 .overlay-game {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   bottom: 0;

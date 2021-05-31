@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="transition"></div>
-    <modale v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></modale>
+    <modale-game v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></modale-game>
     <section class="welcome-home overflow-hidden">
       <div class="d-flex flex-column xs justify-content-center min-vh-100  container">
         <div class="line__wrap overflow-hidden  line-scroll-1  ">
@@ -131,7 +131,7 @@
 </template>
 <script>
 import { gsap } from "gsap"
-import Modale from "@/components/Modale"
+import ModaleGame from "@/components/ModaleGame"
 
 export default {
   name: 'index',
@@ -141,11 +141,11 @@ export default {
     }
   },
   components: {
-    'modale': Modale,
+    'modale-game': ModaleGame,
   }
   ,
   mounted: function() {
-    this.startAnimation()
+    this.startAnimation();
   },
   methods: {
     startAnimation: function() {
@@ -377,7 +377,9 @@ export default {
       })
     }
     , toggleModale : function(){
+
       this.revele = !this.revele
+
     }
   }
 
@@ -620,6 +622,8 @@ export default {
 
   body * {
     box-sizing: border-box;
+    overflow: visible;
+
   }
 
   .fz-3xl {
@@ -807,7 +811,9 @@ img {
 
 
 body * {
-  letter-spacing: 0.07em;}
+  letter-spacing: 0.07em;
+  overflow: visible;
+}
 
 p {
   display: block;
