@@ -2,12 +2,6 @@
   <div>
 
     <div class='game'>
-      <div class='modale-win' v-if='win'>
-        <img src='http://gph.is/2pcZgLL' alt='winner-img'>
-        <p> Bravo !! Découvrez, maintenant si vous êtes le meilleur</p>
-        <p>Temps :</p>
-        <p>Nombre de tentatives :</p>
-      </div>
       <h1 class='title'>Trouvez les bons fruits !! 🍑😎</h1>
       <p id='timer'>00:00</p>
       <div class='board'>
@@ -15,6 +9,15 @@
           <tr id='gameline' class='gameline'>
           </tr>
         </table>
+      </div>
+    </div>
+    <div class='modale-win' >
+      <div class='content'>
+        <img src='https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif' class='winner-img' alt='winner-img'>
+        <p class='timeLeft'>Temps :</p>
+        <p class='tentative'>Nombre de tentatives :</p>
+        <p> Bravo !! Découvrez, maintenant si vous êtes le meilleur 🥇</p>
+        <p> Pour cela, entrez votre nom</p>
       </div>
     </div>
   </div>
@@ -26,14 +29,18 @@
 
 export default {
   name: 'Game',
+  data(){
+    return {
+    win: false
+    }
+  },
   mounted: function() {
-    this.startGame()
+    this.startGame();
   },
   methods: {
     startGame: function() {
       let score = 0
       let caseNumber = 0
-
 
       let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
       let double = 0
@@ -43,6 +50,10 @@ export default {
 
       const line = document.querySelector('.gameline')
       const timer = document.querySelector('#timer')
+      const modalWin = document.querySelector('.modale-win')
+      const texTimeLeft = document.querySelector('.timeLeft')
+      const textTentative = document.querySelector('.tentative')
+
 
 
       while (double < 2) {
@@ -110,6 +121,7 @@ export default {
             tentative++
             selection++
             console.log('tentative' + tentative)
+
             break
           }
         }
@@ -122,16 +134,23 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score++
+           // score ++
+            score = 18
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
             selection = 0
 
-            if (score > 18){
+
+
+            if (score === 18){
               stopTimer();
-              let win = true;
+              modalWin.style.visibility = 'visible';
+              texTimeLeft.textContent = 'Temps :' + ' ' + timer.textContent;
+              textTentative.textContent = 'Nombre de tentatives :' + ' ' + tentative;
+
             }
+
 
           } else {
             console.log('false')
@@ -156,8 +175,6 @@ export default {
             return makeMeTwoDigits(min) + ':' + makeMeTwoDigits(sec)
           }
 
-
-
           function makeMeTwoDigits(n) {
             return (n < 10 ? '0' : '') + n
           }
@@ -167,8 +184,8 @@ export default {
         clearInterval(gameTime)
         }
       }
+      }
     }
-  }
 }
 
 
@@ -178,7 +195,7 @@ export default {
 <style>
 
 @media only screen and (max-width: 768.5px) {
-  img {
+  .fruit{
     height: 15.115942029vw;
     width: 15.115942029vw;
   }
@@ -205,7 +222,7 @@ export default {
 }
 
 @media only screen and (min-width: 768.5px) {
-  img {
+  .fruit{
     height: 6.115942029vw;
     width: 6.115942029vw;
   }
@@ -236,6 +253,29 @@ export default {
 
 }
 
+.modale-win {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+  background-color: #f1f1f1;
+
+}
+
+
+
+.content {
+  position: relative;
+  margin-right: 15% ;
+  margin-left: 15% ;
+
+}
+
+
 h1 {
   display: flex;
   justify-content: center;
@@ -254,7 +294,10 @@ table {
   margin: 3px;
   cursor: pointer;
 }
-
+.winner-img {
+  height: auto;
+  width: 100%;
+}
 
 .gameline {
   max-width: 360px;
