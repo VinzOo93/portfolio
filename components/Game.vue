@@ -6,8 +6,7 @@
       <p id='timer'>00:00</p>
       <div class='board'>
         <table>
-          <tr id='gameline' class='gameline'>
-          </tr>
+          <tr id='gameline' class='gameline'></tr>
         </table>
       </div>
     </div>
@@ -68,8 +67,8 @@ export default {
 
 
       while (double < 2) {
+        console.log(card.length)
         for (let i = 0; i < card.length; i++) {
-
           let td = document.createElement('td')
           td.innerHTML = '<img src=\'\' alt=\'fruit\' class=\'fruit\'>'
           line.appendChild(td)
@@ -145,8 +144,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            // score ++
-            score = 18
+            score ++
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -204,17 +202,17 @@ export default {
 
 @media only screen and (max-width: 768.5px) {
   .fruit {
-    height: 15.115942029vw;
-    width: 15.115942029vw;
+    height: 52px;
+    width: 52px;
   }
 
   .gameline > td {
-    height: 15.115942029vw;
-    width: 15.115942029vw;
+    height: 52px;
+    width: 52px;
   }
 
-  table {
-    column-count: 4;
+  .gameline {
+    width: 350px;
   }
 
   .title {
@@ -226,27 +224,31 @@ export default {
     font-size: 15px;
   }
 
-
 }
 
 @media only screen and (min-width: 768.5px) {
+
+  .gameline {
+    width: 490px;
+  }
   .fruit {
-    height: 6.115942029vw;
-    width: 6.115942029vw;
+    height: 67.27px;
+    width: 67.27px;
   }
 
   .gameline > td {
-    height: 6.115942029vw;
-    width: 6.115942029vw;
+    height: 67.27px;
+    width: 67.27px;
   }
 
-  table {
-    column-count: 6;
-  }
 
   #timer {
     font-size: 30px;
   }
+
+  table {
+  }
+
 }
 
 .choice1 {
@@ -275,6 +277,7 @@ export default {
 }
 
 
+
 .content {
   position: relative;
   margin-right: 15%;
@@ -282,6 +285,10 @@ export default {
 
 }
 
+.board {
+  display: flex;
+  justify-content: center;
+}
 
 h1 {
   display: flex;
@@ -289,10 +296,15 @@ h1 {
 }
 
 table {
-  display: table-caption;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
 }
 
+
+
 .gameline > td {
+
   float: left;
   text-align: center;
   background-color: palegoldenrod;
@@ -308,8 +320,9 @@ table {
 }
 
 .gameline {
-  max-width: 360px;
+  grid-column: 2/3;
 }
+
 
 #timer {
   display: flex;
