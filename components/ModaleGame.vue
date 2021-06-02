@@ -67,6 +67,7 @@ export default {
   width: 25px;
   height: 25px;
   opacity: 0.3;
+  z-index: 250;
 
 }
 

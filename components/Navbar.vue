@@ -7,7 +7,7 @@
             <nuxt-link class="navbar-link" to="/">Accueil</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="navbar-link" to="/projet">Projets Web</nuxt-link>
+            <nuxt-link class="navbar-link" to="/projet">Projets web</nuxt-link>
           </li>
           <li>
             <nuxt-link class="navbar-link" to="/photo">Galerie photo</nuxt-link>

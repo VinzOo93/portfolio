@@ -13,11 +13,17 @@
     <div class='modale-win'>
       <div class='content'>
         <img src='https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif' class='winner-img' alt='winner-img'>
-        <p class='timeLeft'>Temps :</p>
-        <p class='tentative'>Nombre de tentatives :</p>
-        <p> Bravo !! Découvrez, maintenant si vous êtes le meilleur 🥇</p>
-        <p> Pour cela, entrez votre nom</p>
-        <button v-on:click='tryAgain'>Recommencer</button>
+        <div class='stat'>
+          <p class='timeLeft'>Temps :</p>
+          <p class='tentative'>Nombre de tentatives :</p>
+        </div>
+        <div class='congratulation'>
+          <p> Good Game !! Découvrez, maintenant si vous êtes le meilleur 🥇</p>
+          <p> Pour cela, entrez votre nom</p>
+          <button v-on:click='tryAgain'>Recommencer</button>
+
+        </div>
+
       </div>
     </div>
   </div>
@@ -33,9 +39,9 @@ export default {
     this.startGame()
   },
   methods: {
-    tryAgain(){
-      let tr = document.querySelector('.gameline');
-      let win = document.querySelector('.modale-win');
+    tryAgain() {
+      let tr = document.querySelector('.gameline')
+      let win = document.querySelector('.modale-win')
       let allTd = document.querySelectorAll('td')
       const timer = document.querySelector('#timer')
 
@@ -43,10 +49,10 @@ export default {
 
       win.style.visibility = 'hidden'
       allTd.forEach(td => {
-        tr.removeChild(td);
-      });
+        tr.removeChild(td)
+      })
 
-      this.startGame();
+      this.startGame()
     },
     startGame: function() {
       let score = 0
@@ -144,7 +150,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score ++
+            score = 18;
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -224,13 +230,29 @@ export default {
     font-size: 15px;
   }
 
-}
+
+  .content {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .winner-img {
+    width: 100%;
+  }
+
+
+  }
 
 @media only screen and (min-width: 768.5px) {
+
+  .winner-img {
+    width: 70%;
+  }
 
   .gameline {
     width: 490px;
   }
+
   .fruit {
     height: 67.27px;
     width: 67.27px;
@@ -246,9 +268,17 @@ export default {
     font-size: 30px;
   }
 
-  table {
+  .stat {
+    margin-right: 30%;
+    margin-top: 2%;
+  }
+  .content {
+    margin-left: 25%;
   }
 
+  .congratulation {
+    margin-right: 30%;
+  }
 }
 
 .choice1 {
@@ -275,13 +305,25 @@ export default {
   background-color: #f1f1f1;
 
 }
+.stat {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f1f1f1;
+  border: #504e4c solid 1px;
+  border-radius: 20px;
+  padding: 10px;
+
+}
 
 
+.congratulation {
+  text-align: center;
+  margin-top: 2%;
+
+}
 
 .content {
   position: relative;
-  margin-right: 15%;
-  margin-left: 15%;
 
 }
 
@@ -302,7 +344,6 @@ table {
 }
 
 
-
 .gameline > td {
 
   float: left;
@@ -316,7 +357,6 @@ table {
 
 .winner-img {
   height: auto;
-  width: 100%;
 }
 
 .gameline {
@@ -335,6 +375,8 @@ table {
 .fruit {
   border-radius: 25px;
 }
+
+
 
 
 </style>
