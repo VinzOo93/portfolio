@@ -11,13 +11,14 @@
         </table>
       </div>
     </div>
-    <div class='modale-win' >
+    <div class='modale-win'>
       <div class='content'>
         <img src='https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif' class='winner-img' alt='winner-img'>
         <p class='timeLeft'>Temps :</p>
         <p class='tentative'>Nombre de tentatives :</p>
         <p> Bravo !! Découvrez, maintenant si vous êtes le meilleur 🥇</p>
         <p> Pour cela, entrez votre nom</p>
+        <button v-on:click='tryAgain'>Recommencer</button>
       </div>
     </div>
   </div>
@@ -29,15 +30,25 @@
 
 export default {
   name: 'Game',
-  data(){
-    return {
-    win: false
-    }
-  },
   mounted: function() {
-    this.startGame();
+    this.startGame()
   },
   methods: {
+    tryAgain(){
+      let tr = document.querySelector('.gameline');
+      let win = document.querySelector('.modale-win');
+      let allTd = document.querySelectorAll('td')
+      const timer = document.querySelector('#timer')
+
+      timer.textContent = '00:00'
+
+      win.style.visibility = 'hidden'
+      allTd.forEach(td => {
+        tr.removeChild(td);
+      });
+
+      this.startGame();
+    },
     startGame: function() {
       let score = 0
       let caseNumber = 0
@@ -48,12 +59,12 @@ export default {
       let tentative = 0
       let gameTime = 0
 
+
       const line = document.querySelector('.gameline')
       const timer = document.querySelector('#timer')
       const modalWin = document.querySelector('.modale-win')
       const texTimeLeft = document.querySelector('.timeLeft')
       const textTentative = document.querySelector('.tentative')
-
 
 
       while (double < 2) {
@@ -109,7 +120,7 @@ export default {
               choice1.classList.remove('choice1')
               choice2.classList.remove('choice2')
             } else {
-                initTimer()
+              initTimer()
             }
 
             clicked.classList.add('choice1')
@@ -134,7 +145,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-           // score ++
+            // score ++
             score = 18
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
@@ -142,16 +153,13 @@ export default {
             selection = 0
 
 
-
-            if (score === 18){
-              stopTimer();
-              modalWin.style.visibility = 'visible';
-              texTimeLeft.textContent = 'Temps :' + ' ' + timer.textContent;
-              textTentative.textContent = 'Nombre de tentatives :' + ' ' + tentative;
+            if (score === 18) {
+              stopTimer()
+              modalWin.style.visibility = 'visible'
+              texTimeLeft.textContent = 'Temps :' + ' ' + timer.textContent
+              textTentative.textContent = 'Nombre de tentatives :' + ' ' + tentative
 
             }
-
-
           } else {
             console.log('false')
             selection = 0
@@ -167,7 +175,7 @@ export default {
             toString(timer)
           }
 
-            gameTime = setInterval(timeIt, 1000)
+          gameTime = setInterval(timeIt, 1000)
 
           function convertSeconds(s) {
             const min = Math.floor(s / 60)
@@ -180,12 +188,12 @@ export default {
           }
         }
 
-        function stopTimer(){
-        clearInterval(gameTime)
+        function stopTimer() {
+          clearInterval(gameTime)
         }
       }
-      }
     }
+  }
 }
 
 
@@ -195,7 +203,7 @@ export default {
 <style>
 
 @media only screen and (max-width: 768.5px) {
-  .fruit{
+  .fruit {
     height: 15.115942029vw;
     width: 15.115942029vw;
   }
@@ -222,7 +230,7 @@ export default {
 }
 
 @media only screen and (min-width: 768.5px) {
-  .fruit{
+  .fruit {
     height: 6.115942029vw;
     width: 6.115942029vw;
   }
@@ -267,11 +275,10 @@ export default {
 }
 
 
-
 .content {
   position: relative;
-  margin-right: 15% ;
-  margin-left: 15% ;
+  margin-right: 15%;
+  margin-left: 15%;
 
 }
 
@@ -294,6 +301,7 @@ table {
   margin: 3px;
   cursor: pointer;
 }
+
 .winner-img {
   height: auto;
   width: 100%;
