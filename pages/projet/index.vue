@@ -294,6 +294,7 @@ article {
   font-size: 1.6rem;
   line-height: 1;
   margin-right: 1rem;
+  font-family: Helvetica,sans-serif;
 }
 
 .separator__line {

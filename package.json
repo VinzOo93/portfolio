@@ -10,7 +10,9 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@nuxtjs/firebase": "^7.5.0",
     "core-js": "^3.8.3",
+    "firebase": "^8.6.3",
     "gsap": "^3.6.0",
     "medium-zoom": "^1.0.6",
     "nuxt": "^2.14.12",
