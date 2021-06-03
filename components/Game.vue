@@ -19,7 +19,7 @@
           <p class='rate'>Tx de réussite : </p>
         </div>
         <div class='congratulation'>
-          <p> Good Game !! Découvrez, maintenant si vous êtes le meilleur 🥇</p>
+          <p> Good Game !! Découvrez, maintenant si vous êtes le/la champion(ne) 🥇 </p>
           <p> Pour cela, entrez votre nom</p>
           <form v-on:submit.prevent='addScore'>
             <input type='text' v-model='text.name'>
@@ -356,14 +356,14 @@ export default {
   background-color: #f1f1f1;
 
 }
-.stat {
+.stat * {
+  font-family: Helvetica, serif !important;
   display: flex;
   justify-content: space-around;
   background-color: #f1f1f1;
   border: #504e4c solid 1px;
   border-radius: 20px;
   padding: 10px;
-  font-family: Helvetica, serif !important;
   font-size: 12px;
 }
 
