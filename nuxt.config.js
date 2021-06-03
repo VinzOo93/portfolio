@@ -14,7 +14,6 @@ export default {
       {rel: "preconnect", href: "https://fonts.gstatic.com" },
       {href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap", rel:"stylesheet"  }],
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
@@ -48,12 +47,17 @@ export default {
       },
       services: {
         database: true,
-        static: false, // default
-        preload: false, // default
+        static: false,
+        preload: false,
+        analytics: true,
+
       },
       database: {
         emulatorPort: 9000,
         emulatorHost: 'localhost',
+      },
+      analytics: {
+        collectionEnabled: true
       }
     }
   ]

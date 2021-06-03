@@ -26,9 +26,7 @@
             <button>Enregistré</button>
           </form>
           <button v-on:click='tryAgain'>Recommencer</button>
-
         </div>
-
       </div>
     </div>
   </div>
@@ -38,28 +36,28 @@
 <script>
 import * as firebase from 'firebase'
 
-let app= firebase.default;
-let db = app.database();
+let app = firebase.default
+let db = app.database()
 let text = db.ref('Player')
 const timer = document.querySelector('#timer')
-let tentative = 0;
-let successRate =  18 / tentative * 100
-let timeLeft = 0;
+let tentative = 0
+let successRate = 18 / tentative * 100
+let timeLeft = 0
 
 export default {
   name: 'Game', player: {
-    player : name,tentative,successRate,timeLeft
+    player: name, tentative, successRate, timeLeft
 
   },
-  data(){
+  data() {
 
-    return{
+    return {
 
-      text:{
-        name:'',
+      text: {
+        name: '',
         tentative: '',
         successRate: '',
-        timeLeft: '',
+        timeLeft: ''
       }
     }
   },
@@ -69,9 +67,9 @@ export default {
   methods: {
     tryAgain() {
 
-      let tr = document.querySelector('.gameline');
-      let win = document.querySelector('.modale-win');
-      let allTd = document.querySelectorAll('td');
+      let tr = document.querySelector('.gameline')
+      let win = document.querySelector('.modale-win')
+      let allTd = document.querySelectorAll('td')
 
       timer.textContent = '00:00'
 
@@ -82,40 +80,37 @@ export default {
 
       this.startGame()
     },
-    addScore: function(){
-      successRate =  18 / tentative * 100;
-      timeLeft = timer.textContent.toString();
+    addScore: function() {
+      successRate = 18 / tentative * 100
+      timeLeft = timer.textContent.toString()
 
-  text.push({
+      text.push({
         name: this.text.name,
         tentative: tentative.toString(),
         successRate: Math.round(successRate).toString(),
-        timeLeft: timeLeft,
-      });
+        timeLeft: timeLeft
+      })
 
 
       alert('success')
     },
-    showScore: function(){
+    showScore: function() {
     },
     startGame: function() {
 
-      let score = 0;
-      let caseNumber = 0;
+      let score = 0
+      let caseNumber = 0
 
-      let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-      let double = 0;
-      let selection = 0;
-      let gameTime = 0;
-      const line = document.querySelector('.gameline');
-      const modalWin = document.querySelector('.modale-win');
-      const texTimeLeft = document.querySelector('.timeLeft');
-      const textTentative = document.querySelector('.tentative');
-      const rate = document.querySelector('.rate');
+      let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+      let double = 0
+      let selection = 0
+      let gameTime = 0
+      const line = document.querySelector('.gameline')
+      const modalWin = document.querySelector('.modale-win')
+      const texTimeLeft = document.querySelector('.timeLeft')
+      const textTentative = document.querySelector('.tentative')
+      const rate = document.querySelector('.rate')
       const timer = document.querySelector('#timer')
-
-
-
 
 
       while (double < 2) {
@@ -197,7 +192,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score ++;
+            score++
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -206,14 +201,14 @@ export default {
 
             if (score === 18) {
 
-              let successRate =  18 / tentative * 100
+              let successRate = 18 / tentative * 100
 
               stopTimer()
-              modalWin.style.visibility = 'visible';
-              texTimeLeft.textContent = 'Temps :' + ' ' + timer.textContent;
-              textTentative.textContent = 'Nombre de tentatives :' + ' ' + tentative;
-              rate.textContent = 'Tx de réussite :' + ' ' + Math.round(successRate)  + '%';
-              console.log(successRate);
+              modalWin.style.visibility = 'visible'
+              texTimeLeft.textContent = 'Temps :' + ' ' + timer.textContent
+              textTentative.textContent = 'Nombre de tentatives :' + ' ' + tentative
+              rate.textContent = 'Tx de réussite :' + ' ' + Math.round(successRate) + '%'
+              console.log(successRate)
             }
           } else {
             console.log('false')
@@ -292,7 +287,7 @@ export default {
   }
 
 
-  }
+}
 
 @media only screen and (min-width: 768.5px) {
 
@@ -323,6 +318,7 @@ export default {
     margin-right: 30%;
     margin-top: 2%;
   }
+
   .content {
     margin-left: 25%;
   }
@@ -356,6 +352,7 @@ export default {
   background-color: #f1f1f1;
 
 }
+
 .stat * {
   font-family: Helvetica, serif !important;
   display: flex;
@@ -427,8 +424,6 @@ table {
 .fruit {
   border-radius: 25px;
 }
-
-
 
 
 </style>
