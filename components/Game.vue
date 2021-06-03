@@ -44,11 +44,11 @@ let text = db.ref('Player')
 const timer = document.querySelector('#timer')
 let tentative = 0;
 let successRate =  18 / tentative * 100
-
+let timeLeft = 0;
 
 export default {
-  name: 'Game', firebase: {
-    Player : name,tentative,successRate,
+  name: 'Game', player: {
+    player : name,tentative,successRate,timeLeft
 
   },
   data(){
@@ -59,6 +59,7 @@ export default {
         name:'',
         tentative: '',
         successRate: '',
+        timeLeft: '',
       }
     }
   },
@@ -82,13 +83,16 @@ export default {
       this.startGame()
     },
     addScore: function(){
-      let successRate =  18 / tentative * 100
-      text.push(this.text.name);
-      this.text.name = '';
-      this.text.tentative = tentative.toString();
-      this.text.successRate = Math.round(successRate).toString();
-      text.push(this.text.tentative);
-      text.push(this.text.successRate);
+      successRate =  18 / tentative * 100;
+      timeLeft = timer.textContent.toString();
+
+  text.push({
+        name: this.text.name,
+        tentative: tentative.toString(),
+        successRate: Math.round(successRate).toString(),
+        timeLeft: timeLeft,
+      });
+
 
       alert('success')
     },
