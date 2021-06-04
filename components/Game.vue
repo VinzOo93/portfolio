@@ -22,7 +22,7 @@
           <p> Good Game !! Découvrez, maintenant si vous êtes le/la champion(ne). 🥇 </p>
           <p> Pour cela, entrez votre nom !</p>
           <form v-on:submit.prevent='addScore'>
-            <input type='text' v-model='text.name'>
+            <input type='text' v-model='text.name' required='required'>
             <button>Enregistré</button>
           </form>
           <button v-on:click='tryAgain'>Recommencer</button>
@@ -39,6 +39,8 @@ import * as firebase from 'firebase'
 let app = firebase.default
 let db = app.database()
 let text = db.ref('Player')
+let presenceRef = db.ref("disconnectmessage");
+
 const timer = document.querySelector('#timer')
 let tentative = 0
 let successRate = 18 / tentative * 100
@@ -84,12 +86,20 @@ export default {
       successRate = 18 / tentative * 100
       timeLeft = document.querySelector('#timer').textContent;
 
-      text.push({
-        name: this.text.name,
-        tentative: tentative.toString(),
-        successRate: Math.round(successRate).toString(),
-        timeLeft: timeLeft.toString()
-      })
+      try {
+        text.push({
+          name: this.text.name,
+          tentative: tentative.toString(),
+          successRate: Math.round(successRate).toString(),
+          timeLeft: timeLeft.toString()
+        });
+      }catch (err) {
+        presenceRef.onDisconnect().remove((err) => {
+         console.error("impossible d'établir la connexion", err)
+        });
+      }
+
+
 
 
       alert('success')
@@ -342,7 +352,7 @@ export default {
 }
 
 .modale-win {
-  visibility: hidden;
+  visibility: visible;
   position: absolute;
   top: 0;
   right: 0;
