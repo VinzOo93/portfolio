@@ -623,7 +623,6 @@ export default {
   body * {
     box-sizing: border-box;
     overflow: visible;
-
   }
 
   .fz-3xl {

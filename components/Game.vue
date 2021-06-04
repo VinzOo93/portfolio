@@ -11,6 +11,7 @@
       </div>
     </div>
     <div class='modale-win'>
+      <modale-score v-bind:reveleScore='reveleScore' v-bind:toggleModaleScore='toggleModaleScore'></modale-score>
       <div class='content'>
         <img src='https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif' class='winner-img' alt='winner-img'>
         <div class='stat'>
@@ -23,7 +24,7 @@
           <p> Pour cela, entrez votre nom !</p>
           <form v-on:submit.prevent='addScore'>
             <input type='text' v-model='text.name' required='required'>
-            <button>Enregistré</button>
+            <button v-on:click='toggleModaleScore'>Enregistré</button>
           </form>
           <button v-on:click='tryAgain'>Recommencer</button>
         </div>
@@ -35,6 +36,7 @@
 
 <script>
 import * as firebase from 'firebase'
+import ModaleScore from '@/components/ModaleScore'
 
 let app = firebase.default
 let db = app.database()
@@ -52,21 +54,30 @@ export default {
 
   },
   data() {
-
     return {
+      reveleScore: false,
 
       text: {
         name: '',
         tentative: '',
         successRate: '',
-        timeLeft: ''
-      }
+        timeLeft: '',
+      },
     }
+  },
+  components: {
+    'modale-score': ModaleScore
   },
   mounted: function() {
     this.startGame()
   },
   methods: {
+   toggleModaleScore : function (){
+
+    this.reveleScore = !this.reveleScore
+
+  },
+
     tryAgain() {
 
       let tr = document.querySelector('.gameline')
@@ -98,11 +109,7 @@ export default {
          console.error("impossible d'établir la connexion", err)
         });
       }
-
-
-
-
-      alert('success')
+      alert('sucess');
     },
     showScore: function() {
     },
@@ -161,7 +168,6 @@ export default {
           fruit.style.visibility = 'hidden'
         })
       }
-
 
       function clickAndCheck(Event) {
 
