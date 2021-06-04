@@ -98,13 +98,14 @@ export default {
     },
     startGame: function() {
 
-      let score = 0
-      let caseNumber = 0
+      let score = 0;
+      let caseNumber = 0;
 
-      let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-      let double = 0
-      let selection = 0
-      let gameTime = 0
+      let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+      let double = 0;
+      let selection = 0;
+      let gameTime = 0;
+      tentative = 0;
       const line = document.querySelector('.gameline')
       const modalWin = document.querySelector('.modale-win')
       const texTimeLeft = document.querySelector('.timeLeft')
