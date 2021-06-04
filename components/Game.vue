@@ -19,8 +19,8 @@
           <p class='rate'>Tx de réussite : </p>
         </div>
         <div class='congratulation'>
-          <p> Good Game !! Découvrez, maintenant si vous êtes le/la champion(ne) 🥇 </p>
-          <p> Pour cela, entrez votre nom</p>
+          <p> Good Game !! Découvrez, maintenant si vous êtes le/la champion(ne). 🥇 </p>
+          <p> Pour cela, entrez votre nom !</p>
           <form v-on:submit.prevent='addScore'>
             <input type='text' v-model='text.name'>
             <button>Enregistré</button>
@@ -82,13 +82,13 @@ export default {
     },
     addScore: function() {
       successRate = 18 / tentative * 100
-      timeLeft = timer.textContent.toString()
+      timeLeft = document.querySelector('#timer').textContent;
 
       text.push({
         name: this.text.name,
         tentative: tentative.toString(),
         successRate: Math.round(successRate).toString(),
-        timeLeft: timeLeft
+        timeLeft: timeLeft.toString()
       })
 
 
@@ -193,7 +193,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score++
+            score ++;
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -348,7 +348,7 @@ export default {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   padding: 5%;
   background-color: #f1f1f1;
 
@@ -370,6 +370,10 @@ export default {
   text-align: center;
   margin-top: 2%;
 
+}
+
+form {
+  margin-bottom: 10px;
 }
 
 .content {

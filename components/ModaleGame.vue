@@ -23,12 +23,12 @@ export default {
 @media only screen and (max-width: 768.5px) {
   .btn-modale::before,
   .btn-modale::after {
-    height: 26px;
+    height: 20px;
     left: 2%;
   }
 
   .btn-modale {
-    top: 9%;
+    top: 2%;
   }
 
 }
