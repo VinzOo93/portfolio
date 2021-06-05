@@ -5,7 +5,7 @@
       <h1 class='title'>Trouvez les bons fruits !! 🍑😎</h1>
       <p id='timer'>00:00</p>
       <div class='board'>
-        <table>
+        <table class='table-game'>
           <tr id='gameline' class='gameline'></tr>
         </table>
       </div>
@@ -407,7 +407,7 @@ h1 {
   justify-content: center;
 }
 
-table {
+.table-game {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
