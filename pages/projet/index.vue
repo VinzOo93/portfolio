@@ -3,7 +3,57 @@
     <div class='transition '></div>
     <div class=' smooth-scroll-wrapper '>
       <div class='projets'>
-        <article id='article-4'  class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-6'  class='case  p-0 m-0 f-100 b-0'>
+          <div class='separator p-0 m-0 f-100 b-0'>
+            <span class='separator__year'>2021</span>
+            <span class='separator__line line-1'></span>
+          </div>
+          <div class='card container p-0 m-0 f-100 b-0'>
+            <div class='scroll-card'>
+              <div class='text-content-xs'>
+                <h2 class='name'>FRUIT MEMORY</h2>
+                <h3 class='text'>
+                </h3>
+                <h3 class='text'> Jeu de Memory caché en page d'acceuil. Pour les les plus curieux d'entre-vous, vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e).  Je vous souhaite une bonne recherche 🥸 !
+                </h3>
+                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Firebase </p>
+                <!--                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a> -->
+              </div>
+            </div>
+            <div class='img-project '>
+              <img src='~/assets/projects/memory-1.png' class='img-projets portfolioV2-1 size-1'
+                   alt='portfolioV2-1'>
+              <img src='~/assets/projects/memory-2.png' class='img-projets portfolioV2-2 size-2'
+                   alt='portfolioV2-2'>
+            </div>
+          </div>
+        </article>
+        <article id='article-5'  class='case  p-0 m-0 f-100 b-0'>
+          <div class='separator p-0 m-0 f-100 b-0'>
+            <span class='separator__year'>2021</span>
+            <span class='separator__line line-1'></span>
+          </div>
+          <div class='card container p-0 m-0 f-100 b-0'>
+            <div class='scroll-card'>
+              <div class='text-content-xs'>
+                <h2 class='name'>PROFILES BROWSER</h2>
+                <h3 class='text'>
+                </h3>
+                <h3 class='text'> Petite application pour décourvrir Laravel & Docker qui repertorie les informations de plusieurs profiles de stars.
+                </h3>
+                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker ,Laravel, Maria DB </p>
+                <a class='button-to-website' href='https://github.com/VinzOo93/ProfileBrowser' target='_blank'>Git clone</a>
+              </div>
+            </div>
+            <div class='img-project '>
+              <img src='~/assets/projects/profile-1.png' class='img-projets portfolioV2-1 size-1'
+                   alt='portfolioV2-1'>
+              <img src='~/assets/projects/profile-2.png' class='img-projets portfolioV2-2 size-2'
+                   alt='portfolioV2-2'>
+            </div>
+          </div>
+        </article>
+        <article id='article-4'  class='case  p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -19,7 +69,6 @@
                 </h3>
                 <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, GSAP, ScrollMagic, MediumZoom,
                   Déploiement sous Eroku</p>
-<!--                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a> -->
               </div>
             </div>
             <div class='img-project '>
@@ -30,7 +79,7 @@
             </div>
           </div>
         </article>
-        <article id='article-3' class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-3' class='case  p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -178,7 +227,7 @@ export default {
 
 
       const scene = this.$scrollmagic.scene({
-        triggerElement: '#article-3',
+        triggerElement: '#article-4',
         triggerHook: 0.5,
       })
         .setTween('.case', { opacity: 1, duration: 0.10 })
