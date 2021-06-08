@@ -86,6 +86,22 @@ body {
 </style>
 <script>
 import { gsap } from "gsap"
+import firebase from 'firebase'
+/* Prod only
+const firebaseConfig = {
+  apiKey: "AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74",
+  authDomain: "portfolio-vincent-orru.firebaseapp.com",
+  databaseURL: "https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "portfolio-vincent-orru",
+  storageBucket: "portfolio-vincent-orru.appspot.com",
+  messagingSenderId: "229878441570",
+  appId: "1:229878441570:web:bfc3ba1df5829d5d1cd33b",
+  measurementId: "G-PEEWBKJLZZ"
+};
+
+let app = firebase.default
+
+app.initializeApp(firebaseConfig);*/
 
 
 

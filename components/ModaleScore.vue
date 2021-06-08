@@ -2,20 +2,23 @@
   <div class='bloc-modale' v-if='reveleScore'>
     <div class='overlay-game' v-on:click='toggleModaleScore'></div>
     <div class='modale card'>
-      <div class='btn-modale' v-on:click='toggleModaleScore'></div>
-      <h1>Tableau des scores ☑️</h1>
+      <div class='btn-modale-score' v-on:click='toggleModaleScore'></div>
+      <h1>Tableau des scores</h1>
+      <div class='container-refresh'>
+        <button @click='$fetch'>Refresh</button>
+      </div>
       <div class='table'>
         <table class='table-player'>
           <thead>
           <tr class='player-line'>
             <td>Joueurs</td>
-            <td>succès %</td>
+            <td>Succès %</td>
             <td>Tentatives</td>
             <td>Temps</td>
           </tr>
           </thead>
           <tbody>
-          <tr class='player-line t-body' v-for='Player in Players'>
+          <tr class='player-line t-body' v-for='Player in Players '>
             <td> {{ Player.name }}</td>
             <td> {{ Player.successRate }}%</td>
             <td>{{ Player.tentative }}</td>
@@ -24,15 +27,14 @@
           </tbody>
         </table>
       </div>
-
       <div>
       </div>
-
     </div>
   </div>
 </template>
 <script>
 import * as firebase from 'firebase'
+
 
 let app = firebase.default
 let db = app.database()
@@ -46,45 +48,51 @@ export default {
       Players: []
     }
   }, async fetch() {
+    let playerRef = db.ref('Player')
+    let players
+    playerRef.orderByChild('successRate').limitToLast(7).on('value', function(snapshot) {
+        console.log(snapshot.val());
 
-    db.ref().child('Player').get().then((e) => {
-      this.Players = e.val()
+         players = snapshot.val()
 
-      if (e.exists()) {
-        console.log(e.val())
-      } else {
-        console.log('No data available')
-      }
-    }).catch((error) => {
-      console.error(error)
-    })
+      return players;
+    });
+    this.Players = players;
+    this.refresh()
+  },
+  methods: {
+    refresh() {
+      this.$fetch()
+    }
   }
 }
 </script>
 <style>
 
 @media only screen and (max-width: 768.5px) {
-  .btn-modale::before,
-  .btn-modale::after {
-    height: 20px;
-    left: 2%;
+  .btn-modale-score::before,
+  .btn-modale-score::after {
+    height: 30px;
   }
-
-  .btn-modale {
-    top: 2%;
+  h1 {
+    margin-top: 10% !important;
+  }
+  .btn-modale-score {
+    top: 14%;
+    left: 75%;
   }
 
 }
 
 @media only screen and (min-width: 768.5px) {
-  .btn-modale::before,
-  .btn-modale:after {
+  .btn-modale-score::before,
+  .btn-modale-score:after {
     top: 40%;
     height: 33px;
     left: 15px;
   }
 
-  .btn-modale {
+  .btn-modale-score {
     top: 5%;
   }
 }
@@ -104,7 +112,7 @@ export default {
   z-index: 250;
 }
 
-.btn-modale {
+.btn-modale-score {
   position: absolute;
   right: 25px;
   width: 25px;
@@ -114,23 +122,23 @@ export default {
 
 }
 
-.btn-modale:hover {
+.btn-modale-score:hover {
   opacity: 1;
 }
 
-.btn-modale:before,
-.btn-modale:after {
+.btn-modale-score:before,
+.btn-modale-score:after {
   position: absolute;
   content: ' ';
   width: 2px;
   background-color: #333;
 }
 
-.btn-modale:before {
+.btn-modale-score:before {
   transform: rotate(45deg);
 }
 
-.btn-modale:after {
+.btn-modale-score:after {
   transform: rotate(-45deg);
 }
 
@@ -176,10 +184,11 @@ export default {
   margin-right: 20px;
 }
 
-thead *{
+thead * {
   font-size: 15px;
   font-family: Helvetica, serif !important;
 }
+
 h1 {
   margin-top: 15%;
   display: flex;
@@ -193,6 +202,13 @@ h1 {
   justify-content: center;
 }
 
+.container-refresh {
+  display: flex;
+  justify-content: center;
+}
+.container-refresh button {
+  padding: 10px;
+}
 
 </style>
 

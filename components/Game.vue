@@ -21,12 +21,12 @@
         </div>
         <div class='congratulation'>
           <p> Good Game !! Découvrez, maintenant si vous êtes le/la champion(ne). 🥇 </p>
-          <p> Pour cela, entrez votre nom !</p>
           <form v-on:submit.prevent='addScore'>
             <input type='text' v-model='text.name' required='required'>
-            <button v-on:click='toggleModaleScore'>Enregistré</button>
+            <button>Enregistrer</button>
           </form>
           <button v-on:click='tryAgain'>Recommencer</button>
+          <button v-on:click='toggleModaleScore'>voir les scores</button>
         </div>
       </div>
     </div>
@@ -41,17 +41,15 @@ import ModaleScore from '@/components/ModaleScore'
 let app = firebase.default
 let db = app.database()
 let text = db.ref('Player')
-let presenceRef = db.ref("disconnectmessage");
+let presenceRef = db.ref('disconnectmessage')
 
-const timer = document.querySelector('#timer')
 let tentative = 0
 let successRate = 18 / tentative * 100
 let timeLeft = 0
 
 export default {
   name: 'Game', player: {
-    player: name, tentative, successRate, timeLeft
-
+    name: '', tentative: '', successRate:'', timeLeft: ''
   },
   data() {
     return {
@@ -61,8 +59,8 @@ export default {
         name: '',
         tentative: '',
         successRate: '',
-        timeLeft: '',
-      },
+        timeLeft: ''
+      }
     }
   },
   components: {
@@ -72,57 +70,54 @@ export default {
     this.startGame()
   },
   methods: {
-   toggleModaleScore : function (){
+    toggleModaleScore: function() {
 
-    this.reveleScore = !this.reveleScore
+      this.reveleScore = !this.reveleScore
 
-  },
+    },
 
     tryAgain() {
 
-      let tr = document.querySelector('.gameline')
-      let win = document.querySelector('.modale-win')
-      let allTd = document.querySelectorAll('td')
-
+      let tr = document.querySelector('.gameline');
+      let win = document.querySelector('.modale-win');
+      let allTd = document.querySelectorAll('td');
+      let timer = document.querySelector('#timer');
       timer.textContent = '00:00'
 
       win.style.visibility = 'hidden'
       allTd.forEach(td => {
         tr.removeChild(td)
       })
-
       this.startGame()
     },
     addScore: function() {
       successRate = 18 / tentative * 100
-      timeLeft = document.querySelector('#timer').textContent;
+      timeLeft = document.querySelector('#timer').textContent
 
       try {
         text.push({
           name: this.text.name,
-          tentative: tentative.toString(),
-          successRate: Math.round(successRate).toString(),
+          tentative: tentative,
+          successRate: Math.round(successRate),
           timeLeft: timeLeft.toString()
-        });
-      }catch (err) {
+        })
+      } catch (err) {
         presenceRef.onDisconnect().remove((err) => {
-         console.error("impossible d'établir la connexion", err)
-        });
+          console.error('impossible d\'établir la connexion', err)
+        })
       }
-      alert('sucess');
-    },
-    showScore: function() {
+      alert('Votre score a bien été enregistré')
     },
     startGame: function() {
 
-      let score = 0;
-      let caseNumber = 0;
+      let score = 0
+      let caseNumber = 0
 
-      let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-      let double = 0;
-      let selection = 0;
-      let gameTime = 0;
-      tentative = 0;
+      let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+      let double = 0
+      let selection = 0
+      let gameTime = 0
+      tentative = 0
       const line = document.querySelector('.gameline')
       const modalWin = document.querySelector('.modale-win')
       const texTimeLeft = document.querySelector('.timeLeft')
@@ -209,7 +204,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score ++;
+            score = 18;
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -285,7 +280,6 @@ export default {
   }
 
   .title {
-    margin-top: 5%;
     font-size: 18px;
   }
 
@@ -358,13 +352,13 @@ export default {
 }
 
 .modale-win {
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 110%;
+  height: 140%;
   padding: 5%;
   background-color: #f1f1f1;
 
@@ -403,6 +397,7 @@ form {
 }
 
 h1 {
+  margin-top: 0;
   display: flex;
   justify-content: center;
 }

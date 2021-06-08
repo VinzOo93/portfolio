@@ -53,7 +53,7 @@ export default {
 
       },
       database: {
-        emulatorPort: 9000,
+        emulatorPort: process.env.NODE_ENV === 'development' ? 9000 : undefined,
         emulatorHost: 'localhost',
       },
       analytics: {

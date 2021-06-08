@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -13,6 +13,7 @@
     "@nuxtjs/firebase": "^7.5.0",
     "core-js": "^3.8.3",
     "firebase": "^8.6.3",
+    "firebase-admin": "^9.9.0",
     "gsap": "^3.6.0",
     "medium-zoom": "^1.0.6",
     "nuxt": "^2.14.12",
