@@ -12,7 +12,7 @@
     </div>
     <div class='modale-win'>
       <modale-score v-bind:reveleScore='reveleScore' v-bind:toggleModaleScore='toggleModaleScore'></modale-score>
-      <div class='content'>
+      <div class='content-game'>
         <img src='https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif' class='winner-img' alt='winner-img'>
         <div class='stat'>
           <p class='timeLeft'>Temps :</p>
@@ -288,7 +288,7 @@ export default {
   }
 
 
-  .content {
+  .content-game {
     margin-left: 10%;
     margin-right: 10%;
   }
@@ -330,7 +330,7 @@ export default {
     margin-top: 2%;
   }
 
-  .content {
+  .content-game {
     margin-left: 25%;
   }
 
@@ -386,7 +386,7 @@ form {
   margin-bottom: 10px;
 }
 
-.content {
+.content-game {
   position: relative;
 
 }
