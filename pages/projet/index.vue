@@ -14,7 +14,7 @@
                 <h2 class='name'>FRUIT MEMORY</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Jeu de Memory caché en page d'acceuil. Pour les les plus curieux d'entre-vous, vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e).  Je vous souhaite une bonne recherche 🥸 !
+                <h3 class='text'> Jeu de Memory caché ici en page d'acceuil. Pour les les plus curieux d'entre-vous, vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e).  Je vous souhaite une bonne recherche 🥸 !
                 </h3>
                 <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Firebase </p>
                 <!--                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a> -->
