@@ -133,9 +133,9 @@ export default {
   }
 
   .cover2 {
-    margin: 10px;
+    margin: 8%;
     z-index: 1;
-    max-width: 90%;
+    max-width: 85%;
   }
 
   .content {
