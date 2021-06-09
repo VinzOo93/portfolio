@@ -88,7 +88,7 @@ body {
 import { gsap } from "gsap"
 import firebase from 'firebase'
 /* Prod only */
-/*const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74",
   authDomain: "portfolio-vincent-orru.firebaseapp.com",
   databaseURL: "https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app",
@@ -101,7 +101,7 @@ import firebase from 'firebase'
 
 let app = firebase.default
 
-app.initializeApp(firebaseConfig);*/
+app.initializeApp(firebaseConfig);
 
 
 
