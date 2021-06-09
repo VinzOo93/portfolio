@@ -14,7 +14,7 @@
                 <h2 class='name'>FRUIT MEMORY</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Jeu de Memory caché ici en page d'acceuil. Pour les les plus curieux d'entre-vous, vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e).  Je vous souhaite une bonne recherche 🥸 !
+                <h3 class='text'> Jeu de Fruit Memory caché en page d'acceuil. Pour les plus curieux(se) d'entre-vous, vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e).  Je vous souhaite une bonne recherche 🥸 !
                 </h3>
                 <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Firebase </p>
                 <!--                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a> -->
@@ -39,9 +39,9 @@
                 <h2 class='name'>PROFILES BROWSER</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Petite application pour décourvrir Laravel & Docker qui repertorie les informations de plusieurs profiles de stars.
+                <h3 class='text'> Petite application pour décourvrir Laravel & Docker qui répertorie les informations de plusieurs profils de stars.
                 </h3>
-                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker ,Laravel, Maria DB </p>
+                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker ,Laravel, Blade, Eloquent, Maria DB </p>
                 <a class='button-to-website' href='https://github.com/VinzOo93/ProfileBrowser' target='_blank'>Git clone</a>
               </div>
             </div>

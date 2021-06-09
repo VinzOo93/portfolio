@@ -3,7 +3,7 @@
     <div class='overlay-game' v-on:click='toggleModaleScore'></div>
     <div class='modale card'>
       <div class='btn-modale-score' v-on:click='toggleModaleScore'></div>
-      <h1>Tableau des scores</h1>
+      <h1>Tableau des scores ☑️</h1>
       <div class='container-refresh'>
         <button @click='$fetch'>Refresh</button>
       </div>
@@ -12,7 +12,7 @@
           <thead>
           <tr class='player-line'>
             <td>Joueurs</td>
-            <td>Succès %</td>
+            <td>Succès</td>
             <td>Tentatives</td>
             <td>Temps</td>
           </tr>
@@ -74,12 +74,13 @@ export default {
   .btn-modale-score::after {
     height: 30px;
   }
-  h1 {
-    margin-top: 10% !important;
-  }
   .btn-modale-score {
-    top: 14%;
-    left: 75%;
+    top: 20%;
+    left: 70%;
+  }
+  .table-player {
+    margin: 15px;
+    font-size: 15px;
   }
 
 }
@@ -94,6 +95,10 @@ export default {
 
   .btn-modale-score {
     top: 5%;
+  }
+
+  .table-player {
+    margin: 100px;
   }
 }
 
@@ -153,15 +158,7 @@ export default {
 
 .modale {
   background: #f1f1f1;
-  padding: 50px;
   position: fixed;
-}
-
-
-.player-line {
-  display: flex;
-  justify-content: space-evenly;
-
 }
 
 .player-line td {
@@ -172,7 +169,6 @@ export default {
 .table-player {
   width: 80%;
   height: 80%;
-  margin: 100px;
   border: solid 1px #74746e;
   border-radius: 30px;
 }
@@ -187,10 +183,11 @@ export default {
 thead * {
   font-size: 15px;
   font-family: Helvetica, serif !important;
+  padding: 7px;
 }
 
 h1 {
-  margin-top: 15%;
+  margin-top: 10%;
   display: flex;
   justify-content: center;
 }
