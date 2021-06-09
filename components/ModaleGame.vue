@@ -26,7 +26,7 @@ export default {
   .btn-modale::before,
   .btn-modale::after {
     height: 20px;
-    left: 2%;
+    left: -35%;
   }
 
   .btn-modale {

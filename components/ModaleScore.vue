@@ -51,7 +51,6 @@ export default {
     let playerRef = db.ref('Player')
     let players
     playerRef.orderByChild('successRate').limitToLast(7).on('value', function(snapshot) {
-        console.log(snapshot.val());
 
          players = snapshot.val()
 

@@ -266,17 +266,17 @@ export default {
 
 @media only screen and (max-width: 768.5px) {
   .fruit {
-    height: 49px;
-    width: 49px;
+    height: 45px;
+    width: 45px;
   }
 
   .gameline > td {
-    height: 49px;
-    width: 49px;
+    height: 45px;
+    width: 45px;
   }
 
   .gameline {
-    width: 330px;
+    width: 306px;
   }
 
   .title {
