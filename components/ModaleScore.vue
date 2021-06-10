@@ -50,7 +50,7 @@ export default {
   }, async fetch() {
     let playerRef = db.ref('Player')
     let players
-    playerRef.orderByChild('successRate').limitToLast(7).on('value', function(snapshot) {
+    playerRef.orderByChild('timeLeft').limitToFirst(6).on('value', function(snapshot) {
 
          players = snapshot.val()
 
