@@ -83,6 +83,7 @@ export default {
       let allTd = document.querySelectorAll('td');
       let timer = document.querySelector('#timer');
       timer.textContent = '00:00'
+      timeLeft = null;
 
       win.style.visibility = 'hidden'
       allTd.forEach(td => {
