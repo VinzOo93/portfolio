@@ -45,7 +45,7 @@ let presenceRef = db.ref('disconnectmessage')
 
 let tentative = 0
 let successRate = 18 / tentative * 100
-let timeLeft = 0
+let timeLeft;
 
 export default {
   name: 'Game', player: {
@@ -92,14 +92,13 @@ export default {
     },
     addScore: function() {
       successRate = 18 / tentative * 100
-      timeLeft = document.querySelector('#timer').textContent
 
       try {
         text.push({
           name: this.text.name,
           tentative: tentative,
           successRate: Math.round(successRate),
-          timeLeft: timeLeft.toString()
+          timeLeft: timeLeft
         })
       } catch (err) {
         presenceRef.onDisconnect().remove((err) => {
@@ -204,7 +203,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score++;
+            score ++;
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -233,8 +232,10 @@ export default {
 
           function timeIt() {
             time++
-            timer.textContent = convertSeconds(time)
+            timer.textContent = convertSeconds(time);
+            timeLeft = convertSeconds(time);
             toString(timer)
+            return timeLeft;
           }
 
           gameTime = setInterval(timeIt, 1000)
