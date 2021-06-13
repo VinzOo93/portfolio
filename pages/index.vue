@@ -161,7 +161,7 @@ export default {
 
 
       if (windowSize <= 768) {
-        body.style.height = 1000 + 'px'
+       body.style.height = 1000 + 'px'
         gsap.timeline(100)
           .fromTo(transition,
             {
@@ -173,11 +173,9 @@ export default {
               yPercent: -100,
               duration: 3
             })
-          .fromTo(welcome, {opacity: 0, yPercent: 100, duration:3 }, {
+          .fromTo(welcome, {opacity: 0}, {
             opacity: 1,
-            yPercent: 0,
             ease: "power1",
-            duration: 3
           });
 /*        .from(line, {
           yPercent: 200,
@@ -390,6 +388,7 @@ export default {
 
 
 @media only screen and (max-width: 768.5px) {
+
 
   .fz-3xl {
     font-size: 24.985507246vw;
