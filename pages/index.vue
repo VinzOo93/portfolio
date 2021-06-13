@@ -163,16 +163,6 @@ export default {
       if (windowSize <= 768) {
        body.style.height = 1000 + 'px'
         gsap.timeline(100)
-          .fromTo(transition,
-            {
-              opacity: 1,
-              yPercent: 100,
-              duration: 3
-            },
-            {
-              yPercent: -100,
-              duration: 3
-            })
           .fromTo(welcome, {opacity: 0}, {
             opacity: 1,
             ease: "power1",
