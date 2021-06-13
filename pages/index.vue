@@ -392,7 +392,7 @@ export default {
 @media only screen and (max-width: 768.5px) {
 
   .fz-3xl {
-    font-size: 28.985507246vw;
+    font-size: 24.985507246vw;
   }
 
 .text-recipe {
