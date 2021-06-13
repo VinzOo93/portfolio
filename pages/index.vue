@@ -155,24 +155,11 @@ export default {
       let mouseCursor = document.querySelector(".cursor")
       let windowSize = screen.width
       const revealXs = document.querySelectorAll(".xs-reveal")
-      const transition = document.querySelector(".transition")
-      const  welcome = document.querySelector(".welcome-home")
       const body = document.body
 
 
       if (windowSize <= 768) {
        body.style.height = 1000 + 'px'
-        gsap.timeline(100)
-          .fromTo(welcome, {opacity: 0}, {
-            opacity: 1,
-            ease: "power1",
-          });
-/*        .from(line, {
-          yPercent: 200,
-          duration:2,
-          ease: "power4",
-          stagger: 0.2
-        })*/
       }
       gsap.timeline(100)
         .fromTo(rock, {
