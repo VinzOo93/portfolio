@@ -25,36 +25,26 @@
       </div>
       <div class='container'>
           <p class='description scroll cover'>
-            J'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
+            Hi there, I'm Vincent...
+
+            <br><br>J'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
             sein d'acteurs majeurs dans le secteur de la banque, du recrutement et du multimédia.
 
             <br><br> De plus, ayant l'esprit voyageur et ouvert. J'ai pris plusieurs fois l'initiative de sortir de ma
             zone
             de confort. Dans le but de découvrir de nouvelles cultures et personnalités, comme lors de mon année de WHV
             en
-            Australie et lors de mon expérience dans l'aviation commerciale.
+            Australie.
 
-            Je suis aussi passionné de photographie de cuisine et de nouvelles technologies, j'ai toujours aimé
-            apprendre
-            par moi-même, ainsi que m'adapter pour étendre ma créativité et relever des défis.
+            <br><br> Je suis aussi passionné de photographie de cuisine et de nouvelles technologies.
 
-            C'est pour cela que j'ai décidé d'entreprendre une formation à l'Eni pour m'orienter vers le métier de
-            développeur Web & Web mobile. En effet, selon moi, c'est un métier rigoureux où il faut constamment
-            s'informer
-            et se remettre en question pour évoluer et cela est tout à fait ce que je recherche.
-
-            <br><br> Durant mon stage, j'ai aussi réalisé qu'avoir des compétences relationnelles et commerciales sont
-            vraiment des atouts non négligeables pour échanger en équipe et mener à bien le projet.
-
-            <br><br> D'autre part, je peux intervenir autant dans des projets fronts ou backs, mes langages de
-            prédilections sont le PHP et le Javascript.
+            <br><br> J'aime apprendre par moi-même, ainsi que m'adapter pour étendre mes compétences et ma créativité pour relever des défis.
 
             <br><br> J'apprécie tout particulièrement m'inspirer des nouvelles tendances pour rendre mes projets
             différents afin d'améliorer au maximum l'expérience client.
 
-            <br><br> Maintenant, mon objectif principal est de continuer mon évolution dans le métier en intégrant une
-            équipe ouverte et dynamique afin de réaliser des projets de plus grande envergure en alternance avec
-            OpenClassrooms.
+            <br><br>je peux intervenir autant dans des projets fronts ou backs, contactez moi directement pour en savoir plus
+
           </p>
         </div>
     </div>

@@ -35,11 +35,11 @@
             <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
                                                            alt="rock img-sm"><span
               class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
-                                                 class="gin img-sm" alt="gin">2021 </p>
+                                                 class="gin img-sm" alt="gin">2022 </p>
             <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
                                                            alt="rock img-sm"><span
               class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
-                                                 class="gin img-sm" alt="gin">2021 </p>
+                                                 class="gin img-sm" alt="gin">2022 </p>
           </div>
         </div>
         <div class="line__wrap overflow-hidden line-scroll-4">
@@ -76,55 +76,20 @@
     </section>
     <section>
       <div class="congrat d-flex justify-content-center ">
-        <p class="text-congrat p-0 m-0">Que vais-je préparer en cette glorieuse année ?</p>
-      </div>
-    </section>
-    <section id="home-scroll-1">
-      <div class="recipe d-flex justify-content-center scroll-text-1 xs-reveal">
-        <p class="text-recipe p-0 m-0">Tout d'abord, il nous faut de le farine, de l'eau 💧, un peu de sel, de la
-          levure,
-          de
-          l'huile d'olive, de la volonté et de la pérséverance 🏃🏽... Une fois le tout mélangé par ordre de priorités,
-          nous pouvons nous lancer !
-        </p>
-      </div>
-      <div id="pizza1" class="pizza d-flex justify-content-center ">
-        <img class="pizza-img  img-scroll-1" src="~/assets/home/pizza.jpg" alt="pizza">
-      </div>
-      <div class="question">
-        <p class="text-question p-0 m-0 sroll-text-1">Mais que faisons-nous ?</p>
-      </div>
-    </section>
-    <section id="home-scroll-2">
-      <div class="recipe d-flex justify-content-center scroll-text-2 xs-reveal">
-        <p class="text-recipe p-0 m-0">
-          De la passion ! C'est grâce à elle que l'on surpasse ses limites dans toute l'étendue de notre créativité.
-          Elle nous pousse,
-          elle nous permet de partager et de transmettre. Mais surtout d'innover dans le but de créer quelque chose
-          d'authentique. Selon moi, la passion donne du sens, elle est universelle.
-        </p>
+        <p class="text-congrat p-0 m-0"> I don't make me programs, but sometime I do !! 🙃 </p>
       </div>
     </section>
     <div id="pizza2" class="pizza d-flex justify-content-center ">
-      <img class="pizza-img  img-scroll-2" src="~/assets/home/pizza2.jpg" alt="pizza2">
+      <img class="pizza-img  img-scroll-2" src="~/assets/home/pizza2.jpg" alt="suferru">
     </div>
     <section id="home-scroll-3">
       <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
-        <p class="text-recipe p-0 m-0 end">
-          De la même passion que dans ma cuisine pour le développement de pizza, je suis à votre écoute, pour prendre connaissance de votre besoin. Je recherche
-          et développe pour vous votre site internet "bien enfourné 🔥🍕" qui "fait la différence" !
-        </p>
+        <p class="text-recipe p-0 m-0 end"> Here, there is not only programs performing😎 </p>
       </div>
     </section>
     <section>
       <div id="pizza3" class="pizza d-flex justify-content-center ">
         <img class="pizza-img img-scroll-3" src="~/assets/home/pizza3.jpg" alt="pizza3">
-      </div>
-      <div id="home-scroll-4" class="recipe d-flex justify-content-center scroll-text-4 xs-reveal">
-        <p class="text-recipe p-0 m-0 end ">
-          Vous trouverez ici uniquement des travaux dont certains sont inspirés de références réadaptées à ma vision.
-          Dès lors, je vous souhaite une bonne visite et "un buon appetito 👨🏻‍🍳🇮🇹".
-        </p>
       </div>
     </section>
   </div>
