@@ -25,7 +25,7 @@
       </div>
       <div class='container'>
           <p class='description scroll cover'>
-            Hi there, I'm Vincent...
+            Hi there, I'm Vincent... 😃
 
             <br><br>J'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
             sein d'acteurs majeurs dans le secteur de la banque, du recrutement et du multimédia.
