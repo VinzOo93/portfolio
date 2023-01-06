@@ -10,77 +10,19 @@
 
           <div class='cover2 text-content js-transition'>
             <div class='trigger'>
-              <p class='description scroll'>
-                Australie, Noosa Heads <br>
-                Petite rencontre improbable.
-              </p>
               <img src='https://media.giphy.com/media/wH8aFVGkdmOjxBxR3I/giphy.gif' width='74px' class='birdy'
                    height='64px' alt='gif-owl'>
             </div>
-          </div>
-          <div id='trigger1' class='trigger'>
-            <img class='cover2 js-transition zoom scroll' alt='image-noosa-2' src='~/assets/images/noosa-2.jpg'>
-          </div>
-          <div class='trigger'>
-            <img class='cover2 js-transition zoom scroll' alt='image-beerwah1' src='~/assets/images/beerwah1.jpg'>
-          </div>
-          <div id='trigger2' class='trigger2'>
-            <img class='cover2 js-transition zoom scroll' alt='image-beerwah3' src='~/assets/images/beerwah3.jpg'>
-          </div>
-          <div id='trigger3' class='trigger3'>
-            <img class='cover2 js-transition zoom scroll' alt='image-beerwah5' src='~/assets/images/beerwah5.jpg'>
-          </div>
-          <div id='trigger4' class='trigger4'>
-            <img class='cover2 js-transition zoom scroll' alt='image-sardegna-1'
-                 src='~/assets/images/sardegna-1.jpg'>
           </div>
         </div>
       </div>
       <div class='container'>
         <img src='https://media.giphy.com/media/lbHljU6UhczE6dSeXI/giphy.gif' width='74px' class='star' height='64px'
              alt='gif-star'>
-        <div class='cover text-content js-transition' style='z-index: 0.5'>
-          <p class='description'>
-            Tasmania, Four Mile Creek <br>
-            La tête dans les étoiles ! </p>
-        </div>
         <div class='cover'>
-          <img class='cover js-transition zoom' alt='image-aurora' src='~/assets/images/aurora.jpg'>
-          <div class='trigger'>
-            <img class='cover js-transition zoom scroll' alt='image-noosa-1' src='~/assets/images/noosa-1.jpg'>
-          </div>
-        </div>
-        <div class='cover text-content js-transition'>
-          <div class='trigger'>
-            <p class='description scroll'>
-              Glasshouse Mountains,
-              Un endroit spécial de par ses montagnes.
-            </p>
-          </div>
-        </div>
-        <div class='cover'>
-          <div class='trigger2'>
             <img class='cover js-transition zoom scroll' alt='image-beerwah4' src='~/assets/images/beerwah4.jpg'>
-          </div>
-          <div class='trigger2'>
             <img class='cover js-transition zoom scroll' alt='image-rainforest' src='~/assets/images/rainforest.jpg'>
-          </div>
-          <div class='trigger3'>
             <img class='cover js-transition zoom scroll' alt='image-endTasmania' src='~/assets/images/endTasmania.jpg'>
-          </div>
-          <div class='trigger4'>
-            <img class='cover js-transition zoom scroll' alt='image-sardegna-2' src='~/assets/images/sardegna-2.jpg'>
-          </div>
-          <div class='cover text-content js-transition'>
-            <div class='trigger'>
-              <p class='description scroll'>
-                Sardaigne, Is Arustas <br>
-                Un petit couché de soleil à la plage pour la fin !!
-              </p>
-            </div>
-            <img src='https://media.giphy.com/media/W56sszrpPbhOy3kkf0/giphy-downsized.gif' class='sausage' width='74px'
-                 height='64px' alt='gif-sausage'>
-          </div>
         </div>
       </div>
     </div>
@@ -93,6 +35,7 @@ import { gsap } from 'gsap'
 import mediumZoom from 'medium-zoom'
 
 
+
 export default {
 
   mounted: function() {
@@ -102,60 +45,9 @@ export default {
 
   methods: {
     startAnimation: function() {
-      const transition = document.querySelector('.transition')
-      const gallery = document.querySelectorAll('.js-transition')
       let mouseCursor = document.querySelector('.cursor')
       let galleryimg = document.querySelectorAll('.gallery img')
       let windowSize = screen.width
-
-
-
-      gsap.timeline(100)
-        .fromTo(transition,
-          {
-            opacity: 1,
-            y: '100%',
-            duration: 3
-          },
-          {
-            y: '-100%',
-            duration: 3
-          })
-      gsap.timeline(100)
-        .fromTo(gallery, { opacity: 0, y: '600%' }, {
-          opacity: 1,
-          y: '0%',
-          ease: 'power1',
-          duration: 5
-        })
-      const scene = this.$scrollmagic.scene({
-        triggerElement: '#trigger1',
-        triggerHook: 0.8
-      })
-        .setTween('.trigger', { visibility: 'visible', opacity: 1, duration: 0.25 })
-      this.$scrollmagic.addScene(scene)
-
-      const scene2 = this.$scrollmagic.scene({
-        triggerElement: '#trigger2',
-        triggerHook: 0.9
-      })
-        .setTween('.trigger2', { visibility: 'visible', opacity: 1, duration: 0.25 })
-      this.$scrollmagic.addScene(scene2)
-
-      const scene3 = this.$scrollmagic.scene({
-        triggerElement: '#trigger3',
-        triggerHook: 0.9
-      })
-        .setTween('.trigger3', { visibility: 'visible', opacity: 1, duration: 0.25 })
-      this.$scrollmagic.addScene(scene3)
-      const scene4 = this.$scrollmagic.scene({
-        triggerElement: '#trigger4',
-        triggerHook: 0.6
-      })
-        .setTween('.trigger4', { visibility: 'visible', opacity: 1, duration: 0.25 })
-      this.$scrollmagic.addScene(scene4)
-
-
   if (windowSize >= 769)
   {
     galleryimg.forEach(img => {
@@ -244,15 +136,15 @@ img {
   }
 
   .cover {
-    margin: 10px;
     z-index: 1;
     max-width: 90%;
+    margin: 10px 10px 10px 5vw;
   }
 
   .cover2 {
-    margin: 10px;
     z-index: 1;
     max-width: 90%;
+    margin: 10px 10px 10px 5vw;
   }
 
   .content {
@@ -263,18 +155,14 @@ img {
 
 @media only screen and  (min-width: 768px) {
 
-  .sausage {
-    position: relative;
-    left: 25%;
-  }
 
   .container {
     margin-top: 5%;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 2fr);
     grid-gap: 0;
     align-items: start;
-    grid-column: 6/8;
+    grid-column: 6/9;
     position: absolute;
     width: 100%;
   }
@@ -298,7 +186,6 @@ img {
     position: absolute;
     width: 100%;
   }
-
 
 }
 

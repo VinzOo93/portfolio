@@ -19,7 +19,6 @@
             <img class='javascript' height='50px' src='~/assets/about/javascript.png' alt='javacript'>
             <img class='nuxtJs' height='50px' src='~/assets/about/nuxtJS.png' alt='nuxtJs'>
             <img class='symfony' height='50px' src='~/assets/about/symfony.png' alt='symfony'>
-
           </div>
         </div>
       </div>

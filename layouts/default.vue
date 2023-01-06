@@ -69,6 +69,7 @@ body {
 .medium-zoom-overlay {
   background-color:#202020 !important;
   z-index: 1;
+  pointer-events: none;
 }
 
 .transition {
@@ -86,7 +87,7 @@ body {
 </style>
 <script>
 import { gsap } from "gsap"
-import firebase from 'firebase'
+import firebase from "firebase"
 /* Prod only */
 const firebaseConfig = {
   apiKey: "AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74",
@@ -101,10 +102,12 @@ const firebaseConfig = {
 
 let app = firebase.default
 
-app.initializeApp(firebaseConfig);
+;
 
 
-
+if (!app.apps.length) {
+  app.initializeApp(firebaseConfig)
+}
 export default {
 
   beforeMount: function() {

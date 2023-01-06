@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class='game'>
       <h1 class='title'>Trouvez les bons fruits !! 🍑😎</h1>
       <p id='timer'>00:00</p>

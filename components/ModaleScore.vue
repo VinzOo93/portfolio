@@ -34,11 +34,10 @@
 </template>
 <script>
 import * as firebase from 'firebase'
-
-
 let app = firebase.default
 let db = app.database()
 let data
+
 export default {
   name: 'ModaleScore',
   props: ['reveleScore', 'toggleModaleScore'],
