@@ -4,10 +4,9 @@
       <div class='transition'></div>
       <div class='container'>
         <div class='content'>
-          <img class='cover2 js-transition zoom' alt='image-aurora1' src='~/assets/images/aurora1.jpg'>
-          <img class='cover2 js-transition zoom' alt='image-aurora2' src='~/assets/images/aurora2.jpg'>
-          <img class='cover2 js-transition zoom' alt='image-aurora3' src='~/assets/images/aurora3.jpg'>
-
+          <img v-for='photo of this.shuffle(covertRight)'
+               class='cover2 js-transition zoom' v-bind:alt='photo.name'
+               v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
           <div class='cover2 text-content js-transition'>
             <div class='trigger'>
               <img src='https://media.giphy.com/media/wH8aFVGkdmOjxBxR3I/giphy.gif' width='74px' class='birdy'
@@ -20,9 +19,9 @@
         <img src='https://media.giphy.com/media/lbHljU6UhczE6dSeXI/giphy.gif' width='74px' class='star' height='64px'
              alt='gif-star'>
         <div class='cover'>
-            <img class='cover js-transition zoom scroll' alt='image-beerwah4' src='~/assets/images/beerwah4.jpg'>
-            <img class='cover js-transition zoom scroll' alt='image-rainforest' src='~/assets/images/rainforest.jpg'>
-            <img class='cover js-transition zoom scroll' alt='image-endTasmania' src='~/assets/images/endTasmania.jpg'>
+          <img v-for='photo of this.shuffle(coverLeft)'
+               class='cover js-transition zoom' v-bind:alt='photo.name'
+               v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
         </div>
       </div>
     </div>
@@ -38,12 +37,35 @@ import mediumZoom from 'medium-zoom'
 
 export default {
 
+  data() {
+    return {
+      coverLeft: [],
+      covertRight: []
+    }
+  },
+
   mounted: function() {
+    this.fetchImages(),
     this.startAnimation()
   },
 
 
   methods: {
+    fetchImages: function() {
+      const Url = 'https://upload.uploadcare.com/group/info/'
+      const PublicKey = '3c5ff03c50ae52a4f8bf'
+      const Uri = '0b14b09e-8173-4cdf-95b3-60f07143d765~83'
+
+      fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest"
+        },
+      }).then(response => response.json()
+      ).then(data => {
+        this.coverLeft = data.files;
+        this.covertRight = data.files;
+      }).catch((e) => console.log(e));
+    },
     startAnimation: function() {
       let mouseCursor = document.querySelector('.cursor')
       let galleryimg = document.querySelectorAll('.gallery img')
@@ -64,6 +86,9 @@ export default {
         margin: 10,
         scrollOffset: 150
       })
+    },
+    shuffle: function(array) {
+     return array.sort(() => Math.random() - 0.5);
     }
   }
 }

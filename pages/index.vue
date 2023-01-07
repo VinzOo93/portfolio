@@ -35,11 +35,11 @@
             <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
                                                            alt="rock img-sm"><span
               class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
-                                                 class="gin img-sm" alt="gin">2022 </p>
+                                                 class="gin img-sm" alt="gin">2023 </p>
             <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
                                                            alt="rock img-sm"><span
               class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
-                                                 class="gin img-sm" alt="gin">2022 </p>
+                                                 class="gin img-sm" alt="gin">2023 </p>
           </div>
         </div>
         <div class="line__wrap overflow-hidden line-scroll-4">
@@ -76,11 +76,11 @@
     </section>
     <section>
       <div class="congrat d-flex justify-content-center ">
-        <p class="text-congrat p-0 m-0"> I don't make me programs, but sometime I do !! 🙃 </p>
+        <p class="text-congrat p-0 m-0"> Things are better with the stars by the night !! 🌟🌛 </p>
       </div>
     </section>
     <div id="pizza2" class="pizza d-flex justify-content-center ">
-      <img class="pizza-img  img-scroll-2" src="~/assets/home/pizza2.jpg" alt="suferru">
+      <img class="pizza-img  img-scroll-2" src="~/assets/images/beerwah3.jpg" alt="suferru">
     </div>
     <section id="home-scroll-3">
       <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
@@ -89,7 +89,7 @@
     </section>
     <section>
       <div id="pizza3" class="pizza d-flex justify-content-center ">
-        <img class="pizza-img img-scroll-3" src="~/assets/home/pizza3.jpg" alt="pizza3">
+        <img class="pizza-img img-scroll-3" src="~/assets/images/sardegna-2.jpg" alt="pizza3">
       </div>
     </section>
   </div>
@@ -818,7 +818,7 @@ p .customFont {
 
 .end {
   position: relative;
-  margin-top: 2%;
+  margin-top: 6%;
 }
 
 section {
