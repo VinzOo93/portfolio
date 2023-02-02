@@ -76,22 +76,12 @@
     </section>
     <section>
       <div class="congrat d-flex justify-content-center ">
-        <p class="text-congrat p-0 m-0"> Things are better with the stars by the night !! 🌟🌛 </p>
+        <p class="text-congrat p-0 m-0"> Can you find the Easter ? 🥚🌟 </p>
       </div>
     </section>
     <div id="pizza2" class="pizza d-flex justify-content-center ">
       <img class="pizza-img  img-scroll-2" src="~/assets/images/beerwah3.jpg" alt="suferru">
     </div>
-    <section id="home-scroll-3">
-      <div class="recipe d-flex justify-content-center scroll-text-3 xs-reveal">
-        <p class="text-recipe p-0 m-0 end"> Here, there is not only programs performing😎 </p>
-      </div>
-    </section>
-    <section>
-      <div id="pizza3" class="pizza d-flex justify-content-center ">
-        <img class="pizza-img img-scroll-3" src="~/assets/images/sardegna-2.jpg" alt="pizza3">
-      </div>
-    </section>
   </div>
 </template>
 <script>
@@ -191,7 +181,6 @@ export default {
         this.$scrollmagic.addScene(scene4)
 
       }
-
 
       const scene5 = this.$scrollmagic.scene({
         triggerHook: 0.9,

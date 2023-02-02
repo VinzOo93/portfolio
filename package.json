@@ -15,7 +15,7 @@
     "babel-preset-es2015": "^6.24.1",
     "core-js": "^3.8.3",
     "firebase": "^8.6.3",
-    "firebase-admin": "^9.9.0",
+    "firebase-admin": "^9.12.0",
     "gsap": "^3.6.0",
     "jiti": "^1.16.1",
     "medium-zoom": "^1.0.6",

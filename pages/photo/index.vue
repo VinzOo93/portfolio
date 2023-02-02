@@ -1,27 +1,33 @@
 <template>
   <div>
-    <div class='gallery'>
+    <div class='gallery' id='trigger'>
       <div class='transition'></div>
       <div class='container'>
         <div class='content'>
-          <img v-for='photo of this.shuffle(covertRight)'
-               class='cover2 js-transition zoom' v-bind:alt='photo.name'
-               v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
-          <div class='cover2 text-content js-transition'>
-            <div class='trigger'>
-              <img src='https://media.giphy.com/media/wH8aFVGkdmOjxBxR3I/giphy.gif' width='74px' class='birdy'
-                   height='64px' alt='gif-owl'>
+          <div class='photos'>
+            <div v-for='(photo,index) in this.shuffle(covertRight)'>
+              <div class='inner'></div>
+              <img v-if='index <= 63'
+                     class='cover2 js-transition zoom' v-bind:alt='photo.name'
+                     v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
+              <div id='outer'></div>
             </div>
           </div>
         </div>
       </div>
       <div class='container'>
-        <img src='https://media.giphy.com/media/lbHljU6UhczE6dSeXI/giphy.gif' width='74px' class='star' height='64px'
-             alt='gif-star'>
         <div class='cover'>
-          <img v-for='photo of this.shuffle(coverLeft)'
-               class='cover js-transition zoom' v-bind:alt='photo.name'
-               v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
+          <div class='content'>
+            <div class='photos'>
+              <div v-for='(photo,index) in this.shuffle(covertRight)'>
+                <div class='inner'></div>
+                <img v-if='index <= 60'
+                       class='cover js-transition zoom' v-bind:alt='photo.name'
+                       v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
+                <div id='outer'></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -34,7 +40,6 @@ import { gsap } from 'gsap'
 import mediumZoom from 'medium-zoom'
 
 
-
 export default {
 
   data() {
@@ -44,8 +49,10 @@ export default {
     }
   },
 
+  beforeMount: function() {
+    this.fetchImages()
+  },
   mounted: function() {
-    this.fetchImages(),
     this.startAnimation()
   },
 
@@ -58,29 +65,73 @@ export default {
 
       fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
         headers: {
-          "X-Requested-With": "XMLHttpRequest"
-        },
+          'X-Requested-With': 'XMLHttpRequest'
+        }
       }).then(response => response.json()
       ).then(data => {
-        this.coverLeft = data.files;
-        this.covertRight = data.files;
-      }).catch((e) => console.log(e));
+        this.coverLeft = data.files
+        this.covertRight = data.files
+      }).catch((e) => console.log(e))
     },
     startAnimation: function() {
+      const transition = document.querySelector('.transition')
       let mouseCursor = document.querySelector('.cursor')
-      let galleryimg = document.querySelectorAll('.gallery img')
+      let gallery = document.querySelectorAll('.gallery .photos')
       let windowSize = screen.width
-  if (windowSize >= 769)
-  {
-    galleryimg.forEach(img => {
-      img.addEventListener('mouseleave', () => {
-        mouseCursor.classList.remove('overImage')
-      })
-      img.addEventListener('mouseover', () => {
-        mouseCursor.classList.add('overImage')
-      })
-    })
-  }
+
+
+      gsap.timeline(100)
+        .fromTo(transition,
+          {
+            opacity: 1,
+            y: '100%',
+            duration: 3
+          },
+          {
+            y: '-100%',
+            duration: 3
+          })
+      gsap.timeline(100)
+        .fromTo(gallery, { opacity: 0, y: '100%' }, {
+          opacity: 1,
+          y: '0%',
+          ease: 'power5',
+          duration: 5
+        })
+console.log(gallery)
+
+      if (windowSize >= 769) {
+        gallery.forEach(img => {
+/*         const inners = parser.parseFromString(img.getElementsByClassName('inner'), 'text/html')
+          console.log(inners)
+          inners.forEach(inner => {
+            let show = this.$scrollmagic.scene({
+              triggerElement: inner,
+              triggerHook: 0.1
+            }).setTween(inner.nextElementSibling, { visibility: 'visible', opacity: 0, duration: 0.25 })
+            this.$scrollmagic.addScene(show)
+          })*/
+
+          img.addEventListener('mouseleave', () => {
+            mouseCursor.classList.remove('overImage')
+          })
+          img.addEventListener('mouseover', () => {
+            mouseCursor.classList.add('overImage')
+          })
+
+        })
+      }
+/*
+      const inners = document.querySelectorAll('.inner')
+*/
+
+
+/*      let hide = this.$scrollmagic.scene({
+        triggerElement: img.nextElementSibling,
+        triggerHook: 0.8
+      }).setTween(img, { visibility: 'hidden', opacity: 0, duration: 0.25 })
+      this.$scrollmagic.addScene(hide)*/
+
       mediumZoom('.zoom', {
         background: 'auto',
         margin: 10,
@@ -88,12 +139,10 @@ export default {
       })
     },
     shuffle: function(array) {
-     return array.sort(() => Math.random() - 0.5);
+      return array.sort(() => Math.random() - 0.5)
     }
   }
 }
-
-
 </script>
 
 <style scoped>
@@ -193,23 +242,24 @@ img {
   }
 
   .cover {
+    align-items: center;
     margin: 10px;
-    grid-column: 2/9;
+    grid-column: 2/7;
     z-index: 1;
-    max-width: 80%;
+    max-width: 95%;
   }
 
   .cover2 {
     margin: 10px;
     z-index: 1;
     grid-column: 1/9;
-    max-width: 90%;
+    max-width: 95%;
   }
 
   .content {
     grid-column: 7/12;
     position: absolute;
-    width: 100%;
+    max-width: 90%;
   }
 
 }

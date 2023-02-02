@@ -40,16 +40,15 @@ export default {
       const button = document.querySelector(".navigation-button")
       const body = document.querySelector("body")
 
-      if (document.body.style.backgroundColor === "white") {
-        gsap.to(body, { backgroundColor: "#151414", duration: 0.5,   })
-        gsap.to(button, { backgroundColor: "white", duration: 0.2,  })
+      if (document.body.style.backgroundColor === "rgb(21, 20, 20)") {
+        gsap.to(body, { backgroundColor: "#E3970AFF", duration: 0.5, color : "" })
+        gsap.to(button, { backgroundColor: "#151414", duration: 0.2 })
+
       }
     else {
-        gsap.to(body, { backgroundColor: "white", duration: 0.5, color : "" })
-        gsap.to(button, { backgroundColor: "#151414", duration: 0.2 })
+        gsap.to(body, { backgroundColor: "#151414", duration: 0.5,   })
+        gsap.to(button, { backgroundColor: "#E3970AFF", duration: 0.2,  })
       }
-
-
     }
   }
 }
@@ -59,12 +58,6 @@ export default {
 <style>
 .navigation {
   display: flex;
-}
-
-body.isDark {
-  background-color: #151414;
-  transition: background-color 0.5s ease-in-out;
-
 }
 
 </style>
@@ -100,7 +93,7 @@ body.isDark {
     border-radius: 50%;
     background-color: #202020;
     border: 0 transparent;
-    margin: 20px 1px 20px 5px;
+    margin: 18px 5px 18px 5px;
   }
 
   .navbar {
@@ -121,11 +114,6 @@ body.isDark {
   }
 
 
-}
-
-.navigation-button.isDark2 {
-  background-color: white;
-  transition: background-color 0.5s ease-in-out;
 }
 
 .navbar li {
@@ -164,7 +152,7 @@ a.navbar-link:before {
   height: 2px;
   bottom: -1px;
   left: 0;
-  background-color: black;
+  background-color: #74746e;
   transform: scaleX(0);
   font-weight: bold;
   transition: all 0.3s ease-in-out;
@@ -174,7 +162,7 @@ a.navbar-link:before {
 a.navbar-link:hover:before {
   visibility: visible;
   transform: scaleX(1);
-  color: black;
+  color: #74746e;
 }
 
 

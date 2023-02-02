@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="cursor"></div>
-    <div class="header">
-      <div class="navbar-container">
+    <div class='cursor'></div>
+    <div class='header'>
+      <div class='navbar-container'>
         <Navbar />
       </div>
     </div>
@@ -10,7 +10,6 @@
   </div>
 </template>
 <style>
-
 
 
 @media only screen and  (min-width: 768.5px) {
@@ -24,12 +23,12 @@
 }
 
 body {
-  background-color: white;
+  background-color: #E3970AFF;
 }
 
-  .header {
-    padding: 4%;
-  }
+.header {
+  padding: 4%;
+}
 
 
 * {
@@ -46,8 +45,9 @@ body {
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
+  transition: transform 1s ease-out,
+  top 0.1s, left 0.1s;;
   pointer-events: none;
-  transition: all 0.1s ease;
   transform-origin: 100% 100%;
   z-index: 4;
   backdrop-filter: brightness(85%);
@@ -63,11 +63,11 @@ body {
 .overImage {
   backdrop-filter: brightness(45%);
   transform: translate(100%, 100%) scale(4);
-  transition: transform 1.5s ease;
+  transition: transform 1.5s ease-out;
 }
 
 .medium-zoom-overlay {
-  background-color:#202020 !important;
+  background-color: #202020 !important;
   z-index: 1;
   pointer-events: none;
 }
@@ -81,29 +81,26 @@ body {
   visibility: visible;
   opacity: 0;
   pointer-events: none;
-  background-color: #eee;
+  background-color: rgb(227, 223, 10);
   z-index: 3;
 }
 </style>
 <script>
-import { gsap } from "gsap"
-import firebase from "firebase"
+import { gsap } from 'gsap'
+import firebase from 'firebase'
 /* Prod only */
 const firebaseConfig = {
-  apiKey: "AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74",
-  authDomain: "portfolio-vincent-orru.firebaseapp.com",
-  databaseURL: "https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "portfolio-vincent-orru",
-  storageBucket: "portfolio-vincent-orru.appspot.com",
-  messagingSenderId: "229878441570",
-  appId: "1:229878441570:web:bfc3ba1df5829d5d1cd33b",
-  measurementId: "G-PEEWBKJLZZ"
-};
+  apiKey: 'AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74',
+  authDomain: 'portfolio-vincent-orru.firebaseapp.com',
+  databaseURL: 'https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app',
+  projectId: 'portfolio-vincent-orru',
+  storageBucket: 'portfolio-vincent-orru.appspot.com',
+  messagingSenderId: '229878441570',
+  appId: '1:229878441570:web:bfc3ba1df5829d5d1cd33b',
+  measurementId: 'G-PEEWBKJLZZ',
+}
 
 let app = firebase.default
-
-;
-
 
 if (!app.apps.length) {
   app.initializeApp(firebaseConfig)
@@ -118,45 +115,47 @@ export default {
     beforeMount() {
 
 
-      window.addEventListener("mousemove", cursor)
-      let mouseCursor = document.querySelector(".cursor")
-      let navBar = document.querySelectorAll(".navbar")
-      let navBarli = document.querySelectorAll(".navbar a")
-      let gallery = document.querySelectorAll(".gallery img")
+      window.addEventListener('mousemove', cursor)
+      let mouseCursor = document.querySelector('.cursor')
+      let navBar = document.querySelectorAll('.navbar')
+      let navBarli = document.querySelectorAll('.navbar a')
+      let gallery = document.querySelectorAll('.gallery .photos')
+
       function cursor(e) {
 
-        mouseCursor.style.top = e.pageY + "px"
-        mouseCursor.style.left = e.pageX + "px"
+        mouseCursor.style.top = e.pageY + 'px'
+        mouseCursor.style.left = e.pageX + 'px'
       }
+
       navBar.forEach(link => {
-        link.addEventListener("mouseleave", () => {
-          let windowSize = window.innerWidth;
+        link.addEventListener('mouseleave', () => {
+          let windowSize = window.innerWidth
           let scroll = window.scrollY
           if (scene != null && windowSize > 768) {
-            gsap.to(navBarli,{opacity: 0, duration: 0.2, pointerEvents: "none"} )
+            gsap.to(navBarli, { opacity: 0, duration: 0.2, pointerEvents: 'none' })
           }
-          if (scroll === 0){
-            gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: "auto"})
+          if (scroll === 0) {
+            gsap.to(navBarli, { opacity: 1, duration: 0.2, pointerEvents: 'auto' })
           }
-          mouseCursor.classList.remove("link-grow")
-        });
-        link.addEventListener("mouseover", () => {
-          gsap.to(navBarli,{opacity: 1, duration: 0.2, pointerEvents: "auto"} )
-          mouseCursor.classList.add("link-grow")
-        });
-      });
-      gallery.forEach(img => {
-        img.addEventListener("mouseleave", () => {
-          mouseCursor.classList.remove("overImage")
-        });
-        img.addEventListener("mouseover", () => {
-          mouseCursor.classList.add("overImage")
+          mouseCursor.classList.remove('link-grow')
         })
-      });
+        link.addEventListener('mouseover', () => {
+          gsap.to(navBarli, { opacity: 1, duration: 0.2, pointerEvents: 'auto' })
+          mouseCursor.classList.add('link-grow')
+        })
+      })
+      gallery.forEach(img => {
+        img.addEventListener('mouseleave', () => {
+          mouseCursor.classList.remove('overImage')
+        })
+        img.addEventListener('mouseover', () => {
+          mouseCursor.classList.add('overImage')
+        })
+      })
       const scene = this.$scrollmagic.scene({
         offset: 30
       })
-      .setTween(navBarli, 0.2 ,{opacity: 0, pointerEvents: "none"})
+        .setTween(navBarli, 0.2, { opacity: 0, pointerEvents: 'none' })
       this.$scrollmagic.addScene(scene)
     }
   }
