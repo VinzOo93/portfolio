@@ -23,7 +23,7 @@
 }
 
 body {
-  background-color: #E3970AFF;
+  background-color: rgba(238, 115, 26, 0.63);
 }
 
 .header {
@@ -81,7 +81,7 @@ body {
   visibility: visible;
   opacity: 0;
   pointer-events: none;
-  background-color: rgb(227, 223, 10);
+  background-color: rgb(206, 195, 170);
   z-index: 3;
 }
 </style>
@@ -113,13 +113,10 @@ export default {
 
   methods: {
     beforeMount() {
-
-
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor')
       let navBar = document.querySelectorAll('.navbar')
       let navBarli = document.querySelectorAll('.navbar a')
-      let gallery = document.querySelectorAll('.gallery .photos')
 
       function cursor(e) {
 
@@ -142,14 +139,6 @@ export default {
         link.addEventListener('mouseover', () => {
           gsap.to(navBarli, { opacity: 1, duration: 0.2, pointerEvents: 'auto' })
           mouseCursor.classList.add('link-grow')
-        })
-      })
-      gallery.forEach(img => {
-        img.addEventListener('mouseleave', () => {
-          mouseCursor.classList.remove('overImage')
-        })
-        img.addEventListener('mouseover', () => {
-          mouseCursor.classList.add('overImage')
         })
       })
       const scene = this.$scrollmagic.scene({

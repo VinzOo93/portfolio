@@ -41,13 +41,13 @@ export default {
       const body = document.querySelector("body")
 
       if (document.body.style.backgroundColor === "rgb(21, 20, 20)") {
-        gsap.to(body, { backgroundColor: "#E3970AFF", duration: 0.5, color : "" })
-        gsap.to(button, { backgroundColor: "#151414", duration: 0.2 })
+        gsap.to(body, { backgroundColor: "rgba(238,115,26,0.63)", duration: 0.25, color : "" })
+        gsap.to(button, { backgroundColor: "#151414", duration: 0.1 })
 
       }
     else {
         gsap.to(body, { backgroundColor: "#151414", duration: 0.5,   })
-        gsap.to(button, { backgroundColor: "#E3970AFF", duration: 0.2,  })
+        gsap.to(button, { backgroundColor: "rgba(238,115,26,0.63)", duration: 0.1,  })
       }
     }
   }

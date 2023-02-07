@@ -5,13 +5,13 @@
       <div class='container'>
         <div class='content'>
           <div class='photos'>
-            <div v-for='(photo,index) in this.shuffle(covertRight)'>
-              <div class='inner'></div>
-              <img v-if='index <= 63'
+            <template v-for='(photo,index) in this.shuffle(covertRight)'>
+              <div ref='inner' class='inner-item img-hidden'>
+                <img v-if='index <= 63'
                      class='cover2 js-transition zoom' v-bind:alt='photo.name'
                      v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
-              <div id='outer'></div>
-            </div>
+              </div>
+            </template>
           </div>
         </div>
       </div>
@@ -19,13 +19,13 @@
         <div class='cover'>
           <div class='content'>
             <div class='photos'>
-              <div v-for='(photo,index) in this.shuffle(covertRight)'>
-                <div class='inner'></div>
-                <img v-if='index <= 60'
+              <template v-for='(photo,index) in this.shuffle(covertRight)'>
+                <div ref='inner' class='inner-item img-hidden'>
+                  <img v-if='index <= 60'
                        class='cover js-transition zoom' v-bind:alt='photo.name'
                        v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
-                <div id='outer'></div>
-              </div>
+                </div>
+              </template>
             </div>
           </div>
         </div>
@@ -38,7 +38,6 @@
 
 import { gsap } from 'gsap'
 import mediumZoom from 'medium-zoom'
-
 
 export default {
 
@@ -73,12 +72,37 @@ export default {
         this.covertRight = data.files
       }).catch((e) => console.log(e))
     },
+
     startAnimation: function() {
+
       const transition = document.querySelector('.transition')
       let mouseCursor = document.querySelector('.cursor')
       let gallery = document.querySelectorAll('.gallery .photos')
       let windowSize = screen.width
 
+      gallery.forEach(img => {
+        setTimeout(function() {
+          const inners = img.querySelectorAll('.inner-item')
+          inners.forEach(inner => {
+            if (inner !== null) {
+              let show = this.$scrollmagic.scene({
+                triggerElement: inner,
+                triggerHook: 0.45
+              }).setTween(inner, { visibility: 'visible', opacity: 1, duration: 0.5 })
+              this.$scrollmagic.addScene(show)
+            }
+            if (windowSize >= 769) {
+              inner.addEventListener('mouseleave', () => {
+                mouseCursor.classList.remove('overImage')
+              })
+              inner.addEventListener('mouseover', () => {
+                mouseCursor.classList.add('overImage')
+              })
+            }
+          })
+        }.bind(this), 2000)
+      })
+      setTimeout(function() {
 
       gsap.timeline(100)
         .fromTo(transition,
@@ -91,46 +115,14 @@ export default {
             y: '-100%',
             duration: 3
           })
-      gsap.timeline(100)
+          gsap.timeline(100)
         .fromTo(gallery, { opacity: 0, y: '100%' }, {
           opacity: 1,
           y: '0%',
           ease: 'power5',
           duration: 5
         })
-console.log(gallery)
-
-      if (windowSize >= 769) {
-        gallery.forEach(img => {
-/*         const inners = parser.parseFromString(img.getElementsByClassName('inner'), 'text/html')
-          console.log(inners)
-          inners.forEach(inner => {
-            let show = this.$scrollmagic.scene({
-              triggerElement: inner,
-              triggerHook: 0.1
-            }).setTween(inner.nextElementSibling, { visibility: 'visible', opacity: 0, duration: 0.25 })
-            this.$scrollmagic.addScene(show)
-          })*/
-
-          img.addEventListener('mouseleave', () => {
-            mouseCursor.classList.remove('overImage')
-          })
-          img.addEventListener('mouseover', () => {
-            mouseCursor.classList.add('overImage')
-          })
-
-        })
-      }
-/*
-      const inners = document.querySelectorAll('.inner')
-*/
-
-
-/*      let hide = this.$scrollmagic.scene({
-        triggerElement: img.nextElementSibling,
-        triggerHook: 0.8
-      }).setTween(img, { visibility: 'hidden', opacity: 0, duration: 0.25 })
-      this.$scrollmagic.addScene(hide)*/
+      }.bind(this), 500)
 
       mediumZoom('.zoom', {
         background: 'auto',
@@ -147,38 +139,11 @@ console.log(gallery)
 
 <style scoped>
 
-
-.trigger {
-  opacity: 0;
+.img-hidden {
   visibility: hidden;
-
-}
-
-.trigger2 {
   opacity: 0;
-  visibility: hidden;
-
+  transition: all 0.25s ease-in;
 }
-
-
-.trigger3 {
-  opacity: 0;
-  visibility: hidden;
-
-}
-
-
-.trigger4 {
-  opacity: 0;
-  visibility: hidden;
-
-}
-
-
-.gallery {
-  z-index: 0;
-}
-
 
 img {
   position: relative;
@@ -186,7 +151,6 @@ img {
   max-width: 100%;
   max-height: 100%;
 }
-
 
 .container {
   display: grid;
@@ -200,7 +164,6 @@ img {
 
 
 @media only screen and  (max-width: 768px) {
-
 
   .container {
     margin-top: 5%;
@@ -228,7 +191,6 @@ img {
 }
 
 @media only screen and  (min-width: 768px) {
-
 
   .container {
     margin-top: 5%;
@@ -264,23 +226,8 @@ img {
 
 }
 
-.text-content {
-  position: relative;
-  display: flex;
-  max-width: 70%;
-  z-index: 1;
-
-}
-
-
-.description {
-  font-size: 30px;
-
-}
-
 .medium-zoom-image--opened {
   z-index: 2 !important;
 }
-
 
 </style>

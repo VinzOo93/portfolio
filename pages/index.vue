@@ -79,8 +79,8 @@
         <p class="text-congrat p-0 m-0"> Can you find the Easter ? 🥚🌟 </p>
       </div>
     </section>
-    <div id="pizza2" class="pizza d-flex justify-content-center ">
-      <img class="pizza-img  img-scroll-2" src="~/assets/images/beerwah3.jpg" alt="suferru">
+    <div id="beerwah" class="beerwah d-flex justify-content-center ">
+      <img class="beerwah-img  img-scroll-2" src="~/assets/images/beerwah3.jpg" alt="beerwah">
     </div>
   </div>
 </template>
@@ -231,51 +231,9 @@ export default {
       this.$scrollmagic.addScene(scene8)
 
       if (windowSize > 768) {
-
-
-        const scene10 = this.$scrollmagic.scene({
-          triggerHook: 0.5,
-          triggerElement: "#home-scroll-1"
-        })
-          .setTween(".scroll-text-1", { opacity: 1, duration: 0.5 })
-        this.$scrollmagic.addScene(scene10)
-
-        const scene11 = this.$scrollmagic.scene({
-          triggerHook: 0.8,
-          triggerElement: "#home-scroll-2"
-        })
-          .setTween(".scroll-text-2", { opacity: 1, duration: 0.5 })
-        this.$scrollmagic.addScene(scene11)
-
-        const scene12 = this.$scrollmagic.scene({
-          triggerHook: 0.9,
-          triggerElement: "#home-scroll-3"
-        })
-          .setTween(".scroll-text-3", { opacity: 1, duration: 0.9 })
-        this.$scrollmagic.addScene(scene12)
-
-        const scene16 = this.$scrollmagic.scene({
-          triggerHook: 0.9,
-          triggerElement: "#home-scroll-4"
-        })
-          .setTween(".scroll-text-4", { opacity: 1, duration: 0.9 })
-        this.$scrollmagic.addScene(scene16)
-
-        const scene13 = this.$scrollmagic.scene({
-          triggerHook: 1,
-          triggerElement: "#pizza1",
-          duration: "90%"
-
-        })
-          .setTween(".img-scroll-1", {
-            scaleX: 1.4,
-            scaleY: 1.4,
-            duration: 5
-          })
-        this.$scrollmagic.addScene(scene13)
         const scene14 = this.$scrollmagic.scene({
           triggerHook: 0.7,
-          triggerElement: "#pizza2",
+          triggerElement: "#beerwah",
           duration: "90%"
         })
           .setTween(".img-scroll-2", {
@@ -284,17 +242,7 @@ export default {
             duration: 5
           })
         this.$scrollmagic.addScene(scene14)
-        const scene15 = this.$scrollmagic.scene({
-          triggerHook: 0.4,
-          triggerElement: "#pizza3",
-          duration: "90%"
-        })
-          .setTween(".img-scroll-3", {
-            scaleX: 1.3,
-            scaleY: 1.3,
-            duration: 5
-          })
-        this.$scrollmagic.addScene(scene15)
+
       } else {
         revealXs.forEach(text => text.style.opacity = "1")
       }
@@ -320,19 +268,17 @@ export default {
 
 @media only screen and (max-width: 768.5px) {
 
-
   .fz-3xl {
     font-size: 24.985507246vw;
   }
 
-.text-recipe {
-    width: 92.028985507vw !important;
-;
-}
-
-  .pizza-img {
-    width: 100% !important;
-    height: 100% !important;
+  .beerwah {
+    height: 60vh;
+  }
+  .beerwah-img {
+    margin-top: 10vh;
+    width: 90% !important;
+    height: 45% !important;
   }
 
   .xs {
@@ -436,7 +382,6 @@ export default {
     animation-direction: normal;
     animation-iteration-count: infinite;
   }
-
 
   @keyframes ticker {
     100% {
@@ -559,7 +504,6 @@ export default {
     font-size: 10.027777778vw;
   }
 
-
   .container {
     position: relative;
   }
@@ -590,13 +534,11 @@ export default {
     bottom: auto;
   }
 
-
   img.img-fluid {
     display: block;
     height: auto;
     width: 100%;
   }
-
 
   .drawing-elem {
     position: absolute;
@@ -616,7 +558,6 @@ export default {
   );
 }
 
-
 .plant {
   transform: translateX(0vw) translateY(3.19392vw) rotate(
     11.38783deg
@@ -625,7 +566,7 @@ export default {
 
 .monkey {
   z-index: 4;
-  transform: translateX(-3.19392vw) translateY(-1.90628vw) rotate(
+  transform: translateX(-3.19392vw) translateY(1.8653vw) rotate(
     11.4377deg
   );
 }
@@ -636,70 +577,24 @@ export default {
   );
 }
 
-.scroll-text-2 {
-  transform: translateZ(0);
-  transition: transform .75s cubic-bezier(.27, 0, .22, 1);
-}
-
 .enjoy {
   cursor: pointer;
 }
-
-.scroll-text-1 {
-  opacity: 0;
-}
-
-.scroll-text-2 {
-  opacity: 0;
-}
-
-.scroll-text-3 {
-  opacity: 0;
-}
-
-.scroll-text-4 {
-  opacity: 0;
-}
-
 
 
 .justify-content-center {
   justify-content: center;
 }
 
-.pizza-img {
+.beerwah-img {
   pointer-events: all;
   width: 75%;
   height: 75%;
 }
 
-.pizza {
+.beerwah {
   margin-top: 5%;
 }
-
-
-.recipe {
-  margin-top: 5%;
-  line-height: 1.230769231;
-  font-size: 3.038647343vw;
-}
-
-.text-recipe {
-  text-align: center;
-  width: 80.028985507vw;
-}
-
-.text-question {
-  text-align: center;
-  width: 92.028985507vw;
-}
-
-.question {
-  font-size: 5.7971014493vw;
-  position: relative;
-  bottom: 90px;
-  margin-left: 5%;
-  margin-right: 5%;}
 
 .congrat {
   font-size: 5.7971014493vw;
@@ -732,7 +627,6 @@ img {
   margin-right: 20px;
 
 }
-
 
 .world {
   margin-left: 20px;
@@ -805,14 +699,8 @@ p .customFont {
   height: 26.570048309vw;
 }
 
-.end {
-  position: relative;
-  margin-top: 6%;
-}
-
 section {
   display: block;
 }
-
 
 </style>
