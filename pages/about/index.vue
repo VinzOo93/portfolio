@@ -7,18 +7,18 @@
           <img class='cover2 js-transition vincent' alt='vincent' src='~/assets/about/vincent.jpg'>
           <h1 class='title'> Vincent ORRU - Développeur Web</h1>
           <div class='contact'>
-            <a class='btn button-to-website' href='https://github.com/VinzOo93' target='_blank'>🦊 Github</a>
+            <a class='btn button-to-website' href='https://github.com/VinzOo93' target='_blank'>🐙 Github</a>
             <a class='btn btn-linked button-to-website'
                href='https://www.linkedin.com/in/vincent-orru-b7a53b120/?originalSubdomain=fr' target='_blank'><img
-              src='~/assets/about/linked.png' width='256' height='256' alt='linkedin'> Linkedin</a>
+              src='~/assets/about/linked.png' width='12.5' height='12.5' alt='linkedin'> Linkedin</a>
             <a class='btn button-to-website' href='mailto:v.orru@live.fr'>📤 Email</a>
           </div>
           <div class='technos'>
-            <img class='html' height='1200' src='~/assets/about/html.png' alt='html'>
-            <img class='css' height='1693' src='~/assets/about/css.png' alt='css'>
-            <img class='javascript' height='225' src='~/assets/about/javascript.png' alt='javacript'>
-            <img class='nuxtJs' height='401' src='~/assets/about/nuxtJS.png' alt='nuxtJs'>
-            <img class='symfony' height='225' src='~/assets/about/symfony.png' alt='symfony'>
+            <img class='html' height='50px' src='~/assets/about/html.png' alt='html'>
+            <img class='css' height='50px' src='~/assets/about/css.png' alt='css'>
+            <img class='javascript' height='50px' src='~/assets/about/javascript.png' alt='javacript'>
+            <img class='nuxtJs' height='50px' src='~/assets/about/nuxtJS.png' alt='nuxtJs'>
+            <img class='symfony' height='50px' src='~/assets/about/symfony.png' alt='symfony'>
           </div>
         </div>
       </div>
