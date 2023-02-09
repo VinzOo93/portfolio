@@ -2,33 +2,13 @@
   <div>
     <div class='gallery' id='trigger'>
       <div class='transition'></div>
-      <div class='container'>
-        <div class='content'>
-          <div class='photos'>
-            <template v-for='(photo,index) in this.shuffle(covertRight)'>
-              <div ref='inner' class='inner-item img-hidden'>
-                <img v-if='index <= 63'
-                     class='cover2 js-transition zoom' v-bind:alt='photo.name'
-                     v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
-              </div>
-            </template>
+      <div class='photos container'>
+        <template v-for='(photo) in data'>
+          <div v-if="photo.image_info.height < 4000" class='inner-item img-hidden'>
+            <img class='js-transition zoom cover' v-bind:alt='photo.name'
+                 v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
           </div>
-        </div>
-      </div>
-      <div class='container'>
-        <div class='cover'>
-          <div class='content'>
-            <div class='photos'>
-              <template v-for='(photo,index) in this.shuffle(covertRight)'>
-                <div ref='inner' class='inner-item img-hidden'>
-                  <img v-if='index <= 60'
-                       class='cover js-transition zoom' v-bind:alt='photo.name'
-                       v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
+        </template>
       </div>
     </div>
   </div>
@@ -43,8 +23,7 @@ export default {
 
   data() {
     return {
-      coverLeft: [],
-      covertRight: []
+      data: []
     }
   },
 
@@ -55,21 +34,18 @@ export default {
     this.startAnimation()
   },
 
-
   methods: {
     fetchImages: function() {
       const Url = 'https://upload.uploadcare.com/group/info/'
       const PublicKey = '3c5ff03c50ae52a4f8bf'
       const Uri = '0b14b09e-8173-4cdf-95b3-60f07143d765~83'
-
       fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
         }
       }).then(response => response.json()
       ).then(data => {
-        this.coverLeft = data.files
-        this.covertRight = data.files
+        this.data = this.shuffle(data.files)
       }).catch((e) => console.log(e))
     },
 
@@ -102,27 +78,24 @@ export default {
           })
         }.bind(this), 2000)
       })
-      setTimeout(function() {
-
-      gsap.timeline(100)
-        .fromTo(transition,
-          {
+        gsap.timeline(100)
+          .fromTo(transition,
+            {
+              opacity: 1,
+              y: '100%',
+              duration: 3
+            },
+            {
+              y: '-100%',
+              duration: 2.5
+            })
+        gsap.timeline(100)
+          .fromTo(gallery, { opacity: 0, y: '100%' }, {
             opacity: 1,
-            y: '100%',
-            duration: 3
-          },
-          {
-            y: '-100%',
-            duration: 3
+            y: '0%',
+            ease: 'power5',
+            duration: 5
           })
-          gsap.timeline(100)
-        .fromTo(gallery, { opacity: 0, y: '100%' }, {
-          opacity: 1,
-          y: '0%',
-          ease: 'power5',
-          duration: 5
-        })
-      }.bind(this), 500)
 
       mediumZoom('.zoom', {
         background: 'auto',
@@ -154,12 +127,11 @@ img {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   grid-gap: 0;
   align-items: start;
   position: relative;
   width: 100%;
-
 }
 
 
@@ -177,17 +149,6 @@ img {
     max-width: 90%;
     margin: 10px 10px 10px 5vw;
   }
-
-  .cover2 {
-    z-index: 1;
-    max-width: 90%;
-    margin: 10px 10px 10px 5vw;
-  }
-
-  .content {
-    position: relative;
-    width: 100%;
-  }
 }
 
 @media only screen and  (min-width: 768px) {
@@ -195,10 +156,8 @@ img {
   .container {
     margin-top: 5%;
     display: grid;
-    grid-template-columns: repeat(12, 2fr);
     grid-gap: 0;
     align-items: start;
-    grid-column: 6/9;
     position: absolute;
     width: 100%;
   }
@@ -209,19 +168,6 @@ img {
     grid-column: 2/7;
     z-index: 1;
     max-width: 95%;
-  }
-
-  .cover2 {
-    margin: 10px;
-    z-index: 1;
-    grid-column: 1/9;
-    max-width: 95%;
-  }
-
-  .content {
-    grid-column: 7/12;
-    position: absolute;
-    max-width: 90%;
   }
 
 }
