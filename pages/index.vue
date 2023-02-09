@@ -106,12 +106,18 @@ export default {
     startAnimation: function() {
       const line = document.querySelectorAll(".line")
       const rock = document.querySelector(".rock")
+      const welcome = document.querySelector(".welcome-home")
       let enjoy = document.querySelector(".enjoy")
       let mouseCursor = document.querySelector(".cursor")
       let windowSize = screen.width
       const revealXs = document.querySelectorAll(".xs-reveal")
       const body = document.body
 
+      setTimeout(function() {
+      welcome.style.visibility = 'visible'
+      welcome.style.opacity = '1'
+
+      }.bind(this), 500)
 
       if (windowSize <= 768) {
        body.style.height = 1000 + 'px'
@@ -265,6 +271,11 @@ export default {
 
 <style scoped>
 
+.welcome-home {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-in;
+}
 
 @media only screen and (max-width: 768.5px) {
 

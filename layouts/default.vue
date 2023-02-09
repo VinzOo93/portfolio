@@ -9,6 +9,7 @@
     <nuxt />
   </div>
 </template>
+
 <style>
 
 
@@ -19,6 +20,12 @@
     position: fixed;
     left: 40%;
     white-space: nowrap
+  }
+}
+
+@media only screen and (max-width: 768.5px) {
+  .cursor {
+    visibility: hidden;
   }
 }
 
@@ -119,7 +126,6 @@ export default {
       let navBarli = document.querySelectorAll('.navbar a')
 
       function cursor(e) {
-
         mouseCursor.style.top = e.pageY + 'px'
         mouseCursor.style.left = e.pageX + 'px'
       }
