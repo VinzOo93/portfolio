@@ -17,7 +17,6 @@
 <script>
 
 import { gsap } from 'gsap'
-import mediumZoom from 'medium-zoom'
 
 export default {
 
@@ -60,13 +59,6 @@ export default {
         setTimeout(function() {
           const inners = img.querySelectorAll('.inner-item')
           inners.forEach(inner => {
-            this.$scrollmagic.defaultOverwrite = false
-            let show1 = this.$scrollmagic.scene({
-              triggerElement: inner,
-              triggerHook: 0.45,
-              duration: 0.1
-            }).setTween(inner, { visibility: 'visible', opacity: 1, duration: 0.5 })
-            this.$scrollmagic.addScene(show1)
             if (windowSize >= 769) {
               inner.addEventListener('mouseleave', () => {
                 mouseCursor.classList.remove('overImage')
@@ -79,12 +71,12 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
-            this.$scrollmagic.defaultOverwrite = false
-            let show2 = this.$scrollmagic.scene({
+            let show = this.$scrollmagic.scene({
               triggerElement: inner,
-              triggerHook: 0.45
+              triggerHook: 0.45,
+              duration: 0.1
             }).setTween(inner, { visibility: 'visible', opacity: 1, duration: 0.5 })
-            this.$scrollmagic.addScene(show2)
+            this.$scrollmagic.addScene(show)
           })
         }.bind(this), 500)
       })
