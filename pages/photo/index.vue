@@ -60,6 +60,13 @@ export default {
         setTimeout(function() {
           const inners = img.querySelectorAll('.inner-item')
           inners.forEach(inner => {
+            this.$scrollmagic.defaultOverwrite = false
+            let show1 = this.$scrollmagic.scene({
+              triggerElement: inner,
+              triggerHook: 0.45,
+              duration: 0.1
+            }).setTween(inner, { visibility: 'visible', opacity: 1, duration: 0.5 })
+            this.$scrollmagic.addScene(show1)
             if (windowSize >= 769) {
               inner.addEventListener('mouseleave', () => {
                 mouseCursor.classList.remove('overImage')
@@ -72,11 +79,12 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
-            let show = this.$scrollmagic.scene({
+            this.$scrollmagic.defaultOverwrite = false
+            let show2 = this.$scrollmagic.scene({
               triggerElement: inner,
               triggerHook: 0.45
             }).setTween(inner, { visibility: 'visible', opacity: 1, duration: 0.5 })
-            this.$scrollmagic.addScene(show)
+            this.$scrollmagic.addScene(show2)
           })
         }.bind(this), 500)
       })
