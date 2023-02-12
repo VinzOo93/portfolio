@@ -26,11 +26,12 @@ export default {
     }
   },
 
-  beforeMount: function() {
+  beforeMount() {
     this.fetchImages()
   },
   mounted: function() {
-    this.startAnimation()
+    this.startAnimation(), this.fetchImages()
+
   },
 
   methods: {
@@ -109,8 +110,8 @@ export default {
 <style scoped>
 
 .img-hidden {
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
   transition: all 0.25s ease-in;
 }
 

@@ -33,9 +33,11 @@
   </div>
 </template>
 <script>
+/*
 import * as firebase from 'firebase'
-let app = firebase.default
-let db = app.database()
+*/
+/*let app = firebase.default
+let db = app.database()*/
 let data
 
 export default {

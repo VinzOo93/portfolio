@@ -1,126 +1,125 @@
 <template>
   <div>
-    <div class="transition"></div>
-    <modale-game v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></modale-game>
-    <section class="welcome-home overflow-hidden">
-      <div class="d-flex flex-column xs justify-content-center min-vh-100  container">
-        <div class="line__wrap overflow-hidden  line-scroll-1  ">
-          <div class="line-container d-flex">
-            <p class="welcome line fz-3xl p-0 m-0"><span class="customFont">HEY</span> <img
-              src="https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif" class="eyes img-line img-sm" alt="eyes">
+    <div class='transition'></div>
+    <ModaleGame v-bind:revele='revele' v-bind:toggle-modale='toggleModale'></ModaleGame>
+    <section class='welcome-home overflow-hidden'>
+      <div class='d-flex flex-column xs justify-content-center min-vh-100  container'>
+        <div class='line__wrap overflow-hidden  line-scroll-1  '>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
+              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
               WELCOME
             </p>
-            <p class="welcome line fz-3xl p-0 m-0"><span class="customFont">HEY</span> <img
-              src="https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif" class="eyes img-line img-sm" alt="eyes">
+            <p class='welcome line fz-3xl p-0 m-0'><span class='customFont'>HEY</span> <img
+              src='https://media.giphy.com/media/VDNDX5BhKKz0YsJkl0/giphy.gif' class='eyes img-line img-sm' alt='eyes'>
               WELCOME
             </p>
           </div>
         </div>
-        <div class="line__wrap overflow-hidden   line-scroll-2">
-          <div class="line-container d-flex">
-            <p  class="welcome line fz-3xl p-0 m-0"><img
-              src="https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif"
-              class="covid img-sm" alt="covid"> IN MY <span
-              class="customFont">WORLD</span><img src="https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif"
-                                                  class="world img-sm" alt="world"></p>
-            <p class="welcome line fz-3xl p-0 m-0"><img
-              src="https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif"
-              class="covid img-sm" alt="covid"> IN MY <span
-              class="customFont">WORLD</span><img src="https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif"
-                                                  class="world img-sm" alt="world"></p>
+        <div class='line__wrap overflow-hidden   line-scroll-2'>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'><img
+              src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
+              class='covid img-sm' alt='covid'> IN MY <span
+              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
+                                                  class='world img-sm' alt='world'></p>
+            <p class='welcome line fz-3xl p-0 m-0'><img
+              src='https://media.giphy.com/media/RSgKTx5RRZj34rbbu7/giphy.gif'
+              class='covid img-sm' alt='covid'> IN MY <span
+              class='customFont'>WORLD</span><img src='https://media.giphy.com/media/dvgjUJsZ60Wyw8UNyM/giphy.gif'
+                                                  class='world img-sm' alt='world'></p>
           </div>
         </div>
-        <div class="line__wrap overflow-hidden  line-scroll-3">
-          <div class="line-container d-flex">
-            <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
-                                                           alt="rock img-sm"><span
-              class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
-                                                 class="gin img-sm" alt="gin">2023 </p>
-            <p class="welcome line fz-3xl p-0 m-0"> 20<img src="~/assets/home/rock.jpg" class="rock img-line"
-                                                           alt="rock img-sm"><span
-              class="customFont">CENT</span><img src="https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif"
-                                                 class="gin img-sm" alt="gin">2023 </p>
+        <div class='line__wrap overflow-hidden  line-scroll-3'>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
+                                                           alt='rock img-sm'><span
+              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
+                                                 class='gin img-sm' alt='gin'>2023 </p>
+            <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
+                                                           alt='rock img-sm'><span
+              class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
+                                                 class='gin img-sm' alt='gin'>2023 </p>
           </div>
         </div>
-        <div class="line__wrap overflow-hidden line-scroll-4">
-          <div class="line-container d-flex">
-            <p class="welcome line fz-3xl p-0 m-0">(<img
-              src="https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif"
-              class="lemon img-line img-sm" alt="lemon">)=><span v-on:click='toggleModale'
-              class="customFont enjoy">ENJOY</span><=(<img src="https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif"
-                                                           class="strawberry img-sm" alt="strawberry">)</p>
-            <p class="welcome line fz-3xl p-0 m-0">(<img
-              src="https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif"
-              class="lemon img-line img-sm" alt="lemon">)=><span v-on:click='toggleModale'
-              class="customFont enjoy">ENJOY</span><=(<img src="https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif"
-                                                           class="strawberry img-sm" alt="strawberry">)</p>
+        <div class='line__wrap overflow-hidden line-scroll-4'>
+          <div class='line-container d-flex'>
+            <p class='welcome line fz-3xl p-0 m-0'>(<img
+              src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
+              class='lemon img-line img-sm' alt='lemon'>)=><span v-on:click='toggleModale'
+                                                                 class='customFont enjoy'>ENJOY</span>&lt;=(<img
+              src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
+              class='strawberry img-sm' alt='strawberry'>)</p>
+            <p class='welcome line fz-3xl p-0 m-0'>(<img
+              src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
+              class='lemon img-line img-sm' alt='lemon'>)=><span v-on:click='toggleModale'
+                                                                 class='customFont enjoy'>ENJOY</span>&lt;=(<img
+              src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
+              class='strawberry img-sm' alt='strawberry'>)</p>
           </div>
         </div>
       </div>
     </section>
-    <section class="drawing">
-      <div class="container2 d-flex justify-content-center">
-        <div class="drawing-elem drawing-monkey "><img src="https://media.giphy.com/media/J2TpMp7nR3I6cSyRhy/giphy.gif"
-                                                       class="img-fluid monkey" alt="monkey">
+    <section class='drawing'>
+      <div class='container2 d-flex justify-content-center'>
+        <div class='drawing-elem drawing-monkey '><img src='https://media.giphy.com/media/J2TpMp7nR3I6cSyRhy/giphy.gif'
+                                                       class='img-fluid monkey' alt='monkey'>
         </div>
-        <div class="drawing-elem drawing-plant"><img src="https://media.giphy.com/media/TiraF3ku29LfOARfdO/giphy.gif"
-                                                     class="img-fluid plant" alt="plant">
+        <div class='drawing-elem drawing-plant'><img src='https://media.giphy.com/media/TiraF3ku29LfOARfdO/giphy.gif'
+                                                     class='img-fluid plant' alt='plant'>
         </div>
-        <div class="drawing-elem drawing-moon"><img src="https://media.giphy.com/media/h8xE5ALopE7a9nGVIu/giphy.gif"
-                                                    class="img-fluid moon" alt="moon">
+        <div class='drawing-elem drawing-moon'><img src='https://media.giphy.com/media/h8xE5ALopE7a9nGVIu/giphy.gif'
+                                                    class='img-fluid moon' alt='moon'>
         </div>
-        <div class="drawing-elem drawing-crow"><img src="https://media.giphy.com/media/eh6xpYS0f1iWyH5P3V/giphy.gif"
-                                                    class="img-fluid crow" alt="crow">
+        <div class='drawing-elem drawing-crow'><img src='https://media.giphy.com/media/eh6xpYS0f1iWyH5P3V/giphy.gif'
+                                                    class='img-fluid crow' alt='crow'>
         </div>
       </div>
     </section>
     <section>
-      <div class="congrat d-flex justify-content-center ">
-        <p class="text-congrat p-0 m-0"> Can you find the Easter ? 🥚🌟 </p>
+      <div class='congrat d-flex justify-content-center '>
+        <p class='text-congrat p-0 m-0'> Can you find the Easter ? 🥚🌟 </p>
       </div>
     </section>
-    <div id="beerwah" class="beerwah d-flex justify-content-center ">
-      <img class="beerwah-img  img-scroll-2" src="~/assets/images/beerwah3.jpg" alt="beerwah">
+    <div id='beerwah' class='beerwah d-flex justify-content-center '>
+      <img class='beerwah-img  img-scroll-2' src='~/assets/images/beerwah3.jpg' alt='beerwah'>
     </div>
   </div>
 </template>
 <script>
-import { gsap } from "gsap"
-import ModaleGame from "@/components/ModaleGame"
+import { gsap } from 'gsap'
 
 export default {
   name: 'index',
-  data(){
+  data() {
     return {
       revele: false
     }
   },
-  components: {
-    'modale-game': ModaleGame,
-  }
-  ,
-  mounted: function() {
-    this.startAnimation();
+  mounted() {
+    this.startAnimation()
   },
   methods: {
-    startAnimation: function() {
-      const line = document.querySelectorAll(".line")
-      const rock = document.querySelector(".rock")
-      const welcome = document.querySelector(".welcome-home")
-      let enjoy = document.querySelector(".enjoy")
-      let mouseCursor = document.querySelector(".cursor")
+    startAnimation() {
+      const line = document.querySelectorAll('.line')
+      const rock = document.querySelector('.rock')
+      const welcome = document.querySelector('.welcome-home')
+      let enjoy = document.querySelector('.enjoy')
+      let mouseCursor = document.querySelector('.cursor')
       let windowSize = screen.width
-      const revealXs = document.querySelectorAll(".xs-reveal")
+      const revealXs = document.querySelectorAll('.xs-reveal')
       const body = document.body
+      let controller = new ScrollMagic.Controller()
+
 
       setTimeout(function() {
-      welcome.style.visibility = 'visible'
-      welcome.style.opacity = '1'
+        welcome.style.visibility = 'visible'
+        welcome.style.opacity = '1'
 
       }.bind(this), 500)
 
       if (windowSize <= 768) {
-       body.style.height = 1000 + 'px'
+        body.style.height = 1000 + 'px'
       }
       gsap.timeline(100)
         .fromTo(rock, {
@@ -131,7 +130,7 @@ export default {
             duration: 2.5,
             scaleX: 1,
             scaleY: 1,
-            ease: "power5"
+            ease: 'power5'
           })
 
       if (windowSize > 768) {
@@ -140,26 +139,26 @@ export default {
           .from(line, {
             duration: 2,
             yPercent: 200,
-            ease: "power4",
+            ease: 'power4'
           })
 
         const scene = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: "100%"
+          duration: '100%'
         })
-          .setTween(".line-scroll-1", {
+          .setTween('.line-scroll-1', {
             x: -350
           })
         this.$scrollmagic.addScene(scene)
 
-        const scene2 = this.$scrollmagic.scene({
+        const scene2 = new ScrollMagic.Scene({
           triggerHook: 0,
           offset: 1,
-          duration: "100%"
+          duration: '100%'
 
         })
-          .setTween(".line-scroll-2", {
+          .setTween('.line-scroll-2', {
             x: 350
           })
         this.$scrollmagic.addScene(scene2)
@@ -167,10 +166,10 @@ export default {
         const scene3 = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: "100%"
+          duration: '100%'
 
         })
-          .setTween(".line-scroll-3", {
+          .setTween('.line-scroll-3', {
             x: -100
           })
         this.$scrollmagic.addScene(scene3)
@@ -178,36 +177,36 @@ export default {
         const scene4 = this.$scrollmagic.scene({
           triggerHook: 0,
           offset: 1,
-          duration: "100%"
+          duration: '100%'
 
         })
-          .setTween(".line-scroll-4", {
+          .setTween('.line-scroll-4', {
             x: 100
           })
         this.$scrollmagic.addScene(scene4)
 
       }
 
-      const scene5 = this.$scrollmagic.scene({
+      const scene5 = new ScrollMagic.Scene({
         triggerHook: 0.9,
-        triggerElement: ".container2",
-        duration: "120%"
+        triggerElement: '.container2',
+        duration: '120%'
 
       })
 
-        .setTween(".drawing-monkey", {
+        .setTween('.drawing-monkey', {
           x: -60,
           y: -30
         })
-      this.$scrollmagic.addScene(scene5)
+        .addTo(controller)
 
       const scene6 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: ".container2",
-        duration: "120%"
+        triggerElement: '.container2',
+        duration: '120%'
 
       })
-        .setTween(".drawing-moon", {
+        .setTween('.drawing-moon', {
           x: 80,
           rotation: -10
         })
@@ -215,22 +214,22 @@ export default {
 
       const scene7 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: ".container2",
-        duration: "120%"
+        triggerElement: '.container2',
+        duration: '120%'
 
       })
-        .setTween(".drawing-plant", {
+        .setTween('.drawing-plant', {
           x: -50,
           rotation: 40
         })
       this.$scrollmagic.addScene(scene7)
       const scene8 = this.$scrollmagic.scene({
         triggerHook: 0.9,
-        triggerElement: ".container2",
-        duration: "120%"
+        triggerElement: '.container2',
+        duration: '120%'
 
       })
-        .setTween(".drawing-crow", {
+        .setTween('.drawing-crow', {
           y: -30,
           x: 60
         })
@@ -239,10 +238,10 @@ export default {
       if (windowSize > 768) {
         const scene14 = this.$scrollmagic.scene({
           triggerHook: 0.7,
-          triggerElement: "#beerwah",
-          duration: "90%"
+          triggerElement: '#beerwah',
+          duration: '90%'
         })
-          .setTween(".img-scroll-2", {
+          .setTween('.img-scroll-2', {
             scaleX: 1.3,
             scaleY: 1.3,
             duration: 5
@@ -250,19 +249,17 @@ export default {
         this.$scrollmagic.addScene(scene14)
 
       } else {
-        revealXs.forEach(text => text.style.opacity = "1")
+        revealXs.forEach(text => text.style.opacity = '1')
       }
-      enjoy.addEventListener("mouseover", () => {
-        mouseCursor.classList.add("link-grow")
+      enjoy.addEventListener('mouseover', () => {
+        mouseCursor.classList.add('link-grow')
       })
-      enjoy.addEventListener("mouseleave", () => {
-        mouseCursor.classList.remove("link-grow")
+      enjoy.addEventListener('mouseleave', () => {
+        mouseCursor.classList.remove('link-grow')
       })
     }
-    , toggleModale : function(){
-
+    , toggleModale: function() {
       this.revele = !this.revele
-
     }
   }
 
@@ -286,6 +283,7 @@ export default {
   .beerwah {
     height: 60vh;
   }
+
   .beerwah-img {
     margin-top: 10vh;
     width: 90% !important;
@@ -518,11 +516,13 @@ export default {
   .container {
     position: relative;
   }
+
   .drawing-monkey {
     width: 7.222222222vw;
     bottom: auto;
 
   }
+
   .drawing-monkey {
     width: 7.222222222vw;
     bottom: auto;
@@ -681,6 +681,7 @@ p .customFont {
   line-height: 1;
 
 }
+
 section {
   display: block;
 }

@@ -6,7 +6,7 @@
         <Navbar />
       </div>
     </div>
-    <nuxt />
+    <slot />
   </div>
 </template>
 
@@ -94,9 +94,12 @@ body {
 </style>
 <script>
 import { gsap } from 'gsap'
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+/*
 import firebase from 'firebase'
-/* Prod only */
-const firebaseConfig = {
+*/
+/*const firebaseConfig = {
   apiKey: 'AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74',
   authDomain: 'portfolio-vincent-orru.firebaseapp.com',
   databaseURL: 'https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app',
@@ -111,15 +114,15 @@ let app = firebase.default
 
 if (!app.apps.length) {
   app.initializeApp(firebaseConfig)
-}
+}*/
 export default {
 
-  beforeMount: function() {
-    this.beforeMount()
+  beforeMount() {
+    this.defaultAction()
   },
 
   methods: {
-    beforeMount() {
+    defaultAction() {
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor')
       let navBar = document.querySelectorAll('.navbar')
@@ -147,11 +150,19 @@ export default {
           mouseCursor.classList.add('link-grow')
         })
       })
-      const scene = this.$scrollmagic.scene({
-        offset: 30
-      })
-        .setTween(navBarli, 0.2, { opacity: 0, pointerEvents: 'none' })
-      this.$scrollmagic.addScene(scene)
+      const scene = gsap.to(
+        navBarli, {
+          opacity: 0,
+          pointerEvents: 'none',
+          scrollTrigger: {
+            trigger: navBarli,
+            start: 'top 5%',
+            end: 'top 5%',
+            toggleActions: 'restart',
+            markers: true
+          }
+        }
+      )
     }
   }
 }

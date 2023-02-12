@@ -22,7 +22,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/medium-zoom' }, { src: '~/plugins/vue-scrollmagic.js', mode: 'client' }],
+  plugins: [{ src: '~/plugins/medium-zoom' }],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -35,37 +35,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: "AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74",
-          authDomain: "portfolio-vincent-orru.firebaseapp.com",
-          databaseURL: "https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "portfolio-vincent-orru",
-          storageBucket: "portfolio-vincent-orru.appspot.com",
-          messagingSenderId: "229878441570",
-          appId: "1:229878441570:web:bfc3ba1df5829d5d1cd33b",
-          measurementId: "G-PEEWBKJLZZ"
-        },
-        services: {
-          database: true,
-          static: false,
-          preload: false,
-          analytics: true,
-
-        },
-        database: {
-          emulatorPort: process.env.NODE_ENV === 'development' ? 9000 : undefined,
-          emulatorHost: 'localhost',
-        },
-        analytics: {
-          collectionEnabled: true
-        }
-      }
-    ]
-  ],
+  modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

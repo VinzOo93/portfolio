@@ -3,7 +3,7 @@
     <div class='transition '></div>
     <div class=' smooth-scroll-wrapper '>
       <div class='projets'>
-        <article id='article-6'  class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-6' class='case  p-0 m-0 f-100 b-0'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -14,7 +14,9 @@
                 <h2 class='name'>FRUIT MEMORY</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Jeu de Fruit Memory caché en page d'acceuil. Pour les plus curieux(se) d'entre-vous, vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e).  Je vous souhaite une bonne recherche 🥸 !
+                <h3 class='text'> Jeu de Fruit Memory caché en page d'acceuil. Pour les plus curieux(se) d'entre-vous,
+                  vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e). Je vous souhaite
+                  une bonne recherche 🥸 !
                 </h3>
                 <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Firebase </p>
                 <!--                <a class='button-to-website' href='https://www.vincent-orru.link/' target='_blank'>Voir le site</a> -->
@@ -28,7 +30,7 @@
             </div>
           </div>
         </article>
-        <article id='article-5'  class='case  p-0 m-0 f-100 b-0'>
+        <article id='article-5' class='case  p-0 m-0 f-100 b-0'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -39,10 +41,13 @@
                 <h2 class='name'>PROFILES BROWSER</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Petite application pour décourvrir Laravel & Docker qui répertorie les informations de plusieurs profils de stars.
+                <h3 class='text'> Petite application pour décourvrir Laravel & Docker qui répertorie les informations de
+                  plusieurs profils de stars.
                 </h3>
-                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker ,Laravel, Blade, Eloquent, Maria DB </p>
-                <a class='button-to-website' href='https://github.com/VinzOo93/ProfileBrowser' target='_blank'>Git clone</a>
+                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker ,Laravel, Blade, Eloquent,
+                  Maria DB </p>
+                <a class='button-to-website' href='https://github.com/VinzOo93/ProfileBrowser' target='_blank'>Git
+                  clone</a>
               </div>
             </div>
             <div class='img-project '>
@@ -53,7 +58,7 @@
             </div>
           </div>
         </article>
-        <article id='article-4'  class='case  p-0 m-0 f-100 b-0 hidden'>
+        <article id='article-4' class='case  p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -124,7 +129,7 @@
                   site</a>
               </div>
             </div>
-            <div  class='img-project'>
+            <div class='img-project'>
               <img src='~/assets/projects/comparateur-1.png' class='img-projets comparateur-1 size-1'
                    alt='comparateur-1'>
               <img src='~/assets/projects/comparateur-2.png' class='img-projets comparateur-2 size-2'
@@ -167,19 +172,20 @@
 <script>
 import { gsap } from 'gsap'
 
+
 export default {
-  mounted: function() {
+  mounted() {
     this.startAnimation()
   },
   methods: {
-    startAnimation: function() {
+    startAnimation() {
       const transition = document.querySelector('.transition')
       const projets = document.querySelector('.projets')
       const line = document.querySelectorAll('.line-1')
       const button = document.querySelectorAll('.button-to-website')
       const mouseCursor = document.querySelector('.cursor')
 
-
+      gsap.t
       gsap.timeline(100)
         .fromTo(transition, {
           opacity: 1,
@@ -213,10 +219,10 @@ export default {
       function smoothScroll() {
         offset += (window.pageYOffset - offset) * speed
 
-        scrollWrap.style.transform = 'translateY(-' + offset -1000 + 'px) translate(0)'
+        scrollWrap.style.transform = 'translateY(-' + offset - 1000 + 'px) translate(0)'
 
         cards.forEach(card => {
-          card.style.transform = 'translateY(-' + offset/20 + 'px) translate(0)'
+          card.style.transform = 'translateY(-' + offset / 20 + 'px) translate(0)'
         })
 
         requestAnimationFrame(smoothScroll)
@@ -224,11 +230,9 @@ export default {
 
       smoothScroll()
 
-
-
       const scene = this.$scrollmagic.scene({
         triggerElement: '#article-4',
-        triggerHook: 0.5,
+        triggerHook: 0.5
       })
         .setTween('.case', { opacity: 1, duration: 0.10 })
       this.$scrollmagic.addScene(scene)
@@ -242,11 +246,7 @@ export default {
           })
         })
       })
-
-
     }
-
-
   }
 }
 </script>
@@ -272,9 +272,9 @@ export default {
   }
 
   .img-project {
-    width: 55vw ;
-    top: 15% ;
-    left: 7% ;
+    width: 55vw;
+    top: 15%;
+    left: 7%;
     height: 48vw !important;
   }
 
@@ -343,7 +343,7 @@ article {
   font-size: 1.6rem;
   line-height: 1;
   margin-right: 1rem;
-  font-family: Helvetica,sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 .separator__line {
@@ -387,7 +387,6 @@ a.button-to-website {
   background-color: #504e4c;
   color: white;
 }
-
 
 
 .card.container {

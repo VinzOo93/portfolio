@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class='modale-win'>
-      <modale-score v-bind:reveleScore='reveleScore' v-bind:toggleModaleScore='toggleModaleScore'></modale-score>
+      <ModaleScore v-bind:reveleScore='reveleScore' v-bind:toggleModaleScore='toggleModaleScore'></ModaleScore>
       <div class='content-game'>
         <img src='https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif' class='winner-img' alt='winner-img'>
         <div class='stat'>
@@ -34,13 +34,15 @@
 
 
 <script>
+/*
 import * as firebase from 'firebase'
-import ModaleScore from '@/components/ModaleScore'
 
-let app = firebase.default
+ */
+
+/*let app = firebase.default
 let db = app.database()
 let text = db.ref('Player')
-let presenceRef = db.ref('disconnectmessage')
+let presenceRef = db.ref('disconnectmessage')*/
 
 let tentative = 0
 let successRate = 18 / tentative * 100
@@ -61,9 +63,6 @@ export default {
         timeLeft: ''
       }
     }
-  },
-  components: {
-    'modale-score': ModaleScore
   },
   mounted: function() {
     this.startGame()

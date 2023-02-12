@@ -6,7 +6,6 @@
       <h2>La page que vous recherchez n'éxiste pas</h2>
       <img src='https://media.giphy.com/media/tNC2rod1uTrdC/giphy.gif' alt='bender'>
     </div>
-
     <NuxtLink to="/">Page d'accueil</NuxtLink>
   </div>
 </template>
