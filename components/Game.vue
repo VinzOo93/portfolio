@@ -155,7 +155,6 @@ export default {
 
       hideAllFruit()
 
-
       function hideAllFruit() {
         fruits.forEach(fruit => {
           fruit.style.visibility = 'hidden'
@@ -163,8 +162,6 @@ export default {
       }
 
       function clickAndCheck(Event) {
-
-
         let clicked = Event.currentTarget.firstChild
         let choice1
         let choice2
@@ -391,18 +388,13 @@ form {
 
 }
 
-.board {
-  display: flex;
-  justify-content: center;
-}
-
 h1 {
   margin-top: 0;
   display: flex;
   justify-content: center;
 }
 
-.table-game {
+.table-game tbody {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;

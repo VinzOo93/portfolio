@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'portfolio Vincent ORRU',
     htmlAttrs: {
-      lang: 'fr',
+      lang: 'fr'
     },
     meta: [
       { charset: 'utf-8' },
@@ -12,17 +12,19 @@ export default {
         hid: 'description',
         name: 'description',
         content: 'Vincent ORRU - Développeur Web - Découvrir mes réalisations - Projets web - Galerie photo - à propos de moi'
-      },
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "preconnect", href: "https://fonts.gstatic.com" },
-      { href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap", rel: "stylesheet" }],
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap', rel: 'stylesheet' }],
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/medium-zoom' }],
+  plugins: [
+    { src: '~/plugins/medium-zoom' },
+  ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -40,6 +42,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: {
-      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]],
-    },},
+      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]]
+    }
+  }
 }

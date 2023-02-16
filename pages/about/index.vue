@@ -9,8 +9,8 @@
           <div class='contact'>
             <a class='btn button-to-website' href='https://github.com/VinzOo93' target='_blank'>🐙 Github</a>
             <a class='btn btn-linked button-to-website'
-               href='https://www.linkedin.com/in/vincent-orru-b7a53b120/?originalSubdomain=fr' target='_blank'><img
-              src='~/assets/about/linked.png' width='12.5' height='12.5' alt='linkedin'> Linkedin</a>
+               href='https://www.linkedin.com/in/vincent-orru-b7a53b120/?originalSubdomain=fr' target='_blank'>
+              <img src='~/assets/about/linked.png' width='15' height='15' alt='linkedin'> Linkedin</a>
             <a class='btn button-to-website' href='mailto:v.orru@live.fr'>📤 Email</a>
           </div>
           <div class='technos'>
@@ -54,7 +54,7 @@
 import { gsap } from 'gsap'
 
 export default {
-  mounted: function() {
+  mounted() {
     this.startAnimation()
   },
   methods: {
@@ -186,7 +186,7 @@ a.button-to-website {
   display: block;
   padding: 10px;
   width: 100px;
-  line-height: 10px;
+  line-height: 16px;
   background-color: transparent;
 }
 
@@ -204,6 +204,14 @@ a.button-to-website {
 .contact {
   display: flex;
   justify-content: space-evenly;
+}
+
+.btn-linked {
+  display: flex !important;
+}
+
+.btn-linked img {
+  margin-right: 3px;
 }
 
 

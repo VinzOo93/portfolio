@@ -4,7 +4,7 @@
       <div class='transition'></div>
       <div class='photos container'>
         <template v-for='(photo) in data'>
-          <div v-if='photo.image_info.height < 4000' class='inner-item img-hidden'>
+          <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
             <img class='cover zoom' v-bind:alt='photo.name'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
           </div>
@@ -17,8 +17,11 @@
 <script>
 
 import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
 export default {
+
 
   data() {
     return {
@@ -29,16 +32,16 @@ export default {
   beforeMount() {
     this.fetchImages()
   },
-  mounted: function() {
+  mounted() {
     this.startAnimation(), this.fetchImages()
 
   },
 
   methods: {
-    fetchImages: function() {
+    fetchImages() {
       const Url = 'https://upload.uploadcare.com/group/info/'
       const PublicKey = '3c5ff03c50ae52a4f8bf'
-      const Uri = '0b14b09e-8173-4cdf-95b3-60f07143d765~83'
+      const Uri = '28170ad8-5f55-4bb4-a881-6bf14f34a4f3~80'
       fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
@@ -72,14 +75,20 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
-            let show = this.$scrollmagic.scene({
-              triggerElement: inner,
-              triggerHook: 0.45,
-              duration: 0.1
-            }).setTween(inner, { visibility: 'visible', opacity: 1, duration: 0.5 })
-            this.$scrollmagic.addScene(show)
+            gsap.to(
+              inner, {
+                visibility: 'visible',
+                opacity: 1,
+                duration: 0.5,
+                scrollTrigger: {
+                  trigger: inner,
+                  start: 'top 30%',
+                  toggleActions: 'restart',
+                }
+              }
+            )
           })
-        }.bind(this), 500)
+        }.bind(this), 600)
       })
       gsap.timeline(50)
         .fromTo(transition,
@@ -92,17 +101,10 @@ export default {
             y: '-100%',
             duration: 2.5
           })
-      gsap.timeline(50)
-        .fromTo(gallery, { opacity: 0, y: '100%' }, {
-          opacity: 1,
-          y: '0%',
-          ease: 'power5',
-          duration: 5
-        })
     },
-    shuffle: function(array) {
+    shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
-    }
+    },
   }
 }
 </script>
@@ -110,8 +112,8 @@ export default {
 <style scoped>
 
 .img-hidden {
-  visibility: visible;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
   transition: all 0.25s ease-in;
 }
 

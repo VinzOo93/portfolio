@@ -39,10 +39,11 @@ body {
 
 
 * {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "MontSerrat", serif;
   text-decoration: none;
   color: #74746e;
   box-sizing: border-box;
+  font-stretch: normal;
 }
 
 
@@ -155,11 +156,10 @@ export default {
           opacity: 0,
           pointerEvents: 'none',
           scrollTrigger: {
-            trigger: navBarli,
+            trigger: '.container',
             start: 'top 5%',
-            end: 'top 5%',
             toggleActions: 'restart',
-            markers: true
+            scrub: true
           }
         }
       )

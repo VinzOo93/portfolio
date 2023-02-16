@@ -8,7 +8,6 @@
      </client-only>
       <div>
       </div>
-
     </div>
   </div>
 </template>

@@ -41,10 +41,10 @@
                 <h2 class='name'>PROFILES BROWSER</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Petite application pour décourvrir Laravel & Docker qui répertorie les informations de
+                <h3 class='text'> Petite application pour découvrir Laravel & Docker qui répertorie les informations de
                   plusieurs profils de stars.
                 </h3>
-                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker ,Laravel, Blade, Eloquent,
+                <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, Docker, Laravel, Blade, Eloquent,
                   Maria DB </p>
                 <a class='button-to-website' href='https://github.com/VinzOo93/ProfileBrowser' target='_blank'>Git
                   clone</a>
@@ -58,7 +58,7 @@
             </div>
           </div>
         </article>
-        <article id='article-4' class='case  p-0 m-0 f-100 b-0 hidden'>
+        <article id='article-4' class='article-4 case  p-0 m-0 f-100 b-0 hidden'>
           <div class='separator p-0 m-0 f-100 b-0'>
             <span class='separator__year'>2021</span>
             <span class='separator__line line-1'></span>
@@ -73,7 +73,7 @@
                   gestion de la couleur du thème, plusieurs animations originales.
                 </h3>
                 <p class='text'>Technologies utilisées : HTML/CSS Sass, Javascript, GSAP, ScrollMagic, MediumZoom,
-                  Déploiement sous Eroku</p>
+                  Déploiement sous Heroku</p>
               </div>
             </div>
             <div class='img-project '>
@@ -171,7 +171,9 @@
 
 <script>
 import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
   mounted() {
@@ -228,14 +230,15 @@ export default {
         requestAnimationFrame(smoothScroll)
       }
 
-      smoothScroll()
-
-      const scene = this.$scrollmagic.scene({
-        triggerElement: '#article-4',
-        triggerHook: 0.5
-      })
-        .setTween('.case', { opacity: 1, duration: 0.10 })
-      this.$scrollmagic.addScene(scene)
+        gsap.to(
+          '.case', {
+            opacity: 1,
+            scrollTrigger: {
+              start: 'center 50%',
+            }
+          }
+        )
+        smoothScroll()
 
       button.forEach(b => {
         b.addEventListener('mouseover', () => {

@@ -88,6 +88,9 @@
 </template>
 <script>
 import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
   name: 'index',
@@ -109,7 +112,6 @@ export default {
       let windowSize = screen.width
       const revealXs = document.querySelectorAll('.xs-reveal')
       const body = document.body
-      let controller = new ScrollMagic.Controller()
 
 
       setTimeout(function() {
@@ -142,111 +144,119 @@ export default {
             ease: 'power4'
           })
 
-        const scene = this.$scrollmagic.scene({
-          triggerHook: 0,
-          offset: 1,
-          duration: '100%'
-        })
-          .setTween('.line-scroll-1', {
-            x: -350
-          })
-        this.$scrollmagic.addScene(scene)
+        gsap.to(
+          '.line-scroll-1', {
+            x: -350,
+            scrollTrigger: {
+              trigger: '.welcome-home',
+              start: 'top top',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-        const scene2 = new ScrollMagic.Scene({
-          triggerHook: 0,
-          offset: 1,
-          duration: '100%'
+        gsap.to(
+          '.line-scroll-2', {
+            x: 350,
+            scrollTrigger: {
+              trigger: '.welcome-home',
+              start: 'top top',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-        })
-          .setTween('.line-scroll-2', {
-            x: 350
-          })
-        this.$scrollmagic.addScene(scene2)
+        gsap.to(
+          '.line-scroll-3', {
+            x: -100,
+            scrollTrigger: {
+              trigger: '.welcome-home',
+              start: 'top top',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-        const scene3 = this.$scrollmagic.scene({
-          triggerHook: 0,
-          offset: 1,
-          duration: '100%'
+        gsap.to(
+          '.line-scroll-4', {
+            x: 100,
+            scrollTrigger: {
+              trigger: '.welcome-home',
+              start: 'top top',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-        })
-          .setTween('.line-scroll-3', {
-            x: -100
-          })
-        this.$scrollmagic.addScene(scene3)
+        gsap.to(
+          '.drawing-monkey', {
+            x: -60,
+            y: -30,
+            scrollTrigger: {
+              trigger: '.container2',
+              start: 'center center',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-        const scene4 = this.$scrollmagic.scene({
-          triggerHook: 0,
-          offset: 1,
-          duration: '100%'
+        gsap.to(
+          '.drawing-moon', {
+            x: 80,
+            rotation: -10,
+            scrollTrigger: {
+              trigger: '.container2',
+              start: 'center center',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-        })
-          .setTween('.line-scroll-4', {
-            x: 100
-          })
-        this.$scrollmagic.addScene(scene4)
+        gsap.to(
+          '.drawing-plant', {
+            x: -50,
+            rotation: 40,
+            scrollTrigger: {
+              trigger: '.container2',
+              start: 'center center',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-      }
+        gsap.to(
+          '.drawing-crow', {
+            y: -30,
+            x: 60,
+            scrollTrigger: {
+              trigger: '.container2',
+              start: 'center center',
+              end: '+=50%',
+              scrub: true
+            }
+          }
+        )
 
-      const scene5 = new ScrollMagic.Scene({
-        triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
-
-      })
-
-        .setTween('.drawing-monkey', {
-          x: -60,
-          y: -30
-        })
-        .addTo(controller)
-
-      const scene6 = this.$scrollmagic.scene({
-        triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
-
-      })
-        .setTween('.drawing-moon', {
-          x: 80,
-          rotation: -10
-        })
-      this.$scrollmagic.addScene(scene6)
-
-      const scene7 = this.$scrollmagic.scene({
-        triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
-
-      })
-        .setTween('.drawing-plant', {
-          x: -50,
-          rotation: 40
-        })
-      this.$scrollmagic.addScene(scene7)
-      const scene8 = this.$scrollmagic.scene({
-        triggerHook: 0.9,
-        triggerElement: '.container2',
-        duration: '120%'
-
-      })
-        .setTween('.drawing-crow', {
-          y: -30,
-          x: 60
-        })
-      this.$scrollmagic.addScene(scene8)
-
-      if (windowSize > 768) {
-        const scene14 = this.$scrollmagic.scene({
-          triggerHook: 0.7,
-          triggerElement: '#beerwah',
-          duration: '90%'
-        })
-          .setTween('.img-scroll-2', {
-            scaleX: 1.3,
-            scaleY: 1.3,
-            duration: 5
-          })
-        this.$scrollmagic.addScene(scene14)
+        gsap.to(
+          '.img-scroll-2', {
+            scaleX: 1.5,
+            scaleY: 1.5,
+            scrollTrigger: {
+              trigger: '.beerwah',
+              start: 'center center',
+              end: '+=100',
+              scrub: true,
+              pin: true
+            }
+          }
+        )
 
       } else {
         revealXs.forEach(text => text.style.opacity = '1')
@@ -287,7 +297,7 @@ export default {
   .beerwah-img {
     margin-top: 10vh;
     width: 90% !important;
-    height: 45% !important;
+    height: 60% !important;
   }
 
   .xs {
@@ -600,7 +610,7 @@ export default {
 .beerwah-img {
   pointer-events: all;
   width: 75%;
-  height: 75%;
+  height: 95%;
 }
 
 .beerwah {
