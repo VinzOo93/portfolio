@@ -4,9 +4,6 @@
     <div class='modale card'>
       <div class='btn-modale-score' v-on:click='toggleModaleScore'></div>
       <h1>Tableau des scores ☑️</h1>
-      <div class='container-refresh'>
-        <button @click='$fetch'>Refresh</button>
-      </div>
       <div class='table'>
         <table class='table-player'>
           <thead>
@@ -18,7 +15,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr class='player-line t-body' v-for='Player in Players '>
+          <tr class='player-line t-body' v-for='Player in Players'>
             <td> {{ Player.name }}</td>
             <td> {{ Player.successRate }}%</td>
             <td>{{ Player.tentative }}</td>
@@ -33,12 +30,6 @@
   </div>
 </template>
 <script>
-/*
-import * as firebase from 'firebase'
-*/
-/*let app = firebase.default
-let db = app.database()*/
-let data
 
 export default {
   name: 'ModaleScore',
@@ -48,21 +39,15 @@ export default {
     return {
       Players: []
     }
-  }, async fetch() {
-    let playerRef = db.ref('Player')
-    let players
-    playerRef.orderByChild('timeLeft').limitToFirst(6).on('value', function(snapshot) {
-
-         players = snapshot.val()
-
-      return players;
-    });
-    this.Players = players;
-    this.refresh()
+  },
+  beforeMount() {
+    this.getPlayers()
   },
   methods: {
-    refresh() {
-      this.$fetch()
+    async getPlayers() {
+      let promise = await useFetch('/api/player')
+      const data = promise.data.value
+      this.Players = data.players
     }
   }
 }
@@ -74,10 +59,12 @@ export default {
   .btn-modale-score::after {
     height: 30px;
   }
+
   .btn-modale-score {
     top: 20%;
     left: 70%;
   }
+
   .table-player {
     margin: 15px;
     font-size: 15px;
@@ -199,10 +186,6 @@ h1 {
   justify-content: center;
 }
 
-.container-refresh {
-  display: flex;
-  justify-content: center;
-}
 .container-refresh button {
   padding: 10px;
 }

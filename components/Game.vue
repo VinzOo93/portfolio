@@ -46,11 +46,11 @@ let presenceRef = db.ref('disconnectmessage')*/
 
 let tentative = 0
 let successRate = 18 / tentative * 100
-let timeLeft;
+let timeLeft
 
 export default {
   name: 'Game', player: {
-    name: '', tentative: '', successRate:'', timeLeft: ''
+    name: '', tentative: '', successRate: '', timeLeft: ''
   },
   data() {
     return {
@@ -64,24 +64,22 @@ export default {
       }
     }
   },
-  mounted: function() {
+  mounted() {
     this.startGame()
   },
   methods: {
-    toggleModaleScore: function() {
-
+    toggleModaleScore() {
       this.reveleScore = !this.reveleScore
-
     },
 
     tryAgain() {
 
-      let tr = document.querySelector('.gameline');
-      let win = document.querySelector('.modale-win');
-      let allTd = document.querySelectorAll('td');
-      let timer = document.querySelector('#timer');
+      let tr = document.querySelector('.gameline')
+      let win = document.querySelector('.modale-win')
+      let allTd = document.querySelectorAll('td')
+      let timer = document.querySelector('#timer')
       timer.textContent = '00:00'
-      timeLeft = null;
+      timeLeft = null
 
       win.style.visibility = 'hidden'
       allTd.forEach(td => {
@@ -89,22 +87,25 @@ export default {
       })
       this.startGame()
     },
-    addScore: function() {
+    addScore: async function() {
       successRate = 18 / tentative * 100
-
-      try {
-        text.push({
-          name: this.text.name,
-          tentative: tentative,
-          successRate: Math.round(successRate),
-          timeLeft: timeLeft
-        })
-      } catch (err) {
-        presenceRef.onDisconnect().remove((err) => {
-          console.error('impossible d\'établir la connexion', err)
-        })
+      let data = {
+        name: this.text.name,
+        tentative: tentative,
+        successRate: Math.round(successRate),
+        timeLeft: timeLeft
       }
-      alert('Votre score a bien été enregistré')
+      await useFetch('/api/addplayer', {
+        method: 'POST',
+        body: data
+      }).then(response => {
+          if (response.data.value.success === 1) {
+            alert('Votre score a bien été enregistré')
+          }
+        }
+      ).catch((e) => console.log(e)
+      )
+
     },
     startGame: function() {
 
@@ -199,7 +200,7 @@ export default {
           console.log(choice2.src)
 
           if (choice1.src === choice2.src && choice1.classList !== choice2.classList) {
-            score ++;
+            score++
             console.log('identical' + score)
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
@@ -228,10 +229,10 @@ export default {
 
           function timeIt() {
             time++
-            timer.textContent = convertSeconds(time);
-            timeLeft = convertSeconds(time);
+            timer.textContent = convertSeconds(time)
+            timeLeft = convertSeconds(time)
             toString(timer)
-            return timeLeft;
+            return timeLeft
           }
 
           gameTime = setInterval(timeIt, 1000)
