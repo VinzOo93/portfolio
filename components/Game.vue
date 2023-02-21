@@ -34,15 +34,6 @@
 
 
 <script>
-/*
-import * as firebase from 'firebase'
-
- */
-
-/*let app = firebase.default
-let db = app.database()
-let text = db.ref('Player')
-let presenceRef = db.ref('disconnectmessage')*/
 
 let tentative = 0
 let successRate = 18 / tentative * 100
@@ -107,11 +98,9 @@ export default {
       )
 
     },
-    startGame: function() {
-
+    startGame() {
       let score = 0
       let caseNumber = 0
-
       let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
       let double = 0
       let selection = 0
@@ -124,9 +113,7 @@ export default {
       const rate = document.querySelector('.rate')
       const timer = document.querySelector('#timer')
 
-
       while (double < 2) {
-        console.log(card.length)
         for (let i = 0; i < card.length; i++) {
           let td = document.createElement('td')
           td.innerHTML = '<img src=\'\' alt=\'fruit\' class=\'fruit\'>'
@@ -136,14 +123,12 @@ export default {
           td.lastElementChild.className = 1 + caseNumber.toString()
           td.lastElementChild.classList.add('fruit')
 
-
           td.addEventListener('click', Event => {
             clickAndCheck(Event)
           })
           if (i === 17) {
             double++
           }
-
         }
       }
       let fruitCase = line.children
@@ -187,7 +172,6 @@ export default {
             tentative++
             selection++
             console.log('tentative' + tentative)
-
             break
           }
         }

@@ -269,10 +269,18 @@ export default {
       })
     }
     , toggleModale: function() {
+      const timer = document.querySelector('#timer')
+      const tr = document.querySelector('.gameline')
+      const allTd = document.querySelectorAll('td')
       this.revele = !this.revele
+      if (tr)
+      timer.textContent = '00:00'
+      allTd.forEach(td => {
+        tr.removeChild(td)
+      })
+
     }
   }
-
 }
 </script>
 
