@@ -89,6 +89,7 @@
 <script>
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import game from '~/components/Game.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -273,12 +274,14 @@ export default {
       const tr = document.querySelector('.gameline')
       const allTd = document.querySelectorAll('td')
       this.revele = !this.revele
-      if (tr)
-      timer.textContent = '00:00'
-      allTd.forEach(td => {
-        tr.removeChild(td)
-      })
-
+      if (tr) {
+        timer.textContent = '00:00'
+        let clone = timer.cloneNode(true)
+        timer.parentNode.replaceChild(clone, timer)
+        allTd.forEach(td => {
+          tr.removeChild(td)
+        })
+      }
     }
   }
 }
