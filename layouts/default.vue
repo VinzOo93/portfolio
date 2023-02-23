@@ -97,25 +97,7 @@ body {
 import { gsap } from 'gsap'
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-/*
-import firebase from 'firebase'
-*/
-/*const firebaseConfig = {
-  apiKey: 'AIzaSyAHKW483b6Q21l9h8T9piDFa7YPOpaIv74',
-  authDomain: 'portfolio-vincent-orru.firebaseapp.com',
-  databaseURL: 'https://portfolio-vincent-orru-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'portfolio-vincent-orru',
-  storageBucket: 'portfolio-vincent-orru.appspot.com',
-  messagingSenderId: '229878441570',
-  appId: '1:229878441570:web:bfc3ba1df5829d5d1cd33b',
-  measurementId: 'G-PEEWBKJLZZ',
-}
 
-let app = firebase.default
-
-if (!app.apps.length) {
-  app.initializeApp(firebaseConfig)
-}*/
 export default {
 
   beforeMount() {
@@ -128,6 +110,7 @@ export default {
       let mouseCursor = document.querySelector('.cursor')
       let navBar = document.querySelectorAll('.navbar')
       let navBarli = document.querySelectorAll('.navbar a')
+      const windowSize = window.innerWidth
 
       function cursor(e) {
         mouseCursor.style.top = e.pageY + 'px'
@@ -136,9 +119,8 @@ export default {
 
       navBar.forEach(link => {
         link.addEventListener('mouseleave', () => {
-          let windowSize = window.innerWidth
           let scroll = window.scrollY
-          if (scene != null && windowSize > 768) {
+          if (windowSize > 768) {
             gsap.to(navBarli, { opacity: 0, duration: 0.2, pointerEvents: 'none' })
           }
           if (scroll === 0) {
@@ -151,18 +133,20 @@ export default {
           mouseCursor.classList.add('link-grow')
         })
       })
-      const scene = gsap.to(
-        navBarli, {
-          opacity: 0,
-          pointerEvents: 'none',
-          scrollTrigger: {
-            trigger: '.container',
-            start: 'top 5%',
-            toggleActions: 'restart',
-            scrub: true
+      if (windowSize > 768) {
+        gsap.to(
+          navBarli, {
+            opacity: 0,
+            pointerEvents: 'none',
+            scrollTrigger: {
+              trigger: '.container',
+              start: 'top 5%',
+              toggleActions: 'restart',
+              scrub: true
+            }
           }
-        }
-      )
+        )
+      }
     }
   }
 }
