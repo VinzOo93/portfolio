@@ -29,8 +29,11 @@ export default {
     }
   },
 
-  mounted() {
-    this.fetchImages(),this.startAnimation()
+  beforeMount() {
+    this.fetchImages()
+  },
+  beforeUpdate() {
+    this.startAnimation()
   },
 
   methods: {
