@@ -6,7 +6,7 @@
         <template v-for='(photo) in data'>
           <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
             <img class='cover zoom' v-bind:alt='photo.name'
-                 v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/-/quality/smart/-/format/auto/'">
+                 v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
           </div>
         </template>
       </div>

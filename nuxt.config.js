@@ -1,5 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  target: 'server',
   head: {
     title: 'portfolio Vincent ORRU',
     htmlAttrs: {
@@ -36,7 +37,6 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     // '@nuxtjs/stylelint-module',
   ,
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
