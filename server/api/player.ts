@@ -18,9 +18,10 @@ export default defineEventHandler(async () => {
       arrayKeys.forEach((key) => {
         players.push(datas[key])
       })
-
-      return players
     }, (errorObject) => {
       console.log(errorObject)
     })
+  return {
+    players
+  }
 })
