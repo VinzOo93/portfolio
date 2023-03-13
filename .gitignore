@@ -90,3 +90,5 @@ sw.*
 *.swp
 
 /serviceAccountKey.json
+
+*.output

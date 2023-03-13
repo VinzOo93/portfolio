@@ -15,7 +15,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr class='player-line t-body' v-for='Player in Players'>
+          <tr class='player-line t-body' v-for='(Player, PlayerID) in Players'>
+            <td> {{ PlayerID + 1}}</td>
             <td> {{ Player.name }}</td>
             <td> {{ Player.successRate }}%</td>
             <td>{{ Player.tentative }}</td>
