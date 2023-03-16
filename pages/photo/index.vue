@@ -57,6 +57,7 @@ export default {
       const mouseCursor = document.querySelector('.cursor')
       const gallery = document.querySelectorAll('.gallery .photos')
       const windowSize = screen.width
+      let top = 'top 80%'
 
       gallery.forEach(img => {
         setTimeout(function() {
@@ -69,6 +70,7 @@ export default {
               inner.addEventListener('mouseover', () => {
                 mouseCursor.classList.add('overImage')
               })
+              top = 'top 30%'
             } else {
               let imgZoom = inner.querySelector('.zoom')
               let clone = imgZoom.cloneNode(true)
@@ -81,7 +83,7 @@ export default {
                 duration: 0.5,
                 scrollTrigger: {
                   trigger: inner,
-                  start: 'top 30%',
+                  start: top,
                   toggleActions: 'restart',
                 }
               }
