@@ -124,17 +124,19 @@ export default {
       if (windowSize <= 768) {
         body.style.height = 1000 + 'px'
       }
-      gsap.timeline(100)
-        .fromTo(rock, {
-            scaleX: 0,
-            scaleY: 0
-          },
-          {
-            duration: 2.5,
-            scaleX: 1,
-            scaleY: 1,
-            ease: 'power5'
-          })
+      setTimeout(function() {
+        gsap.timeline(100)
+          .fromTo(rock, {
+              scaleX: 0,
+              scaleY: 0
+            },
+            {
+              duration: 2.5,
+              scaleX: 1,
+              scaleY: 1,
+              ease: 'power5'
+            })
+      }.bind(this), 500)
 
       if (windowSize > 768) {
 

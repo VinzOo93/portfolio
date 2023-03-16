@@ -74,7 +74,7 @@ export default {
 
   .navigation-button {
     position: fixed;
-    left: 65%;
+    left: 80%;
     top: 50px;
     z-index: 3;
     width: 25px;

@@ -87,7 +87,7 @@ export default {
               }
             )
           })
-        }.bind(this), 600)
+        }.bind(this), 2000)
       })
       gsap.timeline(50)
         .fromTo(transition,
