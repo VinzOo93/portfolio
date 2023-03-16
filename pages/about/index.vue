@@ -169,6 +169,9 @@ export default {
   .description {
     font-size: 22px;
   }
+  .technos {
+    margin-bottom: 5% !important;
+  }
 }
 
 .title {
