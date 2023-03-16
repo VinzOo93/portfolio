@@ -8,6 +8,7 @@
         <table class='table-player'>
           <thead>
           <tr class='player-line'>
+            <td>Position</td>
             <td>Joueurs</td>
             <td>Succès</td>
             <td>Tentatives</td>
@@ -58,17 +59,17 @@ export default {
 @media only screen and (max-width: 768.5px) {
   .btn-modale-score::before,
   .btn-modale-score::after {
-    height: 30px;
+    height: 20px;
   }
 
   .btn-modale-score {
-    top: 20%;
-    left: 70%;
+    left: 85%;
+    top: 2%;
   }
 
   .table-player {
     margin: 15px;
-    font-size: 15px;
+    font-size: 11px;
   }
 
 }
@@ -82,7 +83,7 @@ export default {
   }
 
   .btn-modale-score {
-    top: 5%;
+    top: 0;
   }
 
   .table-player {

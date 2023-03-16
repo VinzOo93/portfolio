@@ -271,6 +271,7 @@ export default {
 
 
   .content-game {
+    margin-top: 3%;
     margin-left: 10%;
     margin-right: 10%;
   }

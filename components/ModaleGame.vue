@@ -25,7 +25,7 @@ export default {
   .btn-modale::before,
   .btn-modale::after {
     height: 20px;
-    left: -35%;
+    left: 60%;
   }
 
   .btn-modale {
@@ -43,7 +43,7 @@ export default {
   }
 
   .btn-modale {
-    top: 5%;
+    top: 0;
   }
 }
 
@@ -68,7 +68,7 @@ export default {
   width: 25px;
   height: 25px;
   opacity: 0.3;
-  z-index: 250;
+  z-index: 3;
 
 }
 
