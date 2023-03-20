@@ -93,10 +93,6 @@ export default {
     top: 0;
   }
 
-  .table-player {
-    margin: 100px;
-  }
-
   thead * {
     font-size: 15px;
   }
@@ -200,7 +196,7 @@ h1 {
   padding: 10px;
 }
 .modale .card {
-  width: 90%;
+  width: 95%;
 }
 
 </style>
