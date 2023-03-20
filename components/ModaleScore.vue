@@ -3,7 +3,7 @@
     <div class='overlay-game' v-on:click='toggleModaleScore'></div>
     <div class='modale card'>
       <div class='btn-modale-score' v-on:click='toggleModaleScore'></div>
-      <h1>Tableau des scores ☑️</h1>
+      <h1 class='title-score'>Tableau des scores ☑️</h1>
       <div class='table'>
         <table class='table-player'>
           <thead>
@@ -197,6 +197,10 @@ h1 {
 }
 .modale .card {
   width: 95%;
+}
+
+.title-score {
+  text-align: center;
 }
 
 .table {
