@@ -68,7 +68,6 @@ export default {
   }
 
   .table-player {
-    margin: 15px;
     font-size: 11px;
   }
 
