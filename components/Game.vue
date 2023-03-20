@@ -335,7 +335,7 @@ export default {
 }
 
 .modale-win {
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   top: 0;
   right: 0;
