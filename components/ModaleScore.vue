@@ -199,6 +199,9 @@ h1 {
 .container-refresh button {
   padding: 10px;
 }
+.modale .card {
+  width: 90%;
+}
 
 </style>
 
