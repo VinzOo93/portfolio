@@ -93,6 +93,11 @@ export default {
     top: 0;
   }
 
+  .table-player {
+    width: 50vw;
+    height: 50vh;
+  }
+
   thead * {
     font-size: 15px;
   }
@@ -170,8 +175,6 @@ export default {
 
 
 .table-player {
-  width: 50vw;
-  height: 50vh;
   border: solid 1px #74746e;
   border-radius: 30px;
 }
@@ -187,10 +190,7 @@ h1 {
   justify-content: center;
 }
 
-.table {
-  display: flex;
-  justify-content: center;
-}
+
 
 .container-refresh button {
   padding: 10px;
@@ -199,6 +199,10 @@ h1 {
   width: 95%;
 }
 
+.table {
+  display: flex;
+  justify-content: center;
+}
 </style>
 
 
