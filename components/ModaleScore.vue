@@ -3,6 +3,7 @@
     <div class='overlay-game' v-on:click='toggleModaleScore'></div>
     <div class='modale card'>
       <div class='btn-modale-score' v-on:click='toggleModaleScore'></div>
+      <div class='tab-container'>
       <h1>Tableau des scores ☑️</h1>
       <div class='table'>
         <table class='table-player'>
@@ -17,7 +18,7 @@
           </thead>
           <tbody>
           <tr class='player-line t-body' v-for='(Player, PlayerID) in Players'>
-            <td class='position'> {{ PlayerID + 1}}</td>
+            <td class='position'> {{ PlayerID + 1 }}</td>
             <td> {{ Player.name }}</td>
             <td> {{ Player.successRate }}%</td>
             <td>{{ Player.tentative }}</td>
@@ -26,9 +27,10 @@
           </tbody>
         </table>
       </div>
-      <div>
-      </div>
     </div>
+    <div>
+    </div>
+  </div>
   </div>
 </template>
 <script>
@@ -68,12 +70,14 @@ export default {
   }
 
   .table-player {
+    margin: 15px;
     font-size: 11px;
   }
 
   thead * {
     font-size: 12px;
   }
+
   .t-body * {
     padding: 10px;
   }
@@ -172,8 +176,8 @@ export default {
 
 
 .table-player {
-  width: 80%;
-  height: 80%;
+  width: 50vw;
+  height: 50vh;
   border: solid 1px #74746e;
   border-radius: 30px;
 }
@@ -198,6 +202,10 @@ h1 {
 
 .container-refresh button {
   padding: 10px;
+}
+
+.tab-container {
+  align-items: center;
 }
 
 </style>
