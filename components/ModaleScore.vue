@@ -17,7 +17,7 @@
           </thead>
           <tbody>
           <tr class='player-line t-body' v-for='(Player, PlayerID) in Players'>
-            <td> {{ PlayerID + 1}}</td>
+            <td class='position'> {{ PlayerID + 1}}</td>
             <td> {{ Player.name }}</td>
             <td> {{ Player.successRate }}%</td>
             <td>{{ Player.tentative }}</td>
@@ -72,6 +72,12 @@ export default {
     font-size: 11px;
   }
 
+  thead * {
+    font-size: 12px;
+  }
+  .t-body * {
+    padding: 10px;
+  }
 }
 
 @media only screen and (min-width: 768.5px) {
@@ -88,6 +94,17 @@ export default {
 
   .table-player {
     margin: 100px;
+  }
+
+  thead * {
+    font-size: 15px;
+  }
+
+  .t-body * {
+    padding: 10px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -162,15 +179,7 @@ export default {
   border-radius: 30px;
 }
 
-.t-body * {
-  padding: 10px;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
 thead * {
-  font-size: 15px;
   font-family: Helvetica, serif !important;
   padding: 7px;
 }

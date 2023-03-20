@@ -1,5 +1,9 @@
 <template>
   <div>
+    <Head>
+      <Title>Vincent ORRU : Portfolio</Title>
+      <Meta name='description' content='Vincent ORRU - Développeur Web - Découvrir mes réalisations'/>
+    </Head>
     <div class='cursor'></div>
     <div class='header'>
       <div class='navbar-container'>
