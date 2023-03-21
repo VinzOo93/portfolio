@@ -30,12 +30,12 @@ import { gsap } from "gsap"
 export default {
   Name: "Navbar",
 
-  mounted: function() {
+  mounted() {
     this.setBackground()
   },
 
   methods: {
-    setBackground: function() {
+    setBackground() {
 
       const button = document.querySelector(".navigation-button")
       const body = document.querySelector("body")
