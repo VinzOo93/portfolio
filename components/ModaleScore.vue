@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     async getPlayers() {
-      let promise = await useFetch('/api/player')
+      let promise = await useFetch('/api/player/getPlayer')
       const data = promise.data.value
       this.Players = data.players
     }

@@ -1,4 +1,4 @@
-import { realtimeDatabase } from '../utils/firebase'
+import { realtimeDatabase } from '../../utils/firebase'
 
 // @ts-ignore
 export default defineEventHandler(async () => {

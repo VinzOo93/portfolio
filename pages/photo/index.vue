@@ -8,8 +8,8 @@
             <img class='cover zoom' v-bind:alt='photo.name'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <button id='like-button' class='heart'>
-              <span class='like-text'>Like</span>
               <span class='heart-icon'></span>
+              <span class='like-text'>Like</span>
             </button>
           </div>
         </template>
@@ -57,18 +57,6 @@ export default {
         this.data = this.shuffle(data.files)
       }).catch((e) => console.log(e))
     },
-    activeHearts() {
-      const likeButtons = document.querySelectorAll('#like-button')
-
-      likeButtons.forEach(button => {
-        const heartIcon = button.querySelector('.heart-icon')
-        button.addEventListener('click', function() {
-          heartIcon.classList.toggle('active')
-        })
-      })
-    }
-    ,
-
     startAnimation: function() {
 
       const transition = document.querySelector('.transition')
@@ -123,6 +111,24 @@ export default {
     },
     shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
+    },
+    activeHearts() {
+      const likeButtons = document.querySelectorAll('#like-button')
+
+      likeButtons.forEach(button => {
+        const heartIcon = button.querySelector('.heart-icon')
+        button.addEventListener('click', target => {
+          heartIcon.classList.toggle('active')
+          this.checkSelectedHeart(target.currentTarget)
+        })
+      })
+    },
+    checkSelectedHeart(target) {
+      if (target.firstChild.classList.contains('active')) {
+        console.log(target.firstChild.classList)
+      } else  {
+        console.log('not active')
+      }
     }
   }
 }
@@ -203,8 +209,8 @@ img {
   margin: 10px;
   padding: 10px;
   position: relative;
-  width: 5vw;
-  height: 3vh;
+  width: 70px;
+  height: 28px;
   border-radius: 5px;
 
 }
@@ -213,8 +219,10 @@ img {
 .heart-icon::before,
 .heart-icon::after {
   content: "";
-  background-color: red;
   position: absolute;
+  background-color: transparent;
+  border-top: 2px ridge #bd0000;
+  border-bottom: 0.5px solid #a10000;
 }
 
 .heart-icon::before {
@@ -240,9 +248,9 @@ img {
 
 .heart-icon.active::before,
 .heart-icon.active::after {
-  background-color: transparent;
-  border-top: 2px ridge #ab0000;
-  border-bottom: 1px inset #420000;
+  background-color: red;
+  border-top: 2px ridge transparent;
+  border-bottom: 0.5px solid transparent;
 }
 
 .like-text {

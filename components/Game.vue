@@ -86,7 +86,7 @@ export default {
         successRate: Math.round(successRate),
         timeLeft: timeLeft
       }
-      await useFetch('/api/addplayer', {
+      await useFetch('/api/player/addPlayer', {
         method: 'POST',
         body: data
       }).then(response => {
