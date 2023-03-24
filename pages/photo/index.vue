@@ -7,7 +7,7 @@
           <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
             <img class='cover zoom' v-bind:alt='photo.name'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
-            <button id='like-button' class='heart'>
+            <button id='like-button' class='heart' v-bind:data-name='photo.file_id'>
               <span class='heart-icon'></span>
               <span class='like-text'>Like</span>
             </button>
@@ -25,11 +25,17 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
-
+  liked: {
+    ip: '', fileId: ''
+  },
 
   data() {
     return {
-      data: []
+      data: [],
+
+      imgLiked: {
+        ip: '', fileId: ''
+      }
     }
   },
 
@@ -119,16 +125,32 @@ export default {
         const heartIcon = button.querySelector('.heart-icon')
         button.addEventListener('click', target => {
           heartIcon.classList.toggle('active')
-          this.checkSelectedHeart(target.currentTarget)
+          this.likeAction(target.currentTarget)
         })
       })
     },
-    checkSelectedHeart(target) {
+    async likeAction(target) {
+      let route = 'deleteLike'
+      let promise = await useFetch('/api/client/getClientIp')
+      const dataIp = promise.data.value.ipClient
+
       if (target.firstChild.classList.contains('active')) {
-        console.log(target.firstChild.classList)
-      } else  {
-        console.log('not active')
+        route = 'addLike'
       }
+      let dataLike = {
+        ip: dataIp,
+        fileId: target.getAttribute('data-name')
+      }
+      await useFetch('/api/like/' + route, {
+        method: 'POST',
+        body: dataLike
+      }).then(response => {
+          if (response.data.value.success === 1) {
+            alert(route + ' OK')
+          }
+        }
+      ).catch((e) => console.log(e)
+      )
     }
   }
 }

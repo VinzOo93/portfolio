@@ -6,7 +6,7 @@ const initZoom = () => {
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.mixin({
-    mounted: function() {
+    mounted() {
       initZoom()
     },
     updated() {

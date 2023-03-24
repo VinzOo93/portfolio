@@ -6,11 +6,9 @@ export default defineEventHandler(async (event: any) => {
   const body = await readBody(event)
   if (body) {
     try {
-      const ref = realtimeDatabase.ref('Liked')
-      ref.push(body)
-/*
+      const ref = realtimeDatabase.ref('Liked/fileId')
+      await ref.push(body)
       return {success : 1}
-*/
     } catch (err) {
       const presenceRef = realtimeDatabase.ref('disconnectmessage')
       await presenceRef.onDisconnect().remove((err: any) => {
