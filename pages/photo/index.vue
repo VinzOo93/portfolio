@@ -25,28 +25,25 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
-  liked: {
-    ip: '', fileId: ''
-  },
+  liked: [],
+  client: '',
 
   data() {
     return {
-      data: [],
-
-      imgLiked: {
-        ip: '', fileId: ''
-      }
+      data: []
     }
   },
 
   beforeMount() {
     this.fetchImages()
   },
-  updated() {
-    this.activeHearts()
-  },
   beforeUpdate() {
-    this.startAnimation()
+    this.getClientIp(),
+      this.startAnimation()
+  },
+  updated() {
+    this.activeHearts(),
+      this.getLikesFromClient()
   },
 
   methods: {
@@ -54,6 +51,7 @@ export default {
       const Url = 'https://upload.uploadcare.com/group/info/'
       const PublicKey = '3c5ff03c50ae52a4f8bf'
       const Uri = '28170ad8-5f55-4bb4-a881-6bf14f34a4f3~80'
+
       fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
@@ -96,7 +94,8 @@ export default {
                 scrollTrigger: {
                   trigger: inner,
                   start: top,
-                  toggleActions: 'restart'
+                  toggleActions: 'restart',
+                  onEnter: this.getLikesFromClient(inner)
                 }
               }
             )
@@ -129,21 +128,59 @@ export default {
         })
       })
     },
+     getLikesFromClient(inner) {
+      let loop = true
+      const route = 'getLikes'
+      const client = this.client
+      if (inner) {
+        let observer = new MutationObserver( async function() {
+          if (inner.style.visibility !== 'hidden' && loop) {
+            try {
+              loop = false
+              const imgFile = inner.querySelector('#like-button')
+              let data = {
+                fileId: imgFile.getAttribute('data-name')
+              }
+              let promise  = await useFetch('/api/like/' + route, {
+                method: 'POST',
+                body: data
+              })
+              let likesImg = promise.data.value.likes
+              if (likesImg.length !== 0) {
+
+                const heartIcon = inner.querySelector('.heart-icon')
+                const arrayKeys = Object.keys(likesImg)
+
+                arrayKeys.forEach((value) => {
+                  if (likesImg[value].ip === client && !heartIcon.classList.contains('active')) {
+                    heartIcon.classList.toggle('active')
+                  }
+                })
+              }
+            } catch (err) {
+              console.log('getLikes' + err)
+            }
+          }
+        })
+        try {
+          observer.observe(inner, { attributes: true, childList: true })
+        } catch (err) {
+          console.log('observer' + err)
+        }
+      }
+    },
     async likeAction(target) {
       let route = 'deleteLike'
-      let promise = await useFetch('/api/client/getClientIp')
-      const dataIp = promise.data.value.ipClient
-
       if (target.firstChild.classList.contains('active')) {
         route = 'addLike'
       }
-      let dataLike = {
-        ip: dataIp,
+      this.liked = {
+        ip: this.client,
         fileId: target.getAttribute('data-name')
       }
       await useFetch('/api/like/' + route, {
         method: 'POST',
-        body: dataLike
+        body: this.liked
       }).then(response => {
           if (response.data.value.success === 1) {
             alert(route + ' OK')
@@ -151,6 +188,16 @@ export default {
         }
       ).catch((e) => console.log(e)
       )
+    },
+    async getClientIp() {
+      if (!this.client) {
+        try {
+          const promise = await useFetch('/api/client/getClientIp')
+          this.client = promise.data.value.ipClient
+        } catch (err) {
+          console.log('getIp' + err)
+        }
+      }
     }
   }
 }
