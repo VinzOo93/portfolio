@@ -7,10 +7,13 @@
           <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
             <img class='cover zoom' v-bind:alt='photo.name'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
-            <button id='like-button' class='heart' v-bind:data-name='photo.file_id'>
-              <span class='heart-icon'></span>
-              <span class='like-text'>Like</span>
-            </button>
+            <div class='container-button'>
+              <button id='like-button' class='heart' v-bind:data-name='photo.file_id'>
+                <span class='heart-icon'></span>
+                <span class='counter-like'>0</span>
+                <span class='like-text'>Like</span>
+              </button>
+            </div>
           </div>
         </template>
       </div>
@@ -128,12 +131,13 @@ export default {
         })
       })
     },
-     getLikesFromClient(inner) {
+    getLikesFromClient(inner) {
       let loop = true
       const route = 'getLikes'
       const client = this.client
+
       if (inner) {
-        let observer = new MutationObserver( async function() {
+        let observer = new MutationObserver(async function() {
           if (inner.style.visibility !== 'hidden' && loop) {
             try {
               loop = false
@@ -141,7 +145,7 @@ export default {
               let data = {
                 fileId: imgFile.getAttribute('data-name')
               }
-              let promise  = await useFetch('/api/like/' + route, {
+              let promise = await useFetch('/api/like/' + route, {
                 method: 'POST',
                 body: data
               })
@@ -151,11 +155,30 @@ export default {
                 const heartIcon = inner.querySelector('.heart-icon')
                 const arrayKeys = Object.keys(likesImg)
 
-                arrayKeys.forEach((value) => {
-                  if (likesImg[value].ip === client && !heartIcon.classList.contains('active')) {
-                    heartIcon.classList.toggle('active')
+                if (arrayKeys.length !== 0) {
+                  const animateCounter = () => {
+                    const counterLikes = inner.querySelector('.counter-like')
+                    const speed = 5000
+                    const value = arrayKeys.length
+                    const data = +counterLikes.innerText
+                    const time = value / speed
+
+                    if (data < value) {
+                      counterLikes.innerText = Math.ceil(data + time)
+                      setTimeout(animateCounter, 1)
+                    } else {
+                      counterLikes.innerText = value
+                    }
                   }
-                })
+
+                  animateCounter()
+
+                  arrayKeys.forEach((value) => {
+                    if (likesImg[value].ip === client && !heartIcon.classList.contains('active')) {
+                      heartIcon.classList.toggle('active')
+                    }
+                  })
+                }
               }
             } catch (err) {
               console.log('getLikes' + err)
@@ -183,7 +206,12 @@ export default {
         body: this.liked
       }).then(response => {
           if (response.data.value.success === 1) {
-            alert(route + ' OK')
+           let value = target.querySelector('.counter-like').innerText
+            if (route === 'addLike') {
+              target.querySelector('.counter-like').innerText = ++value
+            } else {
+              target.querySelector('.counter-like').innerText = --value
+            }
           }
         }
       ).catch((e) => console.log(e)
@@ -263,6 +291,10 @@ img {
     max-width: 95%;
   }
 
+  #like-button {
+    margin: 10px;
+  }
+
 }
 
 .medium-zoom-image--opened {
@@ -275,13 +307,17 @@ img {
   display: inline-block;
   font-size: 13px;
   font-weight: bold;
-  margin: 10px;
   padding: 10px;
   position: relative;
-  width: 70px;
+  width: 90px;
   height: 28px;
   border-radius: 5px;
+}
 
+.container-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -323,10 +359,19 @@ img {
 }
 
 .like-text {
+  color: #f6f1f1;
   position: absolute;
   display: inline-block;
   top: 4px;
-  left: 33px;
+  left: 53px;
+}
+
+.counter-like {
+  font-size: 12px;
+  position: absolute;
+  display: inline-block;
+  top: 5px;
+  left: 30px;
 }
 
 </style>
