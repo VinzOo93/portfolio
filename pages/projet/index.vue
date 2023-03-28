@@ -14,7 +14,7 @@
                 <h2 class='name'>FRUIT MEMORY</h2>
                 <h3 class='text'>
                 </h3>
-                <h3 class='text'> Jeu de Fruit Memory caché en page d'acceuil. Pour les plus curieux(se) d'entre-vous,
+                <h3 class='text'> Jeu de Fruit Memory caché en page d'accueil. Pour les plus curieux(se) d'entre-vous,
                   vous pouvez y enregistrer votre score afin de voir si vous êtes le/la meilleur(e). Je vous souhaite
                   une bonne recherche 🥸 !
                 </h3>
