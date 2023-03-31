@@ -42,7 +42,7 @@ export default {
       Players: []
     }
   },
-  beforeMount() {
+  updated() {
     this.getPlayers()
   },
   methods: {
