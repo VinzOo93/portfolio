@@ -1,17 +1,19 @@
 // @ts-ignore
 export default defineEventHandler(async (event: any) => {
 
+  // @ts-ignore
+  const config = useRuntimeConfig()
   const req = event.node.req
   const res = event.node.res
   const host = req.headers.host
   let url = req.url
   const env = process.env.NODE_ENV
-  const forceDomain = 'https://www.vincent-orru.com'
+  const forceDomain = config.public.forcedDomain
 
   if (
     (req.headers['x-forwarded-proto'] !== 'https' ||
-      host === 'portfolio-vincent-orru.herokuapp.com' ||
-      host === 'vincent-orru.com')
+      host === config.public.hostHeroku ||
+      host === config.public.prodEnvHost)
     &&
     env === 'production'
   ) {
@@ -22,3 +24,5 @@ export default defineEventHandler(async (event: any) => {
     return res.end()
   }
 })
+
+

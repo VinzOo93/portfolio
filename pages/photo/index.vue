@@ -25,9 +25,12 @@
 
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import CryptoJS from 'crypto-js'
+const config = useRuntimeConfig();
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
+
   liked: [],
   client: '',
 
@@ -51,9 +54,9 @@ export default {
 
   methods: {
     fetchImages() {
-      const Url = 'https://upload.uploadcare.com/group/info/'
-      const PublicKey = '3c5ff03c50ae52a4f8bf'
-      const Uri = '28170ad8-5f55-4bb4-a881-6bf14f34a4f3~80'
+      const Url = config.public.cdnUrl
+      const PublicKey = config.public.cdnPublicKey
+      const Uri = config.public.cdnUri
 
       fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
         headers: {
@@ -206,7 +209,7 @@ export default {
         body: this.liked
       }).then(response => {
           if (response.data.value.success === 1) {
-           let value = target.querySelector('.counter-like').innerText
+            let value = target.querySelector('.counter-like').innerText
             if (route === 'addLike') {
               target.querySelector('.counter-like').innerText = ++value
             } else {
@@ -220,8 +223,17 @@ export default {
     async getClientIp() {
       if (!this.client) {
         try {
-          const promise = await useFetch('/api/client/getClientIp')
-          this.client = promise.data.value.ipClient
+          const cookie = useCookie('clientInfo')
+          let value
+          if (cookie.value) {
+            value = cookie.value
+          } else  {
+            const promise = await useFetch('/api/client/getClientIp')
+             value = promise.data.value.ipClient
+          }
+            const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
+            this.client = bytes.toString(CryptoJS.enc.Utf8)
+
         } catch (err) {
           console.log('getIp' + err)
         }

@@ -17,25 +17,39 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      { href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap', rel: 'stylesheet' }],
+      { href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap', rel: 'stylesheet' }]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/medium-zoom' },
+    { src: '~/plugins/medium-zoom' }
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ['@nuxt/typescript-build']
+  buildModules: [
+    '@nuxt/typescript-build'
+  ],
+  runtimeConfig: {
+    public: {
+      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY,
+      hostHeroku: process.env.NUXT_ENV_HOST_HEROKU,
+      forcedDomain: process.env.NUXT_ENV_FORCED_DOMAIN,
+      prodEnvHost: process.env.NUXT_ENV_HOST,
+      cdnUrl: process.env.NUXT_ENV_CDN_URL,
+      cdnPublicKey: process.env.NUXT_ENV_CDN_PUBLIC_KEY,
+      cdnUri: process.env.NUXT_ENV_CDN_URI
+    }
+  }
 
-    // https://go.nuxtjs.dev/eslint
-    // '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/stylelint
-    // '@nuxtjs/stylelint-module',
+
+  // https://go.nuxtjs.dev/eslint
+  // '@nuxtjs/eslint-module',
+  // https://go.nuxtjs.dev/stylelint
+  // '@nuxtjs/stylelint-module',
   ,
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],

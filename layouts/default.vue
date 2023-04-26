@@ -4,6 +4,7 @@
       <Title>Vincent ORRU : Portfolio</Title>
       <Meta name='description' content='Vincent ORRU - Développeur Web - Découvrir mes réalisations'/>
     </Head>
+    <Cookie />
     <div class='cursor'></div>
     <div class='header'>
       <div class='navbar-container'>
@@ -103,11 +104,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
-
   beforeMount() {
     this.defaultAction()
   },
-
   methods: {
     defaultAction() {
       window.addEventListener('mousemove', cursor)

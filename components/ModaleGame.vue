@@ -4,7 +4,7 @@
     <div class='modale card'>
       <div class='btn-modale' v-on:click='toggleModale'></div>
      <client-only placeholder='chargement...'>
-       <Game></Game>
+       <Game/>
      </client-only>
       <div>
       </div>

@@ -89,7 +89,6 @@
 <script>
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import game from '~/components/Game.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 

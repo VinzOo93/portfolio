@@ -91,4 +91,6 @@ sw.*
 
 /serviceAccountKey.json
 
+*.env
+
 *.output
