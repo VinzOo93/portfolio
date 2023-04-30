@@ -95,7 +95,7 @@ export default {
                 top = 'top 30%'
                 time = 50000
               } else {
-                top = 'top 90%'
+                top = 'top 75%'
                 inner.style.position = 'relative'
                 inner.style.top = '150px'
               }
