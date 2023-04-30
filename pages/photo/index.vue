@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='gallery' id='trigger'>
+    <div class='gallery scroll' id='trigger'>
       <div class='transition'></div>
       <div class='photos container'>
         <template v-for='(photo) in data'>
@@ -26,34 +26,32 @@
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import CryptoJS from 'crypto-js'
-const config = useRuntimeConfig();
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
 
   liked: [],
   client: '',
-
+  cryptedIp: '',
   data() {
     return {
       data: []
     }
   },
-
   beforeMount() {
     this.fetchImages()
+    this.getClientIp()
   },
   beforeUpdate() {
-    this.getClientIp(),
-      this.startAnimation()
+    this.startAnimation()
   },
   updated() {
-    this.activeHearts(),
-      this.getLikesFromClient()
+    this.activeHearts()
   },
 
   methods: {
     fetchImages() {
+      const config = useRuntimeConfig()
       const Url = config.public.cdnUrl
       const PublicKey = config.public.cdnPublicKey
       const Uri = config.public.cdnUri
@@ -68,17 +66,24 @@ export default {
       }).catch((e) => console.log(e))
     },
     startAnimation: function() {
-
       const transition = document.querySelector('.transition')
       const mouseCursor = document.querySelector('.cursor')
       const gallery = document.querySelectorAll('.gallery .photos')
       const windowSize = screen.width
       let top = 'top 80%'
+      let countGrid = 0
+      let time = 0
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
 
       gallery.forEach(img => {
         setTimeout(function() {
           const inners = img.querySelectorAll('.inner-item')
           inners.forEach(inner => {
+            countGrid++
             if (windowSize >= 769) {
               inner.addEventListener('mouseleave', () => {
                 mouseCursor.classList.remove('overImage')
@@ -86,7 +91,14 @@ export default {
               inner.addEventListener('mouseover', () => {
                 mouseCursor.classList.add('overImage')
               })
-              top = 'top 30%'
+              if (countGrid % 2 === 0) {
+                top = 'top 30%'
+                time = 50000
+              } else {
+                top = 'top 90%'
+                inner.style.position = 'relative'
+                inner.style.top = '150px'
+              }
             } else {
               let imgZoom = inner.querySelector('.zoom')
               let clone = imgZoom.cloneNode(true)
@@ -96,18 +108,20 @@ export default {
               inner, {
                 visibility: 'visible',
                 opacity: 1,
+                'scroll-padding': '300px',
                 duration: 0.5,
                 scrollTrigger: {
+                  smooth: 2,
                   trigger: inner,
                   start: top,
-                  toggleActions: 'restart',
-                  onEnter: this.getLikesFromClient(inner)
+                  onEnter: setTimeout(this.getLikesFromClient(inner, time))
                 }
               }
             )
           })
-        }.bind(this), 2000)
+        }.bind(this), time)
       })
+
       gsap.timeline(50)
         .fromTo(transition,
           {
@@ -119,13 +133,18 @@ export default {
             y: '-100%',
             duration: 2.5
           })
+
+      let height;
+
+      gsap.to(gallery, {
+        smooth: 2,
+      });
     },
     shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
     },
     activeHearts() {
       const likeButtons = document.querySelectorAll('#like-button')
-
       likeButtons.forEach(button => {
         const heartIcon = button.querySelector('.heart-icon')
         button.addEventListener('click', target => {
@@ -135,9 +154,11 @@ export default {
       })
     },
     getLikesFromClient(inner) {
+      const config = useRuntimeConfig()
       let loop = true
       const route = 'getLikes'
       const client = this.client
+      let count = 0
 
       if (inner) {
         let observer = new MutationObserver(async function() {
@@ -145,43 +166,46 @@ export default {
             try {
               loop = false
               const imgFile = inner.querySelector('#like-button')
-              let data = {
-                fileId: imgFile.getAttribute('data-name')
-              }
-              let promise = await useFetch('/api/like/' + route, {
-                method: 'POST',
-                body: data
-              })
-              let likesImg = promise.data.value.likes
-              if (likesImg.length !== 0) {
 
+              const data =
+                { fileId: imgFile.getAttribute('data-name') }
+
+              let promise = await
+                useFetch('/api/like/' + route, {
+                  method: 'POST',
+                  body: data
+                })
+
+              let result = await promise
+
+              const likesImg = result.data.value.likes
+              const arrayKeys = Object.keys(likesImg)
+              count = arrayKeys.length
+
+              if (count > 0) {
+                const counterLikes = inner.querySelector('.counter-like')
                 const heartIcon = inner.querySelector('.heart-icon')
-                const arrayKeys = Object.keys(likesImg)
 
-                if (arrayKeys.length !== 0) {
-                  const animateCounter = () => {
-                    const counterLikes = inner.querySelector('.counter-like')
-                    const speed = 5000
-                    const value = arrayKeys.length
-                    const data = +counterLikes.innerText
-                    const time = value / speed
-
-                    if (data < value) {
-                      counterLikes.innerText = Math.ceil(data + time)
-                      setTimeout(animateCounter, 1)
-                    } else {
-                      counterLikes.innerText = value
-                    }
+                const animateCounter = () => {
+                  const speed = 5000
+                  const data = +counterLikes.innerText
+                  const time = count / speed
+                  if (data < count) {
+                    counterLikes.innerText = Math.ceil(data + time)
+                    setTimeout(animateCounter, 1)
+                  } else {
+                    counterLikes.innerText = count
                   }
-
-                  animateCounter()
-
-                  arrayKeys.forEach((value) => {
-                    if (likesImg[value].ip === client && !heartIcon.classList.contains('active')) {
-                      heartIcon.classList.toggle('active')
-                    }
-                  })
                 }
+                animateCounter()
+                arrayKeys.forEach((value) => {
+                  const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
+                  const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
+
+                  if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
+                    heartIcon.classList.toggle('active')
+                  }
+                })
               }
             } catch (err) {
               console.log('getLikes' + err)
@@ -190,6 +214,7 @@ export default {
         })
         try {
           observer.observe(inner, { attributes: true, childList: true })
+          return true
         } catch (err) {
           console.log('observer' + err)
         }
@@ -201,7 +226,7 @@ export default {
         route = 'addLike'
       }
       this.liked = {
-        ip: this.client,
+        ip: useCookie('clientInfo').value,
         fileId: target.getAttribute('data-name')
       }
       await useFetch('/api/like/' + route, {
@@ -222,18 +247,16 @@ export default {
     },
     async getClientIp() {
       if (!this.client) {
+        const cookie = useCookie('clientInfo')
+        const config = useRuntimeConfig()
+
         try {
-          const cookie = useCookie('clientInfo')
           let value
           if (cookie.value) {
             value = cookie.value
-          } else  {
-            const promise = await useFetch('/api/client/getClientIp')
-             value = promise.data.value.ipClient
           }
-            const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
-            this.client = bytes.toString(CryptoJS.enc.Utf8)
-
+          const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
+          this.client = bytes.toString(CryptoJS.enc.Utf8)
         } catch (err) {
           console.log('getIp' + err)
         }
@@ -282,9 +305,17 @@ img {
     max-width: 85vw;
     margin: 3vh 6vw;
   }
+
+  .inner-item {
+    top : 0 !important;
+  }
 }
 
 @media only screen and  (min-width: 768px) {
+
+  .img-hidden {
+    padding-bottom: 40px;
+  }
 
   .container {
     margin-top: 5%;
@@ -306,7 +337,6 @@ img {
   #like-button {
     margin: 10px;
   }
-
 }
 
 .medium-zoom-image--opened {
@@ -385,5 +415,22 @@ img {
   top: 5px;
   left: 30px;
 }
+
+.gallery {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery::-webkit-scrollbar { width: 0 !important }
+
 
 </style>

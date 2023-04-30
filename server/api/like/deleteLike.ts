@@ -1,5 +1,7 @@
 import { realtimeDatabase } from '../../utils/firebase'
 import { readBody } from 'h3'
+// @ts-ignore
+import CryptoJS from 'crypto-js'
 
 // @ts-ignore
 export default defineEventHandler(async (event: any) => {
@@ -10,9 +12,20 @@ export default defineEventHandler(async (event: any) => {
       await ref.orderByChild('fileId').equalTo(body.fileId)
         .once('value')
         .then(function(snapshot) {
+          // @ts-ignore
+          const config = useRuntimeConfig()
           snapshot.forEach(function(childSnapshot) {
-            childSnapshot.ref.orderByChild('ip').equalTo(body.ip)
-            childSnapshot.ref.remove()
+            let cookiIp = body.ip
+            let dbIp = childSnapshot.val().ip
+            let bytes = CryptoJS.AES.decrypt(cookiIp, config.public.encryptKey)
+            cookiIp = bytes.toString(CryptoJS.enc.Utf8)
+            bytes = CryptoJS.AES.decrypt(dbIp, config.public.encryptKey)
+            dbIp = bytes.toString(CryptoJS.enc.Utf8)
+
+            if (cookiIp === dbIp) {
+              childSnapshot.ref.orderByChild('ip').equalTo(body.ip)
+              childSnapshot.ref.remove()
+            }
           })
         })
       return { success: 1 }

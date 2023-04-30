@@ -1,6 +1,7 @@
 import { realtimeDatabase } from '../../utils/firebase'
 import { readBody } from 'h3'
 
+
 // @ts-ignore
 export default defineEventHandler(async (event: any) => {
   const body = await readBody(event)
@@ -10,7 +11,9 @@ export default defineEventHandler(async (event: any) => {
       const ref = realtimeDatabase.ref('Liked/fileId')
       await ref.orderByChild('fileId').equalTo(body.fileId)
         .once('value').then(function(snapshot) {
-        likes = snapshot.val()
+          if (snapshot.val()) {
+            likes = snapshot.val()
+          }
       })
       return {
         likes

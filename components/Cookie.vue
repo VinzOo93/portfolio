@@ -3,9 +3,9 @@
     <div class='overlay-cookie'></div>
     <div class='modale-cookie'>
       <div class='content-cookie'>
-        <div style='width:100%;height:0;padding-bottom:91%;position:relative;'><img
-          src='https://media.giphy.com/media/R52934IAVt4jK/giphy.gif' width='100%' height='100%'
-          style='position:absolute' alt='cookie-img'></div>
+        <div>
+          <img class='img-cookie' src='https://media.giphy.com/media/R52934IAVt4jK/giphy.gif' alt='cookie-img'>
+        </div>
         <p>Ce site utilise des cookies et collecte des données pour améliorer votre expérience utilisateur.</p>
         <button v-on:click='this.addCookie'>J'accepte l'utilisation des cookies</button>
       </div>
@@ -39,7 +39,6 @@ export default {
       if (process.client) {
         const cookie = useCookie('clientInfo')
         if (!cookie.value){
-          console.log(cookie)
           this.cookieAccepted = false
         }
       }
@@ -98,5 +97,10 @@ export default {
 
 .content-cookie {
   display: grid;
+}
+
+.img-cookie {
+  width: 100%;
+  align-items: center;
 }
 </style>
