@@ -92,10 +92,10 @@ export default {
                 mouseCursor.classList.add('overImage')
               })
               if (countGrid % 2 === 0) {
-                top = 'top 30%'
+                top = 'top 20%'
                 time = 50000
               } else {
-                top = 'top 75%'
+                top = 'top 55%'
                 inner.style.position = 'relative'
                 inner.style.top = '150px'
               }
