@@ -20,7 +20,6 @@
     </div>
   </div>
 </template>
-
 <script>
 
 import { gsap } from 'gsap'
@@ -70,9 +69,9 @@ export default {
       const mouseCursor = document.querySelector('.cursor')
       const gallery = document.querySelectorAll('.gallery .photos')
       const windowSize = screen.width
+      let delay = 1;
       let top = 'top 80%'
       let countGrid = 0
-      let time = 0
 
       window.scrollTo({
         top: 0,
@@ -93,9 +92,8 @@ export default {
               })
               if (countGrid % 2 === 0) {
                 top = 'top 20%'
-                time = 5000
               } else {
-                top = 'top 90%'
+                top = 'top 85%'
                 inner.style.position = 'relative'
                 inner.style.top = '150px'
               }
@@ -104,6 +102,7 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
+            delay++
             gsap.to(
               inner, {
                 visibility: 'visible',
@@ -111,15 +110,16 @@ export default {
                 'scroll-padding': '300px',
                 duration: 0.5,
                 scrollTrigger: {
-                  smooth: 2,
                   trigger: inner,
                   start: top,
-                  onEnter: setTimeout(this.getLikesFromClient(inner, time))
+                  onEnter: setTimeout(() => {
+                    this.getLikesFromClient(inner);
+                  }, delay * 200)
                 }
               }
             )
           })
-        }.bind(this), time)
+        }.bind(this), 1000)
       })
 
       gsap.timeline(50)
@@ -134,11 +134,6 @@ export default {
             duration: 2.5
           })
 
-      let height;
-
-      gsap.to(gallery, {
-        smooth: 2,
-      });
     },
     shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
@@ -186,18 +181,8 @@ export default {
                 const counterLikes = inner.querySelector('.counter-like')
                 const heartIcon = inner.querySelector('.heart-icon')
 
-                const animateCounter = () => {
-                  const speed = 5000
-                  const data = +counterLikes.innerText
-                  const time = count / speed
-                  if (data < count) {
-                    counterLikes.innerText = Math.ceil(data + time)
-                    setTimeout(animateCounter, 1)
-                  } else {
-                    counterLikes.innerText = count
-                  }
-                }
-                animateCounter()
+                counterLikes.innerText = count
+
                 arrayKeys.forEach((value) => {
                   const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
                   const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
