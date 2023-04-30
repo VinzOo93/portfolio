@@ -45,6 +45,7 @@ export default {
     this.startAnimation()
   },
   updated() {
+    this.getLikesFromClient()
     this.activeHearts()
   },
 
@@ -69,13 +70,18 @@ export default {
       const mouseCursor = document.querySelector('.cursor')
       const gallery = document.querySelectorAll('.gallery .photos')
       const windowSize = screen.width
-      let delay = 1;
+      let delay = 1
       let top = 'top 80%'
       let countGrid = 0
 
+      const resistance = 500;
+
+      ScrollTrigger.defaults({
+        resistance: resistance
+      });
+
       window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        top: 0
       })
 
       gallery.forEach(img => {
@@ -113,7 +119,7 @@ export default {
                   trigger: inner,
                   start: top,
                   onEnter: setTimeout(() => {
-                    this.getLikesFromClient(inner);
+                    this.getLikesFromClient(inner)
                   }, delay * 200)
                 }
               }
@@ -292,7 +298,7 @@ img {
   }
 
   .inner-item {
-    top : 0 !important;
+    top: 0 !important;
   }
 }
 
@@ -415,7 +421,9 @@ html {
   display: none;
 }
 
-.gallery::-webkit-scrollbar { width: 0 !important }
+.gallery::-webkit-scrollbar {
+  width: 0 !important
+}
 
 
 </style>
