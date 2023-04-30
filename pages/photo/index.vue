@@ -93,9 +93,9 @@ export default {
               })
               if (countGrid % 2 === 0) {
                 top = 'top 20%'
-                time = 50000
+                time = 5000
               } else {
-                top = 'top 55%'
+                top = 'top 90%'
                 inner.style.position = 'relative'
                 inner.style.top = '150px'
               }
