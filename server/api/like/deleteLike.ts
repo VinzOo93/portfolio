@@ -23,7 +23,7 @@ export default defineEventHandler(async (event: any) => {
             dbIp = bytes.toString(CryptoJS.enc.Utf8)
 
             if (cookiIp === dbIp) {
-              childSnapshot.ref.orderByChild('ip').equalTo(body.ip)
+              childSnapshot.ref.orderByChild('ip').equalTo(childSnapshot.val().ip)
               childSnapshot.ref.remove()
             }
           })
