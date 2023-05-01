@@ -146,7 +146,6 @@ export default {
     getLikesFromClient(inner) {
       const client = this.client
       const config = useRuntimeConfig()
-      try {
         setTimeout( function() {
           let loop = true
           let route = 'getLikesFirst'
@@ -204,8 +203,6 @@ export default {
             }
           }
         } , 600)
-      } catch (e) {
-
       }
     },
     async likeAction(target) {
