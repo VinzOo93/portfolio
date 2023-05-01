@@ -31,7 +31,7 @@ export default {
 
   liked: [],
   client: '',
-  cryptedIp: '',
+  grid: 1,
   data() {
     return {
       data: []
@@ -69,7 +69,6 @@ export default {
       const mouseCursor = document.querySelector('.cursor')
       const gallery = document.querySelectorAll('.gallery .photos')
       const windowSize = screen.width
-      let delay = 1
       let top = 'top 80%'
       let countGrid = 0
 
@@ -77,7 +76,6 @@ export default {
         top: 0,
         behavior: 'smooth'
       })
-
       gallery.forEach(img => {
         setTimeout(function() {
           const inners = img.querySelectorAll('.inner-item')
@@ -91,7 +89,7 @@ export default {
                 mouseCursor.classList.add('overImage')
               })
               if (countGrid % 2 === 0) {
-                top = 'top 90%'
+                top = 'top 20%'
               } else {
                 top = 'top 90%'
                 inner.style.position = 'relative'
@@ -102,19 +100,16 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
+
             gsap.to(
               inner, {
                 visibility: 'visible',
                 opacity: 1,
                 duration: 0.5,
-                ease: "power1.out",
                 scrollTrigger: {
                   trigger: inner,
                   start: top,
-                  resistance: 400,
-                  onEnter: setTimeout(() => {
-                    this.getLikesFromClient(inner)
-                  }, delay++ * 300)
+                  onEnter: this.getLikesFromClient(inner)
                 }
               }
             )
@@ -149,58 +144,66 @@ export default {
       })
     },
     getLikesFromClient(inner) {
-      const config = useRuntimeConfig()
-      let loop = true
-      const route = 'getLikes'
       const client = this.client
-      let count = 0
+      const config = useRuntimeConfig()
 
-      if (inner) {
-        let observer = new MutationObserver(async function() {
-          if (inner.style.visibility !== 'hidden' && loop) {
-            try {
-              loop = false
-              const imgFile = inner.querySelector('#like-button')
+      setTimeout( function() {
+        let loop = true
+        let route = 'getLikesFirst'
+        let count = 0
 
-              const data =
-                { fileId: imgFile.getAttribute('data-name') }
-
-              const counterLikes = inner.querySelector('.counter-like')
-              const heartIcon = inner.querySelector('.heart-icon')
-
-              let result = await
-                useFetch('/api/like/' + route, {
-                  method: 'POST',
-                  body: data
-                })
-
-              const likesImg = result.data.value.likes
-              const arrayKeys = Object.keys(likesImg)
-              count = arrayKeys.length
-              counterLikes.innerText = count
-
-              if (count > 0) {
-                arrayKeys.forEach((value) => {
-                  const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
-                  const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
-
-                  if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
-                    heartIcon.classList.toggle('active')
-                  }
-                })
-              }
-            } catch (err) {
-              console.log('getLikes' + err)
-            }
-          }
-        })
-        try {
-          observer.observe(inner, { attributes: true, childList: true })
-          return true
-        } catch (err) {
-          console.log('observer' + err)
+        if (this.grid === 1 ) {
+          route = 'getLikesSecond'
+          this.grid = 0
+        } else {
+          this.grid = 1
         }
-      }
+        if (inner) {
+          let observer = new MutationObserver(async function() {
+            if (inner.style.visibility !== 'hidden' && loop) {
+              try {
+                loop = false
+                const imgFile = inner.querySelector('#like-button')
+
+                const data =
+                  { fileId: imgFile.getAttribute('data-name') }
+
+                const counterLikes = inner.querySelector('.counter-like')
+                const heartIcon = inner.querySelector('.heart-icon')
+
+                let result = await
+                  useFetch('/api/like/' + route, {
+                    method: 'POST',
+                    body: data
+                  })
+
+                const likesImg = result.data.value.likes
+                const arrayKeys = Object.keys(likesImg)
+                count = arrayKeys.length
+                counterLikes.innerText = count
+
+                if (count > 0) {
+                  counterLikes.innerText = count
+                  arrayKeys.forEach((value) => {
+                    const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
+                    const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
+                    if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
+                      heartIcon.classList.toggle('active')
+                    }
+                  })
+                }
+              } catch (err) {
+                console.log('getLikes' + err)
+              }
+            }
+          })
+          try {
+            observer.observe(inner, { attributes: true, childList: true })
+          } catch (err) {
+            console.log('observer' + err)
+          }
+        }
+      } , 500)
     },
     async likeAction(target) {
       let route = 'deleteLike'
