@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div class='gallery scroll' id='trigger'>
-      <div class='transition'></div>
-      <div class='photos container'>
+    <div className='gallery scroll' id='trigger'>
+      <div className='transition'></div>
+      <div className='photos container'>
         <template v-for='(photo) in data'>
-          <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
-            <img class='cover zoom' v-bind:alt='photo.name'
+          <div v-if='photo.image_info.height < 4000 ' className='inner-item img-hidden'>
+            <img className='cover zoom' v-bind:alt='photo.name'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
-            <div class='container-button'>
-              <button id='like-button' class='heart' v-bind:data-name='photo.file_id'>
-                <span class='heart-icon'></span>
-                <span class='counter-like'>0</span>
-                <span class='like-text'>Like</span>
+            <div className='container-button'>
+              <button id='like-button' className='heart' v-bind:data-name='photo.file_id'>
+                <span className='heart-icon'></span>
+                <span className='counter-like'>0</span>
+                <span className='like-text'>Like</span>
               </button>
             </div>
           </div>
@@ -74,14 +74,9 @@ export default {
       let top = 'top 80%'
       let countGrid = 0
 
-      const resistance = 500;
-
-      ScrollTrigger.defaults({
-        resistance: resistance
-      });
-
       window.scrollTo({
-        top: 0
+        top: 0,
+        behavior: 'smooth'
       })
 
       gallery.forEach(img => {
@@ -97,30 +92,30 @@ export default {
                 mouseCursor.classList.add('overImage')
               })
               if (countGrid % 2 === 0) {
-                top = 'top 20%'
+                top = 'top 90%'
               } else {
-                top = 'top 85%'
+                top = 'top 90%'
                 inner.style.position = 'relative'
-                inner.style.top = '150px'
+                inner.style.top = '350px'
               }
             } else {
               let imgZoom = inner.querySelector('.zoom')
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
-            delay++
             gsap.to(
               inner, {
                 visibility: 'visible',
                 opacity: 1,
-                'scroll-padding': '300px',
                 duration: 0.5,
+                ease: "power1.out",
                 scrollTrigger: {
                   trigger: inner,
                   start: top,
+                  resistance: 400,
                   onEnter: setTimeout(() => {
                     this.getLikesFromClient(inner)
-                  }, delay * 200)
+                  }, delay++ * 300)
                 }
               }
             )
@@ -171,24 +166,21 @@ export default {
               const data =
                 { fileId: imgFile.getAttribute('data-name') }
 
-              let promise = await
+              const counterLikes = inner.querySelector('.counter-like')
+              const heartIcon = inner.querySelector('.heart-icon')
+
+              let result = await
                 useFetch('/api/like/' + route, {
                   method: 'POST',
                   body: data
                 })
 
-              let result = await promise
-
               const likesImg = result.data.value.likes
               const arrayKeys = Object.keys(likesImg)
               count = arrayKeys.length
+              counterLikes.innerText = count
 
               if (count > 0) {
-                const counterLikes = inner.querySelector('.counter-like')
-                const heartIcon = inner.querySelector('.heart-icon')
-
-                counterLikes.innerText = count
-
                 arrayKeys.forEach((value) => {
                   const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
                   const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
