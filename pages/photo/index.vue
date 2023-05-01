@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div className='gallery scroll' id='trigger'>
-      <div className='transition'></div>
-      <div className='photos container'>
+    <div class='gallery scroll' id='trigger'>
+      <div class='transition'></div>
+      <div class='photos container'>
         <template v-for='(photo) in data'>
-          <div v-if='photo.image_info.height < 4000 ' className='inner-item img-hidden'>
-            <img className='cover zoom' v-bind:alt='photo.name'
+          <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
+            <img class='cover zoom' v-bind:alt='photo.name'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
-            <div className='container-button'>
-              <button id='like-button' className='heart' v-bind:data-name='photo.file_id'>
-                <span className='heart-icon'></span>
-                <span className='counter-like'>0</span>
-                <span className='like-text'>Like</span>
+            <div class='container-button'>
+              <button id='like-button' class='heart' v-bind:data-name='photo.file_id'>
+                <span class='heart-icon'></span>
+                <span class='counter-like'>0</span>
+                <span class='like-text'>Like</span>
               </button>
             </div>
           </div>
@@ -45,7 +45,6 @@ export default {
     this.startAnimation()
   },
   updated() {
-    this.getLikesFromClient()
     this.activeHearts()
   },
 
