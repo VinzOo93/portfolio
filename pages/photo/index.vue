@@ -146,64 +146,67 @@ export default {
     getLikesFromClient(inner) {
       const client = this.client
       const config = useRuntimeConfig()
+      try {
+        setTimeout( function() {
+          let loop = true
+          let route = 'getLikesFirst'
+          let count = 0
 
-      setTimeout( function() {
-        let loop = true
-        let route = 'getLikesFirst'
-        let count = 0
-
-        if (this.grid === 1 ) {
-          route = 'getLikesSecond'
-          this.grid = 0
-        } else {
-          this.grid = 1
-        }
-        if (inner) {
-          let observer = new MutationObserver(async function() {
-            if (inner.style.visibility !== 'hidden' && loop) {
-              try {
-                loop = false
-                const imgFile = inner.querySelector('#like-button')
-
-                const data =
-                  { fileId: imgFile.getAttribute('data-name') }
-
-                const counterLikes = inner.querySelector('.counter-like')
-                const heartIcon = inner.querySelector('.heart-icon')
-
-                let result = await
-                  useFetch('/api/like/' + route, {
-                    method: 'POST',
-                    body: data
-                  })
-
-                const likesImg = result.data.value.likes
-                const arrayKeys = Object.keys(likesImg)
-                count = arrayKeys.length
-                counterLikes.innerText = count
-
-                if (count > 0) {
-                  counterLikes.innerText = count
-                  arrayKeys.forEach((value) => {
-                    const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
-                    const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
-                    if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
-                      heartIcon.classList.toggle('active')
-                    }
-                  })
-                }
-              } catch (err) {
-                console.log('getLikes' + err)
-              }
-            }
-          })
-          try {
-            observer.observe(inner, { attributes: true, childList: true })
-          } catch (err) {
-            console.log('observer' + err)
+          if (this.grid === 1 ) {
+            route = 'getLikesSecond'
+            this.grid = 0
+          } else {
+            this.grid = 1
           }
-        }
-      } , 500)
+          if (inner) {
+            let observer = new MutationObserver(async function() {
+              if (inner.style.visibility !== 'hidden' && loop) {
+                try {
+                  loop = false
+                  const imgFile = inner.querySelector('#like-button')
+
+                  const data =
+                    { fileId: imgFile.getAttribute('data-name') }
+
+                  const counterLikes = inner.querySelector('.counter-like')
+                  const heartIcon = inner.querySelector('.heart-icon')
+
+                  let result = await
+                    useFetch('/api/like/' + route, {
+                      method: 'POST',
+                      body: data
+                    })
+
+                  const likesImg = result.data.value.likes
+                  const arrayKeys = Object.keys(likesImg)
+                  count = arrayKeys.length
+                  counterLikes.innerText = count
+
+                  if (count > 0) {
+                    counterLikes.innerText = count
+                    arrayKeys.forEach((value) => {
+                      const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
+                      const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
+                      if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
+                        heartIcon.classList.toggle('active')
+                      }
+                    })
+                  }
+                } catch (err) {
+                  console.log('getLikes' + err)
+                }
+              }
+            })
+            try {
+              observer.observe(inner, { attributes: true, childList: true })
+            } catch (err) {
+              console.log('observer' + err)
+            }
+          }
+        } , 600)
+      } catch (e) {
+
+      }
     },
     async likeAction(target) {
       let route = 'deleteLike'
