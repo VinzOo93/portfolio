@@ -146,105 +146,104 @@ export default {
     getLikesFromClient(inner) {
       const client = this.client
       const config = useRuntimeConfig()
-        setTimeout( function() {
-          let loop = true
-          let route = 'getLikesFirst'
-          let count = 0
+      setTimeout(function() {
+        let loop = true
+        let route = 'getLikesFirst'
+        let count = 0
 
-          if (this.grid === 1 ) {
-            route = 'getLikesSecond'
-            this.grid = 0
-          } else {
-            this.grid = 1
-          }
-          if (inner) {
-            let observer = new MutationObserver(async function() {
-              if (inner.style.visibility !== 'hidden' && loop) {
-                try {
-                  loop = false
-                  const imgFile = inner.querySelector('#like-button')
+        if (this.grid === 1) {
+          route = 'getLikesSecond'
+          this.grid = 0
+        } else {
+          this.grid = 1
+        }
+        if (inner) {
+          let observer = new MutationObserver(async function() {
+            if (inner.style.visibility !== 'hidden' && loop) {
+              try {
+                loop = false
+                const imgFile = inner.querySelector('#like-button')
 
-                  const data =
-                    { fileId: imgFile.getAttribute('data-name') }
+                const data =
+                  { fileId: imgFile.getAttribute('data-name') }
 
-                  const counterLikes = inner.querySelector('.counter-like')
-                  const heartIcon = inner.querySelector('.heart-icon')
+                const counterLikes = inner.querySelector('.counter-like')
+                const heartIcon = inner.querySelector('.heart-icon')
 
-                  let result = await
-                    useFetch('/api/like/' + route, {
-                      method: 'POST',
-                      body: data
-                    })
+                let result = await
+                  useFetch('/api/like/' + route, {
+                    method: 'POST',
+                    body: data
+                  })
 
-                  const likesImg = result.data.value.likes
-                  const arrayKeys = Object.keys(likesImg)
-                  count = arrayKeys.length
+                const likesImg = result.data.value.likes
+                const arrayKeys = Object.keys(likesImg)
+                count = arrayKeys.length
+                counterLikes.innerText = count
+
+                if (count > 0) {
                   counterLikes.innerText = count
-
-                  if (count > 0) {
-                    counterLikes.innerText = count
-                    arrayKeys.forEach((value) => {
-                      const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
-                      const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
-                      if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
-                        heartIcon.classList.toggle('active')
-                      }
-                    })
-                  }
-                } catch (err) {
-                  console.log('getLikes' + err)
+                  arrayKeys.forEach((value) => {
+                    const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
+                    const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
+                    if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
+                      heartIcon.classList.toggle('active')
+                    }
+                  })
                 }
+              } catch (err) {
+                console.log('getLikes' + err)
               }
-            })
-            try {
-              observer.observe(inner, { attributes: true, childList: true })
-            } catch (err) {
-              console.log('observer' + err)
             }
-          }
-        } , 600)
-      }
-    },
-    async likeAction(target) {
-      let route = 'deleteLike'
-      if (target.firstChild.classList.contains('active')) {
-        route = 'addLike'
-      }
-      this.liked = {
-        ip: useCookie('clientInfo').value,
-        fileId: target.getAttribute('data-name')
-      }
-      await useFetch('/api/like/' + route, {
-        method: 'POST',
-        body: this.liked
-      }).then(response => {
-          if (response.data.value.success === 1) {
-            let value = target.querySelector('.counter-like').innerText
-            if (route === 'addLike') {
-              target.querySelector('.counter-like').innerText = ++value
-            } else {
-              target.querySelector('.counter-like').innerText = --value
-            }
+          })
+          try {
+            observer.observe(inner, { attributes: true, childList: true })
+          } catch (err) {
+            console.log('observer' + err)
           }
         }
-      ).catch((e) => console.log(e)
-      )
-    },
-    async getClientIp() {
-      if (!this.client) {
-        const cookie = useCookie('clientInfo')
-        const config = useRuntimeConfig()
+      }, 600)
+    }
+  },
+  async likeAction(target) {
+    let route = 'deleteLike'
+    if (target.firstChild.classList.contains('active')) {
+      route = 'addLike'
+    }
+    this.liked = {
+      ip: useCookie('clientInfo').value,
+      fileId: target.getAttribute('data-name')
+    }
+    await useFetch('/api/like/' + route, {
+      method: 'POST',
+      body: this.liked
+    }).then(response => {
+        if (response.data.value.success === 1) {
+          let value = target.querySelector('.counter-like').innerText
+          if (route === 'addLike') {
+            target.querySelector('.counter-like').innerText = ++value
+          } else {
+            target.querySelector('.counter-like').innerText = --value
+          }
+        }
+      }
+    ).catch((e) => console.log(e)
+    )
+  },
+  async getClientIp() {
+    if (!this.client) {
+      const cookie = useCookie('clientInfo')
+      const config = useRuntimeConfig()
 
-        try {
-          let value
-          if (cookie.value) {
-            value = cookie.value
-          }
-          const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
-          this.client = bytes.toString(CryptoJS.enc.Utf8)
-        } catch (err) {
-          console.log('getIp' + err)
+      try {
+        let value
+        if (cookie.value) {
+          value = cookie.value
         }
+        const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
+        this.client = bytes.toString(CryptoJS.enc.Utf8)
+      } catch (err) {
+        console.log('getIp' + err)
       }
     }
   }
