@@ -15,7 +15,6 @@ export default defineEventHandler(async (event: any) => {
             likes = snapshot.val()
           }
         })
-      console.log(likes)
       return {
         likes
       }

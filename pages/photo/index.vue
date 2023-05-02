@@ -181,10 +181,7 @@ export default {
                     body: data,
                     key: imgFile.getAttribute('data-name')
                   })
-                const json = await result
-                console.log(json)
                 const likesImg = result.data.value.likes
-                console.log(likesImg)
                 const arrayKeys = Object.keys(likesImg)
                 count = arrayKeys.length
                 counterLikes.innerText = count
