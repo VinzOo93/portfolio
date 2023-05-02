@@ -30,6 +30,7 @@ gsap.registerPlugin(ScrollTrigger)
 export default {
 
   liked: [],
+  config: '',
   data() {
     return {
       data: []
@@ -45,36 +46,60 @@ export default {
     this.activeHearts()
   },
   methods: {
-    fetchImages() {
-      const config = useRuntimeConfig()
-      const Url = config.public.cdnUrl
-      const PublicKey = config.public.cdnPublicKey
-      const Uri = config.public.cdnUri
+    async fetchImages() {
+      this.config = useRuntimeConfig()
+      const Url = this.config.public.cdnUrl
+      const PublicKey = this.config.public.cdnPublicKey
+      const Uri = this.config.public.cdnUri
 
-      fetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
+      await useFetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
+        method: 'GET'
+      }).then(response => {
+        if (response) {
+          this.data = this.shuffle(response.data.value.files)
         }
-      }).then(response => response.json()
-      ).then(data => {
-        this.data = this.shuffle(data.files)
       }).catch((e) => console.log(e))
+    },
+    async likeAction(target) {
+      let route = 'deleteLike'
+      if (target.firstChild.classList.contains('active')) {
+        route = 'addLike'
+      }
+      this.liked = {
+        ip: useCookie('clientInfo').value,
+        fileId: target.getAttribute('data-name')
+      }
+      await useFetch('/api/like/' + route, {
+        method: 'POST',
+        body: this.liked
+      }).then(response => {
+          if (response.data.value.success === 1) {
+            let value = target.querySelector('.counter-like').innerText
+            if (route === 'addLike') {
+              target.querySelector('.counter-like').innerText = ++value
+            } else {
+              target.querySelector('.counter-like').innerText = --value
+            }
+          }
+        }
+      ).catch((e) => console.log(e)
+      )
+    },
+    decyptAES(string) {
+      const bytes = CryptoJS.AES.decrypt(string, this.config.public.encryptKey)
+      return bytes.toString(CryptoJS.enc.Utf8)
     },
     getClient() {
       const cookie = useCookie('clientInfo')
-      const config = useRuntimeConfig()
       try {
-        let value
         if (cookie.value) {
-          value = cookie.value
-          const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
-          return  bytes.toString(CryptoJS.enc.Utf8)
+          return this.decyptAES(cookie.value)
         }
       } catch (err) {
         console.log('getIp' + err)
       }
     },
-    startAnimation: function() {
+    startAnimation() {
       const transition = document.querySelector('.transition')
       const mouseCursor = document.querySelector('.cursor')
       const gallery = document.querySelectorAll('.gallery .photos')
@@ -155,12 +180,11 @@ export default {
     },
     getLikesFromClient(inner) {
       const client = this.getClient()
-      const config = useRuntimeConfig()
+      const config = this.config
       const route = 'getLikes'
       setTimeout(function() {
         let loop = true
         let count = 0
-
         if (inner) {
           let observer = new MutationObserver(async function() {
             if (inner.style.visibility !== 'hidden' && loop) {
@@ -190,6 +214,7 @@ export default {
                   arrayKeys.forEach((value) => {
                     const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
                     const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
+                    console.log(ipDecrypt, client)
                     if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
                       heartIcon.classList.toggle('active')
                     }
@@ -203,36 +228,11 @@ export default {
           try {
             observer.observe(inner, { attributes: true, childList: true })
           } catch (err) {
-            console.log('observer' + err)
+            console.log('observer ' + err)
           }
         }
-      }, 600)
+      }, 400)
     }
-  },
-  async likeAction(target) {
-    let route = 'deleteLike'
-    if (target.firstChild.classList.contains('active')) {
-      route = 'addLike'
-    }
-    this.liked = {
-      ip: useCookie('clientInfo').value,
-      fileId: target.getAttribute('data-name')
-    }
-    await useFetch('/api/like/' + route, {
-      method: 'POST',
-      body: this.liked
-    }).then(response => {
-        if (response.data.value.success === 1) {
-          let value = target.querySelector('.counter-like').innerText
-          if (route === 'addLike') {
-            target.querySelector('.counter-like').innerText = ++value
-          } else {
-            target.querySelector('.counter-like').innerText = --value
-          }
-        }
-      }
-    ).catch((e) => console.log(e)
-    )
   }
 }
 </script>
@@ -260,7 +260,6 @@ img {
   position: relative;
   width: 100%;
 }
-
 
 @media only screen and  (max-width: 768px) {
 
@@ -333,7 +332,6 @@ img {
   justify-content: center;
 }
 
-
 .heart-icon::before,
 .heart-icon::after {
   content: "";
@@ -404,6 +402,5 @@ html {
 .gallery::-webkit-scrollbar {
   width: 0 !important
 }
-
 
 </style>
