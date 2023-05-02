@@ -31,7 +31,6 @@ export default {
 
   liked: [],
   client: '',
-  grid: 1,
   data() {
     return {
       data: []
@@ -39,7 +38,6 @@ export default {
   },
   beforeMount() {
     this.fetchImages()
-    this.getClientIp()
   },
   beforeUpdate() {
     this.startAnimation()
@@ -47,7 +45,6 @@ export default {
   updated() {
     this.activeHearts()
   },
-
   methods: {
     fetchImages() {
       const config = useRuntimeConfig()
@@ -63,6 +60,20 @@ export default {
       ).then(data => {
         this.data = this.shuffle(data.files)
       }).catch((e) => console.log(e))
+    },
+    getClient() {
+      const cookie = useCookie('clientInfo')
+      const config = useRuntimeConfig()
+      try {
+        let value
+        if (cookie.value) {
+          value = cookie.value
+          const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
+          return  bytes.toString(CryptoJS.enc.Utf8)
+        }
+      } catch (err) {
+        console.log('getIp' + err)
+      }
     },
     startAnimation: function() {
       const transition = document.querySelector('.transition')
@@ -144,19 +155,13 @@ export default {
       })
     },
     getLikesFromClient(inner) {
-      const client = this.client
+      const client = this.getClient()
       const config = useRuntimeConfig()
+      const route = 'getLikes'
       setTimeout(function() {
         let loop = true
-        let route = 'getLikesFirst'
         let count = 0
 
-        if (this.grid === 1) {
-          route = 'getLikesSecond'
-          this.grid = 0
-        } else {
-          this.grid = 1
-        }
         if (inner) {
           let observer = new MutationObserver(async function() {
             if (inner.style.visibility !== 'hidden' && loop) {
@@ -170,13 +175,16 @@ export default {
                 const counterLikes = inner.querySelector('.counter-like')
                 const heartIcon = inner.querySelector('.heart-icon')
 
-                let result = await
+                const result = await
                   useFetch('/api/like/' + route, {
                     method: 'POST',
-                    body: data
+                    body: data,
+                    key: imgFile.getAttribute('data-name')
                   })
-
+                const json = await result
+                console.log(json)
                 const likesImg = result.data.value.likes
+                console.log(likesImg)
                 const arrayKeys = Object.keys(likesImg)
                 count = arrayKeys.length
                 counterLikes.innerText = count
@@ -229,23 +237,6 @@ export default {
       }
     ).catch((e) => console.log(e)
     )
-  },
-  async getClientIp() {
-    if (!this.client) {
-      const cookie = useCookie('clientInfo')
-      const config = useRuntimeConfig()
-
-      try {
-        let value
-        if (cookie.value) {
-          value = cookie.value
-        }
-        const bytes = CryptoJS.AES.decrypt(value, config.public.encryptKey)
-        this.client = bytes.toString(CryptoJS.enc.Utf8)
-      } catch (err) {
-        console.log('getIp' + err)
-      }
-    }
   }
 }
 </script>
