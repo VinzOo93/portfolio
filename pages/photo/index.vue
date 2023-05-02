@@ -30,7 +30,6 @@ gsap.registerPlugin(ScrollTrigger)
 export default {
 
   liked: [],
-  client: '',
   data() {
     return {
       data: []
