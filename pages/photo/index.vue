@@ -214,7 +214,7 @@ export default {
                   arrayKeys.forEach((value) => {
                     const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
                     const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
-                    console.log(ipDecrypt, client)
+
                     if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
                       heartIcon.classList.toggle('active')
                     }
