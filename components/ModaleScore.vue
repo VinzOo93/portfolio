@@ -50,6 +50,7 @@ export default {
       let promise = await useFetch('/api/player/getPlayer')
       const data = promise.data.value
       this.Players = data.players
+      console.log(this.Players)
     }
   }
 }

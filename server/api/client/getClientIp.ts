@@ -12,7 +12,7 @@ export default defineEventHandler(async (event: any) => {
   const clientIp = requestIp.getClientIp(req)
 
   return {
-    ipClient: CryptoJS.AES.encrypt(clientIp, config.public.encryptKey).toString()
+    ipClient: CryptoJS.AES.encrypt(clientIp, config.private.encryptKey).toString()
   }
 
 })

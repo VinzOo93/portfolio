@@ -35,13 +35,17 @@ export default {
   ],
   runtimeConfig: {
     public: {
-      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY,
       hostHeroku: process.env.NUXT_ENV_HOST_HEROKU,
       forcedDomain: process.env.NUXT_ENV_FORCED_DOMAIN,
       prodEnvHost: process.env.NUXT_ENV_HOST,
       cdnUrl: process.env.NUXT_ENV_CDN_URL,
       cdnPublicKey: process.env.NUXT_ENV_CDN_PUBLIC_KEY,
-      cdnUri: process.env.NUXT_ENV_CDN_URI
+      cdnUri: process.env.NUXT_ENV_CDN_URI,
+      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY
+
+    },
+    private: {
+      cdnSecretKey: process.env.NUXT_ENV_CDN_SECRET_KEY,
     }
   }
 

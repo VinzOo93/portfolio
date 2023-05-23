@@ -3,12 +3,12 @@
     <div class='gallery scroll' id='trigger'>
       <div class='transition'></div>
       <div class='photos container'>
-        <template v-for='(photo) in data'>
-          <div v-if='photo.image_info.height < 4000 ' class='inner-item img-hidden'>
-            <img class='cover zoom' v-bind:alt='photo.name'
+        <template v-for='(photo) in photos'>
+          <div v-if='photo.contentInfo.image.height < 4000 ' class='inner-item img-hidden'>
+            <img class='cover zoom' v-bind:alt='photo.originalFilename'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <div class='container-button'>
-              <button id='like-button' class='heart' v-bind:data-name='photo.file_id'>
+              <button id='like-button' class='heart' v-bind:data-name='photo.uuid'>
                 <span class='heart-icon'></span>
                 <span class='counter-like'>0</span>
                 <span class='like-text'>Like</span>
@@ -28,15 +28,14 @@ import CryptoJS from 'crypto-js'
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
-
-  liked: [],
   config: '',
   data() {
     return {
-      data: []
+      liked: [],
+      photos: this.fetchImages()
     }
   },
-  beforeMount() {
+  mounted() {
     this.fetchImages()
   },
   beforeUpdate() {
@@ -48,17 +47,13 @@ export default {
   methods: {
     async fetchImages() {
       this.config = useRuntimeConfig()
-      const Url = this.config.public.cdnUrl
-      const PublicKey = this.config.public.cdnPublicKey
-      const Uri = this.config.public.cdnUri
-
-      await useFetch(Url + '?pub_key=' + PublicKey + '&group_id=' + Uri, {
+      let route = 'getPhotos'
+      await useFetch('/api/photo/' + route, {
         method: 'GET'
       }).then(response => {
-        if (response) {
-          this.data = this.shuffle(response.data.value.files)
-        }
-      }).catch((e) => console.log(e))
+        this.photos = this.shuffle(response.data.value.results)
+      })
+        .catch((e) => console.log(e))
     },
     async likeAction(target) {
       let route = 'deleteLike'
@@ -135,7 +130,6 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
-
             gsap.to(
               inner, {
                 visibility: 'visible',
@@ -151,7 +145,6 @@ export default {
           })
         }.bind(this), 1000)
       })
-
       gsap.timeline(50)
         .fromTo(transition,
           {
@@ -163,7 +156,6 @@ export default {
             y: '-100%',
             duration: 2.5
           })
-
     },
     shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
