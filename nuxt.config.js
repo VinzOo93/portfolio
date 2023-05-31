@@ -41,11 +41,10 @@ export default {
       cdnUrl: process.env.NUXT_ENV_CDN_URL,
       cdnPublicKey: process.env.NUXT_ENV_CDN_PUBLIC_KEY,
       cdnUri: process.env.NUXT_ENV_CDN_URI,
-      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY
-
     },
     private: {
       cdnSecretKey: process.env.NUXT_ENV_CDN_SECRET_KEY,
+      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY
     }
   }
 

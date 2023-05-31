@@ -24,19 +24,17 @@
 
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import CryptoJS from 'crypto-js'
 
 gsap.registerPlugin(ScrollTrigger)
+
 export default {
   config: '',
   data() {
     return {
       liked: [],
-      photos: this.fetchImages()
+      photos: this.fetchImages(),
+      client: this.getClient(),
     }
-  },
-  mounted() {
-    this.fetchImages()
   },
   beforeUpdate() {
     this.startAnimation()
@@ -80,18 +78,18 @@ export default {
       ).catch((e) => console.log(e)
       )
     },
-    decyptAES(string) {
-      const bytes = CryptoJS.AES.decrypt(string, this.config.public.encryptKey)
-      return bytes.toString(CryptoJS.enc.Utf8)
-    },
-    getClient() {
+    async getClient() {
+      const route = "getCookie"
       const cookie = useCookie('clientInfo')
       try {
         if (cookie.value) {
-          return this.decyptAES(cookie.value)
-        }
+          await useFetch('/api/utils/' + route, {
+            method: 'get',
+          }).then(response => {
+            this.client = response.data.value.cookie
+          })        }
       } catch (err) {
-        console.log('getIp' + err)
+        console.log('getCookieValue' + err)
       }
     },
     startAnimation() {
@@ -101,7 +99,6 @@ export default {
       const windowSize = screen.width
       let top = 'top 80%'
       let countGrid = 0
-
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -170,10 +167,9 @@ export default {
         })
       })
     },
-    getLikesFromClient(inner) {
-      const client = this.getClient()
-      const config = this.config
-      const route = 'getLikes'
+   async getLikesFromClient(inner) {
+      const client = this.client
+      let route = 'getLikes'
       setTimeout(function() {
         let loop = true
         let count = 0
@@ -203,14 +199,17 @@ export default {
 
                 if (count > 0) {
                   counterLikes.innerText = count
-                  arrayKeys.forEach((value) => {
-                    const bytes = CryptoJS.AES.decrypt(likesImg[value].ip, config.public.encryptKey)
-                    const ipDecrypt = bytes.toString(CryptoJS.enc.Utf8)
-
-                    if (ipDecrypt === client && !heartIcon.classList.contains('active')) {
-                      heartIcon.classList.toggle('active')
-                    }
-                  })
+                  route = 'decrypt'
+                  for (const value of arrayKeys) {
+                      await useFetch('/api/utils/' + route, {
+                        method: 'POST',
+                        body: likesImg[value].ip
+                      }).then(response => {
+                        if (response.data.value.decrypted === client && !heartIcon.classList.contains('active')) {
+                          heartIcon.classList.toggle('active')
+                        }
+                      })
+                  }
                 }
               } catch (err) {
                 console.log('getLikes' + err)
