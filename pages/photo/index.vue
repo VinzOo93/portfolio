@@ -8,6 +8,11 @@
             <img class='cover zoom' v-bind:alt='photo.originalFilename'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <div class='container-button'>
+              <div v-for='(print) in printFormats'>
+                <button id='format-button' >
+                  <span class='format-text'>{{ print.name }}</span>
+                </button>
+              </div>
               <button id='like-button' class='heart' v-bind:data-name='photo.uuid'>
                 <span class='heart-icon'></span>
                 <span class='counter-like'>0</span>
@@ -31,6 +36,7 @@ export default {
   async setup() {
     useRuntimeConfig()
     const dataPhotos = ref([])
+    const printFormats = ref([])
     let client = []
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
@@ -44,6 +50,20 @@ export default {
         dataPhotos.value = response.data.value.results
         shuffle(dataPhotos.value)
       }).catch((e) => console.log(e))
+    }
+
+    async function getPrintFormats() {
+      await useFetch('http://shopgallery.local/api/print_formats?page=1',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(print => {
+          const datas = print.data.value
+          printFormats.value = datas
+        }).catch((error) => console.log('error fetch ' + error))
     }
 
     async function getClient() {
@@ -163,6 +183,7 @@ export default {
       const windowSize = screen.width
       let top = 'top 80%'
       let countGrid = 0
+
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -191,6 +212,7 @@ export default {
               let clone = imgZoom.cloneNode(true)
               imgZoom.parentNode.replaceChild(clone, imgZoom)
             }
+
             gsap.to(
               inner, {
                 visibility: 'visible',
@@ -206,6 +228,7 @@ export default {
           })
         }.bind(this), 1000)
       })
+
       gsap.timeline(50)
         .fromTo(transition,
           {
@@ -222,6 +245,7 @@ export default {
     onMounted(() => {
       nextTick(async () => {
         await fetchImage()
+        await getPrintFormats()
         await getClient()
       })
     })
@@ -235,7 +259,8 @@ export default {
     })
 
     return {
-      dataPhotos
+      dataPhotos,
+      printFormats
     }
   }
 }
