@@ -46,13 +46,13 @@
           <div class='line-container d-flex'>
             <p class='welcome line fz-3xl p-0 m-0'>(<img
               src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-              class='lemon img-line img-sm' alt='lemon'>)=><span v-on:click='toggleModale'
+              class='lemon img-line img-sm' alt='lemon'>)=><span @click='toggleModale'
                                                                  class='customFont enjoy'>ENJOY</span>&lt;=(<img
               src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
               class='strawberry img-sm' alt='strawberry'>)</p>
             <p class='welcome line fz-3xl p-0 m-0'>(<img
               src='https://media.giphy.com/media/qNSRPyKLJIzZb0IJnB/giphy.gif'
-              class='lemon img-line img-sm' alt='lemon'>)=><span v-on:click='toggleModale'
+              class='lemon img-line img-sm' alt='lemon'>)=><span @click='toggleModale'
                                                                  class='customFont enjoy'>ENJOY</span>&lt;=(<img
               src='https://media.giphy.com/media/MAms0vmRszwHe/giphy.gif'
               class='strawberry img-sm' alt='strawberry'>)</p>
@@ -94,16 +94,24 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default {
   name: 'index',
-  data() {
-    return {
-      revele: false
+  setup() {
+    const revele = ref(false)
+    const toggleModale = () => {
+      const timer = document.querySelector('#timer')
+      const tr = document.querySelector('.gameline')
+      const allTd = document.querySelectorAll('td')
+      revele.value = !revele.value
+      if (tr) {
+        timer.textContent = '00:00'
+        let clone = timer.cloneNode(true)
+        timer.parentNode.replaceChild(clone, timer)
+        allTd.forEach(td => {
+          tr.removeChild(td)
+        })
+      }
     }
-  },
-  mounted() {
-    this.startAnimation()
-  },
-  methods: {
-    startAnimation() {
+
+    function startAnimation() {
       const line = document.querySelectorAll('.line')
       const rock = document.querySelector('.rock')
       const welcome = document.querySelector('.welcome-home')
@@ -112,7 +120,6 @@ export default {
       let windowSize = screen.width
       const revealXs = document.querySelectorAll('.xs-reveal')
       const body = document.body
-
 
       setTimeout(function() {
         welcome.style.visibility = 'visible'
@@ -270,19 +277,13 @@ export default {
         mouseCursor.classList.remove('link-grow')
       })
     }
-    , toggleModale: function() {
-      const timer = document.querySelector('#timer')
-      const tr = document.querySelector('.gameline')
-      const allTd = document.querySelectorAll('td')
-      this.revele = !this.revele
-      if (tr) {
-        timer.textContent = '00:00'
-        let clone = timer.cloneNode(true)
-        timer.parentNode.replaceChild(clone, timer)
-        allTd.forEach(td => {
-          tr.removeChild(td)
-        })
-      }
+
+    onMounted(() => {
+      startAnimation()
+    })
+    return {
+      revele,
+      toggleModale
     }
   }
 }

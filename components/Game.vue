@@ -21,10 +21,10 @@
         <div class='congratulation'>
           <p> Good Game !! Découvrez, maintenant si vous êtes le/la champion(ne). 🥇 </p>
           <form v-on:submit.prevent='addScore'>
-            <input type='text' v-model='text.name' required='required'>
+            <input type='text' v-model='playerName' required='required'>
             <button>Enregistrer</button>
           </form>
-          <button v-on:click='tryAgain'>Recommencer</button>
+          <button @click='tryAgain'>Recommencer</button>
           <button v-on:click='toggleModaleScore'>voir les scores</button>
         </div>
       </div>
@@ -45,8 +45,6 @@ export default {
   },
   data() {
     return {
-      reveleScore: false,
-
       text: {
         name: '',
         tentative: '',
@@ -55,50 +53,11 @@ export default {
       }
     }
   },
-  mounted() {
-    this.startGame()
-  },
-  methods: {
-    toggleModaleScore() {
-      this.reveleScore = !this.reveleScore
-    },
+  setup() {
+    const playerName = ref('')
+    const reveleScore = ref(false)
 
-    tryAgain() {
-
-      let tr = document.querySelector('.gameline')
-      let win = document.querySelector('.modale-win')
-      let allTd = document.querySelectorAll('td')
-      let timer = document.querySelector('#timer')
-      timer.textContent = '00:00'
-      timeLeft = null
-
-      win.style.visibility = 'hidden'
-      allTd.forEach(td => {
-        tr.removeChild(td)
-      })
-      this.startGame()
-    },
-    addScore: async function() {
-      successRate = 18 / tentative * 100
-      let data = {
-        name: this.text.name,
-        tentative: tentative,
-        successRate: Math.round(successRate),
-        timeLeft: timeLeft
-      }
-      await useFetch('/api/player/addPlayer', {
-        method: 'POST',
-        body: data
-      }).then(response => {
-          if (response.data.value.success === 1) {
-            alert('Votre score a bien été enregistré')
-          }
-        }
-      ).catch((e) => console.log(e)
-      )
-
-    },
-    startGame() {
+    function startGame() {
       let score = 0
       let caseNumber = 0
       let card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
@@ -189,12 +148,8 @@ export default {
             choice1.style.visibility = 'visible'
             choice2.style.visibility = 'visible'
             selection = 0
-
-
             if (score === 18) {
-
               let successRate = 18 / tentative * 100
-
               stopTimer()
               modalWin.style.visibility = 'visible'
               texTimeLeft.textContent = 'Temps :' + ' ' + timer.textContent
@@ -237,12 +192,58 @@ export default {
         }
       }
     }
+
+    const tryAgain = () => {
+      let tr = document.querySelector('.gameline')
+      let win = document.querySelector('.modale-win')
+      let allTd = document.querySelectorAll('td')
+      let timer = document.querySelector('#timer')
+      timer.textContent = '00:00'
+      timeLeft = null
+
+      win.style.visibility = 'hidden'
+      allTd.forEach(td => {
+        tr.removeChild(td)
+      })
+      startGame()
+    }
+
+    const addScore = async () => {
+      successRate = 18 / tentative * 100
+      let data = {
+        name: playerName.value,
+        tentative: tentative,
+        successRate: Math.round(tentative),
+        timeLeft: timeLeft
+      }
+      await useFetch('/api/player/addPlayer', {
+        method: 'POST',
+        body: data
+      }).then(response => {
+          if (response.data.value.success === 1) {
+            alert('Votre score a bien été enregistré')
+          }
+        }
+      ).catch((e) => console.log(e)
+      )
+    }
+    const toggleModaleScore = () => {
+      reveleScore.value = !reveleScore.value
+    }
+    onMounted(() => {
+      startGame()
+    })
+    return {
+      tryAgain,
+      addScore,
+      toggleModaleScore,
+      playerName,
+      reveleScore
+    }
   }
 }
 
-
 </script>
-
 
 <style>
 
@@ -335,7 +336,7 @@ export default {
 }
 
 .modale-win {
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   top: 0;
   right: 0;

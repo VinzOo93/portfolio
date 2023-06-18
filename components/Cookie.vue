@@ -7,7 +7,7 @@
           <img class='img-cookie' src='https://media.giphy.com/media/R52934IAVt4jK/giphy.gif' alt='cookie-img'>
         </div>
         <p>Ce site utilise des cookies et collecte des données pour améliorer votre expérience utilisateur.</p>
-        <button v-on:click='this.addCookie'>J'accepte l'utilisation des cookies</button>
+        <button @click='addCookie'>J'accepte l'utilisation des cookies</button>
       </div>
     </div>
   </div>
@@ -17,31 +17,33 @@
 
 export default {
   name: 'Cookie',
-  data() {
-    return {
-      cookieAccepted: true
+  setup() {
+    const cookieAccepted = ref(true)
+
+    function checkCookie() {
+      if (process.client) {
+        const cookie = useCookie('clientInfo')
+        if (!cookie.value) {
+          cookieAccepted.value = false
+        }
+      }
     }
-  },
-  mounted() {
-    this.checkCookie()
-  },
-  methods: {
-    async addCookie() {
+
+    const addCookie = async () => {
       const year = 31556962
       const cookie = useCookie('clientInfo', {
         maxAge: year
       })
       const promise = await useFetch('/api/client/getClientIp')
       cookie.value = promise.data.value.ipClient
-      this.cookieAccepted = !this.cookieAccepted
-    },
-    checkCookie() {
-      if (process.client) {
-        const cookie = useCookie('clientInfo')
-        if (!cookie.value){
-          this.cookieAccepted = false
-        }
-      }
+      cookieAccepted.value = !cookieAccepted.value
+    }
+    onMounted(() => {
+      checkCookie()
+    })
+    return {
+      addCookie,
+      cookieAccepted
     }
   }
 }

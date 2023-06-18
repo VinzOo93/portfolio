@@ -3,9 +3,9 @@
     <div class='overlay-game' v-on:click='toggleModale'></div>
     <div class='modale card'>
       <div class='btn-modale' v-on:click='toggleModale'></div>
-     <client-only placeholder='chargement...'>
-       <Game/>
-     </client-only>
+      <client-only placeholder='chargement...'>
+        <Game />
+      </client-only>
       <div>
       </div>
     </div>

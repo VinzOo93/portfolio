@@ -2,7 +2,7 @@
   <div>
     <Head>
       <Title>Vincent ORRU : Portfolio</Title>
-      <Meta name='description' content='Vincent ORRU - Développeur Web - Découvrir mes réalisations'/>
+      <Meta name='description' content='Vincent ORRU - Développeur Web - Découvrir mes réalisations' />
     </Head>
     <Cookie />
     <div class='cursor'></div>
@@ -100,16 +100,14 @@ body {
 </style>
 <script>
 import { gsap } from 'gsap'
-import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-gsap.config({ nullTargetWarn: false });
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.config({ nullTargetWarn: false })
 
 export default {
-  beforeMount() {
-    this.defaultAction()
-  },
-  methods: {
-    defaultAction() {
+  setup() {
+    function defaultAction() {
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor')
       let navBar = document.querySelectorAll('.navbar')
@@ -148,10 +146,13 @@ export default {
               toggleActions: 'restart',
               scrub: true
             }
-          }
-        )
+          })
       }
     }
+
+    onMounted(() => {
+      defaultAction()
+    })
   }
 }
 </script>

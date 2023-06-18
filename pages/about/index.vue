@@ -23,29 +23,31 @@
         </div>
       </div>
       <div class='container'>
-          <p class='description scroll cover'>
-            Hi there, I'm Vincent... 😃
+        <p class='description scroll cover'>
+          Hi there, I'm Vincent... 😃
 
-            <br><br>J'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
-            sein d'acteurs majeurs dans le secteur de la banque, du recrutement et du multimédia.
+          <br><br>J'ai eu l'opportunité d'avoir plusieurs expériences professionnelles significatives de terrain au
+          sein d'acteurs majeurs dans le secteur de la banque, du recrutement et du multimédia.
 
-            <br><br> De plus, ayant l'esprit voyageur et ouvert. J'ai pris plusieurs fois l'initiative de sortir de ma
-            zone
-            de confort. Dans le but de découvrir de nouvelles cultures et personnalités, comme lors de mon année de WHV
-            en
-            Australie.
+          <br><br> De plus, ayant l'esprit voyageur et ouvert. J'ai pris plusieurs fois l'initiative de sortir de ma
+          zone
+          de confort. Dans le but de découvrir de nouvelles cultures et personnalités, comme lors de mon année de WHV
+          en
+          Australie.
 
-            <br><br> Je suis aussi passionné de photographie de cuisine et de nouvelles technologies.
+          <br><br> Je suis aussi passionné de photographie de cuisine et de nouvelles technologies.
 
-            <br><br> J'aime apprendre par moi-même, ainsi que m'adapter pour étendre mes compétences et ma créativité pour relever des défis.
+          <br><br> J'aime apprendre par moi-même, ainsi que m'adapter pour étendre mes compétences et ma créativité pour
+          relever des défis.
 
-            <br><br> J'apprécie tout particulièrement m'inspirer des nouvelles tendances pour rendre mes projets
-            différents afin d'améliorer au maximum l'expérience client.
+          <br><br> J'apprécie tout particulièrement m'inspirer des nouvelles tendances pour rendre mes projets
+          différents afin d'améliorer au maximum l'expérience client.
 
-            <br><br>je peux intervenir autant dans des projets fronts ou backs, contactez moi directement pour en savoir plus
+          <br><br>je peux intervenir autant dans des projets fronts ou backs, contactez moi directement pour en savoir
+          plus
 
-          </p>
-        </div>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -54,11 +56,8 @@
 import { gsap } from 'gsap'
 
 export default {
-  mounted() {
-    this.startAnimation()
-  },
-  methods: {
-    startAnimation: function() {
+  setup() {
+    function startAnimation() {
       const transition = document.querySelector('.transition')
       const content = document.querySelector('.content')
       const about = document.querySelector('.description')
@@ -66,7 +65,6 @@ export default {
       const mouseCursor = document.querySelector('.cursor')
       let windowSize = screen.width
       const body = document.body
-
       if (windowSize <= 768) {
         body.style.height = 1000 + 'px'
       }
@@ -96,10 +94,13 @@ export default {
         })
       })
     }
+
+    onMounted(() => {
+      startAnimation()
+    })
   }
 }
 </script>
-
 
 <style scoped>
 @media only screen and  (max-width: 992px) {
@@ -169,6 +170,7 @@ export default {
   .description {
     font-size: 22px;
   }
+
   .technos {
     margin-bottom: 5% !important;
   }

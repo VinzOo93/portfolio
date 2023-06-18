@@ -50,7 +50,6 @@ export default {
       let promise = await useFetch('/api/player/getPlayer')
       const data = promise.data.value
       this.Players = data.players
-      console.log(this.Players)
     }
   }
 }
@@ -192,10 +191,10 @@ h1 {
 }
 
 
-
 .container-refresh button {
   padding: 10px;
 }
+
 .modale .card {
   width: 95%;
 }

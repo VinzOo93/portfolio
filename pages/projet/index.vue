@@ -176,17 +176,13 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export default {
-  mounted() {
-    this.startAnimation()
-  },
-  methods: {
-    startAnimation() {
+  setup() {
+   function startAnimation() {
       const transition = document.querySelector('.transition')
       const projets = document.querySelector('.projets')
       const line = document.querySelectorAll('.line-1')
       const button = document.querySelectorAll('.button-to-website')
       const mouseCursor = document.querySelector('.cursor')
-
       gsap.t
       gsap.timeline(100)
         .fromTo(transition, {
@@ -229,17 +225,15 @@ export default {
 
         requestAnimationFrame(smoothScroll)
       }
-
-        gsap.to(
-          '.case', {
-            opacity: 1,
-            scrollTrigger: {
-              start: 'center 50%',
-            }
+      gsap.to(
+        '.case', {
+          opacity: 1,
+          scrollTrigger: {
+            start: 'center 50%'
           }
-        )
-        smoothScroll()
-
+        }
+      )
+      smoothScroll()
       button.forEach(b => {
         b.addEventListener('mouseover', () => {
           mouseCursor.classList.add('link-grow')
@@ -250,6 +244,9 @@ export default {
         })
       })
     }
+    onMounted(() => {
+      startAnimation()
+    })
   }
 }
 </script>

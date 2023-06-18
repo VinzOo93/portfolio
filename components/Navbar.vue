@@ -1,54 +1,50 @@
 <template>
   <div>
-    <div class="navbar navigation">
+    <div class='navbar navigation'>
       <nav>
         <ul>
           <li>
-            <nuxt-link class="navbar-link" to="/">Accueil</nuxt-link>
+            <nuxt-link class='navbar-link' to='/'>Accueil</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="navbar-link" to="/projet">Projets web</nuxt-link>
+            <nuxt-link class='navbar-link' to='/projet'>Projets web</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="navbar-link" to="/photo">Galerie photo</nuxt-link>
+            <nuxt-link class='navbar-link' to='/photo'>Galerie photo</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="navbar-link" to="/about">A propos de moi</nuxt-link>
+            <nuxt-link class='navbar-link' to='/about'>A propos de moi</nuxt-link>
           </li>
         </ul>
       </nav>
-      <button type="button" aria-label="Switch appearance"
-              class="navigation-button  js-navigation-button" v-on:click="setBackground"></button>
+      <button type='button' aria-label='Switch appearance'
+              class='navigation-button  js-navigation-button' @click='setBackground'></button>
     </div>
   </div>
 </template>
 
 <script>
-import { gsap } from "gsap"
+import { gsap } from 'gsap'
 
 
 export default {
-  Name: "Navbar",
+  Name: 'Navbar',
+  setup() {
+    const setBackground = () => {
+      const button = document.querySelector('.navigation-button')
+      const body = document.querySelector('body')
 
-  mounted() {
-    this.setBackground()
-  },
+      if (document.body.style.backgroundColor === 'rgb(21, 20, 20)') {
+        gsap.to(body, { backgroundColor: 'rgba(238,115,26,0.63)', duration: 0.25, color: '' })
+        gsap.to(button, { backgroundColor: '#151414', duration: 0.1 })
 
-  methods: {
-    setBackground() {
-
-      const button = document.querySelector(".navigation-button")
-      const body = document.querySelector("body")
-
-      if (document.body.style.backgroundColor === "rgb(21, 20, 20)") {
-        gsap.to(body, { backgroundColor: "rgba(238,115,26,0.63)", duration: 0.25, color : "" })
-        gsap.to(button, { backgroundColor: "#151414", duration: 0.1 })
-
+      } else {
+        gsap.to(body, { backgroundColor: '#151414', duration: 0.5 })
+        gsap.to(button, { backgroundColor: 'rgba(238,115,26,0.63)', duration: 0.1 })
       }
-    else {
-        gsap.to(body, { backgroundColor: "#151414", duration: 0.5,   })
-        gsap.to(button, { backgroundColor: "rgba(238,115,26,0.63)", duration: 0.1,  })
-      }
+    }
+    return {
+      setBackground
     }
   }
 }
