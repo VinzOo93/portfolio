@@ -16,12 +16,12 @@
           </tr>
           </thead>
           <tbody>
-          <tr class='player-line t-body' v-for='(Player, PlayerID) in Players'>
-            <td class='position'> {{ PlayerID + 1 }}</td>
-            <td> {{ Player.name }}</td>
-            <td> {{ Player.successRate }}%</td>
-            <td>{{ Player.tentative }}</td>
-            <td> {{ Player.timeLeft }}</td>
+          <tr class='player-line t-body' v-for='(player, playerID) in data.players'>
+            <td class='position'> {{ playerID + 1 }}</td>
+            <td> {{ player.name }}</td>
+            <td> {{ player.successRate }}%</td>
+            <td>{{ player.tentative }}</td>
+            <td> {{ player.timeLeft }}</td>
           </tr>
           </tbody>
         </table>
@@ -36,20 +36,14 @@
 export default {
   name: 'ModaleScore',
   props: ['reveleScore', 'toggleModaleScore'],
-
-  data() {
-    return {
-      Players: []
-    }
-  },
-  updated() {
-    this.getPlayers()
-  },
-  methods: {
-    async getPlayers() {
+  setup() {
+    const data = ref('')
+    onUpdated(async () => {
       let promise = await useFetch('/api/player/getPlayer')
-      const data = promise.data.value
-      this.Players = data.players
+      data.value = promise.data.value
+    })
+    return {
+      data
     }
   }
 }
