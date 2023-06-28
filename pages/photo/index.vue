@@ -61,8 +61,7 @@ export default {
           }
         })
         .then(print => {
-          const datas = print.data.value
-          printFormats.value = datas
+          printFormats.value = print.data.value
         }).catch((error) => console.log('error fetch ' + error))
     }
 
