@@ -61,6 +61,19 @@ export default {
   build: {
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]]
+    },
+    extend(config, { isDev, isClient }) {
+      if (!isDev && isClient) {
+        config.module.rules.push({
+          enforce: 'post',
+          test: /\.(js|ts|vue)$/,
+          loader: 'null-loader',
+          exclude: /(node_modules)/,
+          options: {
+            filter: () => false,
+          }
+        });
+      }
     }
   }
 }
