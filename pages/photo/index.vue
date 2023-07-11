@@ -8,16 +8,16 @@
             <img class='cover zoom' v-bind:alt='photo.originalFilename'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <div class='container-button'>
-              <div v-for='(print) in printFormats'>
-                <button id='format-button' >
-                  <span class='format-text'>{{ print.name }}</span>
-                </button>
-              </div>
               <button id='like-button' class='heart' v-bind:data-name='photo.uuid'>
                 <span class='heart-icon'></span>
                 <span class='counter-like'>0</span>
                 <span class='like-text'>Like</span>
               </button>
+              <div id='wrap' v-for='(print) in printFormats'>
+                <button class='btn'>
+                  <span>{{ print.name }}</span>
+                </button>
+              </div>
             </div>
           </div>
         </template>
@@ -38,6 +38,7 @@ export default {
     const dataPhotos = ref([])
     const printFormats = ref([])
     let client = []
+
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5)
     }
@@ -290,6 +291,39 @@ img {
 }
 
 @media only screen and  (max-width: 768px) {
+  button.btn {
+    top: 0;
+    padding: 0 12px;
+  }
+
+}
+
+@media only screen and  (max-width: 768px) {
+
+  .heart-icon::before {
+    top: 6px;
+  }
+
+  .heart-icon::after {
+    top: 6px;
+  }
+
+  .container-button {
+    margin: 7%;
+  }
+
+  .counter-like {
+    top: 7px;
+  }
+
+  #like-button {
+    width: 110px;
+  }
+
+  .like-text {
+    top: 6px;
+    left: 43px;
+  }
 
   .container {
     margin-top: 5%;
@@ -309,7 +343,48 @@ img {
   }
 }
 
+@media only screen and  (min-width: 980px) {
+
+  button.btn {
+    top: 10px;
+    padding: 10px 12px;
+  }
+
+  .like-text {
+    left: 53px;
+    top: 8px;
+  }
+
+  #like-button {
+    width: 90px;
+    height: 36px;
+  }
+
+}
+
+
 @media only screen and  (min-width: 768px) {
+
+  .heart-icon::before {
+    top: 8px;
+  }
+  .heart-icon::after {
+    top: 8px;
+  }
+
+    .counter-like {
+    top: 9px;
+  }
+
+  .like-text {
+    left: 53px;
+    top: 8px;
+  }
+
+  #like-button {
+    width: 90px;
+    min-width: 85px !important;
+  }
 
   .img-hidden {
     padding-bottom: 40px;
@@ -349,13 +424,11 @@ img {
   font-weight: bold;
   padding: 10px;
   position: relative;
-  width: 90px;
-  height: 28px;
   border-radius: 5px;
 }
 
 .container-button {
-  width: 100%;
+  width: 85%;
   display: flex;
   justify-content: center;
 }
@@ -373,7 +446,6 @@ img {
   box-sizing: border-box;
   height: 15px;
   width: 10px;
-  top: 4px;
   left: 10px;
   border-radius: 50% 50% 0 0;
   transform: rotate(-45deg);
@@ -384,7 +456,6 @@ img {
   box-sizing: border-box;
   height: 15px;
   width: 10px;
-  top: 4px;
   left: 14px;
   border-radius: 50% 50% 0 0;
   transform: rotate(45deg);
@@ -401,15 +472,12 @@ img {
   color: #f6f1f1;
   position: absolute;
   display: inline-block;
-  top: 4px;
-  left: 53px;
 }
 
 .counter-like {
   font-size: 12px;
   position: absolute;
   display: inline-block;
-  top: 5px;
   left: 30px;
 }
 
@@ -429,6 +497,54 @@ html {
 
 .gallery::-webkit-scrollbar {
   width: 0 !important
+}
+
+#wrap {
+  margin: -10px auto;
+  text-align: center;
+}
+
+button.btn {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-weight: 700;
+  background: transparent;
+  letter-spacing: .5px;
+  margin: 10px;
+  color: #E8D7ACFF !important;
+  box-shadow: inset 0 0 0 #22313F;
+  font-size: 11px;
+  border-radius: 6px;
+  transition: all 0.3s ease-out;
+}
+
+button.btn:hover {
+  background: #000000;
+  color: #fff;
+  box-shadow: inset 0px -50px 0px #22313F;
+}
+
+button.btn:active {
+  color: #05555e;
+  box-shadow: inset 0px -50px 0px #f5f7fa;
+}
+
+button.btn.warn {
+  background: #f5f7fa;
+  color: #05555e;
+  box-shadow: inset 0 0 0 #30abd5;
+}
+
+button.btn.warn:hover {
+  background: #f5f7fa;
+  color: #fff;
+  box-shadow: inset 0px -50px 0px #30abd5;
+}
+
+button.btn.warn:active {
+  color: #fff;
+  box-shadow: inset 0px -50px 0px #30abd5;
 }
 
 </style>
