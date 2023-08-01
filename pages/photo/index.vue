@@ -247,15 +247,12 @@ export default {
         await fetchImage()
         await getPrintFormats()
         await getClient()
+        activeHearts()
       })
     })
 
     onBeforeUpdate(() => {
       startAnimation()
-    })
-
-    onUpdated(() => {
-      activeHearts()
     })
 
     return {

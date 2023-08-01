@@ -17,9 +17,9 @@ export default defineEventHandler(async (event: any) => {
           snapshot.forEach(function(childSnapshot) {
             let cookiIp = body.ip
             let dbIp = childSnapshot.val().ip
-            let bytes = CryptoJS.AES.decrypt(cookiIp, config.public.encryptKey)
+            let bytes = CryptoJS.AES.decrypt(cookiIp, config.private.encryptKey)
             cookiIp = bytes.toString(CryptoJS.enc.Utf8)
-            bytes = CryptoJS.AES.decrypt(dbIp, config.public.encryptKey)
+            bytes = CryptoJS.AES.decrypt(dbIp, config.private.encryptKey)
             dbIp = bytes.toString(CryptoJS.enc.Utf8)
 
             if (cookiIp === dbIp) {
