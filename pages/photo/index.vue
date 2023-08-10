@@ -8,15 +8,16 @@
             <img class='cover zoom' v-bind:alt='photo.originalFilename'
                  v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <div class='container-button'>
-              <button id='like-button' class='heart' v-bind:data-name='photo.uuid'>
-                <span class='heart-icon'></span>
-                <span class='counter-like'>0</span>
-                <span class='like-text'>Like</span>
-              </button>
-              <div id='wrap' v-for='(print) in printFormats'>
-                <button class='btn'>
-                  <span>{{ print.name }}</span>
+              <div id='wrap' class='flex'>
+                <button id='like-button' class='btn' v-bind:data-name='photo.uuid'>
+                  <span class='heart-icon'></span>
+                  <span class='counter-like'>0</span>
                 </button>
+                <div v-for='(print) in printFormats'>
+                  <button class='btn'>
+                    <span>{{ print.name }}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -244,8 +245,8 @@ export default {
 
     onMounted(() => {
       nextTick(async () => {
-        await fetchImage()
         await getPrintFormats()
+        await fetchImage()
         await getClient()
         activeHearts()
       })
@@ -264,6 +265,10 @@ export default {
 </script>
 
 <style scoped>
+
+.flex {
+  display: flex;
+}
 
 .img-hidden {
   visibility: visible;
@@ -313,10 +318,6 @@ img {
     top: 7px;
   }
 
-  #like-button {
-    width: 110px;
-  }
-
   .like-text {
     top: 6px;
     left: 43px;
@@ -344,7 +345,7 @@ img {
 
   button.btn {
     top: 10px;
-    padding: 10px 12px;
+    padding: 10px 24px;
   }
 
   .like-text {
@@ -352,35 +353,51 @@ img {
     top: 8px;
   }
 
-  #like-button {
-    width: 90px;
-    height: 36px;
-  }
-
 }
 
+@media only screen and  (max-width: 1080px) {
+  #like-button {
+    border-width : 0;
+    padding: 15px 19px 15px 23px !important
+  }
+
+  .heart-icon::before {
+    box-sizing: border-box;
+    height: 15px;
+    width: 8px;
+    left: 2px;
+    top: 0;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-45deg);
+
+  }
+
+  .heart-icon::after {
+    box-sizing: border-box;
+    height: 15px;
+    width: 8px;
+    left: 6px;
+    top: 0;
+    bottom: 20px !important;
+  }
+
+  .counter-like {
+    top: 14px !important;
+  }
+}
 
 @media only screen and  (min-width: 768px) {
 
-  .heart-icon::before {
-    top: 8px;
+  #like-button {
+    border-width : 0
   }
-  .heart-icon::after {
-    top: 8px;
-  }
-
-    .counter-like {
+  .counter-like {
     top: 9px;
   }
 
   .like-text {
     left: 53px;
     top: 8px;
-  }
-
-  #like-button {
-    width: 90px;
-    min-width: 85px !important;
   }
 
   .img-hidden {
@@ -403,25 +420,10 @@ img {
     z-index: 1;
     max-width: 95%;
   }
-
-  #like-button {
-    margin: 10px;
-  }
 }
 
 .medium-zoom-image--opened {
   z-index: 2 !important;
-}
-
-#like-button {
-  background-color: transparent;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 13px;
-  font-weight: bold;
-  padding: 10px;
-  position: relative;
-  border-radius: 5px;
 }
 
 .container-button {
@@ -443,7 +445,8 @@ img {
   box-sizing: border-box;
   height: 15px;
   width: 10px;
-  left: 10px;
+  left: 5px;
+  bottom: 14px;
   border-radius: 50% 50% 0 0;
   transform: rotate(-45deg);
 
@@ -453,7 +456,8 @@ img {
   box-sizing: border-box;
   height: 15px;
   width: 10px;
-  left: 14px;
+  left: 9px;
+  bottom: 14px;
   border-radius: 50% 50% 0 0;
   transform: rotate(45deg);
 }
@@ -475,7 +479,8 @@ img {
   font-size: 12px;
   position: absolute;
   display: inline-block;
-  left: 30px;
+  left: 26px;
+  top: 12px;
 }
 
 .gallery {
