@@ -14,7 +14,7 @@
                   <span class='counter-like'>0</span>
                 </button>
                 <div v-for='(print) in printFormats'>
-                  <button class='btn'>
+                  <button v-on:click='addToCart' class='btn'>
                     <span>{{ print.name }}</span>
                   </button>
                 </div>
@@ -177,6 +177,12 @@ export default {
       })
     }
 
+    function addToCart() {
+      const cart = document.querySelector('.cart-container');
+      cart.style.visibility = 'visible';
+      ++document.querySelector('.counter-cart').innerText;
+    }
+
     function startAnimation() {
       const transition = document.querySelector('.transition')
       const mouseCursor = document.querySelector('.cursor')
@@ -258,7 +264,8 @@ export default {
 
     return {
       dataPhotos,
-      printFormats
+      printFormats,
+      addToCart
     }
   }
 }

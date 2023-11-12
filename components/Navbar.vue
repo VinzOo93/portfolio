@@ -19,6 +19,10 @@
       </nav>
       <button type='button' aria-label='Switch appearance'
               class='navigation-button  js-navigation-button' @click='setBackground'></button>
+      <div class='cart-container'>
+        <img class='cart-icon' src='~/assets/shop/cart-icon.png' alt='cart'>
+        <span class='counter-cart'>0</span>
+      </div>
     </div>
   </div>
 </template>
@@ -136,6 +140,22 @@ button {
   text-rendering: auto;
 }
 
+.cart-icon {
+  height: 4vh;
+  position: relative;
+  left: 20px;
+  top: 4px;
+}
+
+.cart-container {
+  visibility: hidden;
+}
+
+.counter-cart {
+  position: relative;
+  left: 15px;
+  font-size: 1.5vh;
+}
 
 a.navbar-link {
   position: relative;
