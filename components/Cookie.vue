@@ -18,28 +18,28 @@
 export default {
   name: 'Cookie',
   setup() {
-    const cookieAccepted = ref(true)
+    const cookieAccepted = ref(true);
 
     function checkCookie() {
       if (process.client) {
-        const cookie = useCookie('clientInfo')
+        const cookie = useCookie('clientInfo');
         if (!cookie.value) {
-          cookieAccepted.value = false
+          cookieAccepted.value = false;
         }
       }
     }
 
     const addCookie = async () => {
-      const year = 31556962
+      const year = 31556962;
       const cookie = useCookie('clientInfo', {
         maxAge: year
       })
-      const promise = await useFetch('/api/client/getClientIp')
-      cookie.value = promise.data.value.ipClient
-      cookieAccepted.value = !cookieAccepted.value
+      const promise = await useFetch('/api/client/getClientIp');
+      cookie.value = promise.data.value.ipClient;
+      cookieAccepted.value = !cookieAccepted.value;
     }
     onMounted(() => {
-      checkCookie()
+      checkCookie();
     })
     return {
       addCookie,

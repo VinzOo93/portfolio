@@ -170,19 +170,19 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   setup() {
    function startAnimation() {
-      const transition = document.querySelector('.transition')
-      const projets = document.querySelector('.projets')
-      const line = document.querySelectorAll('.line-1')
-      const button = document.querySelectorAll('.button-to-website')
-      const mouseCursor = document.querySelector('.cursor')
+      const transition = document.querySelector('.transition');
+      const projets = document.querySelector('.projets');
+      const line = document.querySelectorAll('.line-1');
+      const button = document.querySelectorAll('.button-to-website');
+      const mouseCursor = document.querySelector('.cursor');
       gsap.t
       gsap.timeline(100)
         .fromTo(transition, {
@@ -202,28 +202,28 @@ export default {
         .from(line, {
           scaleX: 0,
           transformOrigin: 'left'
-        })
-      const body = document.body
-      const scrollWrap = document.getElementsByClassName('smooth-scroll-wrapper')[0]
-      const height = scrollWrap.getBoundingClientRect().height - 1
-      const cards = document.querySelectorAll('.scroll-card')
+        });
+      const body = document.body;
+      const scrollWrap = document.getElementsByClassName('smooth-scroll-wrapper')[0];
+      const height = scrollWrap.getBoundingClientRect().height - 1;
+      const cards = document.querySelectorAll('.scroll-card');
 
-      const speed = 0.10
+      const speed = 0.10;
 
-      let offset = 0
+      let offset = 0;
 
-      body.style.height = Math.floor(height) + 'px'
+      body.style.height = Math.floor(height) + 'px';
 
       function smoothScroll() {
-        offset += (window.pageYOffset - offset) * speed
+        offset += (window.pageYOffset - offset) * speed;
 
-        scrollWrap.style.transform = 'translateY(-' + offset - 1000 + 'px) translate(0)'
+        scrollWrap.style.transform = 'translateY(-' + offset - 1000 + 'px) translate(0)';
 
         cards.forEach(card => {
-          card.style.transform = 'translateY(-' + offset / 20 + 'px) translate(0)'
-        })
+          card.style.transform = 'translateY(-' + offset / 20 + 'px) translate(0)';
+        });
 
-        requestAnimationFrame(smoothScroll)
+        requestAnimationFrame(smoothScroll);
       }
       gsap.to(
         '.case', {
@@ -236,16 +236,16 @@ export default {
       smoothScroll()
       button.forEach(b => {
         b.addEventListener('mouseover', () => {
-          mouseCursor.classList.add('link-grow')
+          mouseCursor.classList.add('link-grow');
 
           b.addEventListener('mouseleave', () => {
-            mouseCursor.classList.remove('link-grow')
-          })
-        })
-      })
+            mouseCursor.classList.remove('link-grow');
+          });
+        });
+      });
     }
     onMounted(() => {
-      startAnimation()
+      startAnimation();
     })
   }
 }

@@ -28,20 +28,20 @@
 </template>
 <script>
 
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   async setup() {
     useRuntimeConfig()
-    const dataPhotos = ref([])
-    const printFormats = ref([])
-    let client = []
+    const dataPhotos = ref([]);
+    const printFormats = ref([]);
+    let client = [];
 
     function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5)
+      return array.sort(() => Math.random() - 0.5);
     }
 
     async function fetchImage() {
@@ -49,10 +49,10 @@ export default {
       await useFetch('/api/photo/' + route, {
         method: 'GET'
       }).then(response => {
-        dataPhotos.value = response.data.value.results
-        shuffle(dataPhotos.value)
+        dataPhotos.value = response.data.value.results;
+        shuffle(dataPhotos.value);
       }).catch((e) => console.log(e))
-    }
+    };
 
     async function getPrintFormats() {
       await useFetch('http://shopgallery.local/api/print_formats?page=1',
@@ -68,38 +68,38 @@ export default {
     }
 
     async function getClient() {
-      const route = 'getCookie'
-      const cookie = useCookie('clientInfo')
+      const route = 'getCookie';
+      const cookie = useCookie('clientInfo');
       try {
         if (cookie.value) {
           await useFetch('/api/utils/' + route, {
             method: 'get'
           }).then(response => {
-            client = response.data.value
+            client = response.data.value;
           })
         }
       } catch (err) {
-        console.log('getCookieValue' + err)
+        console.log('getCookieValue' + err);
       }
     }
 
     function getLikesFromClient(inner) {
-      let route = 'getLikes'
+      let route = 'getLikes';
       setTimeout(function() {
-        let loop = true
-        let count = 0
+        let loop = true;
+        let count = 0;
         if (inner) {
           let observer = new MutationObserver(async function() {
             if (inner.style.visibility !== 'hidden' && loop) {
               try {
-                loop = false
-                const imgFile = inner.querySelector('#like-button')
+                loop = false;
+                const imgFile = inner.querySelector('#like-button');
 
                 const data =
                   { fileId: imgFile.getAttribute('data-name') }
 
-                const counterLikes = inner.querySelector('.counter-like')
-                const heartIcon = inner.querySelector('.heart-icon')
+                const counterLikes = inner.querySelector('.counter-like');
+                const heartIcon = inner.querySelector('.heart-icon');
 
                 const result = await
                   useFetch('/api/like/' + route, {
@@ -107,41 +107,41 @@ export default {
                     body: data,
                     key: imgFile.getAttribute('data-name')
                   })
-                const likesImg = result.data.value.likes
-                const arrayKeys = Object.keys(likesImg)
-                count = arrayKeys.length
-                counterLikes.innerText = count
+                const likesImg = result.data.value.likes;
+                const arrayKeys = Object.keys(likesImg);
+                count = arrayKeys.length;
+                counterLikes.innerText = count;
 
                 if (count > 0) {
-                  counterLikes.innerText = count
-                  route = 'decrypt'
+                  counterLikes.innerText = count;
+                  route = 'decrypt';
                   for (const value of arrayKeys) {
                     await useFetch('/api/utils/' + route, {
                       method: 'POST',
                       body: likesImg[value].ip
                     }).then(response => {
                       if (response.data.value.decrypted === client.cookie && !heartIcon.classList.contains('active')) {
-                        heartIcon.classList.toggle('active')
+                        heartIcon.classList.toggle('active');
                       }
                     })
                   }
                 }
               } catch (err) {
-                console.log('getLikes' + err)
+                console.log('getLikes' + err);
               }
             }
           })
           try {
-            observer.observe(inner, { attributes: true, childList: true })
+            observer.observe(inner, { attributes: true, childList: true });
           } catch (err) {
-            console.log('observer ' + err)
+            console.log('observer ' + err);
           }
         }
       }, 400)
     }
 
     async function likeAction(target) {
-      let route = 'deleteLike'
+      let route = 'deleteLike';
       if (target.firstChild.classList.contains('active')) {
         route = 'addLike'
       }
@@ -154,11 +154,11 @@ export default {
         body: liked
       }).then(response => {
           if (response.data.value.success === 1) {
-            let value = target.querySelector('.counter-like').innerText
+            let value = target.querySelector('.counter-like').innerText;
             if (route === 'addLike') {
-              target.querySelector('.counter-like').innerText = ++value
+              target.querySelector('.counter-like').innerText = ++value;
             } else {
-              target.querySelector('.counter-like').innerText = --value
+              target.querySelector('.counter-like').innerText = --value;
             }
           }
         }
@@ -184,12 +184,12 @@ export default {
     }
 
     function startAnimation() {
-      const transition = document.querySelector('.transition')
-      const mouseCursor = document.querySelector('.cursor')
-      const gallery = document.querySelectorAll('.gallery .photos')
-      const windowSize = screen.width
-      let top = 'top 80%'
-      let countGrid = 0
+      const transition = document.querySelector('.transition');
+      const mouseCursor = document.querySelector('.cursor');
+      const gallery = document.querySelectorAll('.gallery .photos');
+      const windowSize = screen.width;
+      let top = 'top 80%';
+      let countGrid = 0;
 
       window.scrollTo({
         top: 0,
@@ -197,27 +197,27 @@ export default {
       })
       gallery.forEach(img => {
         setTimeout(function() {
-          const inners = img.querySelectorAll('.inner-item')
+          const inners = img.querySelectorAll('.inner-item');
           inners.forEach(inner => {
             countGrid++
             if (windowSize >= 769) {
               inner.addEventListener('mouseleave', () => {
-                mouseCursor.classList.remove('overImage')
+                mouseCursor.classList.remove('overImage');
               })
               inner.addEventListener('mouseover', () => {
-                mouseCursor.classList.add('overImage')
+                mouseCursor.classList.add('overImage');
               })
               if (countGrid % 2 === 0) {
                 top = 'top 20%'
               } else {
                 top = 'top 90%'
-                inner.style.position = 'relative'
-                inner.style.top = '350px'
+                inner.style.position = 'relative';
+                inner.style.top = '350px';
               }
             } else {
-              let imgZoom = inner.querySelector('.zoom')
-              let clone = imgZoom.cloneNode(true)
-              imgZoom.parentNode.replaceChild(clone, imgZoom)
+              let imgZoom = inner.querySelector('.zoom');
+              let clone = imgZoom.cloneNode(true);
+              imgZoom.parentNode.replaceChild(clone, imgZoom);
             }
 
             gsap.to(
@@ -233,7 +233,7 @@ export default {
               }
             )
           })
-        }.bind(this), 1000)
+        }.bind(this), 1000);
       })
 
       gsap.timeline(50)

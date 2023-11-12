@@ -53,46 +53,46 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 export default {
   setup() {
     function startAnimation() {
-      const transition = document.querySelector('.transition')
-      const content = document.querySelector('.content')
-      const about = document.querySelector('.description')
-      const button = document.querySelectorAll('.btn')
-      const mouseCursor = document.querySelector('.cursor')
-      let windowSize = screen.width
-      const body = document.body
+      const transition = document.querySelector('.transition');
+      const content = document.querySelector('.content');
+      const about = document.querySelector('.description');
+      const button = document.querySelectorAll('.btn');
+      const mouseCursor = document.querySelector('.cursor');
+      let windowSize = screen.width;
+      const body = document.body;
       if (windowSize <= 768) {
-        body.style.height = 1000 + 'px'
+        body.style.height = 1000 + 'px';
       }
       gsap.timeline(100)
-        .fromTo(transition, { opacity: 1, y: '100%', duration: 3 }, { y: '-100%', duration: 2.5 })
+        .fromTo(transition, { opacity: 1, y: '100%', duration: 3 }, { y: '-100%', duration: 2.5 });
       gsap.timeline(100)
         .fromTo(content, { opacity: 0, yPercent: 100 }, {
           opacity: 1,
           yPercent: 0,
           ease: 'power1',
           duration: 5
-        })
+        });
       gsap.timeline(100)
         .fromTo(about, { opacity: 0, yPercent: 100 }, {
           opacity: 1,
           yPercent: 0,
           ease: 'power1',
           duration: 3
-        })
+        });
       button.forEach(b => {
         b.addEventListener('mouseover', () => {
-          mouseCursor.classList.add('link-grow')
+          mouseCursor.classList.add('link-grow');
 
           b.addEventListener('mouseleave', () => {
-            mouseCursor.classList.remove('link-grow')
-          })
-        })
-      })
+            mouseCursor.classList.remove('link-grow');
+          });
+        });
+      });
     }
 
     onMounted(() => {
