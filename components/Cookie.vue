@@ -1,6 +1,6 @@
 <template>
   <div class='bloc-modale-cookie' v-if='!cookieAccepted'>
-    <div class='overlay-cookie'></div>
+    <div class='overlay'></div>
     <div class='modale-cookie'>
       <div class='content-cookie'>
         <div>
@@ -78,7 +78,7 @@ export default {
   z-index: 200;
 }
 
-.overlay-cookie {
+.overlay {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;

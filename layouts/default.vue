@@ -98,6 +98,15 @@ body {
   background-color: rgb(206, 195, 170);
   z-index: 3;
 }
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  }
 </style>
 <script>
 import { gsap } from 'gsap';
