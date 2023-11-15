@@ -15,8 +15,8 @@
         </ul>
       </nav>
       <button type='button' aria-label='Switch appearance'
-              class='navigation-button  js-navigation-button' @click='setBackground'></button>
-      <div class='cart-container'>
+              class='navigation-button  js-navigation-button' v-on:click='setBackground'></button>
+      <div class='cart-container' v-on:click='openCartModal'>
         <img class='cart-icon' src='~/assets/shop/cart-icon.png' alt='cart'>
         <span class='counter-cart'>0</span>
       </div>
@@ -29,7 +29,8 @@ import { gsap } from 'gsap';
 
 
 export default {
-  Name: 'Navbar',
+  name: 'Navbar',
+  props: ["openCartModal", "reveleModalCart"], 
   setup() {
     const setBackground = () => {
       const button = document.querySelector('.navigation-button');
@@ -45,7 +46,7 @@ export default {
       }
     }
     return {
-      setBackground
+      setBackground,
     }
   }
 }

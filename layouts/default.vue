@@ -8,8 +8,9 @@
     <div class='cursor'></div>
     <div class='header'>
       <div class='navbar-container'>
-        <Navbar />
+        <Navbar v-bind:openCartModal="openCartModal" v-bind:reveleModalCart='reveleModalCart' />
       </div>
+      <Cart v-if='reveleModalCart' v-bind:openCartModal='openCartModal' v-bind:reveleModalCart='reveleModalCart'/>
     </div>
     <slot />
   </div>
@@ -106,7 +107,10 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.config({ nullTargetWarn: false });
 
 export default {
+  props: ["openCartModal", "reveleModalCart"], 
   setup() {
+    const reveleModalCart = ref(false);
+
     function defaultAction() {
       window.addEventListener('mousemove', cursor)
       let mouseCursor = document.querySelector('.cursor');
@@ -149,10 +153,18 @@ export default {
           });
       }
     }
+    const openCartModal = () => {
+      reveleModalCart.value = !reveleModalCart.value;
+      console.log(reveleModalCart.value)
+    }
 
     onMounted(() => {
       defaultAction()
     })
+    return {
+        reveleModalCart,
+        openCartModal
+      }
   }
 }
 </script>
