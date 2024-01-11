@@ -16,6 +16,7 @@
                 <div v-for='(print) in printFormats'>
                   <button v-on:click='addToCart' class='btn'>
                     <span>{{ print.name }}</span>
+                    <span>{{ print.taxPrice }} €</span>
                   </button>
                 </div>
               </div>
@@ -55,7 +56,8 @@ export default {
     };
 
     async function getPrintFormats() {
-      await useFetch('http://shopgallery.local/api/print_formats?page=1',
+      const route = 'getPrintsFormat';
+      await useFetch('/api/shop/' + route,
         {
           method: 'GET',
           headers: {
