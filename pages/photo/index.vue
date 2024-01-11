@@ -66,19 +66,14 @@ export default {
         })
         .then(print => {
           printFormats.value = print.data.value
-        }).catch((error) => console.log('error fetch ' + error))
+        }).catch((error) => console.log('error fetch ' + error));
     }
 
     async function getClient() {
-      const route = 'getCookie';
       const cookie = useCookie('clientInfo');
       try {
         if (cookie.value) {
-          await useFetch('/api/utils/' + route, {
-            method: 'get'
-          }).then(response => {
-            client = response.data.value;
-          })
+            client = cookie.value;
         }
       } catch (err) {
         console.log('getCookieValue' + err);
@@ -97,35 +92,24 @@ export default {
                 loop = false;
                 const imgFile = inner.querySelector('#like-button');
 
-                const data =
-                  { fileId: imgFile.getAttribute('data-name') }
+                const data = { fileId: imgFile.getAttribute('data-name'), client: client }
 
                 const counterLikes = inner.querySelector('.counter-like');
                 const heartIcon = inner.querySelector('.heart-icon');
-
                 const result = await
                   useFetch('/api/like/' + route, {
                     method: 'POST',
                     body: data,
-                    key: imgFile.getAttribute('data-name')
-                  })
+                    key: imgFile.getAttribute('data-name'),
+                  });
                 const likesImg = result.data.value.likes;
                 const arrayKeys = Object.keys(likesImg);
                 count = arrayKeys.length;
                 counterLikes.innerText = count;
 
                 if (count > 0) {
-                  counterLikes.innerText = count;
-                  route = 'decrypt';
-                  for (const value of arrayKeys) {
-                    await useFetch('/api/utils/' + route, {
-                      method: 'POST',
-                      body: likesImg[value].ip
-                    }).then(response => {
-                      if (response.data.value.decrypted === client.cookie && !heartIcon.classList.contains('active')) {
-                        heartIcon.classList.toggle('active');
-                      }
-                    })
+                  if (result.data.value.liked && !heartIcon.classList.contains('active')) {
+                      heartIcon.classList.toggle('active');
                   }
                 }
               } catch (err) {

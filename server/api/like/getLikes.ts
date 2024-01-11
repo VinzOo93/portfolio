@@ -1,10 +1,14 @@
 import { realtimeDatabase } from '../../utils/firebase';
+import { serverDecrypt } from '../../utils/serverDecrypt';
 import { readBody } from 'h3';
 
 
 // @ts-ignore
 export default defineEventHandler(async (event: any) => {
   const body = await readBody(event);
+  const client = serverDecrypt(body.client);
+  
+  let liked = false;
   let likes: any[] = [];
   if (body) {
     try {
@@ -15,8 +19,13 @@ export default defineEventHandler(async (event: any) => {
             likes = snapshot.val();
           }
         });
-      return {
-        likes
+        Object.values(likes).forEach(value => {
+            if (serverDecrypt(value.ip) === client) {
+              liked = true
+            }
+        });
+        return {
+        likes, liked
       }
     } catch (err) {
       const presenceRef = realtimeDatabase.ref('disconnectmessage');
