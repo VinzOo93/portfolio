@@ -35,11 +35,11 @@
             <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
                                                            alt='rock img-sm'><span
               class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin img-sm' alt='gin'>2023 </p>
+                                                 class='gin img-sm' alt='gin'>2024 </p>
             <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
                                                            alt='rock img-sm'><span
               class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin img-sm' alt='gin'>2023 </p>
+                                                 class='gin img-sm' alt='gin'>2024 </p>
           </div>
         </div>
         <div class='line__wrap overflow-hidden line-scroll-4'>
