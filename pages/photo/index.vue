@@ -15,8 +15,8 @@
                 </button>
                 <div v-for='(print) in printFormats'>
                   <button v-on:click='addToCart' class='btn'>
-                    <span>{{ print.name }}</span>
-                    <span>{{ print.taxPrice }} €</span>
+                      <span class="name">{{ print.name }}</span>
+                      <span class="price">{{ print.taxPrice }} €</span>
                   </button>
                 </div>
               </div>
@@ -285,15 +285,31 @@ img {
   width: 100%;
 }
 
+@media (hover: hover) {
+  button.btn .price {
+    display: none; 
+  }
+
+  button.btn:hover .name {
+    display: none; 
+  }
+
+  button.btn:hover .price {
+    display: inline; 
+  }
+}
+
 @media only screen and  (max-width: 768px) {
+
   button.btn {
     top: 0;
     padding: 0 12px;
   }
 
-}
-
-@media only screen and  (max-width: 768px) {
+  .btn .name, .btn .price {
+    font-size: 9px;
+    display: block; /* Affiche chaque élément sur sa propre ligne */
+  }
 
   .heart-icon::before {
     top: 6px;
