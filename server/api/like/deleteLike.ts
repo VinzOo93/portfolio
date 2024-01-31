@@ -1,5 +1,5 @@
 import { realtimeDatabase } from '../../services/firebase';
-import { serverDecrypt } from '../../services/serverDecrypt';
+import { serverDecrypt } from '../../services/decrypt';
 import { readBody } from 'h3';
 
 // @ts-ignore
