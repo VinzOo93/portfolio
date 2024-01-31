@@ -1,12 +1,12 @@
 
 import { calculateTaxPrice } from '../../services/taxCalculator';
-import { getTokenFromService } from '../../security/auth';
+import { authByRefreshToken } from '../../security/refreshTokenAuth';
 
 // @ts-ignore
 export default defineEventHandler(async () => {
 
   try {
-    const token = await getTokenFromService();
+    const token = await authByRefreshToken();
 
     const data = await $fetch('http://shopgallery.local/print_formats?page=1', {
       method: 'GET',

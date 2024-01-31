@@ -90,6 +90,7 @@ sw.*
 *.swp
 
 /serviceAccountKey.json
+/refreshTokenService.json
 
 *.env
 
