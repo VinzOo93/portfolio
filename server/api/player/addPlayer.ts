@@ -1,4 +1,4 @@
-import { realtimeDatabase } from '../../utils/firebase';
+import { realtimeDatabase } from '../../services/firebase';
 import { readBody } from 'h3';
 
 // @ts-ignore

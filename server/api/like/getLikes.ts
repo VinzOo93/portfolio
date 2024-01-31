@@ -1,5 +1,5 @@
-import { realtimeDatabase } from '../../utils/firebase';
-import { serverDecrypt } from '../../utils/serverDecrypt';
+import { realtimeDatabase } from '../../services/firebase';
+import { serverDecrypt } from '../../services/serverDecrypt';
 import { readBody } from 'h3';
 
 
