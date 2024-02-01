@@ -1,5 +1,5 @@
 
-import { calculateTaxPrice } from '../../services/taxCalculator';
+import { calculateTaxPrice } from '../../../utils/tools/taxCalculator';
 import { authByRefreshToken } from '../../security/refreshTokenAuth';
 
 // @ts-ignore

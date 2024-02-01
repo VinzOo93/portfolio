@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { getTokenFromService } from '../security/tokenAuth';
+import { getTokenFromService } from '../../utils/services/tokenAuth';
 
 export async function authByRefreshToken() {
 
