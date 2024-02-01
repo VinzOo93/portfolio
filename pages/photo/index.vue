@@ -259,6 +259,10 @@ export default {
 
 <style scoped>
 
+button {
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
 }

@@ -143,6 +143,7 @@ button {
   position: relative;
   left: 20px;
   top: 4px;
+  cursor: pointer;
 }
 
 .cart-container {
