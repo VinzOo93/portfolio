@@ -18,11 +18,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="CartRow">
+                <tr v-for="(item) in items"  class="CartRow">
                   <td class="CartCell--item">
                     <div class="CartItem">
-                      <img src="https://dummyimage.com/250x250.png/ff4444/ffffff" />
-                      <span>Vinegar - Tarragon</span>
+                      <img v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
+                      <span>{{ item.printFormat }}</span>
                     </div>
                   </td>
                   <td class="CartCell--quantity">
@@ -30,24 +30,23 @@
                       <button class="NumericInput-button" disabled>
                         <i class="fas fa-minus">-</i>
                       </button>
-                      <span class="NumericInput-value">1</span>
+                      <span class="NumericInput-value">{{ item.quantity }}</span>
                       <button class="NumericInput-button">
                         <i class="fas fa-plus">+</i>
                       </button>
                     </span>
                   </td>
-                  <td class="CartCell--price">$9.54</td>
-                  <td class="CartCell--subtotal">$9.54</td>
+                  <td class="CartCell--price">{{ item.preTaxPrice }}</td>
+                  <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
                   <td class="CartCell-actions">
                     <button class="delete">x</button>
                   </td>
                 </tr>
                 <tr>
-                  <td class="Total">Total: <span class="Total-value">$30.95</span></td>
+                  <td class="Total">Total: <span class="Total-value">{{ total.toFixed(2) }} €</span></td>
                 </tr>
               </tbody>
             </table>
-
           </div>
         </div>
       </div>
@@ -56,9 +55,36 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useItemsStore } from '/stores/items'
+
 export default {
   name: 'Cart',
-  props: ["openCartModal", "reveleModalCart"],
+  props: ['openCartModal', 'reveleModalCart'],
+
+  setup() {
+    const store = useItemsStore();
+    const items = ref([]);
+    const total = ref(0)
+    
+    getItems();
+    getTotalPrice();
+
+    function getItems() {
+      items.value = store.items;
+    }
+    function getTotalPrice() {
+      total.value = 0;
+      store.items.forEach((item) => {
+
+        total.value += parseFloat(item.taxPrice);
+      });
+    }
+    return {
+      items,
+      total
+    }
+  }
 
 }
 </script>

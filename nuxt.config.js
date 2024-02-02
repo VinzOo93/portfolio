@@ -55,7 +55,11 @@ export default {
   // '@nuxtjs/stylelint-module',
   ,
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@pinia/nuxt"],
+
+  alias: {
+    pinia: "/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs"
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

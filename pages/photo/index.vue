@@ -14,7 +14,7 @@
                   <span class='counter-like'>0</span>
                 </button>
                 <div v-for='(print) in printFormats'>
-                  <button v-on:click='addToCart(print.taxPrice, photo.uuid, print.name)' class='btn'>
+                  <button v-on:click='addToCart(print.taxPrice, print.preTaxPrice , photo.uuid, print.name)' class='btn'>
                     <span class="name">{{ print.name }}</span>
                     <span class="price">{{ print.taxPrice }} €</span>
                   </button>
@@ -31,6 +31,7 @@
 <script>
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useItemsStore } from '/stores/items'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -233,25 +234,28 @@ export default {
           })
     }
 
-    function addToCart(taxPrice, photoUuid, printFormat) {
-      manageItem(taxPrice, photoUuid, printFormat);
+    function addToCart(taxPrice, preTaxPrice, photoUuid, printFormat) {
+      manageItem(taxPrice, preTaxPrice, photoUuid, printFormat);
       const cart = document.querySelector('.cart-container');
       cart.style.visibility = 'visible';
       ++document.querySelector('.counter-cart').innerText;
 
     }
 
-    function manageItem(taxPrice, photoUuid, printFormat) {
+    function manageItem(taxPrice, preTaxPrice, photoUuid, printFormat) {
+      const store = useItemsStore();
       if (!(updateQuantityItem(photoUuid, printFormat))) {
         const item = {
           quantity: 1,
-          price: taxPrice,
+          taxPrice: taxPrice,
+          preTaxPrice: preTaxPrice,
           image: photoUuid,
           printFormat: printFormat,
           cart: null
         };
         items.value.push(item);
       }
+      store.registerItems(items.value);
     }
 
     function updateQuantityItem(photoUuid, printFormat) {

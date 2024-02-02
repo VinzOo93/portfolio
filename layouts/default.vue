@@ -164,7 +164,6 @@ export default {
     }
     const openCartModal = () => {
       reveleModalCart.value = !reveleModalCart.value;
-      console.log(reveleModalCart.value)
     }
 
     onMounted(() => {
