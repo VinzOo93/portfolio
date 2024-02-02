@@ -4,9 +4,9 @@
       <div class='transition'></div>
       <div class='photos container'>
         <template v-for='(photo) in dataPhotos'>
-          <div v-if='photo.contentInfo.image.height < 4000 ' class='inner-item img-hidden'>
+          <div v-if='photo.contentInfo.image.height < 4000' class='inner-item img-hidden'>
             <img class='cover zoom' v-bind:alt='photo.originalFilename'
-                 v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
+              v-bind:src="'https://ucarecdn.com/' + photo.uuid + '/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <div class='container-button'>
               <div id='wrap' class='flex'>
                 <button id='like-button' class='btn' v-bind:data-name='photo.uuid'>
@@ -14,9 +14,9 @@
                   <span class='counter-like'>0</span>
                 </button>
                 <div v-for='(print) in printFormats'>
-                  <button v-on:click='addToCart' class='btn'>
-                      <span class="name">{{ print.name }}</span>
-                      <span class="price">{{ print.taxPrice }} €</span>
+                  <button v-on:click='addToCart(print.taxPrice, photo.uuid, print.name)' class='btn'>
+                    <span class="name">{{ print.name }}</span>
+                    <span class="price">{{ print.taxPrice }} €</span>
                   </button>
                 </div>
               </div>
@@ -27,19 +27,23 @@
     </div>
   </div>
 </template>
-<script>
 
+<script>
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
+
   async setup() {
     useRuntimeConfig()
     const dataPhotos = ref([]);
     const printFormats = ref([]);
+    const items = ref([]);
+
     let client = [];
+
 
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5);
@@ -73,7 +77,7 @@ export default {
       const cookie = useCookie('clientInfo');
       try {
         if (cookie.value) {
-            client = cookie.value;
+          client = cookie.value;
         }
       } catch (err) {
         console.log('getCookieValue' + err);
@@ -82,11 +86,11 @@ export default {
 
     function getLikesFromClient(inner) {
       let route = 'getLikes';
-      setTimeout(function() {
+      setTimeout(function () {
         let loop = true;
         let count = 0;
         if (inner) {
-          let observer = new MutationObserver(async function() {
+          let observer = new MutationObserver(async function () {
             if (inner.style.visibility !== 'hidden' && loop) {
               try {
                 loop = false;
@@ -109,7 +113,7 @@ export default {
 
                 if (count > 0) {
                   if (result.data.value.liked && !heartIcon.classList.contains('active')) {
-                      heartIcon.classList.toggle('active');
+                    heartIcon.classList.toggle('active');
                   }
                 }
               } catch (err) {
@@ -139,15 +143,15 @@ export default {
         method: 'POST',
         body: liked
       }).then(response => {
-          if (response.data.value.success === 1) {
-            let value = target.querySelector('.counter-like').innerText;
-            if (route === 'addLike') {
-              target.querySelector('.counter-like').innerText = ++value;
-            } else {
-              target.querySelector('.counter-like').innerText = --value;
-            }
+        if (response.data.value.success === 1) {
+          let value = target.querySelector('.counter-like').innerText;
+          if (route === 'addLike') {
+            target.querySelector('.counter-like').innerText = ++value;
+          } else {
+            target.querySelector('.counter-like').innerText = --value;
           }
         }
+      }
       ).catch((e) => console.log(e)
       )
     }
@@ -163,12 +167,6 @@ export default {
       })
     }
 
-    function addToCart() {
-      const cart = document.querySelector('.cart-container');
-      cart.style.visibility = 'visible';
-      ++document.querySelector('.counter-cart').innerText;
-    }
-
     function startAnimation() {
       const transition = document.querySelector('.transition');
       const mouseCursor = document.querySelector('.cursor');
@@ -182,7 +180,7 @@ export default {
         behavior: 'smooth'
       })
       gallery.forEach(img => {
-        setTimeout(function() {
+        setTimeout(function () {
           const inners = img.querySelectorAll('.inner-item');
           inners.forEach(inner => {
             countGrid++
@@ -208,15 +206,15 @@ export default {
 
             gsap.to(
               inner, {
-                visibility: 'visible',
-                opacity: 1,
-                duration: 0.5,
-                scrollTrigger: {
-                  trigger: inner,
-                  start: top,
-                  onEnter: getLikesFromClient(inner)
-                }
+              visibility: 'visible',
+              opacity: 1,
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: inner,
+                start: top,
+                onEnter: getLikesFromClient(inner)
               }
+            }
             )
           })
         }.bind(this), 1000);
@@ -233,6 +231,36 @@ export default {
             y: '-100%',
             duration: 2.5
           })
+    }
+
+    function addToCart(taxPrice, photoUuid, printFormat) {
+      manageItem(taxPrice, photoUuid, printFormat);
+      const cart = document.querySelector('.cart-container');
+      cart.style.visibility = 'visible';
+      ++document.querySelector('.counter-cart').innerText;
+
+    }
+
+    function manageItem(taxPrice, photoUuid, printFormat) {
+      if (!(updateQuantityItem(photoUuid, printFormat))) {
+        const item = {
+          quantity: 1,
+          price: taxPrice,
+          image: photoUuid,
+          printFormat: printFormat,
+          cart: null
+        };
+        items.value.push(item);
+      }
+    }
+
+    function updateQuantityItem(photoUuid, printFormat) {
+      return items.value.some(item => {
+        if (item['image'] === photoUuid && item['printFormat'] === printFormat) {
+          item['quantity']++;
+          return true;
+        }
+      });
     }
 
     onMounted(() => {
@@ -258,7 +286,6 @@ export default {
 </script>
 
 <style scoped>
-
 button {
   cursor: pointer;
 }
@@ -291,28 +318,30 @@ img {
 
 @media (hover: hover) {
   button.btn .price {
-    display: none; 
+    display: none;
   }
 
   button.btn:hover .name {
-    display: none; 
+    display: none;
   }
 
   button.btn:hover .price {
-    display: inline; 
+    display: inline;
   }
 }
 
-@media only screen and  (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 
   button.btn {
     top: 0;
     padding: 0 12px;
   }
 
-  .btn .name, .btn .price {
+  .btn .name,
+  .btn .price {
     font-size: 9px;
-    display: block; /* Affiche chaque élément sur sa propre ligne */
+    display: block;
+    /* Affiche chaque élément sur sa propre ligne */
   }
 
   .heart-icon::before {
@@ -354,7 +383,7 @@ img {
   }
 }
 
-@media only screen and  (min-width: 980px) {
+@media only screen and (min-width: 980px) {
 
   button.btn {
     top: 10px;
@@ -368,9 +397,9 @@ img {
 
 }
 
-@media only screen and  (max-width: 1080px) {
+@media only screen and (max-width: 1080px) {
   #like-button {
-    border-width : 0;
+    border-width: 0;
     padding: 15px 19px 15px 23px !important
   }
 
@@ -399,11 +428,12 @@ img {
   }
 }
 
-@media only screen and  (min-width: 768px) {
+@media only screen and (min-width: 768px) {
 
   #like-button {
-    border-width : 0
+    border-width: 0
   }
+
   .counter-like {
     top: 9px;
   }
@@ -561,5 +591,4 @@ button.btn.warn:active {
   color: #fff;
   box-shadow: inset 0px -50px 0px #30abd5;
 }
-
 </style>

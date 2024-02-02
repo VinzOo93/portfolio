@@ -14,7 +14,6 @@
                   <th>Quantité</th>
                   <th>Prix HT</th>
                   <th>Prix TTC</th>
-
                   <th></th>
                 </tr>
               </thead>
@@ -40,54 +39,6 @@
                   <td class="CartCell--price">$9.54</td>
                   <td class="CartCell--subtotal">$9.54</td>
                   <td class="CartCell-actions">
-                    <button class="delete">x</button>
-                  </td>
-                </tr>
-                <tr class="CartRow">
-                  <td class="CartCell--item">
-                    <div class="CartItem">
-                      <img src="https://dummyimage.com/250x250.png/cc0000/ffffff" />
-                      <span>Cookie Trail Mix</span>
-                    </div>
-                  </td>
-                  <td class="CartCell--quantity">
-                    <span class="NumericInput">
-                      <button class="NumericInput-button" disabled>
-                        <i class="fas fa-minus">-</i>
-                      </button>
-                      <span class="NumericInput-value">1</span>
-                      <button class="NumericInput-button">
-                        <i class="fas fa-plus">+</i>
-                      </button>
-                    </span>
-                  </td>
-                  <td class="CartCell--price">$6.06</td>
-                  <td class="CartCell--subtotal">$12.12</td>
-                  <td class="CartCell--actions">
-                    <button class="delete">x</button>
-                  </td>
-                </tr>
-                <tr class="CartRow">
-                  <td class="CartCell--item">
-                    <div class="CartItem">
-                      <img src="https://dummyimage.com/250x250.png/5fa2dd/ffffff" />
-                      <span>Cheese - Mozzarella</span>
-                    </div>
-                  </td>
-                  <td class="CartCell--quantity">
-                    <span class="NumericInput">
-                      <button class="NumericInput-button" disabled>
-                        <i class="fas fa-minus">-</i>
-                      </button>
-                      <span class="NumericInput-value">1</span>
-                      <button class="NumericInput-button">
-                        <i class="fas fa-plus">+</i>
-                      </button>
-                    </span>
-                  </td>
-                  <td class="CartCell--price">$9.29</td>
-                  <td class="CartCell--subtotal">$9.29</td>
-                  <td class="CartCell--actions">
                     <button class="delete">x</button>
                   </td>
                 </tr>
@@ -202,9 +153,6 @@ button {
   cursor: pointer;
 }
 
-
-
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css);
 
 html {
   font-family: sans-serif;
