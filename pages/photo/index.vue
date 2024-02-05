@@ -244,7 +244,7 @@ export default {
     }
 
     function manageItem(print, photo) {
-      if (!(updateQuantityItem(print.name, photo.uuid))) {
+      if (!(updateQuantityItemAndPrices(print.name, photo.uuid))) {
         const item = {
           quantity: 1,
           taxPrice: print.taxPrice,
@@ -260,10 +260,12 @@ export default {
       }
     }
 
-    function updateQuantityItem(printFormat, photoUuid) {
+    function updateQuantityItemAndPrices(printFormat, photoUuid) {
       return items.some(item => {
-        if (item['printFormat'] === printFormat && item['image'] === photoUuid) {
-          item['quantity']++;
+        if (item.printFormat === printFormat && item.image === photoUuid) {
+          item.quantity++;
+          item.taxPrice = item.taxPrice * item.quantity;
+          item.preTaxPrice = item.preTaxPrice * item.quantity;
           return true;
         }
       });

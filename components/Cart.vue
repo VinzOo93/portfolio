@@ -28,11 +28,11 @@
                   </td>
                   <td class="CartCell--quantity">
                     <span class="NumericInput">
-                      <button v-bind:class="'NumericInput-button b-minus-' + index" v-on:click='addOnelessQuantity(index)' disabled="disable">
+                      <button class="NumericInput-button b-minus" v-on:click='addOnelessQuantity(index)' :disabled="item.quantity <= 1">
                         <i class="fas fa-minus">-</i>
                       </button>
                       <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
-                      <button v-bind:class="'NumericInput-button b-more-' + index" v-on:click='addOneMoreQuantity(index)'>
+                      <button class="NumericInput-button b-more" v-on:click='addOneMoreQuantity(index)'>
                         <i class="fas fa-plus">+</i>
                       </button>
                     </span>
@@ -94,36 +94,31 @@ export default {
     function addOneMoreQuantity(index) {
       if (store.addOneQuantity(index)) {
         ++document.querySelector('.item-quantity-' + index).innerText;
-        enableMinusButton(index);
+        updatePrices(index);
+        getTotalPrice();
       }
     }
 
     function addOnelessQuantity(index) {
       if (store.removeOneQuantity(index)) {
         --document.querySelector('.item-quantity-' + index).innerText;
-        diableMinusButton(index);
+        updatePrices(index);
+        getTotalPrice();
       }
     }
 
-    function enableMinusButton(index) {
-      const minusButton = document.querySelector('.b-minus-' + index);
-      if (document.querySelector('.item-quantity-' + index).innerText > 1) {
-        minusButton.disabled = false;
-      }
-    }
-
-    function diableMinusButton(index) {
-      const minusButton = document.querySelector('.b-minus-' + index);
-      if (document.querySelector('.item-quantity-' + index).innerText == 1) {
-        minusButton.disabled = true;
-      }
+    function updatePrices(index) {
+      const item = items[index];
+      item.taxPrice = item.taxPrice * item.quantity;
+      item.preTaxPrice = item.preTaxPrice * item.quantity;
     }
     return {
       items,
       total,
       deleteItem,
       addOneMoreQuantity,
-      addOnelessQuantity
+      addOnelessQuantity,
+      updatePrices
     }
   }
 
