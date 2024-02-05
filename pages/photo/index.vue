@@ -244,7 +244,7 @@ export default {
     }
 
     function manageItem(print, photo) {
-      if (!(updateQuantityItem(print.name, photo.image))) {
+      if (!(updateQuantityItem(print.name, photo.uuid))) {
         const item = {
           quantity: 1,
           taxPrice: print.taxPrice,

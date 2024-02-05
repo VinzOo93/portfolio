@@ -8,12 +8,18 @@ export const useItemsStore = defineStore('items', {
     registerItems(newData) {
         this.items = [...newData];
     },
-    removeItem(itemToRemove) {
-      const index = this.items.findIndex(item => item === itemToRemove);
-      if (index > -1) {
+    removeItem(index) {
          this.items.splice(index, 1);
          return true;
-      }
-    }
+    },
+    addOneQuantity(index) {
+        this.items[index].quantity++
+        return true
+    },
+    removeOneQuantity(index) {
+      this.items[index].quantity--
+      return true
+  }
+
   },
 })

@@ -18,7 +18,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-if="items" v-for="(item) in items" class="CartRow">
+                <tr v-for="(item, index) in items" class="CartRow">
                   <td class="CartCell--item">
                     <div class="CartItem">
                       <img
@@ -28,11 +28,11 @@
                   </td>
                   <td class="CartCell--quantity">
                     <span class="NumericInput">
-                      <button class="NumericInput-button" disabled>
+                      <button v-bind:class="'NumericInput-button b-minus-' + index" v-on:click='addOnelessQuantity(index)' disabled="disable">
                         <i class="fas fa-minus">-</i>
                       </button>
-                      <span class="NumericInput-value">{{ item.quantity }}</span>
-                      <button class="NumericInput-button">
+                      <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
+                      <button v-bind:class="'NumericInput-button b-more-' + index" v-on:click='addOneMoreQuantity(index)'>
                         <i class="fas fa-plus">+</i>
                       </button>
                     </span>
@@ -40,7 +40,7 @@
                   <td class="CartCell--price">{{ item.preTaxPrice }}</td>
                   <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
                   <td class="CartCell-actions">
-                    <button class="delete" v-on:click='deleteItem(item)'>x</button>
+                    <button class="delete" v-on:click='deleteItem(index)'>x</button>
                   </td>
                 </tr>
                 <tr>
@@ -84,16 +84,46 @@ export default {
       });
     }
 
-    function deleteItem(itemEvent) {
-      if (store.removeItem(itemEvent)) {
+    function deleteItem(index) {
+      if (store.removeItem(index)) {
         --document.querySelector('.counter-cart').innerText;
         getTotalPrice();
       };
     }
+
+    function addOneMoreQuantity(index) {
+      if (store.addOneQuantity(index)) {
+        ++document.querySelector('.item-quantity-' + index).innerText;
+        enableMinusButton(index);
+      }
+    }
+
+    function addOnelessQuantity(index) {
+      if (store.removeOneQuantity(index)) {
+        --document.querySelector('.item-quantity-' + index).innerText;
+        diableMinusButton(index);
+      }
+    }
+
+    function enableMinusButton(index) {
+      const minusButton = document.querySelector('.b-minus-' + index);
+      if (document.querySelector('.item-quantity-' + index).innerText > 1) {
+        minusButton.disabled = false;
+      }
+    }
+
+    function diableMinusButton(index) {
+      const minusButton = document.querySelector('.b-minus-' + index);
+      if (document.querySelector('.item-quantity-' + index).innerText == 1) {
+        minusButton.disabled = true;
+      }
+    }
     return {
       items,
       total,
-      deleteItem
+      deleteItem,
+      addOneMoreQuantity,
+      addOnelessQuantity
     }
   }
 
