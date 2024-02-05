@@ -14,7 +14,7 @@
                   <span class='counter-like'>0</span>
                 </button>
                 <div v-for='(print) in printFormats'>
-                  <button v-on:click='addToCart(print.taxPrice, print.preTaxPrice , photo.uuid, print.name)' class='btn'>
+                  <button v-on:click='addToCart(print, photo)' class='btn'>
                     <span class="name">{{ print.name }}</span>
                     <span class="price">{{ print.taxPrice }} €</span>
                   </button>
@@ -38,10 +38,11 @@ gsap.registerPlugin(ScrollTrigger);
 export default {
 
   async setup() {
+    const store = useItemsStore();
     useRuntimeConfig()
     const dataPhotos = ref([]);
     const printFormats = ref([]);
-    const items = ref([]);
+    const items = store.items;
 
     let client = [];
 
@@ -234,33 +235,34 @@ export default {
           })
     }
 
-    function addToCart(taxPrice, preTaxPrice, photoUuid, printFormat) {
-      manageItem(taxPrice, preTaxPrice, photoUuid, printFormat);
+    function addToCart(print, photo) {
+      manageItem(print, photo);
       const cart = document.querySelector('.cart-container');
       cart.style.visibility = 'visible';
       ++document.querySelector('.counter-cart').innerText;
 
     }
 
-    function manageItem(taxPrice, preTaxPrice, photoUuid, printFormat) {
-      const store = useItemsStore();
-      if (!(updateQuantityItem(photoUuid, printFormat))) {
+    function manageItem(print, photo) {
+      if (!(updateQuantityItem(print.name, photo.image))) {
         const item = {
           quantity: 1,
-          taxPrice: taxPrice,
-          preTaxPrice: preTaxPrice,
-          image: photoUuid,
-          printFormat: printFormat,
+          taxPrice: print.taxPrice,
+          preTaxPrice: print.preTaxPrice,
+          image: photo.uuid,
+          printFormat: print.name,
           cart: null
         };
-        items.value.push(item);
+        items.push(item);
       }
-      store.registerItems(items.value);
+      if (items.length === 0) {
+        store.registerItems(items);
+      }
     }
 
-    function updateQuantityItem(photoUuid, printFormat) {
-      return items.value.some(item => {
-        if (item['image'] === photoUuid && item['printFormat'] === printFormat) {
+    function updateQuantityItem(printFormat, photoUuid) {
+      return items.some(item => {
+        if (item['printFormat'] === printFormat && item['image'] === photoUuid) {
           item['quantity']++;
           return true;
         }

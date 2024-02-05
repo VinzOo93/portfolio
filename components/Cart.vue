@@ -5,7 +5,7 @@
       <div class='btn-modale' v-on:click='openCartModal'></div>
       <div class='content-cart'>
         <div class="center">
-          <div class="Cart">
+          <div v-if="items.length > 0" class="Cart">
             <h2>Mon Panier</h2>
             <table class="CartListView">
               <thead>
@@ -18,10 +18,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item) in items"  class="CartRow">
+                <tr v-if="items" v-for="(item) in items" class="CartRow">
                   <td class="CartCell--item">
                     <div class="CartItem">
-                      <img v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
+                      <img
+                        v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
                       <span>{{ item.printFormat }}</span>
                     </div>
                   </td>
@@ -39,7 +40,7 @@
                   <td class="CartCell--price">{{ item.preTaxPrice }}</td>
                   <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
                   <td class="CartCell-actions">
-                    <button class="delete">x</button>
+                    <button class="delete" v-on:click='deleteItem(item)'>x</button>
                   </td>
                 </tr>
                 <tr>
@@ -47,6 +48,9 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div v-else>
+            <h2>Votre panier est vide !! 😢</h2>
           </div>
         </div>
       </div>
@@ -64,9 +68,9 @@ export default {
 
   setup() {
     const store = useItemsStore();
-    const items = ref([]);
+    const items = store.items;
     const total = ref(0)
-    
+
     getItems();
     getTotalPrice();
 
@@ -76,13 +80,20 @@ export default {
     function getTotalPrice() {
       total.value = 0;
       store.items.forEach((item) => {
-
         total.value += parseFloat(item.taxPrice);
       });
     }
+
+    function deleteItem(itemEvent) {
+      if (store.removeItem(itemEvent)) {
+        --document.querySelector('.counter-cart').innerText;
+        getTotalPrice();
+      };
+    }
     return {
       items,
-      total
+      total,
+      deleteItem
     }
   }
 
@@ -169,6 +180,8 @@ export default {
   background: #f1f1f1;
   padding: 10px;
   position: fixed;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
 }
 
 .content_cart {
