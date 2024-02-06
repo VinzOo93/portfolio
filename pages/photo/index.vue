@@ -261,11 +261,11 @@ export default {
     }
 
     function updateQuantityItemAndPrices(printFormat, photoUuid) {
-      return items.some(item => {
+      return items.some( (item, index) => {
         if (item.printFormat === printFormat && item.image === photoUuid) {
           item.quantity++;
-          item.taxPrice = item.taxPrice * item.quantity;
-          item.preTaxPrice = item.preTaxPrice * item.quantity;
+          console.log(index);
+          store.updateItemPrices(index);
           return true;
         }
       });

@@ -77,6 +77,7 @@ export default {
     function getItems() {
       items.value = store.items;
     }
+    
     function getTotalPrice() {
       total.value = 0;
       store.items.forEach((item) => {
@@ -92,33 +93,27 @@ export default {
     }
 
     function addOneMoreQuantity(index) {
-      if (store.addOneQuantity(index)) {
+      if (store.addOneItemQuantity(index)) {
         ++document.querySelector('.item-quantity-' + index).innerText;
-        updatePrices(index);
+        store.updateItemPrices(index);
         getTotalPrice();
       }
     }
 
     function addOnelessQuantity(index) {
-      if (store.removeOneQuantity(index)) {
+      if (store.removeOneItemQuantity(index)) {
         --document.querySelector('.item-quantity-' + index).innerText;
-        updatePrices(index);
+        store.updateItemPrices(index);
         getTotalPrice();
       }
     }
 
-    function updatePrices(index) {
-      const item = items[index];
-      item.taxPrice = item.taxPrice * item.quantity;
-      item.preTaxPrice = item.preTaxPrice * item.quantity;
-    }
     return {
       items,
       total,
       deleteItem,
       addOneMoreQuantity,
       addOnelessQuantity,
-      updatePrices
     }
   }
 
