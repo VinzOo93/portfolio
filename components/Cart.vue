@@ -12,6 +12,7 @@
                 <tr>
                   <th>Impressions</th>
                   <th>Quantité</th>
+                  <th>Prix Uni </th>
                   <th>Prix HT</th>
                   <th>Prix TTC</th>
                   <th></th>
@@ -37,14 +38,15 @@
                       </button>
                     </span>
                   </td>
-                  <td class="CartCell--price">{{ item.preTaxPrice }}</td>
+                  <td class="CartCell--unitprice">{{ item.unitPrice }} €</td>
+                  <td class="CartCell--price">{{ item.preTaxPrice }} €</td>
                   <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
                   <td class="CartCell-actions">
                     <button class="delete" v-on:click='deleteItem(index)'>x</button>
                   </td>
                 </tr>
                 <tr>
-                  <td class="Total">Total: <span class="Total-value">{{ total.toFixed(2) }} €</span></td>
+                  <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
                 </tr>
               </tbody>
             </table>
@@ -77,11 +79,12 @@ export default {
     function getItems() {
       items.value = store.items;
     }
-    
+
     function getTotalPrice() {
-      total.value = 0;
+      let sum = 0;
       store.items.forEach((item) => {
-        total.value += parseFloat(item.taxPrice);
+        sum += parseFloat(item.taxPrice);
+        total.value = sum.toFixed(2);
       });
     }
 
@@ -128,7 +131,7 @@ export default {
   }
 
   .CartItem img {
-    width: 13vw;
+    width: 20vw;
   }
 
   .CartItem>* {
@@ -137,8 +140,10 @@ export default {
   }
 
   .CartCell--price,
-  .CartCell--subtotal {
+  .CartCell--subtotal ,
+  .CartCell--unitprice {
     font-size: 4vw;
+    width: 30px;
   }
 
   .modale-cart {
@@ -232,7 +237,6 @@ html {
 .CartListView th,
 .CartListView td {
   padding: 0.3rem;
-  width: vw;
 }
 
 .CartRow {
@@ -240,8 +244,9 @@ html {
 }
 
 .CartCell--price,
-.CartCell--subtotal {
-  text-align: right
+.CartCell--subtotal,
+.CartCell--unitprice {
+  text-align: center
 }
 
 .CartCell--quantity {

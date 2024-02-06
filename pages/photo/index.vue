@@ -247,6 +247,8 @@ export default {
       if (!(updateQuantityItemAndPrices(print.name, photo.uuid))) {
         const item = {
           quantity: 1,
+          unitPrice: print.taxPrice,
+          unitPreTaxPrice: print.preTaxPrice,
           taxPrice: print.taxPrice,
           preTaxPrice: print.preTaxPrice,
           image: photo.uuid,
@@ -264,7 +266,6 @@ export default {
       return items.some( (item, index) => {
         if (item.printFormat === printFormat && item.image === photoUuid) {
           item.quantity++;
-          console.log(index);
           store.updateItemPrices(index);
           return true;
         }
