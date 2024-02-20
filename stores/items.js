@@ -22,10 +22,10 @@ export const useItemsStore = defineStore('items', {
     },
     updateItemPrices(index) {
       const item = this.items[index];
-      const unitTaxPrice = item.unitPrice * item.quantity;
-      const unitPreTaxPrice = item.unitPrice * item.quantity;
-      item.taxPrice = unitTaxPrice.toFixed(2);
-      item.preTaxPrice = unitPreTaxPrice.toFixed(2);
+      const taxPrice = item.unitPrice * item.quantity;
+      const reTaxPrice = item.unitPreTaxPrice * item.quantity;
+      item.taxPrice = taxPrice.toFixed(2);
+      item.preTaxPrice = reTaxPrice.toFixed(2);
       return true;
     }
 
