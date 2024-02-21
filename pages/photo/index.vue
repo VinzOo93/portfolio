@@ -239,7 +239,7 @@ export default {
       manageItem(print, photo);
       const cart = document.querySelector('.cart-container');
       cart.style.visibility = 'visible';
-      ++document.querySelector('.counter-cart').innerText;
+      document.querySelector('.counter-cart').innerText = items.length;
 
     }
 
