@@ -28,6 +28,5 @@ export const useItemsStore = defineStore('items', {
       item.preTaxPrice = reTaxPrice.toFixed(2);
       return true;
     }
-
   },
 })

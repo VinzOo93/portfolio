@@ -1,5 +1,5 @@
-import { realtimeDatabase } from '../../../utils/services/firebase';
-import { serverDecrypt } from '../../../utils/tools/decrypt';
+import { realtimeDatabase } from '~/utils/services/firebase';
+import { serverDecrypt } from '~/utils/tools/decrypt';
 import { readBody } from 'h3';
 
 // @ts-ignore
@@ -14,10 +14,10 @@ export default defineEventHandler(async (event: any) => {
           // @ts-ignore
           const config = useRuntimeConfig();
           snapshot.forEach(function(childSnapshot) {
-            let cookiIp = serverDecrypt(body.ip);
+            let cookieIp = serverDecrypt(body.ip);
             let dbIp = serverDecrypt(childSnapshot.val().ip);
 
-            if (cookiIp === dbIp) {
+            if (cookieIp === dbIp) {
               childSnapshot.ref.orderByChild('ip').equalTo(childSnapshot.val().ip);
               childSnapshot.ref.remove();
             }

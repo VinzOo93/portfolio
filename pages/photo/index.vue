@@ -235,55 +235,92 @@ export default {
           })
     }
 
-    function addToCart(print, photo) {
-      manageItem(print, photo);
+    async function addToCart(print, photo) {
+      let route = 'addItemToCart';
+
       const cart = document.querySelector('.cart-container');
       cart.style.visibility = 'visible';
       document.querySelector('.counter-cart').innerText = items.length;
 
-    }
+      manageItem(print, photo);
 
-    function manageItem(print, photo) {
-      if (!(updateQuantityItemAndPrices(print.name, photo.uuid))) {
-        const item = {
-          quantity: 1,
-          unitPrice: print.taxPrice,
-          unitPreTaxPrice: print.preTaxPrice,
-          taxPrice: print.taxPrice,
-          preTaxPrice: print.preTaxPrice,
-          image: photo.uuid,
-          printFormat: print.name,
-          cart: null
-        };
-        items.push(item);
+      const item = {
+        image: photo.uuid,
+        printFormat: '/print_formats/' + print.id,
       }
-      if (items.length === 0) {
-        store.registerItems(items);
+      if (getCookieCartToken()) {
+        item.cart = '/carts/' + getCookieCartToken();
       }
-    }
 
-    function updateQuantityItemAndPrices(printFormat, photoUuid) {
-      return items.some( (item, index) => {
-        if (item.printFormat === printFormat && item.image === photoUuid) {
-          item.quantity++;
-          store.updateItemPrices(index);
-          return true;
+      await useFetch('/api/shop/' + route, {
+        method: 'POST',
+        body: item
+      }).then(
+        response => {
+          registerCartInCookie(response.data.value.cartToken)
         }
-      });
+      ).catch((e) => console.log(e));
     }
 
-    onMounted(() => {
-      nextTick(async () => {
-        await getPrintFormats()
-        await fetchImage()
-        await getClient()
-        activeHearts()
-      })
-    })
+      function manageItem(print, photo) {
+        if (!(updateQuantityItemAndPrices(print.name, photo.uuid))) {
+          const item = {
+            quantity: 1,
+            unitPrice: print.taxPrice,
+            unitPreTaxPrice: print.preTaxPrice,
+            taxPrice: print.taxPrice,
+            preTaxPrice: print.preTaxPrice,
+            image: photo.uuid,
+            printFormat: print.name,
+          };
+          items.push(item);
+        }
+        if (items.length === 0) {
+          store.registerItems(items);
+        }
+      }
 
-    onBeforeUpdate(() => {
-      startAnimation()
-    })
+      function updateQuantityItemAndPrices(printFormat, photoUuid) {
+        return items.some((item, index) => {
+          if (item.printFormat === printFormat && item.image === photoUuid) {
+            item.quantity++;
+            store.updateItemPrices(index);
+            return true;
+          }
+        });
+      }
+
+      function registerCartInCookie(cartToken) {
+      if (process.client) {
+        const existingCookie = useCookie('clientInfo');
+        if (existingCookie.value) {
+          return;
+        }
+      }
+        const year = 31556962;
+        const cookie = useCookie('clientCart', {
+          maxAge: year
+          })
+        cookie.value = cartToken;
+      }
+
+      function getCookieCartToken() {
+        const cookie = useCookie('clientCart');
+        return cookie.value;
+      }
+
+      onMounted(() => {
+        nextTick(async () => {
+          await getPrintFormats()
+          await fetchImage()
+          await getClient()
+          activeHearts()
+        })
+      })
+
+      onBeforeUpdate(() => {
+        startAnimation()
+      })
 
     return {
       dataPhotos,

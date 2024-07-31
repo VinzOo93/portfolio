@@ -1,6 +1,5 @@
-
-import { calculateTaxPrice } from '../../../utils/tools/taxCalculator';
-import { authByRefreshToken } from '../../security/refreshTokenAuth';
+import { calculateTaxPrice } from '~/utils/tools/taxCalculator'
+import { authByRefreshToken } from '../../security/refreshTokenAuth'
 
 // @ts-ignore
 export default defineEventHandler(async () => {
@@ -17,14 +16,12 @@ export default defineEventHandler(async () => {
     }
     );
     // @ts-ignore
-
-    const printsFormat = data.map((printFormat: any) => {
+    return data.map((printFormat: any) => {
       const taxRate = 0.20;
       const preTaxPrice = printFormat.preTaxPrice;
       printFormat.taxPrice = calculateTaxPrice(preTaxPrice, taxRate);
       return printFormat;
     });
-    return printsFormat;
 
   } catch (error) {
     console.log(error);
