@@ -24,7 +24,7 @@
                     <div class="CartItem">
                       <img
                         v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
-                      <span>{{ item.printFormat }}</span>
+                      <span>{{ item.printFormat.name }}</span>
                     </div>
                   </td>
                   <td class="CartCell--quantity">

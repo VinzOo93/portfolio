@@ -238,12 +238,9 @@ export default {
     async function addToCart(print, photo) {
       let route = 'addItemToCart';
 
+      manageItem(print, photo);
       const cart = document.querySelector('.cart-container');
       cart.style.visibility = 'visible';
-      document.querySelector('.counter-cart').innerText = items.length;
-
-      manageItem(print, photo);
-
       const item = {
         image: photo.uuid,
         printFormat: '/print_formats/' + print.id,
@@ -262,6 +259,29 @@ export default {
       ).catch((e) => console.log(e));
     }
 
+    async function getCart() {
+      if (getCookieCartToken()) {
+        const route = 'getCart';
+        const cartToken = {
+          cartToken: getCookieCartToken()
+        }
+        await useFetch('/api/shop/' + route, {
+          method: 'POST',
+          body: cartToken
+        }).then(response => {
+          const itemsCart = response.data.value.items
+          const lengthCart = itemsCart.length;
+          if (lengthCart > 0) {
+            const cart = document.querySelector('.cart-container');
+            cart.style.visibility = 'visible';
+            document.querySelector('.counter-cart').innerText = itemsCart.length;
+            items.length = itemsCart.length;
+            store.registerItems(itemsCart);
+          }
+        }).catch((e) => console.log(e));
+      }
+    }
+
       function manageItem(print, photo) {
         if (!(updateQuantityItemAndPrices(print.name, photo.uuid))) {
           const item = {
@@ -275,12 +295,13 @@ export default {
           };
           items.push(item);
         }
+        document.querySelector('.counter-cart').innerText = items.length;
         if (items.length === 0) {
           store.registerItems(items);
         }
       }
 
-      function updateQuantityItemAndPrices(printFormat, photoUuid) {
+      function  updateQuantityItemAndPrices(printFormat, photoUuid) {
         return items.some((item, index) => {
           if (item.printFormat === printFormat && item.image === photoUuid) {
             item.quantity++;
@@ -312,6 +333,7 @@ export default {
       onMounted(() => {
         nextTick(async () => {
           await getPrintFormats()
+          await getCart()
           await fetchImage()
           await getClient()
           activeHearts()
