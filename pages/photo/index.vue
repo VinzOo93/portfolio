@@ -42,8 +42,8 @@ export default {
     useRuntimeConfig()
     const dataPhotos = ref([]);
     const printFormats = ref([]);
-    const items = store.items;
-
+    const cart = ref([])
+    const items = ref(store.items);
     let client = [];
 
 
@@ -97,7 +97,6 @@ export default {
               try {
                 loop = false;
                 const imgFile = inner.querySelector('#like-button');
-
                 const data = { fileId: imgFile.getAttribute('data-name'), client: client }
 
                 const counterLikes = inner.querySelector('.counter-like');
@@ -239,14 +238,13 @@ export default {
       let route = 'addItemToCart';
 
       manageItem(print, photo);
-      const cart = document.querySelector('.cart-container');
-      cart.style.visibility = 'visible';
+
       const item = {
         image: photo.uuid,
         printFormat: '/print_formats/' + print.id,
       }
-      if (getCookieCartToken()) {
-        item.cart = '/carts/' + getCookieCartToken();
+      if (cart.value['cartToken']) {
+        item.cart = '/carts/' + cart.value['cartToken'];
       }
 
       await useFetch('/api/shop/' + route, {
@@ -262,28 +260,27 @@ export default {
     async function getCart() {
       if (getCookieCartToken()) {
         const route = 'getCart';
-        const cartToken = {
+        cart.value = {
           cartToken: getCookieCartToken()
         }
+
         await useFetch('/api/shop/' + route, {
           method: 'POST',
-          body: cartToken
+          body: cart.value
         }).then(response => {
-          const itemsCart = response.data.value.items
-          const lengthCart = itemsCart.length;
-          if (lengthCart > 0) {
-            const cart = document.querySelector('.cart-container');
-            cart.style.visibility = 'visible';
-            document.querySelector('.counter-cart').innerText = itemsCart.length;
-            items.length = itemsCart.length;
-            store.registerItems(itemsCart);
-          }
+            store.registerItems(response.data.value.items);
+            items.value = store.items;
+            if (items.value.length > 0) {
+              const cart = document.querySelector('.cart-container');
+              cart.style.visibility = 'visible';
+              document.querySelector('.counter-cart').innerText = items.value.length;
+            }
         }).catch((e) => console.log(e));
       }
     }
 
       function manageItem(print, photo) {
-        if (!(updateQuantityItemAndPrices(print.name, photo.uuid))) {
+        if (!updateQuantityItemAndPrices(print, photo)) {
           const item = {
             quantity: 1,
             unitPrice: print.taxPrice,
@@ -293,18 +290,21 @@ export default {
             image: photo.uuid,
             printFormat: print.name,
           };
-          items.push(item);
+          store.addItem(item);
         }
-        document.querySelector('.counter-cart').innerText = items.length;
-        if (items.length === 0) {
-          store.registerItems(items);
-        }
+
+        const cart = document.querySelector('.cart-container');
+        cart.style.visibility = 'visible';
+        document.querySelector('.counter-cart').innerText = items.value.length;
       }
 
-      function  updateQuantityItemAndPrices(printFormat, photoUuid) {
-        return items.some((item, index) => {
-          if (item.printFormat === printFormat && item.image === photoUuid) {
-            item.quantity++;
+      function  updateQuantityItemAndPrices(printFormat, photo) {
+
+      if (items.value === undefined) {
+        return false;
+      }
+      return items.value.some((item, index) => {
+          if (item.printFormat === printFormat.name && item.image === photo.uuid) {
             store.updateItemPrices(index);
             return true;
           }
@@ -313,8 +313,7 @@ export default {
 
       function registerCartInCookie(cartToken) {
       if (process.client) {
-        const existingCookie = useCookie('clientInfo');
-        if (existingCookie.value) {
+        if (useCookie('clientCart').value) {
           return;
         }
       }
@@ -323,7 +322,9 @@ export default {
           maxAge: year
           })
         cookie.value = cartToken;
-      }
+        cart.value = cartToken
+
+    }
 
       function getCookieCartToken() {
         const cookie = useCookie('clientCart');

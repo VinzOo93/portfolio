@@ -12,6 +12,10 @@ export const useItemsStore = defineStore('items', {
       this.items.splice(index, 1);
       return true;
     },
+    addItem(newItem) {
+      this.items.push(newItem);
+      return true;
+    },
     addOneItemQuantity(index) {
       this.items[index].quantity++
       return true
@@ -22,6 +26,7 @@ export const useItemsStore = defineStore('items', {
     },
     updateItemPrices(index) {
       const item = this.items[index];
+      item.quantity++;
       const taxPrice = item.unitPrice * item.quantity;
       const reTaxPrice = item.unitPreTaxPrice * item.quantity;
       item.taxPrice = taxPrice.toFixed(2);
