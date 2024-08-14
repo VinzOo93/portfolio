@@ -257,8 +257,21 @@ export default {
       ).catch((e) => console.log(e));
     }
 
+    async function createCart() {
+      const route = 'createCart';
+      await useFetch('/api/shop/' + route, {
+        method: 'POST'
+      }).then(response => {
+        registerCartInCookie(response.data.value.cartToken)
+      }).catch((e) => console.log(e));
+    }
+
     async function getCart() {
-      if (getCookieCartToken()) {
+
+      if (!getCookieCartToken()) {
+        await createCart();
+      }
+
         const route = 'getCart';
         cart.value = {
           cartToken: getCookieCartToken()
@@ -277,7 +290,6 @@ export default {
             }
         }).catch((e) => console.log(e));
       }
-    }
 
       function manageItem(print, photo) {
         if (!updateQuantityItemAndPrices(print, photo)) {
@@ -288,7 +300,7 @@ export default {
             taxPrice: print.taxPrice,
             preTaxPrice: print.preTaxPrice,
             image: photo.uuid,
-            printFormat: print.name,
+            printFormat: print,
           };
           store.addItem(item);
         }
@@ -298,7 +310,7 @@ export default {
         document.querySelector('.counter-cart').innerText = items.value.length;
       }
 
-      function  updateQuantityItemAndPrices(printFormat, photo) {
+      function updateQuantityItemAndPrices(printFormat, photo) {
 
       if (items.value === undefined) {
         return false;
