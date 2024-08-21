@@ -44,7 +44,9 @@ export default {
     },
     private: {
       cdnSecretKey: process.env.NUXT_ENV_CDN_SECRET_KEY,
-      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY
+      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY,
+      idApiUser: process.env.NUXT_ENV_API_USER_ID,
+      pwdApiUser: process.env.NUXT_ENV_API_USER_PWD
     }
   }
 

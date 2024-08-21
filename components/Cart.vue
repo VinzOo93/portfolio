@@ -29,11 +29,11 @@
                   </td>
                   <td class="CartCell--quantity">
                     <span class="NumericInput">
-                      <button class="NumericInput-button b-minus" v-on:click='addOnelessQuantity(index)' :disabled="item.quantity <= 1">
+                      <button class="NumericInput-button b-minus" v-on:click='addOneLessQuantity(index)' :disabled="item.quantity <= 1">
                         <i class="fas fa-minus">-</i>
                       </button>
                       <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
-                      <button class="NumericInput-button b-more" v-on:click='addOneMoreQuantity(index)'>
+                      <button class="NumericInput-button b-more" v-on:click='addOneMoreQuantity(index, item.id)'>
                         <i class="fas fa-plus">+</i>
                       </button>
                     </span>
@@ -70,10 +70,9 @@ export default {
 
   setup() {
     const store = useItemsStore();
-    const items = store.items;
+    const items = ref(store.items);
     const total = ref(0)
 
-    getItems();
     getTotalPrice();
 
     function getItems() {
@@ -92,10 +91,10 @@ export default {
       if (store.removeItem(index)) {
         --document.querySelector('.counter-cart').innerText;
         getTotalPrice();
-      };
+      }
     }
 
-    function addOneMoreQuantity(index) {
+    function addOneMoreQuantity(index, id) {
       if (store.addOneItemQuantity(index)) {
         ++document.querySelector('.item-quantity-' + index).innerText;
         store.updateItemPrices(index);
@@ -103,7 +102,7 @@ export default {
       }
     }
 
-    function addOnelessQuantity(index) {
+    function addOneLessQuantity(index, id) {
       if (store.removeOneItemQuantity(index)) {
         --document.querySelector('.item-quantity-' + index).innerText;
         store.updateItemPrices(index);
@@ -116,7 +115,7 @@ export default {
       total,
       deleteItem,
       addOneMoreQuantity,
-      addOnelessQuantity,
+      addOneLessQuantity,
     }
   }
 

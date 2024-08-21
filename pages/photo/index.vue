@@ -45,6 +45,7 @@ export default {
     const cart = ref([])
     const items = ref(store.items);
     let client = [];
+    let requestQueue = Promise.resolve();
 
 
     function shuffle(array) {
@@ -235,26 +236,27 @@ export default {
     }
 
     async function addToCart(print, photo) {
-      let route = 'addItemToCart';
-
-      manageItem(print, photo);
-
-      const item = {
-        image: photo.uuid,
-        printFormat: '/print_formats/' + print.id,
-      }
-      if (cart.value['cartToken']) {
-        item.cart = '/carts/' + cart.value['cartToken'];
-      }
-
-      await useFetch('/api/shop/' + route, {
-        method: 'POST',
-        body: item
-      }).then(
-        response => {
-          registerCartInCookie(response.data.value.cartToken)
+      requestQueue = requestQueue.then(async () => {
+        let route = 'addItemToCart';
+        const item = {
+          image: photo.uuid,
+          printFormat: '/print_formats/' + print.id,
         }
-      ).catch((e) => console.log(e));
+        if (cart.value['cartToken']) {
+          item.cart = '/carts/' + cart.value['cartToken'];
+        }
+
+        await useFetch('/api/shop/' + route, {
+          method: 'POST',
+          body: item
+        }).then(
+          response => {
+            registerCartInCookie(response.data.value.cartToken)
+            manageItem(print, photo, response.data.value.id);
+          }
+        ).catch((e) => console.log(e));
+      })
+      await requestQueue;
     }
 
     async function createCart() {
@@ -291,9 +293,10 @@ export default {
         }).catch((e) => console.log(e));
       }
 
-      function manageItem(print, photo) {
+      function manageItem(print, photo, id) {
         if (!updateQuantityItemAndPrices(print, photo)) {
           const item = {
+            id: id,
             quantity: 1,
             unitPrice: print.taxPrice,
             unitPreTaxPrice: print.preTaxPrice,

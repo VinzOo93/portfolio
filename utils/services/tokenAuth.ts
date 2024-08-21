@@ -3,10 +3,12 @@ import path from 'path';
 
 export async function getTokenFromService() {
   const authUrl = 'http://shopgallery.local/auth';
+  // @ts-ignore
+  const config = useRuntimeConfig();
 
   const data = {
-    email: 'dev@apiShopGallery.com',
-    password: 'devShop',
+    email: config.private.idApiUser,
+    password: config.private.pwdApiUser,
   }
 
   try {
@@ -29,7 +31,7 @@ export async function getTokenFromService() {
        JSON.stringify(tokenObject,
        null,
        2));
-    
+
       return responseData['token'];
 
       } catch (error) {
