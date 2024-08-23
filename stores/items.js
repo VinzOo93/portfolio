@@ -23,15 +23,6 @@ export const useItemsStore = defineStore('items', {
     removeOneItemQuantity(index) {
       this.items[index].quantity--
       return true
-    },
-    updateItemPrices(index) {
-      const item = this.items[index];
-      item.quantity++;
-      const taxPrice = item.unitPrice * item.quantity;
-      const reTaxPrice = item.unitPreTaxPrice * item.quantity;
-      item.taxPrice = taxPrice.toFixed(2);
-      item.preTaxPrice = reTaxPrice.toFixed(2);
-      return true;
     }
   },
 })

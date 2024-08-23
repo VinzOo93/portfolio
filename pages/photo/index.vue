@@ -252,7 +252,7 @@ export default {
         }).then(
           response => {
             registerCartInCookie(response.data.value.cartToken)
-            manageItem(print, photo, response.data.value.id);
+            getCart();
           }
         ).catch((e) => console.log(e));
       })
@@ -291,39 +291,6 @@ export default {
               document.querySelector('.counter-cart').innerText = items.value.length;
             }
         }).catch((e) => console.log(e));
-      }
-
-      function manageItem(print, photo, id) {
-        if (!updateQuantityItemAndPrices(print, photo)) {
-          const item = {
-            id: id,
-            quantity: 1,
-            unitPrice: print.taxPrice,
-            unitPreTaxPrice: print.preTaxPrice,
-            taxPrice: print.taxPrice,
-            preTaxPrice: print.preTaxPrice,
-            image: photo.uuid,
-            printFormat: print,
-          };
-          store.addItem(item);
-        }
-
-        const cart = document.querySelector('.cart-container');
-        cart.style.visibility = 'visible';
-        document.querySelector('.counter-cart').innerText = items.value.length;
-      }
-
-      function updateQuantityItemAndPrices(printFormat, photo) {
-
-      if (items.value === undefined) {
-        return false;
-      }
-      return items.value.some((item, index) => {
-          if (item.printFormat === printFormat.name && item.image === photo.uuid) {
-            store.updateItemPrices(index);
-            return true;
-          }
-        });
       }
 
       function registerCartInCookie(cartToken) {
