@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-export async function getTokenFromService() {
-  const authUrl = 'http://shopgallery.local/auth';
+export async function getTokenFromService()
+{
   // @ts-ignore
   const config = useRuntimeConfig();
 
@@ -12,7 +12,7 @@ export async function getTokenFromService() {
   }
 
   try {
-    const response = await fetch(authUrl, {
+    const response = await fetch(config.public.apiUrl + 'auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export async function getTokenFromService() {
 
       } catch (error) {
     console.log("error getting token : security =>  " + error);
-    throw error; // Propagez l'erreur pour un traitement ultérieur
+    throw error;
   }
 
 }

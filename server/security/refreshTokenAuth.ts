@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { getTokenFromService } from '../../utils/services/tokenAuth';
+import { getTokenFromService } from '~/utils/services/tokenAuth';
 
 export async function authByRefreshToken() {
 
@@ -12,10 +12,11 @@ export async function authByRefreshToken() {
 }
 async function getTokenWithRefresh(fileContent: any) {
     const tokenObject = JSON.parse(fileContent);
-
+    // @ts-ignore
+    const config = useRuntimeConfig();
     if (tokenObject.refreshToken) {
         try {
-            const authUrl = 'http://shopgallery.local/token/refresh';
+            const authUrl = config.public.apiUrl + 'token/refresh';
             const data = {
                 refresh_token: tokenObject.refreshToken
             }
@@ -27,11 +28,11 @@ async function getTokenWithRefresh(fileContent: any) {
                 },
                 body: JSON.stringify(data)
             });
-
+          // @ts-ignore
             if (response.status === 401) {
                 return await getTokenFromService()
             }
-
+          // @ts-ignore
             const responseData = await response.json();
 
             return responseData['token'];

@@ -7,7 +7,10 @@ export default defineEventHandler(async (event:any) => {
 
   if (body) {
     const token = await authByRefreshToken();
-    return await $fetch('http://shopgallery.local/carts/' + body.cartToken, {
+    // @ts-ignore
+    const config = useRuntimeConfig();
+
+    return await $fetch(config.public.apiUrl + 'carts/' + body.cartToken, {
       method: 'GET',
       headers: {
         accept: 'application/json',

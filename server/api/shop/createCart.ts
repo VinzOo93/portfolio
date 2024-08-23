@@ -6,7 +6,9 @@ export default defineEventHandler(async () => {
       const token = await authByRefreshToken();
       const body = {image: null, printFormat: null}
       // @ts-ignore
-      const response = await $fetch('http://shopgallery.local/items', {
+      const config = useRuntimeConfig();
+      // @ts-ignore
+      const response = await $fetch(config.public.apiUrl + 'items', {
           method: 'POST',
           headers: {
             accept: 'application/json',

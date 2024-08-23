@@ -8,7 +8,9 @@ export default defineEventHandler(async (event:any) => {
     try {
       const token = await authByRefreshToken();
       // @ts-ignore
-      const response = await $fetch('http://shopgallery.local/items', {
+      const config = useRuntimeConfig();
+      // @ts-ignore
+      const response = await $fetch(config.public.apiUrl + 'items', {
           method: 'POST',
           headers: {
             accept: 'application/json',
@@ -17,7 +19,6 @@ export default defineEventHandler(async (event:any) => {
           body: JSON.stringify(body)
         }
       );
-      console.log(response);
 
       // @ts-ignore
       if (response.token != null) {

@@ -8,7 +8,9 @@ export default defineEventHandler(async (event:any) => {
     try {
       const token = await authByRefreshToken();
       // @ts-ignore
-      const response = await $fetch('http://shopgallery.local/items/', {
+      const config = useRuntimeConfig();
+
+      const response = await $fetch(config.public.apiUrl + 'items', {
           method: 'PATCH',
           headers: {
             accept: 'application/json',
