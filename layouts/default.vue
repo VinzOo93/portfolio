@@ -10,7 +10,7 @@
       <div class='navbar-container'>
         <Navbar v-bind:openCartModal="openCartModal" v-bind:reveleModalCart='reveleModalCart' />
       </div>
-      <Cart v-if='reveleModalCart' v-bind:openCartModal='openCartModal' v-bind:reveleModalCart='reveleModalCart'/>
+      <Cart v-bind:openCartModal='openCartModal' v-bind:reveleModalCart='reveleModalCart'/>
     </div>
     <slot />
   </div>
@@ -116,7 +116,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.config({ nullTargetWarn: false });
 
 export default {
-  props: ["openCartModal", "reveleModalCart"], 
+  props: ["openCartModal", "reveleModalCart"],
   setup() {
     const reveleModalCart = ref(false);
 

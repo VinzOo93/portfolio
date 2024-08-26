@@ -36,13 +36,11 @@ import { useItemsStore } from '/stores/items'
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
-
   async setup() {
     const store = useItemsStore();
     useRuntimeConfig()
     const dataPhotos = ref([]);
     const printFormats = ref([]);
-    const cart = ref([])
     const items = ref(store.items);
     let client = [];
     let requestQueue = Promise.resolve();
@@ -60,7 +58,7 @@ export default {
         dataPhotos.value = response.data.value.results;
         shuffle(dataPhotos.value);
       }).catch((e) => console.log(e))
-    };
+    }
 
     async function getPrintFormats() {
       const route = 'getPrintsFormat';
@@ -241,9 +239,7 @@ export default {
         const item = {
           image: photo.uuid,
           printFormat: '/print_formats/' + print.id,
-        }
-        if (cart.value['cartToken']) {
-          item.cart = '/carts/' + cart.value['cartToken'];
+          cart: '/carts/' + useCookie('clientCart').value
         }
 
         await useFetch('/api/shop/' + route, {
@@ -251,72 +247,37 @@ export default {
           body: item
         }).then(
           response => {
-            registerCartInCookie(response.data.value.cartToken)
-            getCart();
+            const path = response.data.value.cartToken
+            const token = path.split('/').pop()
+            getCart(token);
           }
         ).catch((e) => console.log(e));
       })
       await requestQueue;
     }
 
-    async function createCart() {
-      const route = 'createCart';
-      await useFetch('/api/shop/' + route, {
-        method: 'POST'
-      }).then(response => {
-        registerCartInCookie(response.data.value.cartToken)
-      }).catch((e) => console.log(e));
-    }
-
-    async function getCart() {
-
-      if (!getCookieCartToken()) {
-        await createCart();
-      }
+    async function getCart(token) {
 
         const route = 'getCart';
-        cart.value = {
-          cartToken: getCookieCartToken()
-        }
 
         await useFetch('/api/shop/' + route, {
           method: 'POST',
-          body: cart.value
+          body: { cartToken: token }
         }).then(response => {
-            store.registerItems(response.data.value.items);
-            items.value = store.items;
-            if (items.value.length > 0) {
-              const cart = document.querySelector('.cart-container');
-              cart.style.visibility = 'visible';
-              document.querySelector('.counter-cart').innerText = items.value.length;
-            }
+          store.registerItems(response.data.value.items);
+          items.value = store.items;
+          if (items.value.length > 0) {
+            const cart = document.querySelector('.cart-container');
+            cart.style.visibility = 'visible';
+            document.querySelector('.counter-cart').innerText = items.value.length;
+          }
         }).catch((e) => console.log(e));
-      }
-
-      function registerCartInCookie(cartToken) {
-      if (process.client) {
-        if (useCookie('clientCart').value) {
-          return;
-        }
-      }
-        const year = 31556962;
-        const cookie = useCookie('clientCart', {
-          maxAge: year
-          })
-        cookie.value = cartToken;
-        cart.value = cartToken
-
     }
 
-      function getCookieCartToken() {
-        const cookie = useCookie('clientCart');
-        return cookie.value;
-      }
 
       onMounted(() => {
         nextTick(async () => {
           await getPrintFormats()
-          await getCart()
           await fetchImage()
           await getClient()
           activeHearts()

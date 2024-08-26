@@ -1,5 +1,5 @@
 <template>
-  <div class='bloc-modale-cart'>
+  <div v-if='reveleModalCart' class='bloc-modale-cart'>
     <div class='overlay' v-on:click='openCartModal'></div>
     <div class='modale-cart'>
       <div class='btn-modale' v-on:click='openCartModal'></div>
@@ -29,11 +29,11 @@
                   </td>
                   <td class="CartCell--quantity">
                     <span class="NumericInput">
-                      <button class="NumericInput-button b-minus" v-on:click='addOneLessQuantity(index)' :disabled="item.quantity <= 1">
+                      <button class="NumericInput-button b-minus" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
                         <i class="fas fa-minus">-</i>
                       </button>
                       <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
-                      <button class="NumericInput-button b-more" v-on:click='addOneMoreQuantity(index, item.id)'>
+                      <button class="NumericInput-button b-more" v-on:click='updateItemQuantity(item.id, false)'>
                         <i class="fas fa-plus">+</i>
                       </button>
                     </span>
@@ -42,10 +42,11 @@
                   <td class="CartCell--price">{{ item.preTaxPrice }} €</td>
                   <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
                   <td class="CartCell-actions">
-                    <button class="delete" v-on:click='deleteItem(index)'>x</button>
+                    <button class="delete" v-on:click='deleteItem(item.id)'>x</button>
                   </td>
                 </tr>
                 <tr>
+                  <td class="shipping"> Frais d'expédition: {{ shipping }} € </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
                 </tr>
               </tbody>
@@ -71,51 +72,112 @@ export default {
   setup() {
     const store = useItemsStore();
     const items = ref(store.items);
+    const cart = ref([])
     const total = ref(0)
+    const shipping = ref(0)
+    let requestQueue = Promise.resolve();
 
-    getTotalPrice();
+    getCart()
 
-    function getItems() {
-      items.value = store.items;
-    }
-
-    function getTotalPrice() {
-      let sum = 0;
-      store.items.forEach((item) => {
-        sum += parseFloat(item.taxPrice);
-        total.value = sum.toFixed(2);
+    function deleteItem(id) {
+      requestQueue = requestQueue.then(async () => {
+        const route = 'deleteItemToCart';
+        const body = { id: id };
+        await useFetch('/api/shop/' + route, {
+          method: 'POST',
+          body: body
+        }).catch((e) => console.log(e));
       });
+
     }
 
-    function deleteItem(index) {
-      if (store.removeItem(index)) {
-        --document.querySelector('.counter-cart').innerText;
-        getTotalPrice();
+    async function updateItemQuantity(id, less) {
+      requestQueue = requestQueue.then(async () => {
+        const route = 'patchItemToCart';
+        const increment = {
+          less: less,
+          id: id
+        }
+
+        await useFetch('/api/shop/' + route, {
+          method: 'POST',
+          body: increment
+        }).catch((e) => console.log(e));
+      })
+      await requestQueue;
+    }
+
+    async function getCart() {
+
+      if (process.client) {
+      if (!getCookieCartToken()) {
+        await createCart();
+      }
+
+      const route = 'getCart';
+      cart.value = {
+        cartToken: getCookieCartToken()
+      }
+
+      await useFetch('/api/shop/' + route, {
+        method: 'POST',
+        body: cart.value
+      }).then(response => {
+        store.registerItems(response.data.value.items);
+        items.value = store.items;
+        if (items.value.length > 0) {
+          const cart = document.querySelector('.cart-container');
+          cart.style.visibility = 'visible';
+          document.querySelector('.counter-cart').innerText = items.value.length;
+          shipping.value = response.data.value.shipping;
+          total.value = response.data.value.total;
+        }
+      }).catch((e) => console.log(e));
       }
     }
 
-    function addOneMoreQuantity(index, id) {
-      if (store.addOneItemQuantity(index)) {
-        ++document.querySelector('.item-quantity-' + index).innerText;
-        store.updateItemPrices(index);
-        getTotalPrice();
-      }
+    async function createCart() {
+      const route = 'createCart';
+      await useFetch('/api/shop/' + route, {
+        method: 'POST'
+      }).then(response => {
+        registerCartInCookie(response.data.value.cartToken)
+      }).catch((e) => console.log(e));
     }
 
-    function addOneLessQuantity(index, id) {
-      if (store.removeOneItemQuantity(index)) {
-        --document.querySelector('.item-quantity-' + index).innerText;
-        store.updateItemPrices(index);
-        getTotalPrice();
+    function registerCartInCookie(cartToken) {
+      if (process.client) {
+        if (useCookie('clientCart').value) {
+          return;
+        }
       }
+      const year = 31556962;
+      const cookie = useCookie('clientCart', {
+        maxAge: year
+      })
+      cookie.value = cartToken;
+      cart.value = cartToken
     }
+
+    function getCookieCartToken() {
+      const cookie = useCookie('clientCart');
+      return cookie.value;
+    }
+
+    onMounted(() => {
+      getCart()
+    })
+
+    onUpdated(() => {
+      getCart()
+    })
 
     return {
       items,
+      shipping,
       total,
       deleteItem,
-      addOneMoreQuantity,
-      addOneLessQuantity,
+      updateItemQuantity,
     }
   }
 
