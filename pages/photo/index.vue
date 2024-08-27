@@ -275,10 +275,10 @@ export default {
     }
 
 
-      onMounted(() => {
-        nextTick(async () => {
-          await getPrintFormats()
-          await fetchImage()
+      onMounted(async () => {
+        await getPrintFormats()
+        await fetchImage()
+        await nextTick(async () => {
           await getClient()
           activeHearts()
         })
