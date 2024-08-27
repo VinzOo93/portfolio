@@ -109,11 +109,6 @@ export default {
 
     async function getCart() {
 
-      if (process.client) {
-      if (!getCookieCartToken()) {
-        await createCart();
-      }
-
       const route = 'getCart';
       cart.value = {
         cartToken: getCookieCartToken()
@@ -133,30 +128,6 @@ export default {
           total.value = response.data.value.total;
         }
       }).catch((e) => console.log(e));
-      }
-    }
-
-    async function createCart() {
-      const route = 'createCart';
-      await useFetch('/api/shop/' + route, {
-        method: 'POST'
-      }).then(response => {
-        registerCartInCookie(response.data.value.cartToken)
-      }).catch((e) => console.log(e));
-    }
-
-    function registerCartInCookie(cartToken) {
-      if (process.client) {
-        if (useCookie('clientCart').value) {
-          return;
-        }
-      }
-      const year = 31556962;
-      const cookie = useCookie('clientCart', {
-        maxAge: year
-      })
-      cookie.value = cartToken;
-      cart.value = cartToken
     }
 
     function getCookieCartToken() {

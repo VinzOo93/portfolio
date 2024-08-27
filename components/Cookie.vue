@@ -37,15 +37,42 @@ export default {
       const promise = await useFetch('/api/client/getClientIp');
       cookie.value = promise.data.value.ipClient;
       cookieAccepted.value = !cookieAccepted.value;
+
+      await createCart()
     }
-    onMounted(() => {
-      checkCookie();
-    })
-    return {
-      addCookie,
-      cookieAccepted
+
+    async function createCart() {
+      const route = 'createCart';
+      await useFetch('/api/shop/' + route, {
+        method: 'POST'
+      }).then(response => {
+        registerCartInCookie(response.data.value.cartToken)
+      }).catch((e) => console.log(e));
     }
-  }
+
+    function registerCartInCookie(cartToken) {
+      if (process.client) {
+        if (useCookie('clientCart').value) {
+          return;
+        }
+      }
+      const year = 31556962;
+      const cookie = useCookie('clientCart', {
+        maxAge: year
+      })
+      cookie.value = cartToken;
+      cart.value = cartToken
+    }
+
+    onMounted(async () => {
+        checkCookie();
+      }
+    )
+      return {
+        addCookie,
+        cookieAccepted
+      }
+    }
 }
 
 </script>
