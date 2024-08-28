@@ -37,10 +37,10 @@ export default {
   name: 'ModaleScore',
   props: ['reveleScore', 'toggleModaleScore'],
   setup() {
-    const data = ref('')
+    const data = ref('');
     onUpdated(async () => {
-      let promise = await useFetch('/api/player/getPlayer')
-      data.value = promise.data.value
+      let promise = await useFetch('/api/player/getPlayer');
+      data.value = promise.data.value;
     })
     return {
       data

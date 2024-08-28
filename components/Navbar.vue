@@ -7,9 +7,6 @@
             <nuxt-link class='navbar-link' to='/'>Accueil</nuxt-link>
           </li>
           <li>
-            <nuxt-link class='navbar-link' to='/projet'>Projets web</nuxt-link>
-          </li>
-          <li>
             <nuxt-link class='navbar-link' to='/photo'>Galerie photo</nuxt-link>
           </li>
           <li>
@@ -18,33 +15,38 @@
         </ul>
       </nav>
       <button type='button' aria-label='Switch appearance'
-              class='navigation-button  js-navigation-button' @click='setBackground'></button>
+              class='navigation-button  js-navigation-button' v-on:click='setBackground'></button>
+      <div class='cart-container' v-on:click='openCartModal'>
+        <img class='cart-icon' src='~/assets/shop/cart-icon.png' alt='cart'>
+        <span class='counter-cart'>0</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 
 
 export default {
-  Name: 'Navbar',
+  name: 'Navbar',
+  props: ["openCartModal", "reveleModalCart"], 
   setup() {
     const setBackground = () => {
-      const button = document.querySelector('.navigation-button')
-      const body = document.querySelector('body')
+      const button = document.querySelector('.navigation-button');
+      const body = document.querySelector('body');
 
       if (document.body.style.backgroundColor === 'rgb(21, 20, 20)') {
-        gsap.to(body, { backgroundColor: 'rgba(238,115,26,0.63)', duration: 0.25, color: '' })
-        gsap.to(button, { backgroundColor: '#151414', duration: 0.1 })
+        gsap.to(body, { backgroundColor: 'rgba(238,115,26,0.63)', duration: 0.25, color: '' });
+        gsap.to(button, { backgroundColor: '#151414', duration: 0.1 });
 
       } else {
-        gsap.to(body, { backgroundColor: '#151414', duration: 0.5 })
-        gsap.to(button, { backgroundColor: 'rgba(238,115,26,0.63)', duration: 0.1 })
+        gsap.to(body, { backgroundColor: '#151414', duration: 0.5 });
+        gsap.to(button, { backgroundColor: 'rgba(238,115,26,0.63)', duration: 0.1 });
       }
     }
     return {
-      setBackground
+      setBackground,
     }
   }
 }
@@ -136,6 +138,23 @@ button {
   text-rendering: auto;
 }
 
+.cart-icon {
+  height: 4vh;
+  position: relative;
+  left: 20px;
+  top: 4px;
+  cursor: pointer;
+}
+
+.cart-container {
+  visibility: hidden;
+}
+
+.counter-cart {
+  position: relative;
+  left: 15px;
+  font-size: 1.5vh;
+}
 
 a.navbar-link {
   position: relative;

@@ -1,18 +1,12 @@
 // @ts-ignore
-import requestIp from 'request-ip'
-// @ts-ignore
-import CryptoJS from 'crypto-js'
+import requestIp from 'request-ip';
+import { serverEncrypt } from '~/utils/tools/encrypt';
 
 // @ts-ignore
 export default defineEventHandler(async (event: any) => {
 
-  // @ts-ignore
-  const config = useRuntimeConfig()
-  const req = event.node.req
-  const clientIp = requestIp.getClientIp(req)
-
   return {
-    ipClient: CryptoJS.AES.encrypt(clientIp, config.private.encryptKey).toString()
+    ipClient: serverEncrypt(requestIp.getClientIp(event.node.req))
   }
 
-})
+});

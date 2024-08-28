@@ -35,11 +35,11 @@
             <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
                                                            alt='rock img-sm'><span
               class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin img-sm' alt='gin'>2023 </p>
+                                                 class='gin img-sm' alt='gin'>2024 </p>
             <p class='welcome line fz-3xl p-0 m-0'> 20<img src='~/assets/home/rock.jpg' class='rock img-line'
                                                            alt='rock img-sm'><span
               class='customFont'>CENT</span><img src='https://media.giphy.com/media/f4DxcVLlIOAgsYDJCG/giphy.gif'
-                                                 class='gin img-sm' alt='gin'>2023 </p>
+                                                 class='gin img-sm' alt='gin'>2024 </p>
           </div>
         </div>
         <div class='line__wrap overflow-hidden line-scroll-4'>
@@ -87,48 +87,48 @@
   </div>
 </template>
 <script>
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'index',
   setup() {
-    const revele = ref(false)
+    const revele = ref(false);
     const toggleModale = () => {
-      const timer = document.querySelector('#timer')
-      const tr = document.querySelector('.gameline')
-      const allTd = document.querySelectorAll('td')
-      revele.value = !revele.value
+      const timer = document.querySelector('#timer');
+      const tr = document.querySelector('.gameline');
+      const allTd = document.querySelectorAll('td');
+      revele.value = !revele.value;
       if (tr) {
-        timer.textContent = '00:00'
-        let clone = timer.cloneNode(true)
-        timer.parentNode.replaceChild(clone, timer)
+        timer.textContent = '00:00';
+        let clone = timer.cloneNode(true);
+        timer.parentNode.replaceChild(clone, timer);
         allTd.forEach(td => {
-          tr.removeChild(td)
+          tr.removeChild(td);
         })
       }
     }
 
     function startAnimation() {
-      const line = document.querySelectorAll('.line')
-      const rock = document.querySelector('.rock')
-      const welcome = document.querySelector('.welcome-home')
-      let enjoy = document.querySelector('.enjoy')
-      let mouseCursor = document.querySelector('.cursor')
-      let windowSize = screen.width
-      const revealXs = document.querySelectorAll('.xs-reveal')
-      const body = document.body
+      const line = document.querySelectorAll('.line');
+      const rock = document.querySelector('.rock');
+      const welcome = document.querySelector('.welcome-home');
+      let enjoy = document.querySelector('.enjoy');
+      let mouseCursor = document.querySelector('.cursor');
+      let windowSize = screen.width;
+      const revealXs = document.querySelectorAll('.xs-reveal');
+      const body = document.body;
 
       setTimeout(function() {
-        welcome.style.visibility = 'visible'
-        welcome.style.opacity = '1'
+        welcome.style.visibility = 'visible';
+        welcome.style.opacity = '1';
 
       }.bind(this), 500)
 
       if (windowSize <= 768) {
-        body.style.height = 1000 + 'px'
+        body.style.height = 1000 + 'px';
       }
       setTimeout(function() {
         gsap.timeline(100)
@@ -151,7 +151,7 @@ export default {
             duration: 2,
             yPercent: 200,
             ease: 'power4'
-          })
+          });
 
         gsap.to(
           '.line-scroll-1', {
@@ -162,8 +162,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.line-scroll-2', {
@@ -174,8 +173,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.line-scroll-3', {
@@ -186,8 +184,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.line-scroll-4', {
@@ -198,8 +195,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.drawing-monkey', {
@@ -211,8 +207,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.drawing-moon', {
@@ -224,8 +219,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.drawing-plant', {
@@ -237,8 +231,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.drawing-crow', {
@@ -250,8 +243,7 @@ export default {
               end: '+=50%',
               scrub: true
             }
-          }
-        )
+          });
 
         gsap.to(
           '.img-scroll-2', {
@@ -264,22 +256,21 @@ export default {
               scrub: true,
               pin: true
             }
-          }
-        )
+          });
 
       } else {
-        revealXs.forEach(text => text.style.opacity = '1')
+        revealXs.forEach(text => text.style.opacity = '1');
       }
       enjoy.addEventListener('mouseover', () => {
         mouseCursor.classList.add('link-grow')
-      })
+      });
       enjoy.addEventListener('mouseleave', () => {
-        mouseCursor.classList.remove('link-grow')
-      })
+        mouseCursor.classList.remove('link-grow');
+      });
     }
 
     onMounted(() => {
-      startAnimation()
+      startAnimation();
     })
     return {
       revele,

@@ -41,10 +41,13 @@ export default {
       cdnUrl: process.env.NUXT_ENV_CDN_URL,
       cdnPublicKey: process.env.NUXT_ENV_CDN_PUBLIC_KEY,
       cdnUri: process.env.NUXT_ENV_CDN_URI,
+      apiUrl: process.env.NUXT_ENV_API_URL
     },
     private: {
       cdnSecretKey: process.env.NUXT_ENV_CDN_SECRET_KEY,
-      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY
+      encryptKey: process.env.NUXT_ENV_ENCRYPT_KEY,
+      idApiUser: process.env.NUXT_ENV_API_USER_ID,
+      pwdApiUser: process.env.NUXT_ENV_API_USER_PWD
     }
   }
 
@@ -55,7 +58,7 @@ export default {
   // '@nuxtjs/stylelint-module',
   ,
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@pinia/nuxt"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

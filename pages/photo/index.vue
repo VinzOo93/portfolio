@@ -4,15 +4,22 @@
       <div class='transition'></div>
       <div class='photos container'>
         <template v-for='(photo) in dataPhotos'>
-          <div v-if='photo.contentInfo.image.height < 4000 ' class='inner-item img-hidden'>
+          <div v-if='photo.contentInfo.image.height < 4000' class='inner-item img-hidden'>
             <img class='cover zoom' v-bind:alt='photo.originalFilename'
-                 v-bind:src="'https://ucarecdn.com/'+photo.uuid+'/-/preview/1880x864/-/quality/smart/-/format/auto/'">
+              v-bind:src="'https://ucarecdn.com/' + photo.uuid + '/-/preview/1880x864/-/quality/smart/-/format/auto/'">
             <div class='container-button'>
-              <button id='like-button' class='heart' v-bind:data-name='photo.uuid'>
-                <span class='heart-icon'></span>
-                <span class='counter-like'>0</span>
-                <span class='like-text'>Like</span>
-              </button>
+              <div id='wrap' class='flex'>
+                <button id='like-button' class='btn' v-bind:data-name='photo.uuid'>
+                  <span class='heart-icon'></span>
+                  <span class='counter-like'>0</span>
+                </button>
+                <div v-for='(print) in printFormats'>
+                  <button v-on:click='addToCart(print, photo)' class='btn'>
+                    <span class="name">{{ print.name }}</span>
+                    <span class="price">{{ print.taxPrice }} €</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </template>
@@ -20,20 +27,27 @@
     </div>
   </div>
 </template>
+
 <script>
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useItemsStore } from '/stores/items'
 
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   async setup() {
+    const store = useItemsStore();
     useRuntimeConfig()
-    const dataPhotos = ref([])
-    let client = []
+    const dataPhotos = ref([]);
+    const printFormats = ref([]);
+    const items = ref(store.items);
+    let client = [];
+    let requestQueue = Promise.resolve();
+
+
     function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5)
+      return array.sort(() => Math.random() - 0.5);
     }
 
     async function fetchImage() {
@@ -41,86 +55,83 @@ export default {
       await useFetch('/api/photo/' + route, {
         method: 'GET'
       }).then(response => {
-        dataPhotos.value = response.data.value.results
-        shuffle(dataPhotos.value)
+        dataPhotos.value = response.data.value.results;
+        shuffle(dataPhotos.value);
       }).catch((e) => console.log(e))
     }
 
+    async function getPrintFormats() {
+      const route = 'getPrintsFormat';
+      await useFetch('/api/shop/' + route,
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(print => {
+          printFormats.value = print.data.value
+        }).catch((error) => console.log('error fetch ' + error));
+    }
+
     async function getClient() {
-      const route = 'getCookie'
-      const cookie = useCookie('clientInfo')
+      const cookie = useCookie('clientInfo');
       try {
         if (cookie.value) {
-          await useFetch('/api/utils/' + route, {
-            method: 'get'
-          }).then(response => {
-            client = response.data.value
-          })
+          client = cookie.value;
         }
       } catch (err) {
-        console.log('getCookieValue' + err)
+        console.log('getCookieValue' + err);
       }
     }
 
     function getLikesFromClient(inner) {
-      let route = 'getLikes'
-      setTimeout(function() {
-        let loop = true
-        let count = 0
+      let route = 'getLikes';
+      setTimeout(function () {
+        let loop = true;
+        let count = 0;
         if (inner) {
-          let observer = new MutationObserver(async function() {
+          let observer = new MutationObserver(async function () {
             if (inner.style.visibility !== 'hidden' && loop) {
               try {
-                loop = false
-                const imgFile = inner.querySelector('#like-button')
+                loop = false;
+                const imgFile = inner.querySelector('#like-button');
+                const data = { fileId: imgFile.getAttribute('data-name'), client: client }
 
-                const data =
-                  { fileId: imgFile.getAttribute('data-name') }
-
-                const counterLikes = inner.querySelector('.counter-like')
-                const heartIcon = inner.querySelector('.heart-icon')
-
+                const counterLikes = inner.querySelector('.counter-like');
+                const heartIcon = inner.querySelector('.heart-icon');
                 const result = await
                   useFetch('/api/like/' + route, {
                     method: 'POST',
                     body: data,
-                    key: imgFile.getAttribute('data-name')
-                  })
-                const likesImg = result.data.value.likes
-                const arrayKeys = Object.keys(likesImg)
-                count = arrayKeys.length
-                counterLikes.innerText = count
+                    key: imgFile.getAttribute('data-name'),
+                  });
+                const likesImg = result.data.value.likes;
+                const arrayKeys = Object.keys(likesImg);
+                count = arrayKeys.length;
+                counterLikes.innerText = count;
 
                 if (count > 0) {
-                  counterLikes.innerText = count
-                  route = 'decrypt'
-                  for (const value of arrayKeys) {
-                    await useFetch('/api/utils/' + route, {
-                      method: 'POST',
-                      body: likesImg[value].ip
-                    }).then(response => {
-                      if (response.data.value.decrypted === client.cookie && !heartIcon.classList.contains('active')) {
-                        heartIcon.classList.toggle('active')
-                      }
-                    })
+                  if (result.data.value.liked && !heartIcon.classList.contains('active')) {
+                    heartIcon.classList.toggle('active');
                   }
                 }
               } catch (err) {
-                console.log('getLikes' + err)
+                console.log('getLikes' + err);
               }
             }
           })
           try {
-            observer.observe(inner, { attributes: true, childList: true })
+            observer.observe(inner, { attributes: true, childList: true });
           } catch (err) {
-            console.log('observer ' + err)
+            console.log('observer ' + err);
           }
         }
       }, 400)
     }
 
     async function likeAction(target) {
-      let route = 'deleteLike'
+      let route = 'deleteLike';
       if (target.firstChild.classList.contains('active')) {
         route = 'addLike'
       }
@@ -132,15 +143,15 @@ export default {
         method: 'POST',
         body: liked
       }).then(response => {
-          if (response.data.value.success === 1) {
-            let value = target.querySelector('.counter-like').innerText
-            if (route === 'addLike') {
-              target.querySelector('.counter-like').innerText = ++value
-            } else {
-              target.querySelector('.counter-like').innerText = --value
-            }
+        if (response.data.value.success === 1) {
+          let value = target.querySelector('.counter-like').innerText;
+          if (route === 'addLike') {
+            target.querySelector('.counter-like').innerText = ++value;
+          } else {
+            target.querySelector('.counter-like').innerText = --value;
           }
         }
+      }
       ).catch((e) => console.log(e)
       )
     }
@@ -157,55 +168,58 @@ export default {
     }
 
     function startAnimation() {
-      const transition = document.querySelector('.transition')
-      const mouseCursor = document.querySelector('.cursor')
-      const gallery = document.querySelectorAll('.gallery .photos')
-      const windowSize = screen.width
-      let top = 'top 80%'
-      let countGrid = 0
+      const transition = document.querySelector('.transition');
+      const mouseCursor = document.querySelector('.cursor');
+      const gallery = document.querySelectorAll('.gallery .photos');
+      const windowSize = screen.width;
+      let top = 'top 80%';
+      let countGrid = 0;
+
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       })
       gallery.forEach(img => {
-        setTimeout(function() {
-          const inners = img.querySelectorAll('.inner-item')
+        setTimeout(function () {
+          const inners = img.querySelectorAll('.inner-item');
           inners.forEach(inner => {
             countGrid++
             if (windowSize >= 769) {
               inner.addEventListener('mouseleave', () => {
-                mouseCursor.classList.remove('overImage')
+                mouseCursor.classList.remove('overImage');
               })
               inner.addEventListener('mouseover', () => {
-                mouseCursor.classList.add('overImage')
+                mouseCursor.classList.add('overImage');
               })
               if (countGrid % 2 === 0) {
                 top = 'top 20%'
               } else {
                 top = 'top 90%'
-                inner.style.position = 'relative'
-                inner.style.top = '350px'
+                inner.style.position = 'relative';
+                inner.style.top = '350px';
               }
             } else {
-              let imgZoom = inner.querySelector('.zoom')
-              let clone = imgZoom.cloneNode(true)
-              imgZoom.parentNode.replaceChild(clone, imgZoom)
+              let imgZoom = inner.querySelector('.zoom');
+              let clone = imgZoom.cloneNode(true);
+              imgZoom.parentNode.replaceChild(clone, imgZoom);
             }
+
             gsap.to(
               inner, {
-                visibility: 'visible',
-                opacity: 1,
-                duration: 0.5,
-                scrollTrigger: {
-                  trigger: inner,
-                  start: top,
-                  onEnter: getLikesFromClient(inner)
-                }
+              visibility: 'visible',
+              opacity: 1,
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: inner,
+                start: top,
+                onEnter: getLikesFromClient(inner)
               }
+            }
             )
           })
-        }.bind(this), 1000)
+        }.bind(this), 1000);
       })
+
       gsap.timeline(50)
         .fromTo(transition,
           {
@@ -219,29 +233,78 @@ export default {
           })
     }
 
-    onMounted(() => {
-      nextTick(async () => {
-        await fetchImage()
-        await getClient()
+    async function addToCart(print, photo) {
+      requestQueue = requestQueue.then(async () => {
+        let route = 'addItemToCart';
+        const item = {
+          image: photo.uuid,
+          printFormat: '/print_formats/' + print.id,
+          cart: '/carts/' + useCookie('clientCart').value
+        }
+
+        await useFetch('/api/shop/' + route, {
+          method: 'POST',
+          body: item
+        }).then(
+          response => {
+            const path = response.data.value.cartToken
+            const token = path.split('/').pop()
+            getCart(token);
+          }
+        ).catch((e) => console.log(e));
       })
-    })
+      await requestQueue;
+    }
 
-    onBeforeUpdate(() => {
-      startAnimation()
-    })
+    async function getCart(token) {
 
-    onUpdated(() => {
-      activeHearts()
-    })
+        const route = 'getCart';
+
+        await useFetch('/api/shop/' + route, {
+          method: 'POST',
+          body: { cartToken: token }
+        }).then(response => {
+          store.registerItems(response.data.value.items);
+          items.value = store.items;
+          if (items.value.length > 0) {
+            const cart = document.querySelector('.cart-container');
+            cart.style.visibility = 'visible';
+            document.querySelector('.counter-cart').innerText = items.value.length;
+          }
+        }).catch((e) => console.log(e));
+    }
+
+
+      onMounted(async () => {
+        await nextTick(async () => {
+          await getPrintFormats()
+          await fetchImage()
+          await getClient()
+          activeHearts()
+        })
+      })
+
+      onBeforeUpdate(() => {
+        startAnimation()
+      })
 
     return {
-      dataPhotos
+      dataPhotos,
+      printFormats,
+      addToCart
     }
   }
 }
 </script>
 
 <style scoped>
+button {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
 
 .img-hidden {
   visibility: visible;
@@ -265,7 +328,54 @@ img {
   width: 100%;
 }
 
-@media only screen and  (max-width: 768px) {
+@media (hover: hover) {
+  button.btn .price {
+    display: none;
+  }
+
+  button.btn:hover .name {
+    display: none;
+  }
+
+  button.btn:hover .price {
+    display: inline;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  button.btn {
+    top: 0;
+    padding: 0 12px;
+  }
+
+  .btn .name,
+  .btn .price {
+    font-size: 9px;
+    display: block;
+    /* Affiche chaque élément sur sa propre ligne */
+  }
+
+  .heart-icon::before {
+    top: 6px;
+  }
+
+  .heart-icon::after {
+    top: 6px;
+  }
+
+  .container-button {
+    margin: 7%;
+  }
+
+  .counter-like {
+    top: 7px;
+  }
+
+  .like-text {
+    top: 6px;
+    left: 43px;
+  }
 
   .container {
     margin-top: 5%;
@@ -285,7 +395,65 @@ img {
   }
 }
 
-@media only screen and  (min-width: 768px) {
+@media only screen and (min-width: 980px) {
+
+  button.btn {
+    top: 10px;
+    padding: 10px 24px;
+  }
+
+  .like-text {
+    left: 53px;
+    top: 8px;
+  }
+
+}
+
+@media only screen and (max-width: 1080px) {
+  #like-button {
+    border-width: 0;
+    padding: 15px 19px 15px 23px !important
+  }
+
+  .heart-icon::before {
+    box-sizing: border-box;
+    height: 15px;
+    width: 8px;
+    left: 2px;
+    top: 0;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-45deg);
+
+  }
+
+  .heart-icon::after {
+    box-sizing: border-box;
+    height: 15px;
+    width: 8px;
+    left: 6px;
+    top: 0;
+    bottom: 20px !important;
+  }
+
+  .counter-like {
+    top: 14px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  #like-button {
+    border-width: 0
+  }
+
+  .counter-like {
+    top: 9px;
+  }
+
+  .like-text {
+    left: 53px;
+    top: 8px;
+  }
 
   .img-hidden {
     padding-bottom: 40px;
@@ -307,31 +475,14 @@ img {
     z-index: 1;
     max-width: 95%;
   }
-
-  #like-button {
-    margin: 10px;
-  }
 }
 
 .medium-zoom-image--opened {
   z-index: 2 !important;
 }
 
-#like-button {
-  background-color: transparent;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 13px;
-  font-weight: bold;
-  padding: 10px;
-  position: relative;
-  width: 90px;
-  height: 28px;
-  border-radius: 5px;
-}
-
 .container-button {
-  width: 100%;
+  width: 85%;
   display: flex;
   justify-content: center;
 }
@@ -349,8 +500,8 @@ img {
   box-sizing: border-box;
   height: 15px;
   width: 10px;
-  top: 4px;
-  left: 10px;
+  left: 5px;
+  bottom: 14px;
   border-radius: 50% 50% 0 0;
   transform: rotate(-45deg);
 
@@ -360,8 +511,8 @@ img {
   box-sizing: border-box;
   height: 15px;
   width: 10px;
-  top: 4px;
-  left: 14px;
+  left: 9px;
+  bottom: 14px;
   border-radius: 50% 50% 0 0;
   transform: rotate(45deg);
 }
@@ -377,16 +528,14 @@ img {
   color: #f6f1f1;
   position: absolute;
   display: inline-block;
-  top: 4px;
-  left: 53px;
 }
 
 .counter-like {
   font-size: 12px;
   position: absolute;
   display: inline-block;
-  top: 5px;
-  left: 30px;
+  left: 26px;
+  top: 12px;
 }
 
 .gallery {
@@ -407,4 +556,51 @@ html {
   width: 0 !important
 }
 
+#wrap {
+  margin: -10px auto;
+  text-align: center;
+}
+
+button.btn {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-weight: 700;
+  background: transparent;
+  letter-spacing: .5px;
+  margin: 10px;
+  color: #E8D7ACFF !important;
+  box-shadow: inset 0 0 0 #22313F;
+  font-size: 11px;
+  border-radius: 6px;
+  transition: all 0.3s ease-out;
+}
+
+button.btn:hover {
+  background: #000000;
+  color: #fff;
+  box-shadow: inset 0px -50px 0px #22313F;
+}
+
+button.btn:active {
+  color: #05555e;
+  box-shadow: inset 0px -50px 0px #f5f7fa;
+}
+
+button.btn.warn {
+  background: #f5f7fa;
+  color: #05555e;
+  box-shadow: inset 0 0 0 #30abd5;
+}
+
+button.btn.warn:hover {
+  background: #f5f7fa;
+  color: #fff;
+  box-shadow: inset 0px -50px 0px #30abd5;
+}
+
+button.btn.warn:active {
+  color: #fff;
+  box-shadow: inset 0px -50px 0px #30abd5;
+}
 </style>
