@@ -25,15 +25,16 @@
                       <img
                         v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
                       <span>{{ item.printFormat.name }}</span>
+                      <span><button class="delete" v-on:click='deleteItem(item.id)'>x</button></span>
                     </div>
                   </td>
                   <td class="CartCell--quantity">
                     <span class="NumericInput">
-                      <button class="NumericInput-button b-minus" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
+                      <button class="NumericInput-button b-minus visible" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
                         <i class="fas fa-minus">-</i>
                       </button>
                       <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
-                      <button class="NumericInput-button b-more" v-on:click='updateItemQuantity(item.id, false)'>
+                      <button class="NumericInput-button b-more visible" v-on:click='updateItemQuantity(item.id, false)'>
                         <i class="fas fa-plus">+</i>
                       </button>
                     </span>
@@ -41,13 +42,12 @@
                   <td class="CartCell--unitprice">{{ item.unitPrice }} €</td>
                   <td class="CartCell--price">{{ item.preTaxPrice }} €</td>
                   <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
-                  <td class="CartCell-actions">
-                    <button class="delete" v-on:click='deleteItem(item.id)'>x</button>
-                  </td>
                 </tr>
                 <tr>
-                  <td class="shipping"> Frais d'expédition: {{ shipping }} € </td>
+                  <td class="shipping"> Frais d'expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
+                  <td><button class='button-validate validate' v-on:click='validateCart' ></button></td>
+                  <td><button class='button-pay hidden'>Payer €</button></td>
                 </tr>
               </tbody>
             </table>
@@ -135,6 +135,41 @@ export default {
       return cookie.value;
     }
 
+    function validateCart() {
+      const mores = document.querySelectorAll('.b-more');
+      const minus = document.querySelectorAll('.b-minus');
+      const deletes = document.querySelectorAll('.delete');
+      const pay = document.querySelector('.button-pay');
+      const validate = document.querySelector('.button-validate');
+
+      mores.forEach(more => toggleVisibility(more));
+      minus.forEach(min => toggleVisibility(min));
+      deletes.forEach(del => toggleVisibility(del));
+      toggleVisibility(pay);
+      changerValidateButton(validate);
+    }
+
+    function toggleVisibility(element) {
+      if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+        element.classList.add('visible');
+      } else {
+        element.classList.remove('visible');
+        element.classList.add('hidden');
+      }
+    }
+
+    function changerValidateButton(element) {
+      if (!element.classList.contains('update')) {
+        element.classList.add('update');
+        element.classList.remove('validate');
+
+      } else  {
+        element.classList.add('validate');
+        element.classList.remove('update');
+      }
+    }
+
     onMounted(() => {
       getCart()
     })
@@ -149,6 +184,7 @@ export default {
       total,
       deleteItem,
       updateItemQuantity,
+      validateCart
     }
   }
 
@@ -163,7 +199,8 @@ export default {
   }
 
   .CartItem img {
-    width: 20vw;
+    width: 15vw;
+    padding: 0.1rem;
   }
 
   .CartItem>* {
@@ -180,6 +217,14 @@ export default {
 
   .modale-cart {
     width: 100%
+  }
+
+  .Total-value {
+    font-size: 15px;
+  }
+
+  .shipping-value {
+    font-size: 15px;
   }
 
 }
@@ -323,6 +368,26 @@ h2 {
 
 .NumericInput-value {
   margin: 0 0.5rem;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  visibility: hidden;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+  visibility: visible;
+}
+
+.update::after {
+  content: 'Modifier le panier';
+}
+
+.validate::before {
+  content: 'Valider le panier';
 }
 </style>
 
