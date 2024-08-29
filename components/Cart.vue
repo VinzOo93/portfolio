@@ -12,8 +12,8 @@
                 <tr>
                   <th>Impressions</th>
                   <th>Quantité</th>
-                  <th>Prix Uni </th>
-                  <th>Prix HT</th>
+                  <th class='mobile-not-visible'>Prix Uni </th>
+                  <th class='mobile-not-visible'>Prix HT</th>
                   <th>Prix TTC</th>
                   <th></th>
                 </tr>
@@ -25,7 +25,6 @@
                       <img
                         v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
                       <span>{{ item.printFormat.name }}</span>
-                      <span><button class="delete" v-on:click='deleteItem(item.id)'>x</button></span>
                     </div>
                   </td>
                   <td class="CartCell--quantity">
@@ -43,13 +42,16 @@
                   </td>
                   <td class="CartCell--unitprice">{{ item.unitPrice }} €</td>
                   <td class="CartCell--price">{{ item.preTaxPrice }} €</td>
-                  <td class="CartCell--subtotal">{{ item.taxPrice }} €</td>
+                  <td class="CartCell--subtotal"><span>{{ item.taxPrice }} €</span></td>
+                  <td class="CartCell--subtotal">
+                    <span><button class="delete" v-on:click='deleteItem(item.id)'>x</button></span>
+                  </td>
                 </tr>
                 <tr>
-                  <td class="shipping"> Frais d'expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
+                  <td class="shipping"> Expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
                   <td><button class='button-validate validate' v-on:click='validateCart' ></button></td>
-                  <td><button class='button-pay hidden'>Payer €</button></td>
+                  <td><button class='button-pay hidden'>Payer</button></td>
                 </tr>
               </tbody>
             </table>
@@ -201,11 +203,12 @@ export default {
   }
 
   .CartItem img {
-    width: 15vw;
+    width: 20vw;
     padding: 0.1rem;
   }
 
   .CartItem>* {
+    margin-top: 0.4rem;
     margin-right: 0.4rem;
     font-size: 4vw;
   }
@@ -226,7 +229,7 @@ export default {
   }
 
   .Total-value {
-    font-size: 15px;
+    font-size: 20px;
   }
 
   .shipping-value {
@@ -237,6 +240,13 @@ export default {
     padding: 0;
   }
 
+  .CartCell--unitprice,
+  .CartCell--price,
+  .mobile-not-visible
+  {
+    display: none;
+  }
+
 }
 
 @media only screen and (min-width: 968.5px) {
@@ -245,33 +255,36 @@ export default {
     width: 80%
   }
 
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+
   .CartListView th,
   .CartListView td {
     padding: 0.3rem;
   }
 
   .CartItem>* {
-    margin-right: 50px;
+    margin-right: 30px;
   }
 
-
   .CartItem img {
-    width: 96px;
+    width: 100px;
   }
 
 
 }
 
-.delete {
-  border: 2px solid #000;
-  border-radius: 3px;
+.delete, .NumericInput-button {
+  border: 2px solid #cec3aa;
+  border-radius: 10px;
   background: #e9e9e9;
   cursor: pointer;
   font-size: 15px;
-  height: 4vh;
-  box-shadow: 2px 3px 0px #9e9e9e;
+  box-shadow: 2px 3px 0 #9e9e9e;
   box-sizing: border-box;
-  font-family: "verdana" !important;
+  font-family: "verdana",serif !important;
 }
 
 .delete:hover {
@@ -337,8 +350,9 @@ html {
 }
 
 .CartCell--quantity {
+  margin-top: 30px;
   text-align: center;
-  min-width: 70px;
+  min-width: 30vw;
 }
 
 .CartCell--subtotal {
@@ -350,11 +364,9 @@ html {
   align-items: center;
 }
 
-.Total {
+.Total, .shipping {
   font-weight: bold;
-  font-size: 1.2rem;
-  margin: 1rem 0;
-  padding: 0 0.7rem;
+  font-size: 15px;
 }
 
 .Total-value {
@@ -366,15 +378,10 @@ h2 {
   justify-content: center;
 }
 
-
-.center {
-  display: flex;
-  justify-content: center;
-}
-
 .NumericInput button {
-  width: 1rem;
-  height: 2rem;
+  width: 2rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .NumericInput-value {
@@ -394,11 +401,28 @@ h2 {
 }
 
 .update::after {
-  content: 'Modifier le panier';
+  content: 'Modifier';
 }
 
 .validate::before {
-  content: 'Valider le panier';
+  content: 'Valider';
 }
+
+tbody tr:last-child {
+  margin-top: 20px;
+}
+
+tbody tr:last-child td {
+  padding-top: 10px;
+}
+
+tbody tr {
+  margin-top: 20px;
+}
+
+.button-pay {
+  margin-left: 10px;
+}
+
 </style>
 
