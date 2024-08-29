@@ -29,15 +29,17 @@
                     </div>
                   </td>
                   <td class="CartCell--quantity">
-                    <span class="NumericInput">
-                      <button class="NumericInput-button b-minus visible" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
-                        <i class="fas fa-minus">-</i>
-                      </button>
-                      <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
-                      <button class="NumericInput-button b-more visible" v-on:click='updateItemQuantity(item.id, false)'>
-                        <i class="fas fa-plus">+</i>
-                      </button>
-                    </span>
+                    <div class="CartButtons">
+                      <span class="NumericInput">
+                        <button class="NumericInput-button b-minus visible" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
+                          <i class="fas fa-minus">-</i>
+                        </button>
+                        <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
+                        <button class="NumericInput-button b-more visible" v-on:click='updateItemQuantity(item.id, false)'>
+                          <i class="fas fa-plus">+</i>
+                        </button>
+                      </span>
+                    </div>
                   </td>
                   <td class="CartCell--unitprice">{{ item.unitPrice }} €</td>
                   <td class="CartCell--price">{{ item.preTaxPrice }} €</td>
@@ -210,13 +212,17 @@ export default {
 
   .CartCell--price,
   .CartCell--subtotal ,
-  .CartCell--unitprice {
-    font-size: 4vw;
-    width: 30px;
+  .CartCell--unitprice,
+  .CartCell--quantity {
+    font-size: 3vw;
   }
 
   .modale-cart {
     width: 100%
+  }
+
+  .Cart {
+    width: 90%;
   }
 
   .Total-value {
@@ -226,6 +232,10 @@ export default {
   .shipping-value {
     font-size: 15px;
   }
+  .CartListView th,
+  .CartListView td {
+    padding: 0;
+  }
 
 }
 
@@ -233,6 +243,11 @@ export default {
 
   .modale-cart {
     width: 80%
+  }
+
+  .CartListView th,
+  .CartListView td {
+    padding: 0.3rem;
   }
 
   .CartItem>* {
@@ -311,11 +326,6 @@ html {
   border-bottom: 1px solid #cdcdcd;
 }
 
-.CartListView th,
-.CartListView td {
-  padding: 0.3rem;
-}
-
 .CartRow {
   border-bottom: 1px solid #cdcdcd;
 }
@@ -328,6 +338,7 @@ html {
 
 .CartCell--quantity {
   text-align: center;
+  min-width: 70px;
 }
 
 .CartCell--subtotal {
@@ -362,7 +373,7 @@ h2 {
 }
 
 .NumericInput button {
-  width: 2rem;
+  width: 1rem;
   height: 2rem;
 }
 
