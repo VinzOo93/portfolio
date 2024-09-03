@@ -30,7 +30,7 @@
                   <td class="CartCell--quantity">
                     <div class="CartButtons">
                       <span class="NumericInput">
-                        <button class="NumericInput-button b-minus visible" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
+                        <button class="NumericInput-button b-minus visible .minus" v-on:click='updateItemQuantity(item.id, true)' :disabled="item.quantity <= 1">
                           <i class="fas fa-minus">-</i>
                         </button>
                         <span v-bind:class="'NumericInput-value item-quantity-' + index">{{ item.quantity }}</span>
@@ -422,6 +422,15 @@ tbody tr {
 
 .button-pay {
   margin-left: 10px;
+}
+
+.NumericInput-button:disabled {
+  opacity: 0.6;
+  background-color: #cccccc;
+  color: #666666;
+  border: 1px solid #999999;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 </style>
