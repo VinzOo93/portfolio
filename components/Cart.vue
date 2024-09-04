@@ -76,14 +76,17 @@ export default {
   setup() {
     const store = useItemsStore();
     const items = ref(store.items);
-    const cart = ref([])
-    const total = ref(0)
-    const shipping = ref(0)
+    const cart = ref([]);
+    const total = ref(0);
+    const shipping = ref(0);
     let requestQueue = Promise.resolve();
 
-    getCart()
+    watch(() => store.items, (newItems) => {
+      items.value = newItems;
+    });
 
-    function deleteItem(id) {
+
+    async function deleteItem(id) {
       requestQueue = requestQueue.then(async () => {
         const route = 'deleteItemToCart';
         const body = { id: id };
@@ -92,7 +95,8 @@ export default {
           body: body
         }).catch((e) => console.log(e));
       });
-
+      await requestQueue;
+      await getCart();
     }
 
     async function updateItemQuantity(id, less) {
@@ -109,6 +113,7 @@ export default {
         }).catch((e) => console.log(e));
       })
       await requestQueue;
+      await getCart();
     }
 
     async function getCart() {
@@ -124,13 +129,14 @@ export default {
       }).then(response => {
         store.registerItems(response.data.value.items);
         items.value = store.items;
+        shipping.value = response.data.value.shipping;
+        total.value = response.data.value.total;
+
         if (items.value.length > 0) {
           const cart = document.querySelector('.cart-container');
           cart.style.visibility = 'visible';
-          document.querySelector('.counter-cart').innerText = items.value.length;
-          shipping.value = response.data.value.shipping;
-          total.value = response.data.value.total;
         }
+        document.querySelector('.counter-cart').innerText = items.value.length;
       }).catch((e) => console.log(e));
     }
 
@@ -168,18 +174,14 @@ export default {
         element.classList.add('update');
         element.classList.remove('validate');
 
-      } else  {
+      } else {
         element.classList.add('validate');
         element.classList.remove('update');
       }
     }
 
-    onMounted(() => {
-      getCart()
-    })
-
-    onUpdated(() => {
-      getCart()
+    onMounted(async () => {
+      await getCart();
     })
 
     return {
