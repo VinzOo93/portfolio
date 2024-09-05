@@ -84,6 +84,7 @@ export default {
     watch(() => store.items, (newItems) => {
       items.value = newItems;
       total.value = store.total;
+      total.value = store.shipping;
     });
 
 
