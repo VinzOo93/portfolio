@@ -264,7 +264,12 @@ export default {
           method: 'POST',
           body: { cartToken: token }
         }).then(response => {
-          store.registerItems(response.data.value.items);
+          console.log(response.data.value.total)
+          store.registerItems(
+            response.data.value.items,
+            response.data.value.total,
+            response.data.value.shipping,
+          );
           items.value = store.items;
           if (items.value.length > 0) {
             const cart = document.querySelector('.cart-container');

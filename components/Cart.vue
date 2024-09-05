@@ -73,16 +73,17 @@ export default {
   name: 'Cart',
   props: ['openCartModal', 'reveleModalCart'],
 
-  setup() {
+  async setup() {
     const store = useItemsStore();
     const items = ref(store.items);
     const cart = ref([]);
-    const total = ref(0);
-    const shipping = ref(0);
+    const total = ref(store.total);
+    const shipping = ref(store.shipping);
     let requestQueue = Promise.resolve();
 
     watch(() => store.items, (newItems) => {
       items.value = newItems;
+      total.value = store.total;
     });
 
 
@@ -127,10 +128,16 @@ export default {
         method: 'POST',
         body: cart.value
       }).then(response => {
-        store.registerItems(response.data.value.items);
+        store.registerItems(
+          response.data.value.items,
+          response.data.value.total,
+          response.data.value.shipping,
+        );
         items.value = store.items;
-        shipping.value = response.data.value.shipping;
-        total.value = response.data.value.total;
+        if (response.data.value.total !== total.value) {
+          total.value = response.data.value.total;
+        }
+          shipping.value = response.data.value.shipping;
 
         if (items.value.length > 0) {
           const cart = document.querySelector('.cart-container');
@@ -190,7 +197,8 @@ export default {
       total,
       deleteItem,
       updateItemQuantity,
-      validateCart
+      validateCart,
+      getCart
     }
   }
 
