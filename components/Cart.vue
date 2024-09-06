@@ -81,6 +81,8 @@ export default {
     const shipping = ref(store.shipping);
     let requestQueue = Promise.resolve();
 
+    await getCart();
+
     watch(() => store.items, (newItems) => {
       items.value = newItems;
       total.value = store.total;
