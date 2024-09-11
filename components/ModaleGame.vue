@@ -105,6 +105,8 @@ export default {
   background: #f1f1f1;
   padding: 50px;
   position: fixed;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
 }
 </style>
 

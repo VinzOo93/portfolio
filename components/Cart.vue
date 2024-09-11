@@ -51,7 +51,7 @@
                   <td class="shipping"> Expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
                   <td><button class='button-validate validate' v-on:click='validateCart' ></button></td>
-                  <td><button class='button-pay hidden'>Payer</button></td>
+                  <td><button class='button-pay hidden' v-on:click='payAlert'>Payer</button></td>
                 </tr>
               </tbody>
             </table>
@@ -190,6 +190,10 @@ export default {
       }
     }
 
+    function payAlert() {
+      alert('fonctionalité à venir');
+    }
+
     onMounted(async () => {
       await getCart();
     })
@@ -201,7 +205,8 @@ export default {
       deleteItem,
       updateItemQuantity,
       validateCart,
-      getCart
+      getCart,
+      payAlert
     }
   }
 
@@ -421,15 +426,15 @@ h2 {
   content: 'Valider';
 }
 
-tbody tr:last-child {
+.CartListView tbody tr:last-child {
   margin-top: 20px;
 }
 
-tbody tr:last-child td {
+.CartListView tbody tr:last-child td {
   padding-top: 10px;
 }
 
-tbody tr {
+.CartListView tbody tr {
   margin-top: 20px;
 }
 
