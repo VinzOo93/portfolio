@@ -210,11 +210,12 @@ export default {
 
     const addScore = async () => {
       successRate = 18 / tentative * 100;
+      let timer = document.querySelector('#timer');
       let data = {
         name: playerName.value,
         tentative: tentative,
         successRate: Math.round(tentative),
-        timeLeft: timeLeft
+        timeLeft: timer.textContent
       };
       await useFetch('/api/player/addPlayer', {
         method: 'POST',

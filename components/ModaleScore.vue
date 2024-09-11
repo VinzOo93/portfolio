@@ -116,7 +116,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 250;
 }
 
 .btn-modale-score {
@@ -169,6 +168,7 @@ export default {
 
 
 .table-player {
+  width: 50%;
   border: solid 1px #74746e;
   border-radius: 30px;
 }

@@ -1,4 +1,4 @@
-import { realtimeDatabase } from '../../../utils/services/firebase'
+import { realtimeDatabase } from '~/utils/services/firebase'
 
 // @ts-ignore
 export default defineEventHandler(async () => {
@@ -6,7 +6,7 @@ export default defineEventHandler(async () => {
   let players: any[] = []
   let arrayKeys: any[] = []
 
-  await ref.orderByChild('timeLeft').limitToFirst(10)
+  await ref.orderByChild('timeLeft')
     .once('value', (snapshot) => {
       let datas = snapshot.val()
       arrayKeys = Object.keys(datas).sort((a: any, b: any): any => {
