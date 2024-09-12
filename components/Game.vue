@@ -167,6 +167,10 @@ export default {
           let time = 0;
 
           function timeIt() {
+            let timer = document.querySelector('#timer');
+            if (timer.textContent === '00:00') {
+              time = 0;
+            }
             time++;
             timer.textContent = convertSeconds(time);
             timeLeft = convertSeconds(time);
@@ -210,12 +214,11 @@ export default {
 
     const addScore = async () => {
       successRate = 18 / tentative * 100;
-      let timer = document.querySelector('#timer');
       let data = {
         name: playerName.value,
         tentative: tentative,
         successRate: Math.round(tentative),
-        timeLeft: timer.textContent
+        timeLeft: timeLeft
       };
       await useFetch('/api/player/addPlayer', {
         method: 'POST',
