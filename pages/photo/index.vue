@@ -5,8 +5,9 @@
       <div class='photos container'>
         <template v-for='(photo) in dataPhotos'>
           <div v-if='photo.contentInfo.image.height < 4000' class='inner-item img-hidden'>
-            <img class='cover zoom' v-bind:alt='photo.originalFilename'
-              v-bind:src="'https://ucarecdn.com/' + photo.uuid + '/-/preview/1880x864/-/quality/smart/-/format/auto/'">
+            <NuxtImg class='cover zoom' v-bind:alt='photo.originalFilename'
+              v-bind:src="'https://ucarecdn.com/' + photo.uuid + '/-/preview/1880x864/-/quality/smart/-/format/auto/'"
+            loading='lazy'/>
             <div class='container-button'>
               <div id='wrap' class='flex'>
                 <button id='like-button' class='btn' v-bind:data-name='photo.uuid'>
@@ -285,12 +286,9 @@ export default {
           await getPrintFormats()
           await fetchImage()
           await getClient()
+          startAnimation()
           activeHearts()
         })
-      })
-
-      onBeforeUpdate(() => {
-        startAnimation()
       })
 
     return {

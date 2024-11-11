@@ -10,6 +10,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@nuxt/image": "^1.8.1",
     "@nuxt/kit": "3.6.0",
     "@nuxt/vite-builder": "3.6.5",
     "@pinia/nuxt": "^0.5.1",

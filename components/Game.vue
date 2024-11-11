@@ -5,7 +5,9 @@
       <p id='timer'>00:00</p>
       <div class='board'>
         <table class='table-game'>
+          <tbody>
           <tr id='gameline' class='gameline'></tr>
+          </tbody>
         </table>
       </div>
     </div>

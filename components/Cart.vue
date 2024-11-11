@@ -22,8 +22,10 @@
                 <tr v-for="(item, index) in items" class="CartRow">
                   <td class="CartCell--item">
                     <div class="CartItem">
-                      <img
-                        v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'" />
+                      <NuxtImg
+                        v-bind:src="'https://ucarecdn.com/' + item.image + '/-/preview/250x250/-/quality/smart/-/format/auto/'"
+                        v-bind:alt='item.originalFilename'
+                        loading='lazy'/>
                       <span>{{ item.printFormat.name }}</span>
                     </div>
                   </td>
