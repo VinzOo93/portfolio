@@ -4,7 +4,7 @@
     <div class='modale card'>
       <div class='btn-modale-score' v-on:click='toggleModaleScore'></div>
       <h1 class='title-score'>Tableau des scores ☑️</h1>
-      <div class='table'>
+      <div class='table-score'>
         <table class='table-player'>
           <thead>
           <tr class='player-line'>
@@ -61,6 +61,10 @@ export default {
     top: 2%;
   }
 
+  .title-score {
+    margin-top: 4%;
+  }
+
   .table-player {
     margin: 15px;
     font-size: 11px;
@@ -71,7 +75,7 @@ export default {
   }
 
   .t-body * {
-    padding: 10px;
+    padding: 5px;
   }
 }
 
@@ -102,20 +106,32 @@ export default {
     margin-left: 20px;
     margin-right: 20px;
   }
+
+  body, .bloc-modale, .overlay-game {
+    overflow: hidden;
+  }
+
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      .table-score {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
 
 .bloc-modale {
+  display: grid;
+  place-items: center;
+  width: 90%;
+  height: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   bottom: 0;
   right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn-modale-score {
@@ -168,7 +184,7 @@ export default {
 
 
 .table-player {
-  width: 50%;
+  max-width: 50%;
   border: solid 1px #74746e;
   border-radius: 30px;
 }
@@ -197,10 +213,11 @@ h1 {
   text-align: center;
 }
 
-.table {
+.table-score {
   display: flex;
   justify-content: center;
 }
+
 </style>
 
 
