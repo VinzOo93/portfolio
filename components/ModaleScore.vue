@@ -184,7 +184,7 @@ export default {
 
 
 .table-player {
-  max-width: 50%;
+  max-width: 100vw;
   border: solid 1px #74746e;
   border-radius: 30px;
 }
