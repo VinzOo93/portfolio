@@ -107,10 +107,6 @@ export default {
     margin-right: 20px;
   }
 
-  body, .bloc-modale, .overlay-game {
-    overflow: hidden;
-  }
-
   @media not all and (min-resolution:.001dpcm) {
     @supports (-webkit-appearance:none) {
       .table-score {

@@ -144,11 +144,13 @@ export default {
         }
           shipping.value = response.data.value.shipping;
 
-        if (items.value.length > 0) {
-          const cart = document.querySelector('.cart-container');
-          cart.style.visibility = 'visible';
+        if (process.client) {
+          if (items.value.length > 0) {
+            const cart = document.querySelector('.cart-container');
+            cart.style.visibility = 'visible';
+          }
+          document.querySelector('.counter-cart').innerText = items.value.length;
         }
-        document.querySelector('.counter-cart').innerText = items.value.length;
       }).catch((e) => console.log(e));
     }
 
@@ -195,10 +197,6 @@ export default {
     function payAlert() {
       alert('fonctionalité à venir');
     }
-
-    onMounted(async () => {
-      await getCart();
-    })
 
     return {
       items,
