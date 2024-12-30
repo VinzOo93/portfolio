@@ -53,7 +53,7 @@
                   <td class="shipping"> Expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
                   <td><button class='button-validate validate' v-on:click='validateCart' ></button></td>
-                  <td><button class='button-pay hidden' v-on:click='payAlert'>Payer</button></td>
+                  <td><button class='button-pay hidden' v-on:click='payToPaypalService'>Payer</button></td>
                 </tr>
               </tbody>
             </table>
@@ -194,8 +194,23 @@ export default {
       }
     }
 
-    function payAlert() {
-      alert('fonctionalité à venir');
+    async function payToPaypalService() {
+      const route = 'getPaypalPaymentService';
+      let link = null;
+      await useFetch('/api/shop/' + route, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: { cart: '/carts/' + cart.value.cartToken
+        }
+      }).then(paymentData => {
+        link = paymentData.data.value.payment.link + paymentData.data.value.payment.token;
+      }).catch((error) => console.log('error fetch ' + error));
+
+      if (link != null) {
+        await navigateTo(link, {external: true} );
+      }
     }
 
     return {
@@ -206,7 +221,7 @@ export default {
       updateItemQuantity,
       validateCart,
       getCart,
-      payAlert
+      payToPaypalService
     }
   }
 
