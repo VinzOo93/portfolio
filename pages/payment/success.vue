@@ -20,6 +20,7 @@ export default {
       });
       if (res.status === 'PAID') {
         success.value = true;
+        useCookie('clientCart').value = null;
       } else {
         error.value = true;
       }

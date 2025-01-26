@@ -20,11 +20,13 @@ export default {
   setup() {
     const cookieAccepted = ref(true);
 
-    function checkCookie() {
+    async function checkCookie() {
       if (process.client) {
-        const cookie = useCookie('clientInfo');
-        if (!cookie.value) {
+        if (!useCookie('clientInfo').value) {
           cookieAccepted.value = false;
+        }
+        if (!useCookie('clientCart').value && cookieAccepted) {
+          await createCart();
         }
       }
     }
@@ -38,7 +40,7 @@ export default {
       cookie.value = promise.data.value.ipClient;
       cookieAccepted.value = !cookieAccepted.value;
 
-      await createCart()
+      await createCart();
     }
 
     async function createCart() {
