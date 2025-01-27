@@ -265,7 +265,6 @@ export default {
           method: 'POST',
           body: { cartToken: token }
         }).then(response => {
-          console.log(response.data.value.total)
           store.registerItems(
             response.data.value.items,
             response.data.value.total,
