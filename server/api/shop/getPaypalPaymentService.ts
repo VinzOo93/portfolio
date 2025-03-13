@@ -4,13 +4,12 @@ import { readBody } from 'h3'
 // @ts-ignore
 export default defineEventHandler(async (event:any) => {
   const body = await readBody(event)
-  console.log(body);
   if (body) {
     const token = await authByRefreshToken();
     // @ts-ignore
     const config = useRuntimeConfig();
 
-    const response = await $fetch(config.public.apiUrl + 'payment/checkout', {
+    const response = await $fetch(config.public.apiUrl + 'payments/checkout', {
         method: 'POST',
         headers: {
           accept: 'application/json',
