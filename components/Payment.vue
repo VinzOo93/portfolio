@@ -6,7 +6,7 @@
       <div class='board'>
         <div class='paymentForm'>
           <form v-on:submit.prevent='addPayment'>
-            <h2>Commande</h2>
+            <h2>Commande (Sandbox)</h2>
             <label>email</label>
             <input type='text' v-model='email'>
             <label>nom</label>
@@ -80,11 +80,11 @@ export default {
           country: country.value,
         }
       }).then(paymentData => {
-        console.log(paymentData);
         link = paymentData.data.value.payment.link + paymentData.data.value.payment.token;
       }).catch((error) => console.log('error fetch ' + error));
 
       if (link != null) {
+        alert('sandbox email : pepin.lebref@gmail.com & password : pepinpin')
         await navigateTo(link, { external: true });
       }
     }
@@ -107,7 +107,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
 }
 
 .paymentForm form {

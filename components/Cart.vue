@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      <Payment v-bind:openPaymentModal='openPaymentModal' v-bind:reveleModalPayment='reveleModalPayment'/>
+      <Payment v-bind:openPaymentModal='openPaymentModal' v-bind:reveleModalPayment='reveleModalPayment' class='payment-component'/>
     </div>
   </div>
 </template>
@@ -172,11 +172,13 @@ export default {
       const deletes = document.querySelectorAll('.delete');
       const pay = document.querySelector('.button-pay');
       const validate = document.querySelector('.button-validate');
+      const payment = document.querySelector('.payment-component');
 
       mores.forEach(more => toggleVisibility(more));
       minus.forEach(min => toggleVisibility(min));
       deletes.forEach(del => toggleVisibility(del));
       toggleVisibility(pay);
+      toggleVisibility(payment);
       changerValidateButton(validate);
     }
 
