@@ -38,16 +38,15 @@ export default {
       }).catch(e => { error.value = true; });
 
 
-      if (data.value && data.value.status === 'PAID') {
-          const cart = document.querySelector('.cart-container');
-          useCookie('clientCart').value = null;
-
-          registerCookieCart(await createCart());
-          cart.style.visibility = 'hidden';
-          success.value = true;
-        } else {
+      data.value && data.value.status === 'PAID' ?
+        success.value = true :
         error.value = true;
-      }
+
+      const cart = document.querySelector('.cart-container');
+      useCookie('clientCart').value = null;
+      registerCookieCart(await createCart());
+      cart.style.visibility = 'hidden';
+
     } catch (error) { console.log(error); }
 
     return {
