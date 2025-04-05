@@ -8,8 +8,7 @@ export default defineEventHandler(async (event:any) => {
     const token = await authByRefreshToken();
     // @ts-ignore
     const config = useRuntimeConfig();
-
-    return  await $fetch(config.public.apiUrl + 'payment/capture', {
+    return  await $fetch(config.public.apiUrl + 'payments/capture', {
         method: 'PATCH',
         headers: {
           accept: 'application/json',

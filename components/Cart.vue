@@ -53,7 +53,7 @@
                   <td class="shipping"> Expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
                   <td><button class='button-validate validate' v-on:click='validateCart' ></button></td>
-                  <td><button class='button-pay hidden' v-on:click='payToPaypalService'>Payer</button></td>
+                  <td><button class='button-pay hidden' v-on:click='openPaymentModal'>Commander</button></td>
                 </tr>
               </tbody>
             </table>
@@ -63,6 +63,7 @@
           </div>
         </div>
       </div>
+      <Payment v-bind:openPaymentModal='openPaymentModal' v-bind:reveleModalPayment='reveleModalPayment' class='payment-component'/>
     </div>
   </div>
 </template>
@@ -73,9 +74,15 @@ import { useItemsStore } from '/stores/items'
 
 export default {
   name: 'Cart',
-  props: ['openCartModal', 'reveleModalCart'],
+  props: [
+    'openCartModal',
+    'reveleModalCart',
+    'reveleModalPayment',
+    'openPaymentModal',
+  ],
 
   async setup() {
+    const reveleModalPayment = ref(false);
     const store = useItemsStore();
     const items = ref(store.items);
     const cart = ref([]);
@@ -165,11 +172,13 @@ export default {
       const deletes = document.querySelectorAll('.delete');
       const pay = document.querySelector('.button-pay');
       const validate = document.querySelector('.button-validate');
+      const payment = document.querySelector('.payment-component');
 
       mores.forEach(more => toggleVisibility(more));
       minus.forEach(min => toggleVisibility(min));
       deletes.forEach(del => toggleVisibility(del));
       toggleVisibility(pay);
+      toggleVisibility(payment);
       changerValidateButton(validate);
     }
 
@@ -194,25 +203,9 @@ export default {
       }
     }
 
-    async function payToPaypalService() {
-      const route = 'getPaypalPaymentService';
-      let link = null;
-      await useFetch('/api/shop/' + route, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: { cart: '/carts/' + cart.value.cartToken
-        }
-      }).then(paymentData => {
-        link = paymentData.data.value.payment.link + paymentData.data.value.payment.token;
-      }).catch((error) => console.log('error fetch ' + error));
-
-      if (link != null) {
-        await navigateTo(link, {external: true} );
-      }
+    const openPaymentModal = () => {
+      reveleModalPayment.value = !reveleModalPayment.value;
     }
-
     return {
       items,
       shipping,
@@ -221,7 +214,8 @@ export default {
       updateItemQuantity,
       validateCart,
       getCart,
-      payToPaypalService
+      reveleModalPayment,
+      openPaymentModal
     }
   }
 

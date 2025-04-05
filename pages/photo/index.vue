@@ -6,7 +6,7 @@
         <template v-for='(photo) in dataPhotos'>
           <div v-if='photo.contentInfo.image.height < 4000' class='inner-item img-hidden'>
             <NuxtImg class='cover zoom' v-bind:alt='photo.originalFilename'
-              v-bind:src="'https://ucarecdn.com/' + photo.uuid + '/-/preview/1880x864/-/quality/smart/-/format/auto/'"
+              v-bind:src="'https://ucarecdn.com/' + photo.uuid + '/-/preview/1880x864/-/quality/normal/-/format/auto/'"
             loading='lazy'/>
             <div class='container-button'>
               <div id='wrap' class='flex'>
