@@ -52,8 +52,7 @@
                 <tr>
                   <td class="shipping"> Expédition: <span class='shipping-value'>{{ shipping }} €</span> </td>
                   <td class="Total">Total: <span class="Total-value">{{ total }} €</span></td>
-                  <td><button class='button-validate validate' v-on:click='validateCart' ></button></td>
-                  <td><button class='button-pay hidden' v-on:click='openPaymentModal'>Commander</button></td>
+                  <td><button class='button-pay' v-on:click='openPaymentModal'>Commander</button></td>
                 </tr>
               </tbody>
             </table>
@@ -166,21 +165,7 @@ export default {
       return cookie.value;
     }
 
-    function validateCart() {
-      const mores = document.querySelectorAll('.b-more');
-      const minus = document.querySelectorAll('.b-minus');
-      const deletes = document.querySelectorAll('.delete');
-      const pay = document.querySelector('.button-pay');
-      const validate = document.querySelector('.button-validate');
-      const payment = document.querySelector('.payment-component');
 
-      mores.forEach(more => toggleVisibility(more));
-      minus.forEach(min => toggleVisibility(min));
-      deletes.forEach(del => toggleVisibility(del));
-      toggleVisibility(pay);
-      toggleVisibility(payment);
-      changerValidateButton(validate);
-    }
 
     function toggleVisibility(element) {
       if (element.classList.contains('hidden')) {
@@ -189,17 +174,6 @@ export default {
       } else {
         element.classList.remove('visible');
         element.classList.add('hidden');
-      }
-    }
-
-    function changerValidateButton(element) {
-      if (!element.classList.contains('update')) {
-        element.classList.add('update');
-        element.classList.remove('validate');
-
-      } else {
-        element.classList.add('validate');
-        element.classList.remove('update');
       }
     }
 
@@ -212,7 +186,6 @@ export default {
       total,
       deleteItem,
       updateItemQuantity,
-      validateCart,
       getCart,
       reveleModalPayment,
       openPaymentModal
@@ -425,14 +398,6 @@ h2 {
   opacity: 1;
   transition: opacity 0.5s ease-in;
   visibility: visible;
-}
-
-.update::after {
-  content: 'Modifier';
-}
-
-.validate::before {
-  content: 'Valider';
 }
 
 .CartListView tbody tr:last-child {
